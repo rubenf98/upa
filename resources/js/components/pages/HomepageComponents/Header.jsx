@@ -1,118 +1,96 @@
 import React, { useContext } from 'react'
-import styled, { ThemeContext } from "styled-components";
+import styled, { withTheme } from "styled-components";
 import { maxWidth } from '../../../helper';
 
 
 const Container = styled.section`
-  width: 100%;
-  height: calc(100vh - 80px);
+  width: 100vw;
+  height: calc(100vh - 150px);
   position: relative;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  overflow: hidden;
   flex-wrap: wrap;
-`;
-
-const Background = styled.div`
-  width: 100vw;
-  height: 100vh;
   overflow: hidden;
-  top: 0;bottom:0;left:0;right: 0;
-  position: absolute;
-  z-index: -2;
-
-  .blue-ball, .background {
-    position: absolute;
-  }
+  background-color: ${props => props.background};
+  margin-bottom: 200px;
   
-  .background {
-    right: 0;
-    height: 100%;
-    width: 40%;
-    background: ${props => props.blue};
-  }
-
-  .blue-ball {
-    left: -15vw;
-    top: -15vw;
-    height: 30vw;
-    width: 30vw;
-    border-radius: 50%;
-    background: ${props => props.yellow};
-  }
-`;
-
-const Content = styled.div`
-  width: 100%;
-  max-width: ${maxWidth};
-  display: flex;
-  margin: auto;
-  align-items: center;
-  justify-content: space-between;
 `;
 
 const TitleContainer = styled.div`
-  width: 50%;
+  width: 60%;
   display: block;
-  padding: 30px;
+  padding: 90px;
   box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+  z-index: 5;
+  margin-top: -70px;
 
   h1 {
-    font-size: 90px;
-    line-height: 90px;
-    font-family: 'Playfair Display', serif;
+    font-size: 8vw;
+    line-height: 140px;
     font-weight: bold;
-    color: ${props => props.titleColor};
+    margin-bottom: 0px;
+    color: black;
   }
 
   h2 {
-    font-size: 22px;
-    color: ${props => props.subtitleColor};
+    font-size: 36px;
+    text-transform: capitalize;
+    color: black;
   }
 `;
 
 const ImageContainer = styled.div`
-  width: 45%;
-  padding: 20px;
+  width: 100vw;
+  height: calc(100vh - 200px);
+  top: 0px;
+  padding: 0px 40px;
   box-sizing: border-box;
-  max-height: 90vh;
-  background-color: #ffffff;
   border-radius: 16px;
+  position: absolute;
+
+  .container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
 
   img {
     width: 100%;
+    height: 100%;
+    object-fit: cover;
     border-radius: 16px;
   }
   
 `;
 
 
+const Overlay = styled.div`
+  z-index: 4;
+  top: 0;bottom:0;left:0;right: 0;
+  position: absolute;
+  background: rgb(0,0,0);
+  background: linear-gradient(90deg, #f5da7994 0%, #f5da7939 100%);
+  opacity: 0.7;
+`;
 
 
-function Header() {
-  const themeContext = useContext(ThemeContext);
-
-
-
+function Header({ theme }) {
   return (
-    <Container color={themeContext.inverseText} id="header-container">
-      <Background yellow={themeContext.cYellow} blue={themeContext.cBlue}>
-        <div className='background' />
-        <div className='blue-ball' />
-      </Background>
+    <Container background={theme.lightYellow}>
 
-      <Content>
-        <TitleContainer titleColor={themeContext.cBlue} subtitleColor={themeContext.lightText}>
-          <h1>Unidos Pela Atividade</h1>
-          <h2>A manutenção das funções congitivas e motoras é essencial para um envelhecimento ativo e saudável!</h2>
+      <TitleContainer titleColor={theme.darkGreen} subtitleColor={theme.lightText}>
+        <h2>Manutenção das funções congitivas e motoras</h2>
+        <h1>Unidos Pela Atividade</h1>
+      </TitleContainer>
+      <ImageContainer>
+        <div className='container'>
+          <Overlay />
+          <img src="/image/homepage/header.jpg" alt="Sandra Carvalho" />
+        </div>
 
-        </TitleContainer>
-        <ImageContainer>
-          <img src="/image/homepage/header.png" alt="Sandra Carvalho" />
-        </ImageContainer>
-
-      </Content>
+      </ImageContainer>
 
 
 
@@ -120,4 +98,4 @@ function Header() {
   )
 }
 
-export default Header
+export default withTheme(Header)

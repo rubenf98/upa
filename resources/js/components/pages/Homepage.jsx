@@ -1,10 +1,10 @@
 import React from 'react'
 import styled from "styled-components";
 import Sections from './HomepageComponents/Sections';
-import Activities from './HomepageComponents/Activities';
 import Header from './HomepageComponents/Header';
-import Instagram from './HomepageComponents/Instagram';
-import Services from './HomepageComponents/Services';
+import Information from './HomepageComponents/Information';
+import Video from './HomepageComponents/Video';
+import About from './HomepageComponents/About';
 
 
 const Container = styled.div`
@@ -20,10 +20,10 @@ function Homepage() {
   return (
     <Container >
       <Header />
+      <About />
       <Sections />
-      <Services />
-      <Activities />
-      <Instagram />
+      <Information />
+      <Video />
     </Container>
   )
 }

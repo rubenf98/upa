@@ -1,93 +1,20 @@
 import { Row } from 'antd';
 import React from 'react'
-import styled from "styled-components";
+import styled, { withTheme } from "styled-components";
 import moment from "moment";
-import { dimensions } from '../../helper';
+import { dimensions, maxWidth } from '../../helper';
 
-const Container = styled.div`
-    max-width: 100%;
-    height: 600px;
-    background: white;
-    background: url("/footer.webp");
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
+const Container = styled.section`
+    min-width: 100%;
     position: relative;
-    z-index: 3;
-    overflow: hidden;
-
-    @media (max-width: ${dimensions.md}) {
-        height: 400px;
-    }
-    @media (max-width: ${dimensions.sm}) {
-        height: 300px;
-    }
 `;
 
-const Disclaimer = styled.div`
-    position: absolute;
-    bottom: 20px;
-    left: 0;
-    right: 0;
-    margin: auto;
-    z-index: 3;
-
-    p{
-        margin: 0px;
-        margin-bottom: 20px;
-        color: white;
-        text-align: center;
-        font-size: 1.3em;
-
-        @media (max-width: ${dimensions.md}) {
-            font-size: 1.2em;
-        }
-        @media (max-width: ${dimensions.sm}) {
-            font-size: .8em;
-        }
-    }
-`;
-
-
-const BackgroundText = styled.div`
-    font-family: 'Poppins', sans-serif;
-    z-index: 2;
-    font-size: 17vw;
-    font-weight: bold;
-    color: #ffffff22;
-    text-transform: uppercase;
-    position: absolute; 
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-`;
-
-
-const Overlay = styled.div`
-    position: absolute; 
-    left: 0; 
-    right: 0; 
-    top: 0;
-    bottom: 0;
-    background: #0000007b;
-    z-index: 1;
-`;
-
-const Content = styled.div`
-    z-index: 3;
-    position: absolute;
-    left: 0; 
-    right: 0; 
-    top: 0;
-    bottom: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+const FooterContainer = styled.div`
+    position: relative;
 
     h1 {
-        color: white;
         text-align: center;
-        font-size: 6em;
+        font-size: 68px;
         margin: 0px;
 
         @media (max-width: ${dimensions.md}) {
@@ -100,43 +27,110 @@ const Content = styled.div`
     
 `;
 
-const Logo = styled.a`
-    width: 26px;
-    margin: 0 10px;
 
-    img{
+const SubscribeContainer = styled.div`
+    background-color: ${props => props.background};
+    padding: 100px 0px;
+
+    div {
         width: 100%;
+        max-width: ${maxWidth};
+        margin: auto;
+
+        h3 {
+            font-size: 32px;
+        }
+        h4 {
+            font-size: 18px;
+            opacity: .8;
+        }
+        h3, h4 {
+            color: white;
+            text-align: center;
+        }
     }
 `;
 
 
-function Footer() {
+const Ring = styled.div`
+    border-radius: 0 0 0 350px;
+    background-color: transparent;
+    height: 350px;
+    width: 350px;
+    border-left: 80px solid #32404d;
+    border-bottom: 80px solid #32404d;
+    position: absolute;
+    top: 0; right: 0px;
+`;
+
+const FooterContent = styled.div`
+    width: 100%;
+    max-width: ${maxWidth};
+    margin: auto;  
+    padding: 50px 0px;  
+    box-sizing: border-box;
+`;
+
+const Logo = styled.img`
+    display: block;
+    margin: 50px auto;
+    width: 200px;
+    
+`;
+
+const SectionContainer = styled.div`
+margin: 100px 0px;
+    h3 {
+        font-weight: bold;
+        font-size: 20px;
+        margin-bottom: 20px;
+    }
+
+    ul {
+        font-size: 18px;
+        list-style-type: none;
+        padding: 10px 0;
+
+    } 
+`;
+
+const Section = ({ title, items }) => (
+    <SectionContainer>
+        <h3>{title}</h3>
+        <ul>
+            {items.map((item, index) => (
+                <li key={index}>{item}</li>
+            ))}
+        </ul>
+    </SectionContainer>
+)
+
+function Footer({ theme }) {
     return (
         <Container>
-            <Overlay />
-            <BackgroundText>FASTROPE</BackgroundText>
-            <Content>
+            <SubscribeContainer background={theme.darkGreen}>
                 <div>
-                    <h1>Fast Rope Madeira</h1>
+                    <h3>lorem ipsum message</h3>
+                    <h4>Lorem ipsum dolor sit amet consectetur adipisicing elit.</h4>
                 </div>
-            </Content>
+            </SubscribeContainer>
 
-            <Disclaimer>
-                <p>Copyright ©{moment().year()} All rights reserved | Rúben Freitas</p>
-                <Row type="flex" justify="center" align="middle">
-                    <Logo href="https://www.facebook.com/madeira.fastrope" target="_blank" >
-                        <img loading="lazy" src="/icon/company/facebook.png" alt="facebook" />
-                    </Logo>
-                    <Logo href="https://api.whatsapp.com/send?l=en&phone=351933933452" target="_blank" >
-                        <img loading="lazy" src="/icon/company/whatsapp.svg" alt="whatsapp" />
-                    </Logo>
-                    <Logo href="https://www.instagram.com/fastrope_madeira/" target="_blank" >
-                        <img loading="lazy" src="/icon/company/instagram.svg" alt="instagram" />
-                    </Logo>
-                </Row>
-            </Disclaimer>
+            <FooterContainer>
+                <Ring />
+
+                <FooterContent>
+                    <Logo src="/image/logo_white.svg" alt="be local madeira white logo" />
+
+                    <Row style={{ width: "80%" }} type="flex" justify='space-between'>
+                        <Section title="Páginas" items={["Sobre", "Contactos", "Cursos"]} />
+                        <Section title="Contactos" items={["925022532", "sandra_mfc@msn.com", "@educadorasenior"]} />
+                        <Section title="Legal" items={["Política de privacidade", "Política de cookies"]} />
+                    </Row>
+                </FooterContent>
+
+            </FooterContainer>
         </Container>
     )
 }
 
-export default Footer
+export default withTheme(Footer)

@@ -9,10 +9,8 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;500;700&family=Merienda+One&family=Playfair+Display:ital,wght@0,500;1,900&display=swap"
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif&family=Poppins:wght@400;700&display=swap"
         rel="stylesheet">
-
     <meta name="keywords"
         content="Fast, Rope, fastrope, madeira, island, canyoning, canionismo, caminhada, hiking, adventure, experience, aventura, fast, rope">
     <meta name="author" content="Rúben Freitas">
@@ -27,7 +25,7 @@
     body,
     #index {
         height: 100%;
-        font-family: 'IBM Plex Sans Arabic', sans-serif;
+        font-family: 'IBM Plex Serif', serif;
         scroll-behavior: smooth;
     }
 

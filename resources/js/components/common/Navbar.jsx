@@ -1,21 +1,22 @@
 import React, { useContext } from 'react'
-import styled, { ThemeContext } from "styled-components";
+import styled, { ThemeContext, withTheme } from "styled-components";
 import {
     Link
 } from "react-router-dom";
 import { dimensions, maxWidth } from '../../helper';
 
 const Container = styled.div`
-    height: 80px;
+    height: 150px;
     width: 100%;
     box-shadow: 0 6px 12px 0 rgba(6, 43, 86, 0.04);
+    background-color: ${props => props.background};
+    padding: 0px 80px;
+    box-sizing: border-box;
 `;
 
 const Content = styled.div`
     height: 100%;
     width: 100%;
-    max-width: ${maxWidth};
-    margin: auto;
     display: flex;
     padding: 10px;
     box-sizing: border-box;
@@ -57,7 +58,7 @@ const MenuContainer = styled.div`
 const NavbarLink = styled(Link)`
     display: block;
     font-size: 1.2em;
-    text-transform: capitalize;
+    text-transform: uppercase;
     cursor: pointer;
     transition: .3s ease-in-out;
     font-weight: bold;
@@ -85,18 +86,18 @@ const NavbarLink = styled(Link)`
 
 
 
-function Navbar() {
+function Navbar({ theme }) {
     const themeContext = useContext(ThemeContext);
 
     return (
-        <Container>
+        <Container background={theme.lightYellow}>
             <Content>
                 <FlexItem>
                     <Logo to="/">
                         <img src="/image/logo_white.svg" alt="be local madeira white logo" />
                     </Logo>
                 </FlexItem>
-                <FlexItem style={{ flex: 1 }}>
+                <FlexItem>
                     <MenuContainer color={themeContext.cBlue}>
                         <NavbarLink to="/about">sobre <div /></NavbarLink>
                         <NavbarLink to="/contact">contactos <div /></NavbarLink>
@@ -108,4 +109,4 @@ function Navbar() {
     )
 }
 
-export default Navbar
+export default withTheme(Navbar)

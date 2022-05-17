@@ -15,7 +15,6 @@ const Container = styled.div`
     display: block;
     position: relative;
     box-sizing: border-box;
-    overflow-x: hidden;
 `;
 
 class Layout extends Component {
@@ -26,20 +25,20 @@ class Layout extends Component {
                 lightText: "#777",
                 inverseText: '#ffffff',
                 background: '#ffffff',
-                cBlue: "#36475d",
-                cPink: "#FFEFCD",
-                cYellow: "#FFCB57",
+                lightBlue: "#c4fcf1",
+                darkGreen: "#005247",
+                lightYellow: "#f5da79",
+                darkYellow: "#ff9d00",
             }}>
                 <Container>
-                    <SmoothScroll>
-                        <GlobalStyles />
-                        <Navbar onOrder={this.openForm} />
 
-                        <div> {this.props.children} </div>
+                    <GlobalStyles />
+                    <Navbar onOrder={this.openForm} />
+
+                    <div> {this.props.children} </div>
 
 
-                        <Footer />
-                    </SmoothScroll>
+                    <Footer />
                 </Container>
             </ThemeProvider>
         );
