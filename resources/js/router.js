@@ -19,9 +19,6 @@ function Router() {
                 <Route exact path="/contact" element={<Contact />} />
                 <Route exact path="/login" element={<Login />} />
                 <Route exact path="/" element={<Layout><Homepage /></Layout>} />
-
-
-
             </Routes>
         </BrowserRouter>
     );
