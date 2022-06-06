@@ -21,4 +21,10 @@ class User extends Model
     {
         return $this->belongsToMany(Course::class, 'users_has_courses');
     }
+    protected $fillable = [
+        'name',
+        'email',
+        'password',
+        'birthday'
+    ];
 }

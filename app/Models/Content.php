@@ -17,4 +17,8 @@ class Content extends Model
     {
         return $this->belongsTo(ContentType::class);
     }
+    protected $fillable = [
+        'presentation',
+        'path'
+    ];
 }

@@ -13,4 +13,7 @@ class ContentType extends Model
     {
         return $this->hasMany(Content::class);
     }
+    protected $fillable = [
+        'name'
+    ];
 }
