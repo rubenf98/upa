@@ -8,4 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class Course extends Model
 {
     use HasFactory;
+
+    public function contents()
+    {
+        return $this->hasMany(Content::class);
+    }
+    public function users()
+    {
+        return $this->belongsToMany(User::class, 'users_has_courses');
+    }
 }
