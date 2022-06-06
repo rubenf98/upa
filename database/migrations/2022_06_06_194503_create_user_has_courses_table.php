@@ -15,11 +15,11 @@ class CreateUserHasCoursesTable extends Migration
     {
         Schema::create('user_has_courses', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger("ussadsaer_id");
+            $table->unsignedBigInteger("user_id");
             $table->unsignedBigInteger("course_id");
             $table->timestamps();
 
-            $table->foreign("uasdsadser_id")->references("id")->on("users");
+            $table->foreign("user_id")->references("id")->on("users");
             $table->foreign("course_id")->references("id")->on("courses");
         });
     }
