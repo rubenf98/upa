@@ -17,7 +17,8 @@ class CreateContentsTable extends Migration
             $table->id();
             $table->unsignedBigInteger("course_id");
             $table->unsignedBigInteger("content_type_id");
-            $table->boolean("presentation");
+            $table->string("title");
+            $table->boolean("presentation")->default(false);
             $table->string("path");
             $table->timestamps();
 
