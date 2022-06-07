@@ -14,17 +14,9 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        {
+            return UserResource::collection(User::all());
+        }
     }
 
     /**
@@ -46,18 +38,7 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\User  $user
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(User $user)
-    {
-        //
+        return new UserResource($user);
     }
 
     /**

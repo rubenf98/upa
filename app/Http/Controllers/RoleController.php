@@ -14,17 +14,9 @@ class RoleController extends Controller
      */
     public function index()
     {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        
+            return RoleResource::collection(Role::all());
+        
     }
 
     /**
@@ -46,18 +38,7 @@ class RoleController extends Controller
      */
     public function show(Role $role)
     {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Role  $role
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Role $role)
-    {
-        //
+        return new RoleResource($role);
     }
 
     /**

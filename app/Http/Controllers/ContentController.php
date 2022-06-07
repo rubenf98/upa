@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\ContentResource;
 use App\Models\Content;
 use Illuminate\Http\Request;
 
@@ -14,17 +15,7 @@ class ContentController extends Controller
      */
     public function index()
     {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        return ContentResource::collection(Content::all());
     }
 
     /**
@@ -46,18 +37,7 @@ class ContentController extends Controller
      */
     public function show(Content $content)
     {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Content  $content
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Content $content)
-    {
-        //
+        return new ContentResource($content);
     }
 
     /**

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\TransactionResource;
 use App\Models\Transaction;
 use Illuminate\Http\Request;
 
@@ -14,17 +15,9 @@ class TransactionController extends Controller
      */
     public function index()
     {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        
+            return TransactionResource::collection(Transaction::all());
+        
     }
 
     /**
@@ -46,18 +39,7 @@ class TransactionController extends Controller
      */
     public function show(Transaction $transaction)
     {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Transaction  $transaction
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Transaction $transaction)
-    {
-        //
+        return new TransactionResource($transaction);
     }
 
     /**

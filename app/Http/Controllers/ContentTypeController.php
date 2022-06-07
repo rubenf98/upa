@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\ContentTypeResource;
 use App\Models\ContentType;
 use Illuminate\Http\Request;
 
@@ -14,17 +15,9 @@ class ContentTypeController extends Controller
      */
     public function index()
     {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        {
+            return ContentTypeResource::collection(ContentType::all());
+        }
     }
 
     /**
@@ -46,18 +39,7 @@ class ContentTypeController extends Controller
      */
     public function show(ContentType $contentType)
     {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\ContentType  $contentType
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(ContentType $contentType)
-    {
-        //
+        return new ContentTypeResource($contentType);
     }
 
     /**
