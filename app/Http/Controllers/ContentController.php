@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Http\Requests\ContentRequest;
 use App\Http\Resources\ContentResource;
 use App\Models\Content;
 use Illuminate\Http\Request;
@@ -24,9 +24,11 @@ class ContentController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ContentRequest $request)
     {
-        //
+        $validator = $request->validated();
+        $record = Content::create($validator);
+        return new ContentResource($record);
     }
 
     /**

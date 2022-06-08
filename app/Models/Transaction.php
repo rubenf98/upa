@@ -12,4 +12,8 @@ class Transaction extends Model
     {
         return $this->hasMany(User::class);
     }
+  protected $fillable = [
+        'price',
+        'user_id'
+    ];
 }

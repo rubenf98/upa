@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Http\Requests\ContentTypeRequest;
 use App\Http\Resources\ContentTypeResource;
 use App\Models\ContentType;
 use Illuminate\Http\Request;
@@ -26,11 +26,13 @@ class ContentTypeController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ContentTypeRequest $request)
     {
-        //
+        $validator = $request->validated();
+        $record = ContentType::create($validator);
+        return new ContentTypeResource($record);
     }
-
+    
     /**
      * Display the specified resource.
      *

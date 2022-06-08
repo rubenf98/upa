@@ -20,6 +20,8 @@ class Content extends Model
     protected $fillable = [
         'title',
         'presentation',
-        'path'
+        'path',
+        'course_id',
+        'content_type_id'
     ];
 }

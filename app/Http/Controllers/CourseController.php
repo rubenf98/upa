@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Course;
 use Illuminate\Http\Request;
-
+use App\Http\Resources\CourseResource;
+use App\Http\Requests\CourseRequest;
 class CourseController extends Controller
 {
     /**
@@ -25,9 +26,11 @@ class CourseController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CourseRequest $request)
     {
-        //
+        $validator = $request->validated();
+        $record = Course::create($validator);
+        return new CourseResource($record);
     }
 
     /**
