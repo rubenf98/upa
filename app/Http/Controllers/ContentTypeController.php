@@ -15,9 +15,8 @@ class ContentTypeController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    { {
-            return ContentTypeResource::collection(ContentType::all());
-        }
+    {
+        return ContentTypeResource::collection(ContentType::all());
     }
 
     /**
@@ -54,9 +53,9 @@ class ContentTypeController extends Controller
     public function update(ContentTypeRequest $request, ContentType $contenttype)
     {
         $validator = $request->validated();
-        
+
         $contenttype->update($validator);
-       
+
         return new ContentTypeResource($contenttype);
     }
 
@@ -66,8 +65,10 @@ class ContentTypeController extends Controller
      * @param  \App\Models\ContentType  $contentType
      * @return \Illuminate\Http\Response
      */
-    public function destroy(ContentType $contentType)
+    public function destroy(ContentType $contenttype)
     {
-        //
+        $contenttype->delete();
+
+        return response()->json(null, 204);
     }
 }

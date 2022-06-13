@@ -22,8 +22,8 @@ class CreateContentsTable extends Migration
             $table->string("path");
             $table->timestamps();
 
-            $table->foreign("course_id")->references("id")->on("courses");
-            $table->foreign("content_type_id")->references("id")->on("content_types");
+            $table->foreign("course_id")->references("id")->on("courses")->onDelete("cascade");
+            $table->foreign("content_type_id")->references("id")->on("content_types")->onDelete("cascade");
         });
     }
 

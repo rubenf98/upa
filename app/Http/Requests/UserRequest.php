@@ -18,6 +18,13 @@ class UserRequest extends FormRequest
         return true;
     }
 
+    protected function prepareForValidation() 
+    {
+        $this->merge([
+            'password' => bcrypt($this->password)
+        ]);
+    }
+
     /**
      * Get the validation rules that apply to the request.
      *
@@ -27,8 +34,8 @@ class UserRequest extends FormRequest
     {
         return [
                 'name' => 'required|string|max:150',
-                'email' => 'required|email',
-                'password' => 'required|required',
+                'email' => 'required|email|unique:users,email',
+                'password' => 'required',
                 'birthday' => 'required|date'
         ];
     }
