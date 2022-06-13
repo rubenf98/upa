@@ -52,9 +52,11 @@ class TransactionController extends Controller
      * @param  \App\Models\Transaction  $transaction
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Transaction $transaction)
+    public function update(TransactionRequest $request, Transaction $transaction)
     {
-        //
+        $validator = $request->validated();
+        $transaction->update($validator);
+        return new TransactionResource($transaction);
     }
 
     /**

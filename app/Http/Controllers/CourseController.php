@@ -51,9 +51,11 @@ class CourseController extends Controller
      * @param  \App\Models\Course  $course
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Course $course)
+    public function update(CourseRequest $request, Course $course)
     {
-        //
+        $validator = $request->validated();
+        $course->update($validator);
+        return new CourseResource($course);
     }
 
     /**

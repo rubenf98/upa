@@ -49,9 +49,11 @@ class ContentController extends Controller
      * @param  \App\Models\Content  $content
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Content $content)
+    public function update(ContentRequest $request, Content $content)
     {
-        //
+        $validator = $request->validated();
+        $content->update($validator);
+        return new ContentResource($content);
     }
 
     /**

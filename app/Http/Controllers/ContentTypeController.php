@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Http\Requests\ContentTypeRequest;
 use App\Http\Resources\ContentTypeResource;
 use App\Models\ContentType;
@@ -14,8 +15,7 @@ class ContentTypeController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        {
+    { {
             return ContentTypeResource::collection(ContentType::all());
         }
     }
@@ -32,7 +32,7 @@ class ContentTypeController extends Controller
         $record = ContentType::create($validator);
         return new ContentTypeResource($record);
     }
-    
+
     /**
      * Display the specified resource.
      *
@@ -51,9 +51,13 @@ class ContentTypeController extends Controller
      * @param  \App\Models\ContentType  $contentType
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, ContentType $contentType)
+    public function update(ContentTypeRequest $request, ContentType $contenttype)
     {
-        //
+        $validator = $request->validated();
+        
+        $contenttype->update($validator);
+       
+        return new ContentTypeResource($contenttype);
     }
 
     /**
