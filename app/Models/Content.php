@@ -8,11 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Content extends Model
 {
     use HasFactory;
-
-    public function course()
-    {
-        return $this->belongsTo(Course::class);
-    }
+    
     public function contentType()
     {
         return $this->belongsTo(ContentType::class);
