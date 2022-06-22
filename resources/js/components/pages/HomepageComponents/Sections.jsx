@@ -1,47 +1,85 @@
 import React, { useContext } from 'react'
 import styled, { ThemeContext } from "styled-components";
-import { maxWidth, dimensions } from '../../../helper';
+import { maxWidth, dimensions, borderRadius } from '../../../helper';
 
-const Container = styled.section`
+const ImageContainer = styled.section`
     position: relative;
-    width: 100%;
-    max-width: ${maxWidth};
+    width: 40%;
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     flex-wrap: wrap;
     align-items: center;
     margin: 100px auto;
+    min-height: 380px;
+
+    .top {
+        background-image: url("/image/homepage/movement.svg");
+        left: 0px;
+        top: 0px;
+        right: auto;
+        bottom: auto;
+    }
+    
+    .bottom {
+        background-image: url("/image/homepage/music.svg");
+        left: auto;
+        top: auto;
+        right: auto;
+        bottom: 0%;
+        z-index: 2;
+    }
+    .middle {
+        background-image: url("/image/homepage/memory.svg");
+        left: auto;
+        top: auto;
+        right: 0%;
+        bottom: auto;
+    }
 `;
 
 
 const Section = styled.div`
-    width: 30%;
-    padding: 20px;
+    position: absolute;
+    width: 240px;
+    height: 240px;
+    padding: 10px;
     box-sizing: border-box;
-    min-width: 200px;
+    background-color: white;
+    border-radius: ${borderRadius};
+    border-style: solid;
+    border-width: 1px;
+    border-color: #e6e7e8;
+    background-color: #fff;
+    background-position: 50% 50%;
+    background-size: cover;
+    box-shadow: 1px 1px 3px 0 rgba(10, 11, 30, 0.07);
+`;
 
-    @media (max-width: ${dimensions.md}) {
-        width: 50%;
-    }
+const Container = styled.div`
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    align-items: center;
+    max-width: ${maxWidth};
+    margin: auto;
+`;
 
-    img {
-        width: 100%;
-    }
+const InfoContainer = styled.div`
+    width: 40%;
 
-    h2, p {
-        text-align: center;
-    }
-
-    h2 {
-        font-size: 32px;
+    h3 {
+        font-size: 42px;
         font-weight: bold;
-        margin: 20px auto 5px auto;
+        font-family: 'Alegreya Sans', sans-serif;
     }
 
     p {
-        font-size: 16px;
+        font-size: 20px;
+        letter-spacing: 0.034em;
+        text-align: justify;
     }
 `;
+
 
 
 
@@ -50,27 +88,15 @@ function Sections() {
 
     return (
         <Container>
-            <Section>
-                <img src="/image/homepage/movement.svg" alt="" />
-
-                <h2>Movimento</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. </p>
-
-            </Section>
-            <Section>
-                <img src="/image/homepage/music.svg" alt="" />
-
-                <h2>Música</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. </p>
-
-            </Section>
-            <Section>
-                <img src="/image/homepage/memory.svg" alt="" />
-
-                <h2>Memória</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. </p>
-
-            </Section>
+            <ImageContainer >
+                <Section className='top' />
+                <Section className='bottom' />
+                <Section className='middle' />
+            </ImageContainer>
+            <InfoContainer>
+                <h3>Movimento, memória e música</h3>
+                <p>Atividades com recurso à música, que podem ser desenvolvidas em formato individual ou em grupo, visando a interação, socialização, integração e diversão dos participantes: jogos musicais, dança coreográfica sentada, e muito mais.</p>
+            </InfoContainer>
         </Container>
     )
 }

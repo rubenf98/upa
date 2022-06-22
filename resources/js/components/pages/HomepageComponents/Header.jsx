@@ -1,101 +1,99 @@
 import React, { useContext } from 'react'
 import styled, { withTheme } from "styled-components";
-import { maxWidth } from '../../../helper';
+import { borderRadius, maxWidth } from '../../../helper';
+import Video from './Video';
 
 
 const Container = styled.section`
-  width: 100vw;
-  height: calc(100vh - 150px);
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  overflow: hidden;
-  background-color: ${props => props.background};
-  margin-bottom: 200px;
-  
+  width: 100%;
+  min-height: 100vh;
 `;
 
 const TitleContainer = styled.div`
-  width: 60%;
   display: block;
-  padding: 90px;
+  padding: 50px;
   box-sizing: border-box;
-  font-family: 'Poppins', sans-serif;
-  z-index: 5;
-  margin-top: -70px;
+  box-sizing: border-box;
+  text-align: center;
 
   h1 {
-    font-size: 8vw;
-    line-height: 140px;
-    font-weight: bold;
+    font-size: 60px;
+    font-weight: 900;
     margin-bottom: 0px;
     color: black;
+    line-height: 130px;
+    text-align: center;
+    font-family: 'Alegreya Sans', sans-serif;
   }
 
   h2 {
-    font-size: 36px;
-    text-transform: capitalize;
+    font-size: 22px;
     color: black;
+    font-weight: 400;
+    margin: 0 auto;
+    text-align: center;
+    letter-spacing: 0.034em;
   }
 `;
 
-const ImageContainer = styled.div`
-  width: 100vw;
-  height: calc(100vh - 200px);
-  top: 0px;
-  padding: 0px 40px;
-  box-sizing: border-box;
-  border-radius: 16px;
-  position: absolute;
+const ButtonContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  margin: 70px auto 50px auto;
 
-  .container {
-    position: relative;
-    width: 100%;
-    height: 100%;
+  div {
+    padding: 14px 19px;
+    box-sizing: border-box;
+    margin: 0 10px;
+    cursor: pointer;
+    color: black;
+    border: 1px solid black;  
+    transition: all .4s ease;
+    border-radius: ${borderRadius};
+    font-weight: 900;
+    background: white;
+    font-size: 16px;
+    
+    &:hover {
+        border: 1px solid black; 
+        color: black;
+        box-shadow: ${props => "3px 3px 0px 0px " + props.shadow};
+    }
   }
 
-  img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 16px;
+  .background {
+    background: black;
+    color: white;
+    border: 0px;
+
+    &:hover {
+        background: black;
+        color: white;
+        border: 0px;
+        box-shadow: ${props => "3px 3px 0px 0px " + props.shadow};
+    }
   }
-  
 `;
 
 
-const Overlay = styled.div`
-  z-index: 4;
-  top: 0;bottom:0;left:0;right: 0;
-  position: absolute;
-  background: rgb(0,0,0);
-  background: linear-gradient(90deg, #f5da7994 0%, #f5da7939 100%);
-  opacity: 0.7;
-`;
 
 
 function Header({ theme }) {
-  return (
-    <Container background={theme.lightYellow}>
+    return (
+        <Container>
+            <TitleContainer titleColor={theme.text} subtitleColor={theme.text}>
+                <h1>Unidos Pela Atividade</h1>
+                <h2>Movimento. Memória. Música. Sessões de estimulação cognitiva e motora.</h2>
+                <h2>Assista a vídeos demo gratuitos das nossas sessões!</h2>
 
-      <TitleContainer titleColor={theme.darkGreen} subtitleColor={theme.lightText}>
-        <h2>Manutenção das funções congitivas e motoras</h2>
-        <h1>Unidos Pela Atividade</h1>
-      </TitleContainer>
-      <ImageContainer>
-        <div className='container'>
-          <Overlay />
-          <img src="/image/homepage/header.jpg" alt="Sandra Carvalho" />
-        </div>
-
-      </ImageContainer>
-
-
-
-    </Container>
-  )
+                <ButtonContainer shadow={theme.blue}>
+                    <div className='background'>Registar agora!</div>
+                    <div>Saber mais...</div>
+                </ButtonContainer>
+            </TitleContainer>
+            <Video />
+        </Container>
+    )
 }
 
 export default withTheme(Header)

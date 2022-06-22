@@ -1,84 +1,85 @@
-import { Row } from 'antd';
-import React from 'react'
+import { Modal } from 'antd';
+import React, { useState } from 'react'
 import styled, { withTheme } from "styled-components";
-import { maxWidth } from '../../../helper';
+import { borderRadius, maxWidth } from '../../../helper';
 
 const Container = styled.section`
-    background-color: ${props => props.background};
+    
 `;
-
-const Content = styled.div`
+const Thumbnail = styled.div`
     width: 100%;
     max-width: ${maxWidth};
-    margin: auto;
-    padding: 100px 0px;
-`;
+    margin: 50px auto;
+    border-radius: ${borderRadius};
+    box-shadow: 0 0 20px 0 rgba(0,0,0,.2);
+    cursor: pointer;
+    position: relative;
 
-
-const InformationContainer = styled.div`
-    width: 50%;
-    color: white;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-
-    h3 {
-        margin-top: 150px;
-        font-size: 40px;
-        color: white;
-        font-family: 'Playfair Display', serif;
+    .thumbnail {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: ${borderRadius};
+        transition: all .3s ease;
+        filter: brightness(.9);
     }
 
-    p {
-        font-size: 22px;
-        opacity: .7;
-        width: 80%;
-        font-family: 'IBM Plex Serif', serif;
+    .play {
+        width: 80px;
+        height: 80px;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%,-50%);
+        padding: 10px;
+        box-sizing: border-box;
+        transition: all .3s ease;
+    }
+
+    &:hover {
+        .play {
+            width: 90px;
+            height: 90px;
+        }
+        .thumbnail {
+            filter: brightness(.7);
+        }
+
     }
 `;
 
-const VideoContainer = styled.div`
-    width: 50%;
+const VideoContainer = styled(Modal)`
+    .ant-modal-body{
+        padding: 0px;
+    }
+
+    .ant-modal-content {
+        background-color: transparent;
+    }
 
     video {
         cursor: pointer;
+        object-fit: cover;
     }
-`;
-
-const Button = styled.div`
-
-    span {
-        text-transform: uppercase;
-        color: white;
-        padding: 10px 20px;
-        background-color: rgba(255,255,255,.4);
-        border-radius: 16px;
-        flex: 1;
-        display: inline;
-    }
-    
 `;
 
 function Video({ theme }) {
+    const [videoVisibility, setVideoVisibility] = useState(false)
     return (
-        <Container background={theme.darkGreen}>
-            <Content>
-                <Row type="flex" justify='space-around'>
-                    <InformationContainer>
-                        <Button><span>vídeo de apresentação</span></Button>
-                        <div>
-                            <h3>Meu título customizado</h3>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt ratione adipisci expedita necessitatibus?</p>
-                        </div>
-                    </InformationContainer>
-                    <VideoContainer>
-                        <video width="100%" controls poster="/image/homepage/apresentacao.png">
-                            <source src="/image/homepage/apresentacao.mp4" type="video/mp4" />
-                            Your browser does not support the video tag.
-                        </video>
-                    </VideoContainer>
-                </Row>
-            </Content>
+        <Container background={theme.yellow}>
+
+            <Thumbnail onClick={() => setVideoVisibility(true)}>
+                <img className='thumbnail' src="/image/homepage/header.jpg" />
+                <img className='play' src="/icon/play.svg" />
+            </Thumbnail>
+
+            <VideoContainer maskStyle={{ background: "rgba(0,0,0,.8)" }} centered width={"80%"} footer={null} visible={videoVisibility} onCancel={() => setVideoVisibility(false)}>
+                <video autoPlay muted controls width="100%" poster="/video/thumbnail.png">
+                    <source src="/video/promocional.mp4" type="video/mp4" />
+                    Your browser does not support the video tag.
+                </video>
+            </VideoContainer>
+
         </Container>
     )
 }

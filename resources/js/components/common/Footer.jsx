@@ -7,10 +7,12 @@ import { dimensions, maxWidth } from '../../helper';
 const Container = styled.section`
     min-width: 100%;
     position: relative;
+    background-color: ${props => props.background};
 `;
 
 const FooterContainer = styled.div`
     position: relative;
+    color: black;
 
     h1 {
         text-align: center;
@@ -25,42 +27,6 @@ const FooterContainer = styled.div`
         }
     }
     
-`;
-
-
-const SubscribeContainer = styled.div`
-    background-color: ${props => props.background};
-    padding: 100px 0px;
-
-    div {
-        width: 100%;
-        max-width: ${maxWidth};
-        margin: auto;
-
-        h3 {
-            font-size: 32px;
-        }
-        h4 {
-            font-size: 18px;
-            opacity: .8;
-        }
-        h3, h4 {
-            color: white;
-            text-align: center;
-        }
-    }
-`;
-
-
-const Ring = styled.div`
-    border-radius: 0 0 0 350px;
-    background-color: transparent;
-    height: 350px;
-    width: 350px;
-    border-left: 80px solid #32404d;
-    border-bottom: 80px solid #32404d;
-    position: absolute;
-    top: 0; right: 0px;
 `;
 
 const FooterContent = styled.div`
@@ -79,11 +45,14 @@ const Logo = styled.img`
 `;
 
 const SectionContainer = styled.div`
-margin: 100px 0px;
+    margin: 100px 0px;
+    
+
     h3 {
         font-weight: bold;
         font-size: 20px;
         margin-bottom: 20px;
+        color: black;
     }
 
     ul {
@@ -107,21 +76,13 @@ const Section = ({ title, items }) => (
 
 function Footer({ theme }) {
     return (
-        <Container>
-            <SubscribeContainer background={theme.darkGreen}>
-                <div>
-                    <h3>lorem ipsum message</h3>
-                    <h4>Lorem ipsum dolor sit amet consectetur adipisicing elit.</h4>
-                </div>
-            </SubscribeContainer>
+        <Container background={theme.blue}>
 
             <FooterContainer>
-                <Ring />
-
                 <FooterContent>
-                    <Logo src="/image/logo_white.svg" alt="be local madeira white logo" />
+                    <Logo src="/image/logo.svg" alt="unidos pela atividade logo" />
 
-                    <Row style={{ width: "80%" }} type="flex" justify='space-between'>
+                    <Row style={{ width: "100%" }} type="flex" justify='space-between'>
                         <Section title="Páginas" items={["Sobre", "Contactos", "Cursos"]} />
                         <Section title="Contactos" items={["925022532", "sandra_mfc@msn.com", "@educadorasenior"]} />
                         <Section title="Legal" items={["Política de privacidade", "Política de cookies"]} />

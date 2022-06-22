@@ -6,11 +6,10 @@ import {
 import { dimensions, maxWidth } from '../../helper';
 
 const Container = styled.div`
-    height: 150px;
+    height: 100px;
     width: 100%;
-    box-shadow: 0 6px 12px 0 rgba(6, 43, 86, 0.04);
     background-color: ${props => props.background};
-    padding: 0px 80px;
+    padding: 0px 200px;
     box-sizing: border-box;
 `;
 
@@ -23,7 +22,8 @@ const Content = styled.div`
     display: flex;
     top: 0;
     z-index: 20;
-    width: 100%;
+    max-width: ${maxWidth};
+    margin: auto;
     transition: .5s ease-in-out;
     align-items: center;
     justify-content: space-between;
@@ -53,30 +53,55 @@ const MenuContainer = styled.div`
     }
 `;
 
+const LinkContainer = styled.div`
+    position: relative;
+    margin: 0px 50px;
+    box-sizing: border-box;
 
-
-const NavbarLink = styled(Link)`
-    display: block;
-    font-size: 1.2em;
-    text-transform: uppercase;
-    cursor: pointer;
-    transition: .3s ease-in-out;
-    font-weight: bold;
-    color: inherit;
     @media (max-width: ${dimensions.md}) {
         display: none;
     }
+`;
 
-    &:nth-child(2) {
-        padding: 0px 40px;
+const NavbarLink = styled(Link)`
+    display: block;
+    font-size: 22px;
+    text-transform: capitalize;
+    cursor: pointer;
+    
+    font-weight: bold;
+    color: inherit;   
+
+    span {
+        z-index: 3;
+        position: relative;
+    }
+
+    div {
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translate(-50%, 0);
+        z-index: 2;
+        width: 0px;
+        height: 40px;
+        border-radius: 1px;
+        background-color: #7df3d0;
+        opacity: 0;
+        transition: .2s ease-in-out;
+        box-sizing: border-box;
     }
 
     &:hover {
         outline: none;
         transition-duration: 500ms;
-        color: ${props => props.color};
+        color: black;
+
         div {
-            width: 100%;
+            width: 80%;
+            opacity: 1;
+            transform: skewX(-10deg);
+            transform-origin: right;
         }
     }
     
@@ -94,14 +119,20 @@ function Navbar({ theme }) {
             <Content>
                 <FlexItem>
                     <Logo to="/">
-                        <img src="/image/logo_white.svg" alt="be local madeira white logo" />
+                        <img src="/image/logo.svg" alt="be local madeira white logo" />
                     </Logo>
                 </FlexItem>
                 <FlexItem>
                     <MenuContainer color={themeContext.cBlue}>
-                        <NavbarLink to="/about">sobre <div /></NavbarLink>
-                        <NavbarLink to="/contact">contactos <div /></NavbarLink>
-                        <NavbarLink to="/activities">cursos <div /></NavbarLink>
+                        <LinkContainer>
+                            <NavbarLink to="/sobre"><span>acerca de mim</span> <div /></NavbarLink>
+                        </LinkContainer>
+                        <LinkContainer>
+                            <NavbarLink to="/contact"><span>contactos</span> <div /></NavbarLink>
+                        </LinkContainer>
+                        <LinkContainer>
+                            <NavbarLink to="/sessions"><span>sessões</span> <div /></NavbarLink>
+                        </LinkContainer>
                     </MenuContainer>
                 </FlexItem>
             </Content>

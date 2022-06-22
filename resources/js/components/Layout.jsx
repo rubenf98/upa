@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import Navbar from "./common/Navbar";
 import Footer from "./common/Footer";
 import styled from "styled-components";
-import SmoothScroll from "./common/SmoothScroll";
 
 import { ThemeProvider } from "styled-components";
 import { GlobalStyles } from "./globalStyles";
@@ -15,7 +14,31 @@ const Container = styled.div`
     display: block;
     position: relative;
     box-sizing: border-box;
+
+    .home-bg {
+        position: fixed;
+        left: 0%;
+        top: 0%;
+        right: 0%;
+        bottom: 0%;
+        z-index: -1;
+        background-color: ${props => props.background};
+
+        .moving-noise {
+            position: relative;
+            z-index: -2;
+            width: 100%;
+            height: 100%;
+            background-image: url("/image/noise.gif");
+            background-position: 50% 50%;
+            background-size: 200px;
+            opacity: 0;
+            mix-blend-mode: soft-light;
+        }
+    }
 `;
+
+
 
 class Layout extends Component {
     render() {
@@ -24,18 +47,29 @@ class Layout extends Component {
                 text: '#000000',
                 lightText: "#777",
                 inverseText: '#ffffff',
-                background: '#ffffff',
+                background: '#FFFD63',
                 lightBlue: "#c4fcf1",
-                darkGreen: "#005247",
-                lightYellow: "#f5da79",
-                darkYellow: "#ff9d00",
+                green: "#52da72",
+                darkGreen: "#00310b",
+                yellow: "#FFFD63",
+                darkYellow: "#452b00",
+                blue: "#7df3d0",
+                darkBlue: "#122038",
             }}>
-                <Container>
+                <Container background="#FFFD63">
+                    <div className="home-bg">
+                        <div class="moving-noise" />
+                    </div>
 
                     <GlobalStyles />
+
                     <Navbar onOrder={this.openForm} />
 
+
+
                     <div> {this.props.children} </div>
+
+
 
 
                     <Footer />

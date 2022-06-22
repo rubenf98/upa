@@ -14,35 +14,27 @@ const Section = styled.div`
 `;
 
 const Content = styled.div`
-    max-width: ${maxWidth};
     width: 100%;
-    padding: 50px 0px;   
-    margin: auto; 
+    padding: 0px 200px;
     box-sizing: border-box;
 `;
 
 const Background = styled.div`
     height: 100%;
     position: absolute;
-    z-index: -2;
+    z-index: -1;
     width: 60%;
 `;
 
 const RightBackground = styled(Background)`
     right: 0;
     background: ${props => props.background};
-    opacity: .5;
-    border-top-left-radius: 16px;
-    border-bottom-left-radius: 16px;
 `;
 
 const LeftBackground = styled(Background)`
     left: 0;
     background: ${props => props.background};
-    opacity: .5;
-    border-top-right-radius: 16px;
-    border-bottom-right-radius: 16px;
-    opacity: .3;
+
 `;
 
 const FlexContainer = styled.div`
@@ -50,28 +42,6 @@ const FlexContainer = styled.div`
     flex-wrap: wrap;
     justify-content: space-around;
     width: 100%; 
-`;
-
-const ServiceContainer = styled.div`
-    width: 20%;
-    padding: 30px;
-    box-sizing: border-box;
-    text-align: center;
-    background: white;
-    border-radius: 16px;
-    box-shadow: 14px 14px 120px 0 rgba(154, 154, 154, 0.301);
-
-    h4 {
-        font-size: 20px;
-        font-weight: bold;
-    }
-
-
-    img {
-        width: 50%;
-        margin: 0px auto 30px auto;
-        display: block;
-    }
 `;
 
 const CourseContainer = styled.div`
@@ -99,7 +69,7 @@ const CourseContainer = styled.div`
         color: white;
         font-weight: bold;
         opacity: 0;
-        background: #ffc261e5;
+        background: #ffd84be4;
         padding: 50px 30px;
         text-align: center;
         width: 100%;
@@ -119,39 +89,29 @@ const CourseContainer = styled.div`
 const InfoContainer = styled.div`
     padding: 50px;
     box-sizing: border-box;
-
+    color: ${props => props.textColor};
     h2 {
         text-transform: uppercase;
-        font-size: 20px;
+        font-size: 26px;
         margin: 0px;
-        color: black;
+        color: inherit;
     }
 
     h3 {
-        font-size: 64px;
+        font-size: 72px;
         margin-top: 5px;
         margin-bottom: 50px;
-        width: 80%;
-        color: black;
+        color: inherit;
+        font-weight: 900;
     }
 
     p {
-        color: black;
-        font-size: 18px;
+        color: inherit;
+        font-size: 20px;
         margin-bottom: 30px;
-        opacity: .8;
+        opacity: .9;
     }
 `;
-
-
-const Service = ({ title, img }) => (
-    <ServiceContainer>
-
-        <img src={"/image/homepage/" + img + ".svg"} alt="" />
-
-        <h4>{title}</h4>
-    </ServiceContainer>
-)
 
 const Course = ({ title, img }) => (
     <CourseContainer>
@@ -167,25 +127,20 @@ function Information() {
         <Container>
             <Section>
                 <Content>
-                    <LeftBackground background={themeContext.darkGreen} />
-                    <InfoContainer titleColor={themeContext.darkGreen} subtitleColor={themeContext.lightText}>
+                    <LeftBackground background={themeContext.blue} />
+                    <InfoContainer textColor={themeContext.text}>
                         <h2>bem vindos</h2>
                         <h3>Olá, Sou a Sandra Carvalho EDUCASÉNIOR </h3>
 
                         <p>Sou Mestre e licenciada em Ciências da Educação - Educação Sénior pela Universidade da Madeira. Possuo o Curso de Informática de Gestão e o Curso de Formador de Formadores. Ao nível dos conteúdos formativos, destaco igualmente o Curso de Criatividade e Espaço Lúdico e o Curso de Instrutores de Danças Sénior.</p>
                         <p>Colaborei com a Universidade da Madeira em algumas ações educativas: "A Animação Sociocultural em contexto sénior" e “Educação Permanente”. Possuo experiência como formadora na área de animação e fui promotora de vários Workshops no âmbito da estimulação cognitiva e motora, recursos musicais para aplicar com idosos e dança coreográfica sentada. Possuo 11 anos de experiência no exercício de funções de Educadora Sénior num Lar de Idosos e Centro de Convívio.</p>
                     </InfoContainer>
-                    <FlexContainer>
-                        <Service title="Jogos Musicais" img="musicalgames" />
-                        <Service title="Dança Coreográfica" img="coreographydancing" />
-                        <Service title="Educação Literária" img="literature" />
-                    </FlexContainer>
                 </Content>
             </Section>
             <Section>
                 <Content>
-                    <RightBackground background={themeContext.lightYellow} />
-                    <InfoContainer titleColor={themeContext.darkGreen} subtitleColor={themeContext.lightText}>
+                    <RightBackground background={themeContext.blue} />
+                    <InfoContainer textColor={themeContext.text}>
                         <h2>oferta formativa</h2>
                         <h3>Conteúdos disponibilizados </h3>
 
