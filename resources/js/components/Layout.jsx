@@ -56,9 +56,9 @@ class Layout extends Component {
                 blue: "#7df3d0",
                 darkBlue: "#122038",
             }}>
-                <Container background="#FFFD63">
+                <Container background="#FFE32B">
                     <div className="home-bg">
-                        <div class="moving-noise" />
+                        <div className="moving-noise" />
                     </div>
 
                     <GlobalStyles />

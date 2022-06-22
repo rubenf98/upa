@@ -55,7 +55,7 @@ const MenuContainer = styled.div`
 
 const LinkContainer = styled.div`
     position: relative;
-    margin: 0px 50px;
+    margin: 0px 30px;
     box-sizing: border-box;
 
     @media (max-width: ${dimensions.md}) {
@@ -65,7 +65,7 @@ const LinkContainer = styled.div`
 
 const NavbarLink = styled(Link)`
     display: block;
-    font-size: 22px;
+    font-size: 18px;
     text-transform: capitalize;
     cursor: pointer;
     
@@ -125,13 +125,13 @@ function Navbar({ theme }) {
                 <FlexItem>
                     <MenuContainer color={themeContext.cBlue}>
                         <LinkContainer>
-                            <NavbarLink to="/sobre"><span>acerca de mim</span> <div /></NavbarLink>
+                            <NavbarLink to="/sessions"><span>sessões</span> <div /></NavbarLink>
                         </LinkContainer>
                         <LinkContainer>
                             <NavbarLink to="/contact"><span>contactos</span> <div /></NavbarLink>
                         </LinkContainer>
                         <LinkContainer>
-                            <NavbarLink to="/sessions"><span>sessões</span> <div /></NavbarLink>
+                            <NavbarLink to="/sobre"><span>acerca de mim</span> <div /></NavbarLink>
                         </LinkContainer>
                     </MenuContainer>
                 </FlexItem>
