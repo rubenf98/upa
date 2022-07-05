@@ -1,5 +1,5 @@
 export const maxWidth = "1440px"
-export const borderRadius = "12px"
+export const borderRadius = "0px"
 export const navbarHeight = "100px"
 
 export const dimensions = {

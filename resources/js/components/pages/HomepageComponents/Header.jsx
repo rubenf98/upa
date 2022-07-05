@@ -56,7 +56,7 @@ const ButtonContainer = styled.div`
     &:hover {
         border: 1px solid black; 
         color: black;
-        box-shadow: ${props => "3px 3px 0px 0px " + props.shadow};
+        box-shadow: ${props => "6px 6px 0px 0px " + props.shadow};
     }
   }
 
@@ -69,7 +69,7 @@ const ButtonContainer = styled.div`
         background: black;
         color: white;
         border: 0px;
-        box-shadow: ${props => "3px 3px 0px 0px " + props.shadow};
+        box-shadow: ${props => "6px 6px 0px 0px " + props.shadow};
     }
   }
 `;

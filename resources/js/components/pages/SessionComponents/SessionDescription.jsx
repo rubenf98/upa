@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import styled, { withTheme } from "styled-components";
-import { borderRadius, dimensions, maxWidth } from '../../../helper';
+import { borderRadius, dimensions, maxWidth, navbarHeight } from '../../../helper';
 import { BlackButton } from '../../../styles';
 
 
@@ -8,18 +8,18 @@ import { BlackButton } from '../../../styles';
 const Container = styled.section`
     display: flex;
     justify-content: space-around;
-    max-width: ${maxWidth};
+    align-items: center;
     width: 100%;
-    margin: 50px auto 100px auto;
+    min-height: calc(100vh - ${navbarHeight});
+    margin: 0px auto;
 
     .column {
-        width: 40%;
+        width: 50%;
         height: 100%;
     }
 
     .info-column {
-        padding: 50px;
-        width: 50%;
+        padding: 0px 200px;
         box-sizing: border-box;
         order: ${props => props.reversed ? 2 : 1}
     }
@@ -56,6 +56,12 @@ const Container = styled.section`
         width: 300px;
         margin: 20px 0px;
         display: block;
+
+        img {
+            width: 25px;
+            height: 25px;
+            margin-left: 5px;
+        }
     }
     
 `;
@@ -70,6 +76,7 @@ const RadioContainer = styled.div`
         width: 22px;
         height: 22px;
         border: 1px solid black;
+        border-color: ${props => props.active ? props.background : "black"};
         border-radius : 22px;
         display: flex;
         justify-content: center;
@@ -79,7 +86,7 @@ const RadioContainer = styled.div`
         .button-background {
             width: 16px;
             height: 16px;
-            background-color: black;
+            background-color: ${props => props.background};
             border-radius : 16px;
             margin: auto;
             opacity: ${props => props.active ? 1 : 0};
@@ -101,35 +108,21 @@ const ImageContainer = styled.div`
     width: 90%;
     margin: auto auto;
     display: block;
-    height: 100%;
+    height: calc(100vh - ${navbarHeight});
     position: relative;
     flex: 1;
 
-    .background {
-        width: 100%;
-        height: 80%;
-        background-color: white;
-        position: absolute;
-        z-index: -1;
-        border-radius: ${borderRadius};
-        top: ${props => props.reversed ? 1 : 0};
-        bottom: ${props => props.reversed ? 0 : 1};
-    }
-
     .container {
-        width: 100%;
-        height: 100%;
+        width: 50vw;
+        height: 100vh;
         margin: auto;
         display: block;
-        padding: 40px;
-        box-sizing: border-box;
 
 
         img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            border-radius: ${borderRadius};
         }
     }
 
@@ -150,28 +143,27 @@ function SessionDescription({ theme, content, reversed }) {
 
                 <br />
 
-                <RadioContainer active={active == 0} onClick={() => { setActive(0) }}>
+                <RadioContainer background={theme.blue} active={active == 0} onClick={() => { setActive(0) }}>
                     <div className="button"> <div className="button-background" /> </div>
                     <span> compra única - 32 €</span>
                 </RadioContainer>
 
-                <RadioContainer active={active == 1} onClick={() => { setActive(1) }}>
+                <RadioContainer background={theme.blue} active={active == 1} onClick={() => { setActive(1) }}>
                     <div className="button"> <div className="button-background" /> </div>
                     <span> compra diversa & poupa 10% - 28.80 € p/ sessão</span>
                 </RadioContainer>
                 <br />
                 <div className='submit-container'>
                     <BlackButton shadow={theme.blue}>
-                        Adicionar ao Carrinho
+                        Adicionar ao Carrinho <img src="/icon/shopping-cart.svg" alt="cesto de compras" />
                     </BlackButton>
                 </div>
                 <br />
 
             </div>
             <ImageContainer reversed={reversed} className="image-column column">
-                <div className="background" />
                 <div className="container">
-                    <img src={"/image/session/" + content.image + ".jpg"} />
+                    <img src={"/image/session/" + content.image + ".jpg"} alt="ilustração da atividade" />
                 </div>
             </ImageContainer>
 

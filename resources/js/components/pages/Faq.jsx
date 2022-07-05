@@ -79,12 +79,11 @@ const Accordion = styled(Collapse)`
 `;
 
 const items = [
-    { question: "Why should I use Butter", answer: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque nostrum saepe voluptas ut possimus fuga facere, officia molestiae nesciunt reiciendis corrupti repudiandae! Exercitationem ipsa reiciendis et nostrum odio mollitia perspiciatis!" },
-    { question: "What is a co-facilitator?", answer: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque nostrum saepe voluptas ut possimus fuga facere, officia molestiae nesciunt reiciendis corrupti repudiandae! Exercitationem ipsa reiciendis et nostrum odio mollitia perspiciatis!" },
-    { question: "What is a Shared room?", answer: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque nostrum saepe voluptas ut possimus fuga facere, officia molestiae nesciunt reiciendis corrupti repudiandae! Exercitationem ipsa reiciendis et nostrum odio mollitia perspiciatis!" },
-    { question: "Why should I use Butter?", answer: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque nostrum saepe voluptas ut possimus fuga facere, officia molestiae nesciunt reiciendis corrupti repudiandae! Exercitationem ipsa reiciendis et nostrum odio mollitia perspiciatis!" },
-    { question: "What is a co-facilitator?", answer: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque nostrum saepe voluptas ut possimus fuga facere, officia molestiae nesciunt reiciendis corrupti repudiandae! Exercitationem ipsa reiciendis et nostrum odio mollitia perspiciatis!" },
-    { question: "What is a Shared room?", answer: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque nostrum saepe voluptas ut possimus fuga facere, officia molestiae nesciunt reiciendis corrupti repudiandae! Exercitationem ipsa reiciendis et nostrum odio mollitia perspiciatis!" },
+    { question: "O que faz a Unidos Pela Atividade (UPA)?", answer: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque nostrum saepe voluptas ut possimus fuga facere, officia molestiae nesciunt reiciendis corrupti repudiandae! Exercitationem ipsa reiciendis et nostrum odio mollitia perspiciatis!" },
+    { question: "Porque devo aquirir as sessões da UPA?", answer: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque nostrum saepe voluptas ut possimus fuga facere, officia molestiae nesciunt reiciendis corrupti repudiandae! Exercitationem ipsa reiciendis et nostrum odio mollitia perspiciatis!" },
+    { question: "Como entro em contacto com a UPA?", answer: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque nostrum saepe voluptas ut possimus fuga facere, officia molestiae nesciunt reiciendis corrupti repudiandae! Exercitationem ipsa reiciendis et nostrum odio mollitia perspiciatis!" },
+    { question: "Gostaria de fazer uma parceria, o que faço?", answer: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque nostrum saepe voluptas ut possimus fuga facere, officia molestiae nesciunt reiciendis corrupti repudiandae! Exercitationem ipsa reiciendis et nostrum odio mollitia perspiciatis!" },
+    { question: "Quem pertence à Unidos pela Atividade?", answer: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque nostrum saepe voluptas ut possimus fuga facere, officia molestiae nesciunt reiciendis corrupti repudiandae! Exercitationem ipsa reiciendis et nostrum odio mollitia perspiciatis!" },
 ]
 
 function Faq({ theme }) {

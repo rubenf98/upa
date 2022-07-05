@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import styled, { withTheme } from "styled-components";
 import Row from "antd/es/row"
 import Form from "antd/es/form"
@@ -7,7 +7,6 @@ import Col from "antd/es/col"
 import { dimensions, maxWidth, navbarHeight } from "../../helper";
 import axios from "axios";
 import { BlackButton, CustomInput, CustomTextArea, underlineStyle } from '../../styles';
-import Faq from './Faq';
 
 const Container = styled.div`
     min-height: calc(100vh - ${navbarHeight});
@@ -146,6 +145,11 @@ const rules = {
 function Contact({ theme }) {
     const [form] = Form.useForm();
 
+    useEffect(() => {
+        window.scrollTo(0, 0)
+    }, [])
+
+
     const onFinish = (values) => {
         axios.post(`${window.location.origin}/api/contact`, values);
 
@@ -230,7 +234,6 @@ function Contact({ theme }) {
 
 
             </Container>
-            <Faq />
         </>
     )
 }

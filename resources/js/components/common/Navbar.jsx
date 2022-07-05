@@ -83,11 +83,11 @@ const NavbarLink = styled(Link)`
         transform: translate(-50%, 0);
         z-index: 2;
         width: 0px;
-        height: 40px;
+        height: 0px;
         border-radius: 1px;
         background-color: ${props => props.background};
         opacity: 0;
-        transition: .2s ease-in-out;
+        transition: width .2s ease-in-out;
         box-sizing: border-box;
     }
 
@@ -97,6 +97,7 @@ const NavbarLink = styled(Link)`
         color: black;
 
         div {
+            height: 40px;
             width: 80%;
             opacity: 1;
             transform: skewX(-10deg);

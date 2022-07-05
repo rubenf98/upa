@@ -9,22 +9,22 @@ import Contact from "./components/pages/Contact";
 import Login from "./components/pages/Login";
 import Layout from "./components/Layout";
 import Session from "./components/pages/Session";
+import ScrollToTop from "./components/common/ScrollToTop";
 
 export const history = createBrowserHistory();
 
 function Router() {
     return (
         <BrowserRouter history={history}>
-            <Routes>
-                <Route exact path="/sessoes" element={<Layout><Session /></Layout>} />
-                <Route exact path="/sobre" element={<Layout><About /></Layout>} />
-                <Route exact path="/contact" element={<Layout><Contact /></Layout>} />
-                <Route exact path="/login" element={<Login />} />
-                <Route exact path="/" element={<Layout><Homepage /></Layout>} />
-
-
-
-            </Routes>
+            <ScrollToTop>
+                <Routes>
+                    <Route exact path="/sessoes" element={<Layout><Session /></Layout>} />
+                    <Route exact path="/sobre" element={<Layout><About /></Layout>} />
+                    <Route exact path="/contact" element={<Layout><Contact /></Layout>} />
+                    <Route exact path="/login" element={<Login />} />
+                    <Route exact path="/" element={<Layout><Homepage /></Layout>} />
+                </Routes>
+            </ScrollToTop>
         </BrowserRouter>
     );
 };

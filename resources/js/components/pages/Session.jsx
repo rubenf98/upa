@@ -137,6 +137,31 @@ function Session({ theme }) {
     const [active, setActive] = useState(0)
     return (
         <>
+            <TextContainer>
+                <Spacer />
+                <ContentContainer>
+                    <DetailsContainer>
+                        <h3>Cada sessão dá acesso a recursos descarregáveis e à visualização de vídeos</h3>
+                        <p>A manutenção cognitiva é essencial e ajuda o idoso a realizar as suas tarefas do dia-a-dia. E-Books, exibições de PowerPoint, jogos e outras atividades contribuem para desenvolver as várias funções cognitivas: memória, raciocínio, atenção, orientação espacial, etc.</p>
+                    </DetailsContainer>
+                    <WhiteContainer>
+                        <h2>Movimento. Memória. Música. Sessões de estimulação cognitiva e motora.</h2>
+
+                        <InfoContainer type="flex" gutter={32}>
+                            <Col span={12}>
+                                <p>Atividades com recurso à música, que podem ser desenvolvidas em formato individual ou em grupo, visando a interação, socialização, integração e diversão dos participantes.</p>
+                            </Col>
+                            <Col span={12}>
+                                <p>Cursos, Workshops, Oficinas e Recursos no âmbito da Estimulação Cognitiva e Motora para aplicar com idosos através de jogos musicais, dança coreográfica sentada, e muito mais.</p>
+
+                            </Col>
+                        </InfoContainer>
+
+                    </WhiteContainer>
+                </ContentContainer>
+                <WhiteBackground />
+
+            </TextContainer >
 
             <SessionDescription
                 content={{
@@ -161,8 +186,9 @@ function Session({ theme }) {
                     image: "mesa"
                 }}
             />
+
             <br />
-            <Video video="/video/apresentacao.mp4" />
+
             <MaterialContainer>
                 <div className='flexcontainer'>
                     <Col span={12}>
@@ -196,32 +222,10 @@ function Session({ theme }) {
                     </SessionDetails>
                 </div>
             </MaterialContainer>
+
+            <Video video="/video/apresentacao.mp4" thumbnail='/image/session/thumbnail.jpg' />
             <Benefits />
-            <TextContainer>
-                <Spacer />
-                <ContentContainer>
-                    <DetailsContainer>
-                        <h3>Cada sessão dá acesso a recursos descarregáveis e à visualização de vídeos</h3>
-                        <p>A manutenção cognitiva é essencial e ajuda o idoso a realizar as suas tarefas do dia-a-dia. E-Books, exibições de PowerPoint, jogos e outras atividades contribuem para desenvolver as várias funções cognitivas: memória, raciocínio, atenção, orientação espacial, etc.</p>
-                    </DetailsContainer>
-                    <WhiteContainer>
-                        <h2>Movimento. Memória. Música. Sessões de estimulação cognitiva e motora.</h2>
 
-                        <InfoContainer type="flex" gutter={32}>
-                            <Col span={12}>
-                                <p>Atividades com recurso à música, que podem ser desenvolvidas em formato individual ou em grupo, visando a interação, socialização, integração e diversão dos participantes.</p>
-                            </Col>
-                            <Col span={12}>
-                                <p>Cursos, Workshops, Oficinas e Recursos no âmbito da Estimulação Cognitiva e Motora para aplicar com idosos através de jogos musicais, dança coreográfica sentada, e muito mais.</p>
-
-                            </Col>
-                        </InfoContainer>
-
-                    </WhiteContainer>
-                </ContentContainer>
-                <WhiteBackground />
-
-            </TextContainer >
 
             <Faq />
         </>

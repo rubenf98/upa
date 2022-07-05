@@ -49,7 +49,7 @@ export const BlackButton = styled.div`
     border: 0px;
 
     &:hover {
-        box-shadow: ${props => "3px 3px 0px 0px " + props.shadow};
+        box-shadow: ${props => "6px 6px 0px 0px " + props.shadow};
     }
   
 `;
@@ -69,7 +69,7 @@ export const WhiteButton = styled.div`
     &:hover {
         border: 1px solid black; 
         color: black;
-        box-shadow: ${props => "3px 3px 0px 0px " + props.shadow};
+        box-shadow: ${props => "6px 6px 0px 0px " + props.shadow};
     }
 `;
 
