@@ -63,7 +63,7 @@ const VideoContainer = styled(Modal)`
     }
 `;
 
-function Video({ theme }) {
+function Video({ theme, video = "/video/promocional.mp4" }) {
     const [videoVisibility, setVideoVisibility] = useState(false)
     return (
         <Container background={theme.yellow}>
@@ -75,7 +75,7 @@ function Video({ theme }) {
 
             <VideoContainer maskStyle={{ background: "rgba(0,0,0,.8)" }} centered width={"80%"} footer={null} visible={videoVisibility} onCancel={() => setVideoVisibility(false)}>
                 <video autoPlay muted controls width="100%" poster="/video/thumbnail.png">
-                    <source src="/video/promocional.mp4" type="video/mp4" />
+                    <source src={video} type="video/mp4" />
                     Your browser does not support the video tag.
                 </video>
             </VideoContainer>

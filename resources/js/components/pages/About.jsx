@@ -1,14 +1,11 @@
 import React from 'react'
 import styled, { withTheme } from "styled-components";
-import Team from './About/Team';
-import History from './About/History';
-import Services from './About/Services';
 import { dimensions, maxWidth } from '../../helper';
 import { underlineStyle } from '../../styles';
-import Faq from './HomepageComponents/Faq';
+import Faq from './Faq';
 
 const Container = styled.section`
-    margin: 120px auto;
+    margin: 40px auto 120px auto;
     width: 100%;
     max-width: ${maxWidth};
 `;
@@ -70,7 +67,6 @@ const InfoContainer = styled.div`
         font-size: 42px;
         font-weight: bold;
         font-family: 'Alegreya Sans', sans-serif;
-        ${underlineStyle}
     }
 
     p {

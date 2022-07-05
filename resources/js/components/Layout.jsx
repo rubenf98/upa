@@ -47,13 +47,13 @@ class Layout extends Component {
                 text: '#000000',
                 lightText: "#777",
                 inverseText: '#ffffff',
-                background: '#FFFD63',
+                background: '#FFE32B',
                 lightBlue: "#c4fcf1",
                 green: "#52da72",
                 darkGreen: "#00310b",
                 yellow: "#FFFD63",
                 darkYellow: "#452b00",
-                blue: "#7df3d0",
+                blue: "#37cfd1",
                 darkBlue: "#122038",
             }}>
                 <Container background="#FFE32B">

@@ -1,16 +1,19 @@
-import React, { useContext } from 'react'
-import styled, { ThemeContext, withTheme } from "styled-components";
+import React from 'react'
+import styled, { withTheme } from "styled-components";
 import {
     Link
 } from "react-router-dom";
-import { dimensions, maxWidth } from '../../helper';
+import { dimensions, maxWidth, navbarHeight } from '../../helper';
 
 const Container = styled.div`
-    height: 100px;
+    height: ${navbarHeight};
     width: 100%;
+    z-index: 999;
     background-color: ${props => props.background};
     padding: 0px 200px;
     box-sizing: border-box;
+    position: sticky;
+    top: 0;
 `;
 
 const Content = styled.div`
@@ -47,10 +50,6 @@ const Logo = styled(Link)`
 const MenuContainer = styled.div`
     display: flex;
     align-items: center;
-
-    ${NavbarLink} {
-        color: ${props => props.color};
-    }
 `;
 
 const LinkContainer = styled.div`
@@ -86,7 +85,7 @@ const NavbarLink = styled(Link)`
         width: 0px;
         height: 40px;
         border-radius: 1px;
-        background-color: #7df3d0;
+        background-color: ${props => props.background};
         opacity: 0;
         transition: .2s ease-in-out;
         box-sizing: border-box;
@@ -112,10 +111,9 @@ const NavbarLink = styled(Link)`
 
 
 function Navbar({ theme }) {
-    const themeContext = useContext(ThemeContext);
 
     return (
-        <Container background={theme.lightYellow}>
+        <Container background={theme.background}>
             <Content>
                 <FlexItem>
                     <Logo to="/">
@@ -123,15 +121,15 @@ function Navbar({ theme }) {
                     </Logo>
                 </FlexItem>
                 <FlexItem>
-                    <MenuContainer color={themeContext.cBlue}>
+                    <MenuContainer >
                         <LinkContainer>
-                            <NavbarLink to="/sessions"><span>sessões</span> <div /></NavbarLink>
+                            <NavbarLink background={theme.blue} to="/sessoes"><span>sessões</span> <div /></NavbarLink>
                         </LinkContainer>
                         <LinkContainer>
-                            <NavbarLink to="/contact"><span>contactos</span> <div /></NavbarLink>
+                            <NavbarLink background={theme.blue} to="/contact"><span>contactos</span> <div /></NavbarLink>
                         </LinkContainer>
                         <LinkContainer>
-                            <NavbarLink to="/sobre"><span>acerca de mim</span> <div /></NavbarLink>
+                            <NavbarLink background={theme.blue} to="/sobre"><span>acerca de mim</span> <div /></NavbarLink>
                         </LinkContainer>
                     </MenuContainer>
                 </FlexItem>

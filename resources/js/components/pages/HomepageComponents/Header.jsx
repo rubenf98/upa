@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import styled, { withTheme } from "styled-components";
-import { borderRadius, maxWidth } from '../../../helper';
+import { borderRadius } from '../../../helper';
 import Video from './Video';
 
 
@@ -12,7 +12,6 @@ const Container = styled.section`
 const TitleContainer = styled.div`
   display: block;
   padding: 50px;
-  box-sizing: border-box;
   box-sizing: border-box;
   text-align: center;
 
@@ -83,8 +82,7 @@ function Header({ theme }) {
         <Container>
             <TitleContainer titleColor={theme.text} subtitleColor={theme.text}>
                 <h1>Unidos Pela Atividade</h1>
-                <h2>Movimento. Memória. Música. Sessões de estimulação cognitiva e motora.</h2>
-                <h2>Assista a vídeos demo gratuitos das nossas sessões!</h2>
+                <h2>A manutenção das funções cognitivas e motoras é essencial para um <br /> envelhecimento ativo e saudável!</h2>
 
                 <ButtonContainer shadow={theme.blue}>
                     <div className='background'>Registar agora!</div>

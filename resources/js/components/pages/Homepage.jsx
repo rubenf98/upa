@@ -4,15 +4,12 @@ import Sections from './HomepageComponents/Sections';
 import Header from './HomepageComponents/Header';
 import Information from './HomepageComponents/Information';
 import About from './HomepageComponents/About';
-import Faq from './HomepageComponents/Faq';
+import Faq from './Faq';
 import Benefits from './HomepageComponents/Benefits';
 
-
 const Container = styled.div`
-  position: relative;
+    position: relative;
 `;
-
-
 
 function Homepage() {
 

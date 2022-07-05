@@ -12,7 +12,7 @@ const Container = styled.section`
 
 const FooterContainer = styled.div`
     position: relative;
-    color: black;
+    color: white;
 
     h1 {
         text-align: center;
@@ -52,7 +52,7 @@ const SectionContainer = styled.div`
         font-weight: bold;
         font-size: 20px;
         margin-bottom: 20px;
-        color: black;
+        color: white;
     }
 
     ul {
@@ -76,11 +76,11 @@ const Section = ({ title, items }) => (
 
 function Footer({ theme }) {
     return (
-        <Container background={theme.blue}>
+        <Container background={theme.darkBlue}>
 
             <FooterContainer>
                 <FooterContent>
-                    <Logo src="/image/logo.svg" alt="unidos pela atividade logo" />
+                    <Logo src="/image/logo_white.svg" alt="unidos pela atividade logo" />
 
                     <Row style={{ width: "100%" }} type="flex" justify='space-between'>
                         <Section title="Páginas" items={["Sobre", "Contactos", "Cursos"]} />
