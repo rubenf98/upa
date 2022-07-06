@@ -6,7 +6,7 @@ import { createBrowserHistory } from "history";
 import Homepage from "./components/pages/Homepage";
 import About from "./components/pages/About";
 import Contact from "./components/pages/Contact";
-import Login from "./components/pages/Login";
+import Authentication from "./components/pages/Authentication";
 import Layout from "./components/Layout";
 import Session from "./components/pages/Session";
 import ScrollToTop from "./components/common/ScrollToTop";
@@ -21,7 +21,7 @@ function Router() {
                     <Route exact path="/sessoes" element={<Layout><Session /></Layout>} />
                     <Route exact path="/sobre" element={<Layout><About /></Layout>} />
                     <Route exact path="/contact" element={<Layout><Contact /></Layout>} />
-                    <Route exact path="/login" element={<Login />} />
+                    <Route exact path="/login" element={<Layout minimalist><Authentication /></Layout>} />
                     <Route exact path="/" element={<Layout><Homepage /></Layout>} />
                 </Routes>
             </ScrollToTop>

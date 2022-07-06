@@ -54,7 +54,7 @@ const MenuContainer = styled.div`
 
 const LinkContainer = styled.div`
     position: relative;
-    margin: 0px 30px;
+    margin: 0px 20px;
     box-sizing: border-box;
 
     @media (max-width: ${dimensions.md}) {
@@ -98,7 +98,7 @@ const NavbarLink = styled(Link)`
 
         div {
             height: 40px;
-            width: 80%;
+            width: 60%;
             opacity: 1;
             transform: skewX(-10deg);
             transform-origin: right;
@@ -108,7 +108,24 @@ const NavbarLink = styled(Link)`
 `;
 
 
+const Register = styled(Link)`
+    display: block;
+    font-size: 18px;
+    text-transform: capitalize;
+    cursor: pointer;
+    font-weight: bold;
+    background: black;
+    color: white;
+    transition: .3s ease;
+    padding: 6px 16px;
+    box-sizing: border-box;
 
+    &:hover {
+        outline: none;
+        color: white;
+        background: ${props => props.accent};
+    }
+`;
 
 
 function Navbar({ theme }) {
@@ -131,6 +148,9 @@ function Navbar({ theme }) {
                         </LinkContainer>
                         <LinkContainer>
                             <NavbarLink background={theme.blue} to="/sobre"><span>acerca de mim</span> <div /></NavbarLink>
+                        </LinkContainer>
+                        <LinkContainer>
+                            <Register accent={theme.blue} to="/login">registar</Register>
                         </LinkContainer>
                     </MenuContainer>
                 </FlexItem>

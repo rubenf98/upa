@@ -1,4 +1,5 @@
 import React, { useContext } from 'react'
+import { Link } from 'react-router-dom';
 import styled, { withTheme } from "styled-components";
 import { borderRadius } from '../../../helper';
 import Video from './Video';
@@ -43,7 +44,7 @@ const ButtonContainer = styled.div`
   div {
     padding: 14px 19px;
     box-sizing: border-box;
-    margin: 0 10px;
+    margin: 0 15px;
     cursor: pointer;
     color: black;
     border: 1px solid black;  
@@ -64,6 +65,12 @@ const ButtonContainer = styled.div`
     background: black;
     color: white;
     border: 0px;
+    font-weight: 900;
+    padding: 14px 19px;
+    font-size: 16px;
+    box-sizing: border-box;
+    border: 1px solid black;  
+    transition: all .4s ease;
 
     &:hover {
         background: black;
@@ -85,7 +92,7 @@ function Header({ theme }) {
                 <h2>A manutenção das funções cognitivas e motoras é essencial para um <br /> envelhecimento ativo e saudável!</h2>
 
                 <ButtonContainer shadow={theme.blue}>
-                    <div className='background'>Registar agora!</div>
+                    <Link to="/" className='background'>Registar agora!</Link>
                     <div>Saber mais...</div>
                 </ButtonContainer>
             </TitleContainer>

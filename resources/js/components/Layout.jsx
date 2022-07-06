@@ -63,7 +63,9 @@ class Layout extends Component {
 
                     <GlobalStyles />
 
-                    <Navbar onOrder={this.openForm} />
+                    {!this.props.minimalist && <Navbar onOrder={this.openForm} />}
+
+
 
 
 
@@ -71,8 +73,8 @@ class Layout extends Component {
 
 
 
+                    {!this.props.minimalist && <Footer />}
 
-                    <Footer />
                 </Container>
             </ThemeProvider>
         );

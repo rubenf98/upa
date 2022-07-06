@@ -74,7 +74,9 @@ export const WhiteButton = styled.div`
 `;
 
 export const CustomInput = styled(Input)`
-    ${baseInputStyles}  
+    ${baseInputStyles}
+
+    border-width: ${props => props.light ? "1px" : "2px"};
 `;
 
 export const CustomTextArea = styled(Input.TextArea)`
