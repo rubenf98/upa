@@ -1,14 +1,21 @@
 import React, { Component } from "react";
-import styled from "styled-components";
-import { dimensions } from "../../helper";
+import styled, { withTheme } from "styled-components";
+import { dimensions, maxWidth } from "../../helper";
+import Course from "./sections/Course";
 
 const PageContainer = styled.div`
-    margin: auto;
-    display: flex;
     width: 100%;
     min-height:100vh;
-    display: flex;
-    flex-direction: column;
+`;
+
+const WhiteBackground = styled.div`
+    width: 70%;
+    height: 100%;
+    position: absolute;
+    background-color: white;
+    top: 100px;
+    right: 0;
+    z-index: -1;
 `;
 
 const MobileMessage = styled.div`
@@ -23,20 +30,29 @@ const MobileMessage = styled.div`
     
 `;
 
+const CoursesContainer = styled.div`
+    padding: 100px 0px;
+    box-sizing: border-box;
+`;
+
+function PainelLayout({ theme }) {
+    return (
+        <PageContainer>
+            <WhiteBackground />
+
+            <CoursesContainer>
+                <Course />
+
+                <Course />
+            </CoursesContainer>
 
 
 
-export default class PainelLayout extends Component {
-    render() {
-        return (
-            <PageContainer>
-
-
-
-                <MobileMessage>
-                    O painel de controlo não está disponível na versão mobile, utilize um computador para aceder a todas as funções.
-                </MobileMessage>
-            </PageContainer>
-        );
-    }
+            <MobileMessage>
+                O painel de controlo não está disponível na versão mobile, utilize um computador para aceder a todas as funções.
+            </MobileMessage>
+        </PageContainer>
+    )
 }
+
+export default withTheme(PainelLayout)
