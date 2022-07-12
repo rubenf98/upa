@@ -6,6 +6,7 @@ import Form from "antd/es/form"
 import Checkbox from "antd/es/checkbox"
 import { dimensions, maxWidth } from "../../../helper";
 import styled, { ThemeContext } from "styled-components";
+import { Link } from 'react-router-dom';
 
 const ButtonContainer = styled.div`
     margin: 20px 0px;
@@ -40,6 +41,15 @@ const ModeSwitch = styled.div`
     font-weight: bold;
    }
 `;
+
+
+const CustomLink = styled(Link)`
+    color: white;
+    &:hover {
+        color: white;
+    }
+`;
+
 
 const rules = {
     name: [
@@ -133,7 +143,8 @@ function Login({ form, onFinish, theme, setMode }) {
 
                 <ButtonContainer>
                     <BlackButton shadow={theme.blue}>
-                        Registar
+                        <CustomLink to="/painel">Registar</CustomLink>
+
                     </BlackButton>
                 </ButtonContainer>
             </FormContainer>

@@ -44,8 +44,8 @@ export const BlackButton = styled.div`
     border-radius: ${borderRadius};
     font-weight: 900;
     font-size: 16px;
-    background: black;
-    color: white;
+    background:${props => props.background ? props.background : "black"};
+    color: ${props => props.background ? "black" : "white"};;
     border: 0px;
 
     &:hover {
