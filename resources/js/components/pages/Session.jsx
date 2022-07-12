@@ -1,7 +1,9 @@
 import { Col, Row } from 'antd';
 import React, { useState } from 'react'
+import { Link } from 'react-router-dom';
 import styled, { withTheme } from "styled-components";
-import { borderRadius, dimensions, maxWidth } from '../../helper';
+import { borderRadius, dimensions, maxWidth, navbarHeight } from '../../helper';
+import { BlackButton } from '../../styles';
 import Faq from './Faq';
 import Benefits from './HomepageComponents/Benefits';
 import Video from './HomepageComponents/Video';
@@ -27,6 +29,12 @@ const TextContainer = styled.section`
     margin: 200px auto;
     width: 100%;
     display: flex;
+
+    @media (max-width: ${dimensions.md}) {
+        margin: 50px auto;
+    }
+
+
 `;
 
 const ContentContainer = styled.section`
@@ -41,6 +49,11 @@ const ContentContainer = styled.section`
 
 const Spacer = styled.div`
     flex: 1;
+
+    @media (max-width: ${dimensions.md}) {
+        display: none;
+    }
+
 `;
 
 const WhiteBackground = styled(Spacer)`
@@ -54,12 +67,28 @@ const WhiteContainer = styled.div`
     box-sizing: border-box;
     flex: 1;
 
+    @media (max-width: ${dimensions.md}) {
+        width: 100%;
+        padding: 60px 10px 60px 10px;
+    }
+
     h2 {
         font-family: 'Alegreya Sans', sans-serif;
         font-size: 3.2vw;
         line-height: 76px;
         letter-spacing: 0.052em;
         font-weight: 900;
+
+        @media (max-width: ${dimensions.md}) {
+            font-size: 40px;
+            line-height: 45px;
+        }
+
+        @media (max-width: ${dimensions.sm}) {
+            font-size: 28px;
+            line-height: 30px;
+        }
+
     }
 `;
 
@@ -67,6 +96,10 @@ const DetailsContainer = styled.div`
     width: 30%;
     padding: 70px 30px 0px 0px;
     box-sizing: border-box;
+
+    @media (max-width: ${dimensions.md}) {
+        display: none;
+    }
 
     h3 {
         font-weight: bold;
@@ -77,12 +110,18 @@ const DetailsContainer = styled.div`
         font-size: 18px;
         letter-spacing: 0.02em;
         
+        
     }
 `;
 
 const InfoContainer = styled(Row)`
     width: 100%;
     font-size: 18px;
+
+    @media (max-width: ${dimensions.md}) {
+        font-size: 16px;
+    }
+    text-align: justify;
 `;
 
 const IconsContainer = styled.div`
@@ -132,11 +171,125 @@ const SessionDetails = styled(Col)`
 `;
 
 
+const Header = styled.section`
+    min-height: calc(100vh - ${navbarHeight});
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    align-items: center;
+    width: 100%;
+    max-width: ${maxWidth};
+    margin: auto;
+    
+
+    .column {
+        width: 50%;
+        padding: 20px;
+        box-sizing: border-box;
+        position: relative;
+
+        @media (max-width: ${dimensions.md}) {
+            width: 100%;
+        }
+
+        h2 {
+            font-size: 60px;
+            letter-spacing: 0.027em;
+            line-height: 65px;
+            font-weight: bold;
+            font-family: 'Alegreya Sans', sans-serif;
+
+            @media (max-width: ${dimensions.md}) {
+                font-size: 36px;
+                line-height: 38px;
+                text-align: center;
+            }
+
+        }
+
+        p {
+            color: black;
+            font-size: 22px;
+            letter-spacing: 0.034em;
+            margin: 30px 0px;
+            text-align: justify;
+            width: 90%;
+
+            @media (max-width: ${dimensions.md}) {
+                font-size: 16px;
+                text-align: center;
+                width: 100%;
+                margin-bottom: 0px;
+            }
+        }
+
+        .video-container {
+            width: calc(100% - 30px);
+            margin-right: auto;
+            display: block;
+            position: relative;
+            z-index: 2;
+
+            @media (max-width: ${dimensions.md}) {
+                width: 100%;
+            }
+        }
+
+        .offset {
+            position: absolute;
+            right: 0;
+            border: 2px solid white;
+            bottom: 30px;
+            height: 80%;
+            width:  80%;
+            background-color: white;
+
+            @media (max-width: ${dimensions.md}) {
+                display: none;
+            }
+        }
+    }
+    
+
+    
+`;
+
+const ButtonContainer = styled(Link)`
+    margin: 20px 0px;
+    display: flex;
+    justify-content: flex-start;
+    width: 100%;
+
+    @media (max-width: ${dimensions.md}) {
+        display: none;
+    }
+`;
+
+
 
 function Session({ theme }) {
     const [active, setActive] = useState(0)
     return (
         <>
+            <Header>
+                <div className='column'>
+                    <h2>Sessões de estimulação cognitiva e motora</h2>
+                    <p>Disponibilizamos Sessões, Workshops, Oficinas e Recursos no âmbito da Estimulação Cognitiva e Motora para aplicar com idosos.</p>
+                    <p>Clique no vídeo para assistir a uma descrição das atividades.</p>
+                    <ButtonContainer to="/login">
+                        <BlackButton shadow={theme.blue}>
+                            Registar
+                        </BlackButton>
+                    </ButtonContainer>
+                </div>
+                <div className='column'>
+                    <div className='offset' />
+                    <div className='video-container'>
+                        <Video video="/video/apresentacao.mp4" thumbnail='/image/session/header.jpg' />
+                    </div>
+
+                </div>
+            </Header>
             <TextContainer>
                 <Spacer />
                 <ContentContainer>
@@ -223,7 +376,6 @@ function Session({ theme }) {
                 </div>
             </MaterialContainer>
 
-            <Video video="/video/apresentacao.mp4" thumbnail='/image/session/thumbnail.jpg' />
             <Benefits />
 
 

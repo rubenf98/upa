@@ -52,16 +52,21 @@ const Section = styled.div`
     background-color: #fff;
     background-position: 50% 50%;
     background-size: cover;
-    box-shadow: 1px 1px 3px 0 rgba(10, 11, 30, 0.07);
+    box-shadow: 1px 1px 5px 0 rgba(10, 11, 30, 0.2);
 `;
 
-const Container = styled.div`
+const Container = styled.section`
+    background-color: white;
+`;
+
+const Content = styled.div`
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
     align-items: center;
     max-width: ${maxWidth};
     margin: auto;
+    background-color: white;
 `;
 
 const InfoContainer = styled.div`
@@ -88,15 +93,17 @@ function Sections() {
 
     return (
         <Container>
-            <ImageContainer >
-                <Section className='top' />
-                <Section className='bottom' />
-                <Section className='middle' />
-            </ImageContainer>
-            <InfoContainer>
-                <h3>Movimento, memória e música</h3>
-                <p>Atividades com recurso à música, que podem ser desenvolvidas em formato individual ou em grupo, visando a interação, socialização, integração e diversão dos participantes: jogos musicais, dança coreográfica sentada, e muito mais.</p>
-            </InfoContainer>
+            <Content>
+                <ImageContainer >
+                    <Section className='top' />
+                    <Section className='bottom' />
+                    <Section className='middle' />
+                </ImageContainer>
+                <InfoContainer>
+                    <h3>Movimento, memória e música</h3>
+                    <p>Atividades com recurso à música, que podem ser desenvolvidas em formato individual ou em grupo, visando a interação, socialização, integração e diversão dos participantes: jogos musicais, dança coreográfica sentada, e muito mais.</p>
+                </InfoContainer>
+            </Content>
         </Container>
     )
 }

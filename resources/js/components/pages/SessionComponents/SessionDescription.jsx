@@ -21,11 +21,11 @@ const Container = styled.section`
     .info-column {
         padding: 0px 200px;
         box-sizing: border-box;
-        order: ${props => props.reversed ? 2 : 1}
+        order: ${props => props.reversed ? 2 : 1};
     }
 
     .image-column {
-        order: ${props => props.reversed ? 1 : 2}
+        order: ${props => props.reversed ? 1 : 2};
     }
 
     h2 {

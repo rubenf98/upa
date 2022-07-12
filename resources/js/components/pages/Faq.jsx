@@ -1,7 +1,7 @@
 import { Collapse } from 'antd';
 import React from 'react'
 import styled, { withTheme } from "styled-components";
-import { borderRadius, maxWidth } from '../../helper';
+import { borderRadius, dimensions, maxWidth } from '../../helper';
 
 const { Panel } = Collapse;
 
@@ -11,11 +11,20 @@ const Container = styled.section`
     max-width: calc(${maxWidth} / 2);
     margin: 200px auto;
 
+    @media (max-width: ${dimensions.md}) {
+        width: 95%;
+        margin: 100px auto;
+    }
+
     h2 {
         font-size: 42px;
         font-weight: bold;
         font-family: 'Alegreya Sans', sans-serif;
         margin-bottom: 30px;
+
+        @media (max-width: ${dimensions.md}) {
+            font-size: 28px;
+        }
     }
 
 `;
@@ -48,11 +57,19 @@ const Accordion = styled(Collapse)`
         padding: 20px;
         box-sizing: border-box;
         font-weight: bold;
+
+        @media (max-width: ${dimensions.md}) {
+            font-size: 18px;
+        }
     }
 
     .ant-collapse-content-box {
         p {
             font-size: 22px;
+
+            @media (max-width: ${dimensions.md}) {
+                font-size: 16px;
+            }
         }
     }
 

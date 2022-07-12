@@ -5,19 +5,21 @@ import { maxWidth } from '../../../helper';
 import { underlineStyle } from '../../../styles';
 
 const Container = styled.section`
-    //
+    background-color: white;
+    padding-bottom: 200px;
 `;
 
 const ContentContainer = styled(Row)`
     width: 100%;
     margin: auto;
     max-width: ${maxWidth};
-    padding: 50px;
+    padding: 50px 0px;
     box-sizing: border-box;
     
 
     img {
         width: 30%;
+        box-shadow: 0px 0px 10px 0 rgba(0, 0, 0, 0.3);
     }
 `;
 

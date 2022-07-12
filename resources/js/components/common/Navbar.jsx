@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect, useCallback } from 'react'
 import styled, { withTheme } from "styled-components";
 import {
     Link
@@ -6,14 +6,16 @@ import {
 import { dimensions, maxWidth, navbarHeight } from '../../helper';
 
 const Container = styled.div`
-    height: ${navbarHeight};
+    height: ${props => props.visible ? navbarHeight : "0px"}; 
     width: 100%;
     z-index: 999;
     background-color: ${props => props.background};
     padding: 0px 200px;
     box-sizing: border-box;
-    position: sticky;
+    position: fixed;
     top: 0;
+    transition: height .5s ease;
+    overflow-y: hidden;
 `;
 
 const Content = styled.div`
@@ -129,10 +131,35 @@ const Register = styled(Link)`
 
 
 function Navbar({ theme }) {
+    const [y,
+        setY] = useState(document.scrollingElement.scrollHeight);
+    const [scrollDirection,
+        setScrollDirection] = useState(1);
+
+    const handleNavigation = useCallback((e) => {
+        if (window.scrollY > 500) {
+            if (y > window.scrollY) {
+                setScrollDirection(1);
+            } else if (y < window.scrollY) {
+                setScrollDirection(0);
+            }
+        }
+        setY(window.scrollY)
+    }, [y]);
+
+    useEffect(() => {
+
+        window.addEventListener("scroll", handleNavigation);
+
+        return () => {
+            window.removeEventListener("scroll", handleNavigation);
+        };
+    }, [handleNavigation]);
+
 
     return (
-        <Container background={theme.background}>
-            <Content>
+        <Container visible={scrollDirection} background={theme.background}>
+            <Content visible={scrollDirection}>
                 <FlexItem>
                     <Logo to="/">
                         <img src="/image/logo.svg" alt="be local madeira white logo" />

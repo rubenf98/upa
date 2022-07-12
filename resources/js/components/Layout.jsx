@@ -6,6 +6,7 @@ import styled from "styled-components";
 import { ThemeProvider } from "styled-components";
 import { GlobalStyles } from "./globalStyles";
 import { connect } from "react-redux";
+import { navbarHeight } from "../helper";
 
 const Container = styled.div`
     width: 100%;
@@ -36,6 +37,10 @@ const Container = styled.div`
             mix-blend-mode: soft-light;
         }
     }
+`;
+
+const Content = styled.div`
+    margin-top: ${props => props.hasMargin ? navbarHeight : "0px"};
 `;
 
 
@@ -69,7 +74,7 @@ class Layout extends Component {
 
 
 
-                    <div> {this.props.children} </div>
+                    <Content hasMargin={!this.props.minimalist}> {this.props.children} </Content>
 
 
 

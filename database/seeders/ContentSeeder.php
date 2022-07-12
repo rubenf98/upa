@@ -15,421 +15,109 @@ class ContentSeeder extends Seeder
      */
     public function run()
     {
-        Content::create([
-            'path' => "/courses/mp3/Balaio.mp3",
-            'content_type_id' => 1,
-            'course_id' => 1,
-            'title' => "Dança Coreográfica Sentada Balaio"
-        ]);
-        Content::create([
-            'path' => "/courses/mp4/Dança Coreográfica Sentada Balaio.mp4",
-            'content_type_id' => 2,
-            'course_id' => 1,
-            'title' => "Dança Coreográfica Sentada Balaio"
-        ]);
-        Content::create([
-            'path' => "/courses/mp3/Dança Coreográfica Sentada Balaio.pdf",
-            'content_type_id' => 3,
-            'course_id' => 1,
-            'title' => "Dança Coreográfica Sentada Balaio"
-        ]);
+        $items = [
+            [
+                'name' => "balaio", 'course_id' => 1, 'title' => "Balaio"
+            ],
+            [
+                'name' => "circulo_siciliano", 'course_id' => 1, 'title' => "Círculo Siciliano"
+            ],
+            [
+                'name' => "drei_temperamente", 'course_id' => 1, 'title' => "Drei Temperamente"
+            ],
+            [
+                'name' => "glencastle_polka", 'course_id' => 1, 'title' => "Glencastle Polka"
+            ],
+            [
+                'name' => "minoesjka", 'course_id' => 1, 'title' => "Minoesjka"
+            ],
+            [
+                'name' => "rosa_amarela", 'course_id' => 1, 'title' => "Rosa Amarela"
+            ],
+            [
+                'name' => "step_please", 'course_id' => 1, 'title' => "STEP PLEASE"
+            ],
+            [
+                'name' => "syncopated_clock", 'course_id' => 1, 'title' => "Syncopated-clock"
+            ],
+            [
+                'name' => "troika", 'course_id' => 1, 'title' => "Troika"
+            ],
+            [
+                'name' => "the_chimes_of_dunkirk", 'course_id' => 1, 'title' => "The Chimes of Dunkirk"
+            ],
+            [
+                'name' => "balaio", 'course_id' => 2, 'title' => "Balaio"
+            ],
+            [
+                'name' => "bim_bam_bom", 'course_id' => 2, 'title' => "Bim Bam Bom"
+            ],
+            [
+                'name' => "bird_dance", 'course_id' => 2, 'title' => "Bird Dance"
+            ],
+            [
+                'name' => "canta_canta", 'course_id' => 2, 'title' => "Canta Canta, Minha Gente"
+            ],
+            [
+                'name' => "chiribim", 'course_id' => 2, 'title' => "Chiribim"
+            ],
+            [
+                'name' => "heavy_and_light", 'course_id' => 2, 'title' => "Heavy and Light"
+            ],
+            [
+                'name' => "kryzachok", 'course_id' => 2, 'title' => "Kryzachok"
+            ],
+            [
+                'name' => "la_raspa", 'course_id' => 2, 'title' => "La Raspa"
+            ],
+            [
+                'name' => "malhao", 'course_id' => 2, 'title' => "Malhão Malhão"
+            ],
+            [
+                'name' => "mexican_waltz", 'course_id' => 2, 'title' => "Mexican Waltz"
+            ],
+        ];
 
-
-        Content::create([
-            'path' => "/courses/mp3/Circulo Siciliano.mp3",
-            'content_type_id' => 1,
-            'course_id' => 1,
-            'title' => "Dança Coreográfica Sentada Circulo Siciliano"
-        ]);
-        Content::create([
-            'path' => "/courses/mp4/Dança Coreográfica Sentada CIRCULO SICILIANO.mp4",
-            'content_type_id' => 2,
-            'course_id' => 1,
-            'title' => "Dança Coreográfica Sentada Circulo Siciliano"
-        ]);
-        Content::create([
-            'path' => "/courses/pdf/Dança Coreográfica Sentada Circulo Siciliano.pdf",
-            'content_type_id' => 3,
-            'course_id' => 1,
-            'title' => "Dança Coreográfica Sentada Circulo Siciliano"
-        ]);
-
-
-        Content::create([
-            'path' => "/courses/mp3/Drei Temperamente.mp3",
-            'content_type_id' => 1,
-            'course_id' => 1,
-            'title' => "Dança Coreográfica Sentada Drei Temperamente"
-        ]);
-        Content::create([
-            'path' => "/courses/mp4/Dança Coreográfica Sentada Drei Temperamente.mp4",
-            'content_type_id' => 2,
-            'course_id' => 1,
-            'title' => "Dança Coreográfica Sentada Drei Temperamente"
-        ]);
-        Content::create([
-            'path' => "/courses/pdf/Dança Coreográfica Sentada Drei Temperamente.pdf",
-            'content_type_id' => 3,
-            'course_id' => 1,
-            'title' => "Dança Coreográfica Sentada Drei Temperamente"
-        ]);
-
-
-        Content::create([
-            'path' => "/courses/mp3/Glencastle Polka.mp3",
-            'content_type_id' => 1,
-            'course_id' => 1,
-            'title' => "Dança Coreográfica Sentada Glencastle Polka"
-        ]);
-        Content::create([
-            'path' => "/courses/mp4/Dança Coreográfica Sentada Glencastle polka.mp4",
-            'content_type_id' => 2,
-            'course_id' => 1,
-            'title' => "Dança Coreográfica Sentada Glencastle Polka"
-        ]);
-        Content::create([
-            'path' => "/courses/pdf/Dança Coreográfica Sentada Glencastle polka.pdf",
-            'content_type_id' => 3,
-            'course_id' => 1,
-            'title' => "Dança Coreográfica Sentada Glencastle Polka"
-        ]);
-
-       
-        Content::create([
-            'path' => "/courses/mp3/Minoesjka.mp3",
-            'content_type_id' => 1,
-            'course_id' => 1,
-            'title' => "Dança COreográfica Sentada Minoesjka"
-        ]);    
-        Content::create([
-            'path' => "/courses/mp4/Dança Coreográfica Sentada Minoesjka.mp4",
-            'content_type_id' => 2,
-            'course_id' => 1,
-            'title' => "Dança COreográfica Sentada Minoesjka"
-        ]);    
-        Content::create([
-            'path' => "/courses/pdf/Dança Coreográfica Sentada Minoesjka.pdf",
-            'content_type_id' => 3,
-            'course_id' => 1,
-            'title' => "Dança COreográfica Sentada Minoesjka"
-        ]);
-
-
-        Content::create([
-            'path' => "/courses/mp3/ROSA AMARELA.mp3",
-            'content_type_id' => 1,
-            'course_id' => 1,
-            'title' => "Dança Coreográfica Sentada Rosa Amarela"
-        ]);
-        Content::create([
-            'path' => "/courses/mp4/Dança Coreográfica Sentada Rosa Amarela.mp4",
-            'content_type_id' => 2,
-            'course_id' => 1,
-            'title' => "Dança Coreográfica Sentada Rosa Amarela"
-        ]);
-        Content::create([
-            'path' => "/courses/pdf/Dança Coreográfica Sentada Rosa Amarela.pdf",
-            'content_type_id' => 3,
-            'course_id' => 1,
-            'title' => "Dança Coreográfica Sentada Rosa Amarela"
-        ]);
-
-
-        Content::create([
-            'path' => "/courses/mp3/Step Please.mp3",
-            'content_type_id' => 1,
-            'course_id' => 1,
-            'title' => "Dança Coreográfica Sentada STEP PLEASE"
-        ]);
-        Content::create([
-            'path' => "/courses/mp4/Dança Coreográfica Sentada STEP PLEASE.mp4",
-            'content_type_id' => 2,
-            'course_id' => 1,
-            'title' => "Dança Coreográfica Sentada STEP PLEASE"
-        ]);
-        Content::create([
-            'path' => "/courses/pdf/Dança Coreográfica Sentada STEP PLEASE.pdf",
-            'content_type_id' => 3,
-            'course_id' => 1,
-            'title' => "Dança Coreográfica Sentada STEP PLEASE"
-        ]);
-
-
-        Content::create([
-            'path' => "/courses/mp3/syncopated-clock.mp3",
-            'content_type_id' => 1,
-            'course_id' => 1,
-            'title' => "Dança Coreográfica Sentada syncopated-clock"
-        ]);
-        Content::create([
-            'path' => "/courses/mp4/Dança Coreográfica Sentada syncopated-clock.mp4",
-            'content_type_id' => 2,
-            'course_id' => 1,
-            'title' => "Dança Coreográfica Sentada syncopated-clock"
-        ]);
-        Content::create([
-            'path' => "/courses/pdf/Dança Coreográfica Sentada syncopated-clock.pdf",
-            'content_type_id' => 3,
-            'course_id' => 1,
-            'title' => "Dança Coreográfica Sentada syncopated-clock"
-        ]);
-
-
-        Content::create([
-            'path' => "/courses/mp3/Troika.mp3",
-            'content_type_id' => 1,
-            'course_id' => 1,
-            'title' => "Dança Coreográfica Sentada Troika"
-        ]);
-        Content::create([
-            'path' => "/courses/mp4/Dança Coreográfica Sentada TROIKA.mp4",
-            'content_type_id' => 2,
-            'course_id' => 1,
-            'title' => "Dança Coreográfica Sentada Troika"
-        ]);
-        Content::create([
-            'path' => "/courses/pdf/Dança Coreográfica Sentada TROIKA.pdf",
-            'content_type_id' => 3,
-            'course_id' => 1,
-            'title' => "Dança Coreográfica Sentada Troika"
-        ]);
-
-
-        Content::create([
-            'path' => "/courses/mp3/The Chimes of Dunkirk.mp3",
-            'content_type_id' => 1,
-            'course_id' => 1,
-            'title' => "Dança Coreográfica The Chimes of Dunkirk"
-        ]);
-        Content::create([
-            'path' => "/courses/mp4/Dança Coreográfica The Chimes of Dunkirk.mp4",
-            'content_type_id' => 2,
-            'course_id' => 1,
-            'title' => "Dança Coreográfica The Chimes of Dunkirk"
-        ]);
-        Content::create([
-            'path' => "/courses/pdf/Dança Coreográfica The Chimes of Dunkirk.pdf",
-            'content_type_id' => 3,
-            'course_id' => 1,
-            'title' => "Dança Coreográfica The Chimes of Dunkirk"
-        ]);
-
+        $content_types = [
+            [
+                'id' => 1,
+                'name' => "mp3",
+            ],
+            [
+                'id' => 2,
+                'name' => "mp4",
+            ],
+            [
+                'id' => 3,
+                'name' => "pdf",
+            ]
+        ];
 
         Content::create([
             'presentation' => true,
-            'path' => "/courses/mp4/APRESENTAÇÃO DA SESSÃO DE DANÇAS COREOGRÁFICAS SENTADAS.mp4",
+            'path' => "/courses/mp4/01_introduction.mp4",
             'content_type_id' => 2,
             'course_id' => 1,
-            'title' => "APRESENTAÇÃO DA SESSÃO DE DANÇAS COREOGRÁFICAS SENTADAS"
+            'title' => "Introdução"
         ]);
-
-
-        Content::create([
-            'path' => "/courses/mp3/Balaio.mp3",
-            'content_type_id' => 1,
-            'course_id' => 2,
-            'title' => "Jogo Musical na Mesa Balaio"
-        ]);
-        Content::create([
-            'path' => "/courses/mp4/Jogo Musical na Mesa Balaio.mp4",
-            'content_type_id' => 2,
-            'course_id' => 2,
-            'title' => "Jogo Musical na Mesa Balaio"
-        ]);
-        Content::create([
-            'path' => "/courses/pdf/Jogo Musical na Mesa Balaio.pdf",
-            'content_type_id' => 3,
-            'course_id' => 2,
-            'title' => "Jogo Musical na Mesa Balaio"
-        ]);
-
-
-        Content::create([
-            'path' => "/courses/mp3/Bim Bam Bom.mp3",
-            'content_type_id' => 1,
-            'course_id' => 2,
-            'title' => "Jogo Musical na Mesa Bim Bam Bom"
-        ]);
-        Content::create([
-            'path' => "/courses/mp4/Jogo Musical na Mesa Bim Bam Bom.mp4",
-            'content_type_id' => 2,
-            'course_id' => 2,
-            'title' => "Jogo Musical na Mesa Bim Bam Bom"
-        ]);
-        Content::create([
-            'path' => "/courses/pdf/Jogo Musical na Mesa Bim Bam Bom.pdf",
-            'content_type_id' => 3,
-            'course_id' => 2,
-            'title' => "Jogo Musical na Mesa Bim Bam Bom"
-        ]);
-
-
-        Content::create([
-            'path' => "/courses/mp3/bird-dance-dance-little-bird.mp3",
-            'content_type_id' => 1,
-            'course_id' => 2,
-            'title' => "Jogo Musical na Mesa Bird Dance"
-        ]);
-        Content::create([
-            'path' => "/courses/mp4/Jogo Musical na Mesa Bird Dance.mp4",
-            'content_type_id' => 2,
-            'course_id' => 2,
-            'title' => "Jogo Musical na Mesa Bird Dance"
-        ]);
-        Content::create([
-            'path' => "/courses/pdf/Jogo Musical na Mesa Bird Dance.pdf",
-            'content_type_id' => 3,
-            'course_id' => 2,
-            'title' => "Jogo Musical na Mesa Bird Dance"
-        ]);
-
-
-        Content::create([
-            'path' => "/courses/mp3/Canta Canta, Minha Gente.mp3",
-            'content_type_id' => 1,
-            'course_id' => 2,
-            'title' => "Jogo Musical na Mesa Canta Canta minha Gente"
-        ]);
-        Content::create([
-            'path' => "/courses/mp4/Jogo Musical na Mesa Canta Canta minha Gente.mp4",
-            'content_type_id' => 2,
-            'course_id' => 2,
-            'title' => "Jogo Musical na Mesa Canta Canta minha Gente"
-        ]);
-        Content::create([
-            'path' => "/courses/pdf/Jogo Musical na Mesa Canta Canta.pdf",
-            'content_type_id' => 3,
-            'course_id' => 2,
-            'title' => "Jogo Musical na Mesa Canta Canta minha Gente"
-        ]);
-
-
-        Content::create([
-            'path' => "/courses/mp3/Chiribim.mp3",
-            'content_type_id' => 1,
-            'course_id' => 2,
-            'title' => "Jogo Musical na Mesa Chiribim"
-        ]);
-        Content::create([
-            'path' => "/courses/mp4/Jogo Musical na Mesa Chiribim.mp4",
-            'content_type_id' => 2,
-            'course_id' => 2,
-            'title' => "Jogo Musical na Mesa Chiribim"
-        ]);
-        Content::create([
-            'path' => "/courses/pdf/Jogo Musical na Mesa Chiribim.pdf",
-            'content_type_id' => 3,
-            'course_id' => 2,
-            'title' => "Jogo Musical na Mesa Chiribim"
-        ]);
-
-
-        Content::create([
-            'path' => "/courses/mp3/Heavy-and-light.mp3",
-            'content_type_id' => 1,
-            'course_id' => 2,
-            'title' => "Jogo Musical na Mesa Heavy and Light"
-        ]);
-        Content::create([
-            'path' => "/courses/mp4/Jogo Musical na Mesa Heavy and Light.mp4",
-            'content_type_id' => 2,
-            'course_id' => 2,
-            'title' => "Jogo Musical na Mesa Heavy and Light"
-        ]);
-        Content::create([
-            'path' => "/courses/pdf/Jogo Musical na Mesa Heavy and Light.pdf",
-            'content_type_id' => 3,
-            'course_id' => 2,
-            'title' => "Jogo Musical na Mesa Heavy and Light"
-        ]);
-        
-
-        Content::create([
-            'path' => "/courses/mp3/kryzachok.mp3",
-            'content_type_id' => 1,
-            'course_id' => 2,
-            'title' => "Jogo Musical na Mesa Kryzachok"
-        ]);
-        Content::create([
-            'path' => "/courses/mp4/Jogo Musical na Mesa Kryzachok.mp4",
-            'content_type_id' => 2,
-            'course_id' => 2,
-            'title' => "Jogo Musical na Mesa Kryzachok"
-        ]);
-        Content::create([
-            'path' => "/courses/pdf/Jogo Musical na Mesa Kryzachok.pdf",
-            'content_type_id' => 3,
-            'course_id' => 2,
-            'title' => "Jogo Musical na Mesa Kryzachok"
-        ]);
-
-
-        Content::create([
-            'path' => "/courses/mp3/La-raspa.mp3",
-            'content_type_id' => 1,
-            'course_id' => 2,
-            'title' => "Jogo Musical na Mesa LA RASPA"
-        ]);
-        Content::create([
-            'path' => "/courses/mp4/Jogo Musical na Mesa LA RASPA.mp4",
-            'content_type_id' => 2,
-            'course_id' => 2,
-            'title' => "Jogo Musical na Mesa LA RASPA"
-        ]);
-        Content::create([
-            'path' => "/courses/pdf/Jogo Musical na Mesa LA RASPA.pdf",
-            'content_type_id' => 3,
-            'course_id' => 2,
-            'title' => "Jogo Musical na Mesa LA RASPA"
-        ]);
-
-
-        Content::create([
-            'path' => "/courses/mp3/Ó Malhão - Amalia Rodrigues.mp3",
-            'content_type_id' => 1,
-            'course_id' => 2,
-            'title' => "Jogo Musical na Mesa MALHÃO MALHÃO"
-        ]);
-        Content::create([
-            'path' => "/courses/mp4/Jogo Musical na Mesa MALHÃO MALHÃO.mp4",
-            'content_type_id' => 2,
-            'course_id' => 2,
-            'title' => "Jogo Musical na Mesa MALHÃO MALHÃO"
-        ]);
-        Content::create([
-            'path' => "/courses/pdf/Jogo Musical na Mesa MALHÃO MALHÃO.pdf",
-            'content_type_id' => 3,
-            'course_id' => 2,
-            'title' => "Jogo Musical na Mesa MALHÃO MALHÃO"
-        ]);
-
-
-        Content::create([
-            'path' => "/courses/mp3/Mexican Waltz.mp3",
-            'content_type_id' => 1,
-            'course_id' => 2,
-            'title' => "Jogo Musical na Mesa MEXICAN WALTZ"
-        ]);
-        Content::create([
-            'path' => "/courses/mp4/Jogo Musical na Mesa MEXICAN WALTZ.mp4",
-            'content_type_id' => 2,
-            'course_id' => 2,
-            'title' => "Jogo Musical na Mesa MEXICAN WALTZ"
-        ]);
-        Content::create([
-            'path' => "/courses/pdf/Jogo Musical na Mesa MEXICAN WALTZ.pdf",
-            'content_type_id' => 3,
-            'course_id' => 2,
-            'title' => "Jogo Musical na Mesa MEXICAN WALTZ"
-        ]);
-
 
         Content::create([
             'presentation' => true,
-            'path' => "/courses/mp4/Apresentação dos Jogos Musicais na Mesa.mp4",
+            'path' => "/courses/mp4/02_introduction.mp4",
             'content_type_id' => 2,
             'course_id' => 2,
-            'title' => "Apresentação dos Jogos Musicais na Mesa"
+            'title' => "Introdução"
         ]);
+
+        foreach ($items as $item) {
+            foreach ($content_types as $content_type) {
+                Content::create([
+                    'path' => "/courses/" . $content_type["name"] . "/0" . $item["course_id"] . "_" . $item["name"] . "." . $content_type["name"],
+                    'content_type_id' => $content_type["id"],
+                    'course_id' => 1,
+                    'title' => $item["title"]
+                ]);
+            }
+        }
     }
 }

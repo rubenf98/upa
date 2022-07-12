@@ -15,11 +15,11 @@ class CourseSeeder extends Seeder
     public function run()
     {
         Course::create([
-            'title' => "SESSÃO Nº1 DANÇA COREOGRÁFICA SENTADA",
+            'title' => "dança coreográfica sentada",
             'thumbnail' => "/courses/thumbnail/thumbnail.png"
         ]);
         Course::create([
-            'title' => "SESSÃO Nº1 JOGOS MUSICAIS NA MESA",
+            'title' => "jogos musicais na mesa",
             'thumbnail' => "/courses/thumbnail/thumbnail.png"
         ]);
     }

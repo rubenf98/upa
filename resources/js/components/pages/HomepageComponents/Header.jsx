@@ -15,6 +15,10 @@ const TitleContainer = styled.div`
   padding: 50px;
   box-sizing: border-box;
   text-align: center;
+  min-height: 50vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
   h1 {
     font-size: 60px;
@@ -88,13 +92,15 @@ function Header({ theme }) {
     return (
         <Container>
             <TitleContainer titleColor={theme.text} subtitleColor={theme.text}>
-                <h1>Unidos Pela Atividade</h1>
-                <h2>A manutenção das funções cognitivas e motoras é essencial para um <br /> envelhecimento ativo e saudável!</h2>
+                <div>
+                    <h1>Unidos Pela Atividade</h1>
+                    <h2>A manutenção das funções cognitivas e motoras é essencial para um <br /> envelhecimento ativo e saudável!</h2>
 
-                <ButtonContainer shadow={theme.blue}>
-                    <Link to="/" className='background'>Registar agora!</Link>
-                    <div>Saber mais...</div>
-                </ButtonContainer>
+                    <ButtonContainer shadow={theme.blue}>
+                        <Link to="/" className='background'>Registar agora!</Link>
+                        <div>Saber mais...</div>
+                    </ButtonContainer>
+                </div>
             </TitleContainer>
             <Video />
         </Container>

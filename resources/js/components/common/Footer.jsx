@@ -5,25 +5,25 @@ import moment from "moment";
 import { dimensions, maxWidth } from '../../helper';
 
 const Container = styled.section`
-    min-width: 100%;
+    width: 100%;
     position: relative;
     background-color: ${props => props.background};
+    padding: 20px 0px;  
+    box-sizing: border-box;
 `;
 
 const FooterContainer = styled.div`
     position: relative;
-    color: white;
+    color: black;
 
     h1 {
-        text-align: center;
-        font-size: 68px;
-        margin: 0px;
+        font-weight: 800;
+        line-height: 84px;
+        letter-spacing: 0.029em;
+        font-size: 72px;
 
         @media (max-width: ${dimensions.md}) {
-            font-size: 3.5em;
-        }
-        @media (max-width: ${dimensions.sm}) {
-            font-size: 2.5em;
+            font-size: 42px;
         }
     }
     
@@ -35,24 +35,30 @@ const FooterContent = styled.div`
     margin: auto;  
     padding: 50px 0px;  
     box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    border-top: 1px solid black;
 `;
 
-const Logo = styled.img`
-    display: block;
-    margin: 50px auto;
-    width: 200px;
+const LogoContainer = styled.div`
+    width: 40%;
     
 `;
 
-const SectionContainer = styled.div`
-    margin: 100px 0px;
-    
+const InfoContainer = styled.div`
+    width: 60%;
+    display: flex;
+    justify-content: space-around;
+`;
+
+const SectionContainer = styled.div`  
 
     h3 {
         font-weight: bold;
         font-size: 20px;
         margin-bottom: 20px;
-        color: white;
+        color: black;
+        text-transform: uppercase;
     }
 
     ul {
@@ -60,8 +66,40 @@ const SectionContainer = styled.div`
         list-style-type: none;
         padding: 10px 0;
 
+        li {
+            margin: 10px 0;
+        }
+
     } 
 `;
+
+const DetailsContainer = styled.div`
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    max-width: ${maxWidth};
+    margin: auto;
+
+    a {
+        color: black;
+        font-weight: bold;
+
+        &:hover {
+            color: black;
+        }
+    }
+`;
+
+const ContactsContainer = styled.div`
+    display: flex;
+    justify-content: space-around;
+
+    div {
+        box-sizing: border-box;
+        padding: 5px 10px;
+    }
+`;
+
 
 const Section = ({ title, items }) => (
     <SectionContainer>
@@ -76,19 +114,39 @@ const Section = ({ title, items }) => (
 
 function Footer({ theme }) {
     return (
-        <Container background={theme.darkBlue}>
+        <Container background={theme.background}>
 
             <FooterContainer>
                 <FooterContent>
-                    <Logo src="/image/logo_white.svg" alt="unidos pela atividade logo" />
+                    <LogoContainer>
+                        <h1>Unidos Pela <br /> Atividade</h1>
+                    </LogoContainer>
 
-                    <Row style={{ width: "100%" }} type="flex" justify='space-between'>
-                        <Section title="Páginas" items={["Sobre", "Contactos", "Cursos"]} />
-                        <Section title="Contactos" items={["925022532", "sandra_mfc@msn.com", "@educadorasenior"]} />
-                        <Section title="Legal" items={["Política de privacidade", "Política de cookies"]} />
-                    </Row>
+                    <InfoContainer>
+                        <Section title="Menu" items={["Sobre", "Contactos", "Sessões"]} />
+
+                        <Section title="Info" items={["Privacidade", "Cookies"]} />
+                    </InfoContainer>
+
+
                 </FooterContent>
+                <DetailsContainer>
+                    <span>© Made by <a href="https://ruben-freitas.pt/" target="_blank">Rúben Freitas</a></span>
 
+                    <ContactsContainer>
+                        <div>
+                            +351925022532
+                        </div>
+                        <div>
+                            sandra_mfc@msn.com
+                        </div>
+                        <div>
+                            @educadorasenior
+                        </div>
+
+                    </ContactsContainer>
+
+                </DetailsContainer>
             </FooterContainer>
         </Container>
     )
