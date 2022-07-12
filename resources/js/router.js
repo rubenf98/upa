@@ -24,7 +24,7 @@ function Router() {
                     <Route exact path="/sobre" element={<Layout><About /></Layout>} />
                     <Route exact path="/contact" element={<Layout><Contact /></Layout>} />
                     <Route exact path="/painel" element={<Layout minimalist><PainelLayout><Courses /></PainelLayout></Layout>} />
-                    <Route exact path="/painel/curso" element={<Layout minimalist><PainelLayout><Course /></PainelLayout></Layout>} />
+                    <Route exact path="/painel/sessao" element={<Layout minimalist><PainelLayout><Course /></PainelLayout></Layout>} />
                     <Route exact path="/login" element={<Layout minimalist><Authentication /></Layout>} />
                     <Route exact path="/" element={<Layout><Homepage /></Layout>} />
                 </Routes>
