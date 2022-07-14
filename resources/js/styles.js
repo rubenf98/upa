@@ -1,6 +1,6 @@
 import styled, { css } from "styled-components";
 import { Input } from 'antd';
-import { borderRadius } from "./helper";
+import { borderRadius, dimensions } from "./helper";
 
 export const underlineStyle = css`
     text-decoration: underline;
@@ -77,6 +77,14 @@ export const CustomInput = styled(Input)`
     ${baseInputStyles}
 
     border-width: ${props => props.light ? "1px" : "2px"};
+
+    @media (max-width: ${dimensions.md}){
+        font-size: 16px;
+        
+        &::placeholder {
+            font-size: 16px;
+        }
+    }
 `;
 
 export const CustomTextArea = styled(Input.TextArea)`

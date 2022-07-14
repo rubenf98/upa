@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 import { Link } from 'react-router-dom';
 import styled, { withTheme } from "styled-components";
-import { borderRadius } from '../../../helper';
+import { borderRadius, dimensions } from '../../../helper';
 import Video from './Video';
 
 
@@ -20,24 +20,40 @@ const TitleContainer = styled.div`
   justify-content: center;
   align-items: center;
 
-  h1 {
-    font-size: 60px;
-    font-weight: 900;
-    margin-bottom: 0px;
-    color: black;
-    line-height: 130px;
-    text-align: center;
-    font-family: 'Alegreya Sans', sans-serif;
-  }
+    @media (max-width: ${dimensions.md}) {
+        padding: 20px;
+    }
 
-  h2 {
-    font-size: 22px;
-    color: black;
-    font-weight: 400;
-    margin: 0 auto;
-    text-align: center;
-    letter-spacing: 0.034em;
-  }
+    h1 {
+        font-size: 60px;
+        font-weight: 900;
+        margin-bottom: 0px;
+        color: black;
+        line-height: 130px;
+        text-align: center;
+        font-family: 'Alegreya Sans', sans-serif;
+
+        @media (max-width: ${dimensions.md}) {
+            line-height: 52px;
+            font-size: 46px;
+            margin-bottom: 20px;
+        }
+    }
+
+    h2 {
+        font-size: 22px;
+        color: black;
+        font-weight: 400;
+        margin: 0 auto;
+        text-align: center;
+        letter-spacing: 0.034em;
+        width: 70%;
+
+        @media (max-width: ${dimensions.md}) {
+            font-size: 18px;
+            width: 100%;
+        }
+    }
 `;
 
 const ButtonContainer = styled.div`
@@ -94,7 +110,7 @@ function Header({ theme }) {
             <TitleContainer titleColor={theme.text} subtitleColor={theme.text}>
                 <div>
                     <h1>Unidos Pela Atividade</h1>
-                    <h2>A manutenção das funções cognitivas e motoras é essencial para um <br /> envelhecimento ativo e saudável!</h2>
+                    <h2>A manutenção das funções cognitivas e motoras é essencial para um envelhecimento ativo e saudável!</h2>
 
                     <ButtonContainer shadow={theme.blue}>
                         <Link to="/" className='background'>Registar agora!</Link>

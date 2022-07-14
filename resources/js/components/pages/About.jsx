@@ -115,7 +115,9 @@ const InfoContainer = styled.div`
     align-items: flex-start;
 
     @media (max-width: ${dimensions.md}) {
-        width: 95%;
+        width: 100%;
+        padding: 0px 20px;
+        box-sizing: border-box;
     }
 
     .column {

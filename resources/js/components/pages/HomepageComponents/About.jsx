@@ -1,7 +1,7 @@
 import { Col, Row } from 'antd'
 import React from 'react'
 import styled, { withTheme } from "styled-components";
-import { maxWidth } from '../../../helper';
+import { dimensions, maxWidth } from '../../../helper';
 import { underlineStyle } from '../../../styles';
 
 const Container = styled.section`
@@ -20,13 +20,22 @@ const ContentContainer = styled(Row)`
     img {
         width: 30%;
         box-shadow: 0px 0px 10px 0 rgba(0, 0, 0, 0.3);
+
+        @media (max-width: ${dimensions.lg}) {
+            width: 100%;
+        }
     }
 `;
 
 const Info = styled.div`
-  width: 70%;
-  box-sizing: border-box;
-  padding-right: 60px;
+    width: 70%;
+    box-sizing: border-box;
+    padding-right: 60px;
+
+    @media (max-width: ${dimensions.lg}) {
+        width: 100%;
+        padding: 0px 20px;
+    }
 
   
   h2 {
@@ -60,10 +69,10 @@ function About({ theme }) {
                     <p>O projeto UPA nasceu em 2020, fruto da consciência da falta de recursos  destinados à população sénior.  Este visa proporcionar aos profissionais que trabalham com os idosos um leque diversificado de atividades ocupacionais, que não só mantêm esta população ativa, como contribuem para o seu desenvolvimento cognitivo.</p>
 
                     <Row type="flex" gutter={32}>
-                        <Col span={12}>
+                        <Col xs={24} md={12}>
                             <p>Dois anos depois surgiu a necessidade de ampliar a oferta a estes profissionais com atividades que, além de contemplarem a componente cognitiva, estimulam igualmente a componente motora.</p>
                         </Col>
-                        <Col span={12}>
+                        <Col xs={24} md={12}>
                             <p>A valência EDUCASÉNIOR tem como propósito disponibilizar sessões de 30/40 minutos com atividades variadas: jogos musicais na mesa, dança coreográfica, sessões de literatura, entre outras.</p>
                         </Col>
                     </Row>

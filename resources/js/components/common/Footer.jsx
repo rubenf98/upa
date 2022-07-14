@@ -14,19 +14,11 @@ const Container = styled.section`
 
 const FooterContainer = styled.div`
     position: relative;
-    color: black;
-
-    h1 {
-        font-weight: 800;
-        line-height: 84px;
-        letter-spacing: 0.029em;
-        font-size: 72px;
-
-        @media (max-width: ${dimensions.md}) {
-            font-size: 42px;
-        }
-    }
-    
+    color: black;    
+    display: flex;
+    flex-wrap: wrap;
+    padding: 20px;
+    box-sizing: border-box;
 `;
 
 const FooterContent = styled.div`
@@ -37,11 +29,28 @@ const FooterContent = styled.div`
     box-sizing: border-box;
     display: flex;
     justify-content: space-between;
+    flex-wrap: wrap;
     border-top: 1px solid black;
 `;
 
 const LogoContainer = styled.div`
     width: 40%;
+
+    @media (max-width: ${dimensions.md}) {
+        width: 100%;
+    }
+
+    h1 {
+        font-weight: 800;
+        line-height: 84px;
+        letter-spacing: 0.029em;
+        font-size: 72px;
+
+        @media (max-width: ${dimensions.md}) {
+            font-size: 54px;
+            
+        }
+    }
     
 `;
 
@@ -49,9 +58,18 @@ const InfoContainer = styled.div`
     width: 60%;
     display: flex;
     justify-content: space-around;
+    flex-wrap: wrap;
+
+    @media (max-width: ${dimensions.md}) {
+        width: 100%;
+    }
 `;
 
 const SectionContainer = styled.div`  
+    @media (max-width: ${dimensions.md}) {
+        width: 50%;
+    }
+
 
     h3 {
         font-weight: bold;
@@ -79,6 +97,7 @@ const DetailsContainer = styled.div`
     width: 100%;
     max-width: ${maxWidth};
     margin: auto;
+    flex-wrap: wrap;
 
     a {
         color: black;
@@ -92,11 +111,27 @@ const DetailsContainer = styled.div`
 
 const ContactsContainer = styled.div`
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
+    flex-wrap: wrap;
+
+    @media (max-width: ${dimensions.md}) {
+        width: 100%;
+        margin-bottom: 50px;
+    }
 
     div {
         box-sizing: border-box;
-        padding: 5px 10px;
+        width: 50%;
+    }
+`;
+
+const Disclaimer = styled.div`
+
+    @media (max-width: ${dimensions.md}) {
+        position: absolute;
+        bottom: 10px;
+        left: 50%;
+        transform: translate(-50%, 0);
     }
 `;
 
@@ -120,6 +155,18 @@ function Footer({ theme }) {
                 <FooterContent>
                     <LogoContainer>
                         <h1>Unidos Pela <br /> Atividade</h1>
+                        <ContactsContainer>
+                            <div>
+                                +351925022532
+                            </div>
+                            <div>
+                                sandra_mfc@msn.com
+                            </div>
+                            <div>
+                                @educadorasenior
+                            </div>
+
+                        </ContactsContainer>
                     </LogoContainer>
 
                     <InfoContainer>
@@ -131,20 +178,9 @@ function Footer({ theme }) {
 
                 </FooterContent>
                 <DetailsContainer>
-                    <span>© Made by <a href="https://ruben-freitas.pt/" target="_blank">Rúben Freitas</a></span>
+                    <Disclaimer>© Made by <a href="https://ruben-freitas.pt/" target="_blank">Rúben Freitas</a></Disclaimer>
 
-                    <ContactsContainer>
-                        <div>
-                            +351925022532
-                        </div>
-                        <div>
-                            sandra_mfc@msn.com
-                        </div>
-                        <div>
-                            @educadorasenior
-                        </div>
 
-                    </ContactsContainer>
 
                 </DetailsContainer>
             </FooterContainer>

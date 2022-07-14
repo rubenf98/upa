@@ -12,6 +12,21 @@ const ImageContainer = styled.section`
     margin: 100px auto;
     min-height: 380px;
 
+    @media (max-width: ${dimensions.lg}) {
+        width: 70%;
+        order: 2;
+    }
+
+    @media (max-width: ${dimensions.md}) {
+        min-height: 600px;
+        width: 90%;
+    }
+
+    @media (max-width: ${dimensions.sm}) {
+        width: 100%;
+    }
+
+
     .top {
         background-image: url("/image/homepage/movement.svg");
         left: 0px;
@@ -67,10 +82,21 @@ const Content = styled.div`
     max-width: ${maxWidth};
     margin: auto;
     background-color: white;
+
+    @media (max-width: ${dimensions.lg}) {
+        padding: 20px;
+        box-sizing: border-box;
+    }
+    
 `;
 
 const InfoContainer = styled.div`
     width: 40%;
+
+    @media (max-width: ${dimensions.lg}) {
+        width: 100%;
+        order: 1;
+    }
 
     h3 {
         font-size: 42px;

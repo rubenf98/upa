@@ -7,6 +7,7 @@ import { ThemeProvider } from "styled-components";
 import { GlobalStyles } from "./globalStyles";
 import { connect } from "react-redux";
 import { navbarHeight } from "../helper";
+import NavbarMenu from "./common/NavbarMenu";
 
 const Container = styled.div`
     width: 100%;
@@ -62,6 +63,8 @@ class Layout extends Component {
                 darkBlue: "#122038",
             }}>
                 <Container background="#FFE32B">
+                    <NavbarMenu />
+
                     <div className="home-bg">
                         <div className="moving-noise" />
                     </div>

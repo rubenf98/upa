@@ -18,7 +18,7 @@ const Container = styled.div`
     align-items: center;
     justify-content: center;
     position: relative;
-    
+    flex-wrap: wrap;
 `;
 
 const Content = styled.div`
@@ -27,22 +27,40 @@ const Content = styled.div`
     display: flex;
     align-items: center;
     justify-content: space-around;
+    flex-wrap: wrap;
     z-index: 5;
+
+    @media (max-width: ${dimensions.md}){
+        width: 100%;
+        padding: 20px;
+        box-sizing: border-box;
+    }
 `;
 
 const WhiteBackground = styled.div`
     width: 50vw;
-    height: 100vh;
+    height: 100%;
     background: white;
     top: 0;
     right: 0;
     position: absolute;
+
+    @media (max-width: ${dimensions.md}){
+        width: 30vw;
+    }
 `;
 
 const Title = styled.h1`
     font-size: 3.6vw;
     font-weight: 900;
     width: 60%;
+
+    @media (max-width: ${dimensions.md}){
+        width: 100%;
+        font-size: 32px;
+        margin-bottom: 30px;
+        margin-top: 70px;
+    }
 `;
 
 const BackButton = styled.img`
@@ -50,6 +68,12 @@ const BackButton = styled.img`
     position: absolute;
     top: 100px;
     left: 10vw;
+
+    @media (max-width: ${dimensions.md}){
+        top: 30px;
+        width: 30px;
+        left: 20px;
+    }
 `;
 
 const FormContainer = styled.div`
@@ -57,6 +81,7 @@ const FormContainer = styled.div`
 
     @media (max-width: ${dimensions.md}){
         width: 100%;
+        margin-bottom: 50px;
     }
 `;
 

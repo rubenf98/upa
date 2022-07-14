@@ -2,7 +2,7 @@ import { Col, Row } from 'antd'
 import React from 'react'
 import { Link } from 'react-router-dom';
 import styled, { withTheme } from "styled-components";
-import { maxWidth } from '../../../helper';
+import { dimensions, maxWidth } from '../../../helper';
 import { BlackButton, underlineStyle } from '../../../styles';
 
 const Container = styled.section`
@@ -19,12 +19,21 @@ const Content = styled.div`
     align-items: flex-start;
     justify-content: center;
     z-index: 2;
+    flex-wrap: wrap;
+    
 
     img {
         width: 40%;
         margin: auto;
         display: block;
         z-index: inherit;
+
+        @media (max-width: ${dimensions.md}) {
+            width: 100%;
+            order: 2;
+            padding: 0px 20px;
+            box-sizing: border-box;
+        }
     }
 `;
 
@@ -32,6 +41,13 @@ const Info = styled.div`
     width: 50%;
     max-width: ${maxWidth};
     z-index: inherit;
+
+    @media (max-width: ${dimensions.md}) {
+        width: 100%;
+        order: 1;
+        padding: 20px;
+        box-sizing: border-box
+    }
 
     h2 {
         font-weight: bold;

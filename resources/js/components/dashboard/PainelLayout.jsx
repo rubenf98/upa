@@ -4,6 +4,7 @@ import { dimensions, maxWidth } from "../../helper";
 import Courses from "./pages/Courses";
 import NavBar from "./NavBar";
 import Footer from "./Footer";
+import NavbarMenu from "../common/NavbarMenu";
 
 const PageContainer = styled.div`
     width: 100%;
@@ -45,6 +46,7 @@ function PainelLayout({ children }) {
     return (
         <PageContainer>
             <WhiteBackground />
+            
 
             <NavBar />
             <Content>

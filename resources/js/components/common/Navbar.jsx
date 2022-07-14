@@ -4,11 +4,14 @@ import {
     Link
 } from "react-router-dom";
 import { dimensions, maxWidth, navbarHeight } from '../../helper';
+import { connect } from "react-redux";
+import { handleMenu } from "../../redux/application/actions";
+import AnimationContainer from './AnimationContainer';
 
 const Container = styled.div`
     height: ${props => props.visible ? navbarHeight : "0px"}; 
     width: 100%;
-    z-index: 999;
+    z-index: 100;
     background-color: ${props => props.background};
     padding: 0px 200px;
     box-sizing: border-box;
@@ -16,6 +19,10 @@ const Container = styled.div`
     top: 0;
     transition: height .5s ease;
     overflow-y: hidden;
+
+    @media(max-width: ${dimensions.xl}) {
+        padding: 0px 10px;
+    }
 `;
 
 const Content = styled.div`
@@ -45,6 +52,10 @@ const Logo = styled(Link)`
 
     img {
         height: 60px;
+
+        @media (max-width: ${dimensions.md}) {
+            height: 50px;
+        }
     }
 `;
 
@@ -129,8 +140,27 @@ const Register = styled(Link)`
     }
 `;
 
+const Menu = styled.div`
+    width: 40px;
+    height: 40px;
+    border-radius: 40px;
+    background: black;
+    display: none;
+    cursor: pointer;
+    transition: scale 0.3s ease;
+    z-index: 999;
 
-function Navbar({ theme }) {
+    &:hover {
+        scale: 1.1;
+    }
+
+    @media (max-width: ${dimensions.md}) {
+        display: block;
+    }
+`;
+
+
+function Navbar({ theme, menuVisible, handleMenu }) {
     const [y,
         setY] = useState(document.scrollingElement.scrollHeight);
     const [scrollDirection,
@@ -158,14 +188,16 @@ function Navbar({ theme }) {
 
 
     return (
+
         <Container visible={scrollDirection} background={theme.background}>
             <Content visible={scrollDirection}>
                 <FlexItem>
                     <Logo to="/">
-                        <img src="/image/logo.svg" alt="be local madeira white logo" />
+                        <img src="/image/logo.png" alt="unidos pela atividade logo" />
                     </Logo>
                 </FlexItem>
                 <FlexItem>
+                    <Menu onClick={() => handleMenu(true)} />
                     <MenuContainer >
                         <LinkContainer>
                             <NavbarLink background={theme.blue} to="/sessoes"><span>sessões</span> <div /></NavbarLink>
@@ -186,4 +218,16 @@ function Navbar({ theme }) {
     )
 }
 
-export default withTheme(Navbar)
+const mapDispatchToProps = (dispatch) => {
+    return {
+        handleMenu: (state) => dispatch(handleMenu(state)),
+    };
+};
+
+const mapStateToProps = (state) => {
+    return {
+        menuVisible: state.application.menuVisible,
+    };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(withTheme(Navbar));

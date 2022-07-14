@@ -9,6 +9,7 @@ const Container = styled.section`
     display: flex;
     justify-content: space-around;
     align-items: center;
+    flex-wrap: wrap;
     width: 100%;
     min-height: calc(100vh - ${navbarHeight});
     margin: 0px auto;
@@ -16,16 +17,32 @@ const Container = styled.section`
     .column {
         width: 50%;
         height: 100%;
+
+        @media (max-width: ${dimensions.lg}) {
+            width: 100%;
+        }
     }
 
     .info-column {
-        padding: 0px 200px;
+        padding: 0px 100px;
         box-sizing: border-box;
         order: ${props => props.reversed ? 2 : 1};
+
+        @media (max-width: ${dimensions.xl}) {
+            padding: 0px 20px;
+        }
+
+        @media (max-width: ${dimensions.lg}) {
+            order: 2;
+        }
     }
 
     .image-column {
         order: ${props => props.reversed ? 1 : 2};
+
+        @media (max-width: ${dimensions.lg}) {
+            order: 1;
+        }
     }
 
     h2 {
@@ -34,13 +51,12 @@ const Container = styled.section`
         line-height: 69px;
         letter-spacing: 0.098em;
         font-family: 'Alegreya Sans', sans-serif;
-    }
 
-    .spacer {
-        border: 1px solid black;
-        opacity: .2;
-        height: 1px;
-        width: 100%;
+        @media (max-width: ${dimensions.lg}) {
+            font-size: 36px;
+            line-height: 40px;
+            margin-top: 30px;
+        }
     }
 
     p {
@@ -56,6 +72,11 @@ const Container = styled.section`
         width: 300px;
         margin: 20px 0px;
         display: block;
+        text-align: center;
+
+        @media (max-width: ${dimensions.sm}) {
+            width: 100%;
+        }
 
         img {
             width: 25px;
@@ -105,28 +126,26 @@ const RadioContainer = styled.div`
 `;
 
 const ImageContainer = styled.div`
-    width: 90%;
     margin: auto auto;
     display: block;
-    height: calc(100vh - ${navbarHeight});
-    position: relative;
-    flex: 1;
+    min-height: calc(100vh - ${navbarHeight});
 
-    .container {
-        width: 50vw;
-        height: 100vh;
-        margin: auto;
-        display: block;
-
-
-        img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
+    @media (max-width: ${dimensions.lg}) {
+        height: auto;
+        min-height: 0px;
+        padding: 20px;
+        box-sizing: border-box;
     }
 
-    
+    @media (max-width: ${dimensions.md}) {
+        padding: 0px;
+    }
+
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
 `;
 
 function SessionDescription({ theme, content, reversed }) {

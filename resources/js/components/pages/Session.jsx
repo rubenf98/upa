@@ -22,6 +22,14 @@ const MaterialContainer = styled.section`
         justify-content: space-around;
         align-items:center;
         margin: 200px auto;
+
+        @media (max-width: ${dimensions.lg}) {
+            margin: 100px auto;
+        }
+
+        @media (max-width: ${dimensions.md}) {
+            margin: 0px auto;
+        }
     }    
 `;
 
@@ -155,10 +163,17 @@ const IconsContainer = styled.div`
 `;
 
 const SessionDetails = styled(Col)`
+    box-sizing: border-box;
+    padding: 20px;
+
     h2 {
         font-size: 42px;
         font-weight: bold;
         font-family: 'Alegreya Sans', sans-serif;
+
+        @media (max-width: ${dimensions.md}) {
+            font-size: 28px;
+        }
     }
 
     p {
@@ -167,6 +182,10 @@ const SessionDetails = styled(Col)`
         letter-spacing: 0.034em;
         margin: 30px 0px;
         text-align: justify;
+
+        @media (max-width: ${dimensions.md}) {
+            font-size: 18px;
+        }
     }
 `;
 
@@ -344,7 +363,7 @@ function Session({ theme }) {
 
             <MaterialContainer>
                 <div className='flexcontainer'>
-                    <Col span={12}>
+                    <Col xs={24} md={12}>
                         <IconsContainer>
                             <div>
                                 <img src="/icon/resources.svg" alt="" />
@@ -367,7 +386,7 @@ function Session({ theme }) {
                         </IconsContainer>
                     </Col>
 
-                    <SessionDetails span={12}>
+                    <SessionDetails xs={24} md={12}>
                         <h2>Sessões com acesso a recursos descarregáveis e visualização de vídeos</h2>
                         <p>
                             As nossas sessões possuem cerca de 35 minutos com atividades variadas. Os vídeos das atividades são acessíveis durante 1 ano e incluem acesso a recursos, tais como textos em pdf, exibições de PowerPoint e áudios.
