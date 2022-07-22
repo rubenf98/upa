@@ -1,6 +1,9 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import styled, { withTheme } from "styled-components";
 import { BlackButton } from '../../../styles';
+import { fetchCourses } from "../../../redux/course/actions";
+import { connect } from "react-redux";
+import { Link } from 'react-router-dom';
 
 const Container = styled.div`
  //
@@ -15,7 +18,7 @@ const Title = styled.h1`
     margin: 0px 0px 150px 0px;
 `;
 
-const CourseContainer = styled.div`
+const Course = styled.div`
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -60,50 +63,64 @@ const ButtonContainer = styled.div`
     }
 `;
 
+const CustomLink = styled(Link)`
+    color: white;
 
-function Courses({ theme }) {
+    &:hover {
+        color: white;
+    }
+`;
 
-    const Course = ({ img, h2, h3, p, hasCourse }) => (
-        <CourseContainer>
-            <img src={img} alt="course image" />
-            <div className='information'>
-                <h3>{h3}</h3>
-                <h2>{h2}</h2>
-                <p>{p}</p>
-                <ButtonContainer>
-                    <BlackButton shadow={theme.blue}>
-                        Saber Mais...
-                    </BlackButton>
-                    {!hasCourse &&
-                        <BlackButton className='buy-button' background={theme.background} shadow={theme.blue}>
-                            Comprar
-                        </BlackButton>
-                    }
 
-                </ButtonContainer>
-            </div>
+function Courses({ theme, fetchCourses, data, loading }) {
 
-        </CourseContainer>
-    )
+    useEffect(() => {
+        fetchCourses();
+    }, [])
+
+
     return (
         <Container>
             <Title>oferta formativa</Title>
-            <Course
-                hasCourse
-                img="/image/session/sentado.jpg"
-                h3="From the New York Times bestselling author"
-                h2="Danças Coreográficas Sentadas"
-                p="From the #1 New York Times bestselling author of The Raven Boys, a mesmerizing story of dreams and desires, death and destiny."
-            />
+            {data.map((course) => (
+                <Course key={course.id}>
+                    <img src={course.thumbnail} alt="course image" />
+                    <div className='information'>
+                        <h3>{course.subtitle}</h3>
+                        <h2>{course.title}</h2>
+                        <p>{course.description}</p>
+                        <ButtonContainer>
+                            <BlackButton shadow={theme.blue}>
+                                <CustomLink to={"sessao/" + course.id}>Saber Mais...</CustomLink>
 
-            <Course
-                img="/image/session/mesa.jpg"
-                h3="From the New York Times bestselling author"
-                h2="Jogos Musicais na Mesa"
-                p="From the #1 New York Times bestselling author of The Raven Boys, a mesmerizing story of dreams and desires, death and destiny."
-            />
+                            </BlackButton>
+                            {!course.bought &&
+                                <BlackButton className='buy-button' background={theme.background} shadow={theme.blue}>
+                                    Comprar
+                                </BlackButton>
+                            }
+
+                        </ButtonContainer>
+                    </div>
+                </Course>
+
+            ))}
         </Container>
     )
 }
 
-export default withTheme(Courses)
+const mapDispatchToProps = (dispatch) => {
+    return {
+        fetchCourses: () => dispatch(fetchCourses()),
+
+    };
+};
+
+const mapStateToProps = (state) => {
+    return {
+        loading: state.course.loading,
+        data: state.course.data,
+    };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(withTheme(Courses));

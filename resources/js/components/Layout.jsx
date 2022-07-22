@@ -51,18 +51,11 @@ class Layout extends Component {
         return (
             <ThemeProvider theme={{
                 text: '#000000',
-                lightText: "#777",
-                inverseText: '#ffffff',
-                background: '#FFE32B',
-                lightBlue: "#c4fcf1",
-                green: "#52da72",
-                darkGreen: "#00310b",
-                yellow: "#FFFD63",
-                darkYellow: "#452b00",
-                blue: "#37cfd1",
-                darkBlue: "#122038",
+                background: '#ffffff',
+                lightAccent: "#A9EAEB",
+                darkAccent: "#2B444F",
             }}>
-                <Container background="#FFE32B">
+                <Container background="white">
                     <NavbarMenu />
 
                     <div className="home-bg">

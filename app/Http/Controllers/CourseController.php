@@ -6,6 +6,8 @@ use App\Models\Course;
 use Illuminate\Http\Request;
 use App\Http\Resources\CourseResource;
 use App\Http\Requests\CourseRequest;
+use App\Http\Resources\CourseDetailedResource;
+
 class CourseController extends Controller
 {
     /**
@@ -15,9 +17,7 @@ class CourseController extends Controller
      */
     public function index()
     {
-        {
-            return CourseResource::collection(Course::all());
-        }
+        return CourseResource::collection(Course::all());
     }
 
     /**
@@ -41,7 +41,7 @@ class CourseController extends Controller
      */
     public function show(Course $course)
     {
-        return new CourseResource($course);
+        return new CourseDetailedResource($course);
     }
 
     /**
@@ -67,7 +67,7 @@ class CourseController extends Controller
     public function destroy(Course $course)
     {
         $course->delete();
-        
-        return response()->json(null,204);
+
+        return response()->json(null, 204);
     }
 }

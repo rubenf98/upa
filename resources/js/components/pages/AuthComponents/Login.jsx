@@ -1,5 +1,5 @@
 import React from 'react'
-import { BlackButton, CustomInput, CustomTextArea } from '../../../styles';
+import { BlackButton, CustomInput, CustomPassword } from '../../../styles';
 import Col from "antd/es/col"
 import Row from "antd/es/row"
 import Form from "antd/es/form"
@@ -43,6 +43,7 @@ const ModeSwitch = styled.div`
 `;
 
 
+
 const CustomLink = styled(Link)`
     color: white;
     &:hover {
@@ -84,26 +85,17 @@ const rules = {
 function Login({ form, onFinish, theme, setMode }) {
     return (
         <>
-            <ModeSwitch onClick={() => setMode(2)}>Já possui conta? Faça login <span>aqui</span></ModeSwitch>
+            <ModeSwitch onClick={() => setMode(2)}>Ainda não possui conta? Faça registo <span>aqui</span></ModeSwitch>
 
             <FormContainer type="flex" justify="space-between" align="middle">
 
                 <ContactForm
                     requiredMark={false}
                     name="basic"
-                    onFinish={onFinish}
                     layout="vertical"
                     form={form}
                 >
                     <Row gutter={16} style={{ marginBottom: "10px" }}>
-                        <Col md={24}>
-                            <Form.Item
-                                name="name"
-                                rules={rules.name}
-                            >
-                                <CustomInput light placeholder="Nome" size="large" />
-                            </Form.Item>
-                        </Col>
                         <Col md={24}>
                             <Form.Item
 
@@ -118,33 +110,15 @@ function Login({ form, onFinish, theme, setMode }) {
                                 name="password"
                                 rules={rules.name}
                             >
-                                <CustomInput light placeholder="Palavra-passe" size="large" />
-                            </Form.Item>
-                        </Col>
-                        <Col md={24}>
-                            <Form.Item
-                                name="password-check"
-                                rules={rules.email}
-                            >
-                                <CustomInput light placeholder="Confirmação da palavra-passe" size="large" />
+                                <CustomPassword light placeholder="Palavra-passe" size="large" />
                             </Form.Item>
                         </Col>
                     </Row>
-                    <Form.Item
-                        name="privacy"
-                        valuePropName="checked"
-                        rules={rules.privacy}
-                    >
-                        <Checkbox>Aceito os termos da política de privacidade e cookies</Checkbox>
-                    </Form.Item>
                 </ContactForm>
 
-
-
                 <ButtonContainer>
-                    <BlackButton shadow={theme.blue}>
-                        <CustomLink to="/painel">Registar</CustomLink>
-
+                    <BlackButton shadow={theme.blue} onClick={() => onFinish(form.getFieldsValue())}>
+                        Iniciar sessão
                     </BlackButton>
                 </ButtonContainer>
             </FormContainer>

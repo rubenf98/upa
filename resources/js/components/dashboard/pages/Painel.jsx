@@ -122,7 +122,7 @@ class Painel extends Component {
                     </Content>
                     <Footer>
                         <img src="/logo.png" alt="logo" />
-                        <p>© {moment().year()} Fast Rope Madeira. All Rights Reserved.</p>
+                        <p>© {moment().year()} Unidos Pela Atividade. All Rights Reserved.</p>
                     </Footer>
                 </SubContainer>
             </Container>

@@ -13,6 +13,7 @@ import {
     refreshAuthorizationToken
 } from "./redux/auth/actions";
 import 'antd/dist/antd.css';
+import "react-responsive-carousel/lib/styles/carousel.min.css";
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 

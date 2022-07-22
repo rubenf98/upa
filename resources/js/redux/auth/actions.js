@@ -3,28 +3,16 @@ import axios from "axios";
 import jwtDecode from "jwt-decode";
 import { history } from "../../router";
 
-export const login = data => {
-    return (dispatch) => {
-        const response = dispatch({
-            type: types.LOGIN,
-            payload: axios.post(`${window.location.origin}/api/login`, data)
-        })
 
-        response.then(
-            res => {
-                const token = res.value.data.access_token;
-                localStorage.setItem("token", token);
-                setAuthorizationToken(token);
-                history.push("/painel");
-            },
-            err => {
+export const register = (data) => ({
+    type: types.REGISTER,
+    payload: axios.post(`${window.location.origin}/api/user`, data)
+});
 
-            }
-        );
-    }
-};
-
-
+export const login = (data) => ({
+    type: types.LOGIN,
+    payload: axios.post(`${window.location.origin}/api/login`, data)
+});
 
 export const me = () => ({
     type: types.ME,
@@ -36,20 +24,10 @@ export function loginSuccess(token) {
         type: types.LOGIN_SUCCESS, payload: token
     };
 }
-
-export const logout = data => {
-    return (dispatch) => {
-        const response = dispatch({
-            type: types.LOGOUT,
-            payload: axios.post(`${window.location.origin}/api/logout`, data)
-        })
-
-        response.then((res) => {
-            resetToken();
-            history.push("/");
-        })
-    }
-};
+export const logout = () => ({
+    type: types.LOGOUT,
+    payload: axios.post(`${window.location.origin}/api/logout`)
+});
 
 export function refreshAuthorizationToken(token) {
     return dispatch => {

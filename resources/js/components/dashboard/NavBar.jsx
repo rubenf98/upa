@@ -1,9 +1,11 @@
 import React from "react";
 import styled, { withTheme } from "styled-components";
-import { dimensions, colors } from "../../helper";
+import { logout, setAuthorizationToken } from "../../redux/auth/actions";
 import Row from "antd/es/row"
 import { BlackButton } from "../../styles";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { connect } from "react-redux";
+
 
 const Container = styled(Row)`
     width: 80%;
@@ -24,7 +26,7 @@ const Container = styled(Row)`
     }
 `;
 
-const CustomLink = styled(Link)`
+const CustomLink = styled.div`
     color: white;
     &:hover {
         color: white;
@@ -32,14 +34,27 @@ const CustomLink = styled(Link)`
 `;
 
 
-function NavBar({ theme }) {
+function NavBar({ theme, logout }) {
+    var navigate = useNavigate();
+
+    const handleLogout = () => {
+
+        logout().then((response) => {
+            if (response.action.payload.status == 200) {
+                localStorage.removeItem("token");
+                setAuthorizationToken(false);
+                navigate("/");
+            }
+        });
+    };
+
     return (
         <Container type="flex" justify="center" align="middle">
-
-            <img src="/image/logo.svg" />
-
+            <Link to="/painel">
+                <img src="/image/logo.svg" />
+            </Link>
             <BlackButton className="button-container" shadow={theme.blue}>
-                <CustomLink to="/">Sair</CustomLink>
+                <CustomLink onClick={handleLogout}>Sair</CustomLink>
 
             </BlackButton>
 
@@ -47,4 +62,11 @@ function NavBar({ theme }) {
     )
 }
 
-export default withTheme(NavBar)
+const mapDispatchToProps = (dispatch) => {
+    return {
+        logout: () => dispatch(logout()),
+    };
+};
+
+
+export default connect(null, mapDispatchToProps)(withTheme(NavBar))

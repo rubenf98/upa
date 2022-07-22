@@ -4,10 +4,19 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
 
 class Course extends Model
 {
     use HasFactory;
+
+    protected $appends = ['bought'];
+
+    public function getBoughtAttribute($user)
+    {
+
+        return auth()->user()->courses->contains($this->id);
+    }
 
     public function contents()
     {
@@ -15,7 +24,7 @@ class Course extends Model
     }
     public function users()
     {
-        return $this->belongsToMany(User::class, 'users_has_courses');
+        return $this->belongsToMany(User::class, 'user_has_courses');
     }
     protected $fillable = [
         'title',

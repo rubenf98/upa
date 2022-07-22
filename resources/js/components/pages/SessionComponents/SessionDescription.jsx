@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import styled, { withTheme } from "styled-components";
 import { borderRadius, dimensions, maxWidth, navbarHeight } from '../../../helper';
 import { BlackButton } from '../../../styles';
+import Video from '../HomepageComponents/Video';
 
 
 
@@ -181,8 +182,9 @@ function SessionDescription({ theme, content, reversed }) {
 
             </div>
             <ImageContainer reversed={reversed} className="image-column column">
+
                 <div className="container">
-                    <img src={"/image/session/" + content.image + ".jpg"} alt="ilustração da atividade" />
+                    <Video video={"/video/" + content.video + ".mp4"} thumbnail={"/image/session/" + content.thumbnail + ".jpg"} />
                 </div>
             </ImageContainer>
 

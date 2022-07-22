@@ -46,6 +46,10 @@ const ListItem = styled.div`
     align-items: center;
     margin: 20px 0px;
     font-weight: ${props => props.active ? "bold" : "500"};
+
+    &:hover {
+        font-weight: bold;
+    }
     
 
     img {
@@ -69,7 +73,7 @@ function Course({ title, id }) {
 
     const videos = [
         { id: 1, title: "Apresentação", duration: "1:53", path: "/video/sessao1/apresentacao.mp4" },
-        { id: 2, title: "Balaio", duration: "5:00", path: "/video/sessao1/apresentacao.mp4" },
+        { id: 2, title: "Balaio", duration: "5:00", path: "/video/sessao1/balaio.mp4" },
         { id: 3, title: "Círculo Siciliano", duration: "3:47", path: "/video/sessao1/apresentacao.mp4" },
         { id: 4, title: "Drei Temperamente", duration: "6:50", path: "/video/sessao1/apresentacao.mp4" },
         { id: 5, title: "Glencastle Polka", duration: "5:40", path: "/video/sessao1/apresentacao.mp4" },
@@ -84,14 +88,14 @@ function Course({ title, id }) {
         <Container>
             <Title>Dança Coreográfica Sentada</Title>
             <Content>
-                <VideoContainer>
+                <VideoContainer key={currentVideo.id}>
                     <video controls>
                         <source src={currentVideo.path} type="video/mp4" />
                         Your browser does not support the video tag.
                     </video>
                 </VideoContainer>
                 <VideoList>
-                    <TotalVideos>11 vídeos (57 min)</TotalVideos>
+                    <TotalVideos>{videos.length} vídeos (57 min)</TotalVideos>
 
                     {videos.map((video) => (
                         <ListItem onClick={() => setCurrentVideo(video)} key={video.id} active={currentVideo.id == video.id}>

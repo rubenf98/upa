@@ -1,13 +1,10 @@
-import React, { useContext } from 'react'
-import { Link } from 'react-router-dom';
+import React from 'react'
 import styled, { withTheme } from "styled-components";
-import { borderRadius, dimensions } from '../../../helper';
-import Video from './Video';
-
+import { borderRadius, dimensions, maxWidth } from '../../../helper';
+import { Carousel } from 'react-responsive-carousel';
 
 const Container = styled.section`
   width: 100%;
-  min-height: 100vh;
 `;
 
 const TitleContainer = styled.div`
@@ -15,110 +12,149 @@ const TitleContainer = styled.div`
   padding: 50px;
   box-sizing: border-box;
   text-align: center;
-  min-height: 50vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  width: 50%;
+  max-width: ${maxWidth};
+  margin: 150px auto 80px auto;
 
     @media (max-width: ${dimensions.md}) {
         padding: 20px;
+        width: 100%;
     }
 
     h1 {
-        font-size: 60px;
-        font-weight: 900;
-        margin-bottom: 0px;
-        color: black;
-        line-height: 130px;
+        font-family: 'DM Serif Display';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 48px;
+        line-height: 66px;
         text-align: center;
-        font-family: 'Alegreya Sans', sans-serif;
-
-        @media (max-width: ${dimensions.md}) {
-            line-height: 52px;
-            font-size: 46px;
-            margin-bottom: 20px;
-        }
+        color: ${props => props.color};
     }
 
     h2 {
-        font-size: 22px;
-        color: black;
-        font-weight: 400;
+        font-size: 18px;
         margin: 0 auto;
         text-align: center;
-        letter-spacing: 0.034em;
-        width: 70%;
+        opacity: .6;
+        width: 80%;
 
         @media (max-width: ${dimensions.md}) {
             font-size: 18px;
-            width: 100%;
         }
     }
 `;
 
-const ButtonContainer = styled.div`
+const CarouselContainer = styled.div`
   display: flex;
   justify-content: center;
-  margin: 70px auto 50px auto;
+  align-items: center;
+  padding: 50px 0px;
+  box-sizing: border-box;
+  width: 100vw;
+  position: relative;
+`;
 
-  div {
-    padding: 14px 19px;
-    box-sizing: border-box;
-    margin: 0 15px;
-    cursor: pointer;
-    color: black;
-    border: 1px solid black;  
-    transition: all .4s ease;
-    border-radius: ${borderRadius};
-    font-weight: 900;
-    background: white;
-    font-size: 16px;
-    
-    &:hover {
-        border: 1px solid black; 
-        color: black;
-        box-shadow: ${props => "6px 6px 0px 0px " + props.shadow};
-    }
-  }
-
-  .background {
-    background: black;
-    color: white;
-    border: 0px;
-    font-weight: 900;
-    padding: 14px 19px;
-    font-size: 16px;
-    box-sizing: border-box;
-    border: 1px solid black;  
-    transition: all .4s ease;
-
-    &:hover {
-        background: black;
-        color: white;
-        border: 0px;
-        box-shadow: ${props => "6px 6px 0px 0px " + props.shadow};
-    }
-  }
+const Background = styled.div`
+    position: absolute;
+    width: 100%;
+    height: 50%;
+    left: 0;
+    top: 50%;
+    transform: translate(0, -50%);
+    background-color: ${props => props.background};
+    opacity: .3;
 `;
 
 
+const CustomCarousel = styled(Carousel)`
+    max-width: ${maxWidth};
+    margin: auto;
+    position:relative;
 
+    .carousel-status {
+        display: none;
+    }
+
+    .carousel.carousel-slider .control-arrow:hover {
+        background-color: transparent;
+    }
+
+    &:hover {
+        .carousel.carousel-slider {
+            background-color: transparent;
+        }
+    }
+
+    .carousel .control-next.control-arrow {
+        right: 30px;
+    }
+
+    .carousel .control-prev.control-arrow {
+        left: 30px;
+    }
+
+    
+
+    img {
+        padding: 0px 20px;
+        background-color: white;
+    }
+
+    .carousel-information {
+        background: white;
+        position: absolute;
+        width: 30%;
+        right: 0;
+        bottom: 0;
+        text-align: left;
+        padding: 30px;
+        box-sizing: border-box;
+
+        h3 {
+            font-family: 'DM Serif Display';
+            font-size: 28px;
+        }
+
+        p {
+            font-size: 14px;
+        }
+    }
+
+`;
 
 function Header({ theme }) {
     return (
         <Container>
-            <TitleContainer titleColor={theme.text} subtitleColor={theme.text}>
-                <div>
-                    <h1>Unidos Pela Atividade</h1>
-                    <h2>A manutenção das funções cognitivas e motoras é essencial para um envelhecimento ativo e saudável!</h2>
-
-                    <ButtonContainer shadow={theme.blue}>
-                        <Link to="/" className='background'>Registar agora!</Link>
-                        <div>Saber mais...</div>
-                    </ButtonContainer>
-                </div>
+            <TitleContainer titleColor={theme.darkAccent}>
+                <h1>Recursos para profissionais que trabalham com idosos</h1>
+                <h2>Nesta página encontrará sessões de dança coreográfica, jogos musicais na mesa, e-books de exercícios de estimulação cognitiva e muito mais que o ajudará a enriquecer o dia-a-dia do seu grupo de idosos. </h2>
             </TitleContainer>
-            <Video />
+            <CarouselContainer>
+                <Background background={theme.lightAccent} />
+                <CustomCarousel showThumbs={false}>
+                    <div>
+                        <img src="/image/homepage/header_session.jpg" />
+                        <div className="carousel-information">
+                            <h3>Sessões</h3>
+                            <p>Aceda a sessões já programadas, assista a vídeos e descarregue aúdios e descrições das atividades</p>
+                        </div>
+                    </div>
+                    <div>
+                        <img src="/image/homepage/header_session.jpg" />
+                        <div className="carousel-information">
+                            <h3>Produtos</h3>
+                            <p>Jogos, e-books e exibições de powerpoint de atividades para estimular as habilidades cognitivas</p>
+                        </div>
+                    </div>
+                    <div>
+                        <img src="/image/homepage/header_session.jpg" />
+                        <div className="carousel-information">
+                            <h3>Workshops</h3>
+                            <p>Cursos, workshops e oficinas no âmbito da estimulação cognitiva e motora</p>
+                        </div>
+                    </div>
+                </CustomCarousel>
+            </CarouselContainer>
         </Container>
     )
 }

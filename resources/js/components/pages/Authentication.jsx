@@ -1,9 +1,9 @@
 import React, { useContext, useState } from "react";
 import styled, { ThemeContext } from "styled-components";
-import { login } from "../../redux/auth/actions";
+import { login, register, setAuthorizationToken } from "../../redux/auth/actions";
 import { dimensions, maxWidth } from "../../helper";
 import Form from "antd/es/form"
-
+import { useNavigate } from 'react-router-dom'
 import { connect } from "react-redux";
 
 import Login from "./AuthComponents/Login";
@@ -63,17 +63,25 @@ const Title = styled.h1`
     }
 `;
 
-const BackButton = styled.img`
-    width: 50px;
+const BackButton = styled(Link)`
+    z-index: 6;
     position: absolute;
     top: 100px;
     left: 10vw;
 
     @media (max-width: ${dimensions.md}){
         top: 30px;
-        width: 30px;
         left: 20px;
     }
+
+    img {
+        width: 50px;
+        
+        @media (max-width: ${dimensions.md}){
+            width: 30px;
+        }
+    }
+    
 `;
 
 const FormContainer = styled.div`
@@ -86,22 +94,30 @@ const FormContainer = styled.div`
 `;
 
 
-function Authentication({ }) {
+function Authentication({ register, login }) {
     const themeContext = useContext(ThemeContext);
-    const [mode, setMode] = useState(1)
+    const [mode, setMode] = useState(2)
     const [form] = Form.useForm();
+    var navigate = useNavigate();
 
-    function submitForm(e) {
-        e.preventDefault();
-        const formData = new FormData();
-        Object.entries(this.state).map((field) => {
-            formData.append(field[0], field[1]);
+    const handleLogin = (values) => {
+
+        login(values).then((response) => {
+            if (response.action.payload.status == 200) {
+                const token = response.value.data.access_token;
+                localStorage.setItem("token", token);
+                setAuthorizationToken(token);
+                navigate("/painel");
+            }
         });
-
-        this.props.login(formData);
     };
 
-    const onFinish = (values) => {
+    const handleRegistration = (values) => {
+        register(values).then((response) => {
+            if (response.action.payload.status == 201) {
+                form.resetFields();
+            }
+        });
         // axios.post(`${window.location.origin}/api/contact`, values);
 
         // setTimeout(() => {
@@ -114,16 +130,16 @@ function Authentication({ }) {
     return (
         <Container background={themeContext.background}>
             <WhiteBackground />
-            <Link to="/">
-                <BackButton src="/icon/back.svg" />
-            </Link>
+            <BackButton to="/">
+                <img src="/icon/back.svg" />
+            </BackButton>
             <Content>
                 <Title>Bem vindo à comunidade Unidos Pela Atividade</Title>
                 <FormContainer>
                     {mode == 1 ?
-                        <Login setMode={setMode} form={form} onFinish={onFinish} theme={themeContext} />
+                        <Login setMode={setMode} form={form} onFinish={handleLogin} theme={themeContext} />
                         :
-                        <Register setMode={setMode} form={form} onFinish={onFinish} theme={themeContext} />
+                        <Register setMode={setMode} form={form} onFinish={handleRegistration} theme={themeContext} />
                     }
 
                 </FormContainer>
@@ -136,6 +152,7 @@ function Authentication({ }) {
 const mapDispatchToProps = (dispatch) => {
     return {
         login: (data) => dispatch(login(data)),
+        register: (data) => dispatch(register(data)),
     };
 };
 

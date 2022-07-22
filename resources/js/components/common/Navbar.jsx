@@ -80,8 +80,6 @@ const NavbarLink = styled(Link)`
     font-size: 18px;
     text-transform: capitalize;
     cursor: pointer;
-    
-    font-weight: bold;
     color: inherit;   
 
     span {
@@ -203,13 +201,19 @@ function Navbar({ theme, menuVisible, handleMenu }) {
                             <NavbarLink background={theme.blue} to="/sessoes"><span>sessões</span> <div /></NavbarLink>
                         </LinkContainer>
                         <LinkContainer>
+                            <NavbarLink background={theme.blue} to="/sessoes"><span>oferta formativa</span> <div /></NavbarLink>
+                        </LinkContainer>
+                        <LinkContainer>
+                            <NavbarLink background={theme.blue} to="/sessoes"><span>produtos</span> <div /></NavbarLink>
+                        </LinkContainer>
+                        <LinkContainer>
                             <NavbarLink background={theme.blue} to="/contact"><span>contactos</span> <div /></NavbarLink>
                         </LinkContainer>
                         <LinkContainer>
                             <NavbarLink background={theme.blue} to="/sobre"><span>acerca de mim</span> <div /></NavbarLink>
                         </LinkContainer>
                         <LinkContainer>
-                            <Register accent={theme.blue} to="/login">registar</Register>
+                            <Register accent={theme.blue} to="/login">a minha conta</Register>
                         </LinkContainer>
                     </MenuContainer>
                 </FlexItem>

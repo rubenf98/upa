@@ -1,5 +1,5 @@
 import React from 'react'
-import { BlackButton, CustomInput, CustomTextArea } from '../../../styles';
+import { BlackButton, CustomInput, CustomPassword } from '../../../styles';
 import Col from "antd/es/col"
 import Row from "antd/es/row"
 import Form from "antd/es/form"
@@ -7,6 +7,7 @@ import Checkbox from "antd/es/checkbox"
 import { dimensions, maxWidth } from "../../../helper";
 import styled, { ThemeContext } from "styled-components";
 import { Link } from 'react-router-dom';
+import { Input } from 'antd';
 
 const ButtonContainer = styled.div`
     margin: 20px 0px;
@@ -43,7 +44,6 @@ const ModeSwitch = styled.div`
 `;
 
 
-
 const CustomLink = styled(Link)`
     color: white;
     &:hover {
@@ -68,16 +68,16 @@ const rules = {
             type: "email",
         },
     ],
-    message: [
+    password: [
         {
             required: true,
-            message: 'Please input your message!',
+            message: 'Introduza a sua palavra-passe',
         },
     ],
     privacy: [
         {
             required: true,
-            message: 'Please input your message!',
+            message: 'É necessário aceitar os termos de privacidade',
         },
     ]
 }
@@ -85,18 +85,25 @@ const rules = {
 function Register({ form, onFinish, theme, setMode }) {
     return (
         <>
-            <ModeSwitch onClick={() => setMode(1)}>Ainda não possui conta? Faça registo <span>aqui</span></ModeSwitch>
+            <ModeSwitch onClick={() => setMode(1)}>Já possui conta? Faça login <span>aqui</span></ModeSwitch>
 
             <FormContainer type="flex" justify="space-between" align="middle">
 
                 <ContactForm
                     requiredMark={false}
                     name="basic"
-                    onFinish={onFinish}
                     layout="vertical"
                     form={form}
                 >
                     <Row gutter={16} style={{ marginBottom: "10px" }}>
+                        <Col md={24}>
+                            <Form.Item
+                                name="name"
+                                rules={rules.name}
+                            >
+                                <CustomInput light placeholder="Nome" size="large" />
+                            </Form.Item>
+                        </Col>
                         <Col md={24}>
                             <Form.Item
 
@@ -109,20 +116,48 @@ function Register({ form, onFinish, theme, setMode }) {
                         <Col md={24}>
                             <Form.Item
                                 name="password"
-                                rules={rules.name}
+                                rules={rules.password}
                             >
-                                <CustomInput light placeholder="Palavra-passe" size="large" />
+                                <CustomPassword light placeholder="Palavra-passe" size="large" />
+                            </Form.Item>
+                        </Col>
+                        <Col md={24}>
+                            <Form.Item
+                                name="password-check"
+                                rules={[
+                                    {
+                                        required: true,
+                                        message: 'Confirme a sua palavra-passe',
+                                    },
+                                    ({ getFieldValue }) => ({
+                                        validator(_, value) {
+                                            if (!value || getFieldValue('password') === value) {
+                                                return Promise.resolve();
+                                            }
+                                            return Promise.reject(new Error('As palavras-passe não coincidem!'));
+                                        },
+                                    }),
+                                ]}
+                                dependencies={['password']}
+                            >
+                                <CustomPassword light placeholder="Confirmação da palavra-passe" size="large" />
                             </Form.Item>
                         </Col>
                     </Row>
+                    <Form.Item
+                        name="privacy"
+                        valuePropName="checked"
+                        rules={rules.privacy}
+                    >
+                        <Checkbox>Aceito os termos da política de privacidade e cookies</Checkbox>
+                    </Form.Item>
                 </ContactForm>
 
 
 
                 <ButtonContainer>
-                    <BlackButton shadow={theme.blue}>
-                        <CustomLink to="/painel">Iniciar sessão</CustomLink>
-
+                    <BlackButton shadow={theme.blue} onClick={() => onFinish(form.getFieldsValue())}>
+                        Registar
                     </BlackButton>
                 </ButtonContainer>
             </FormContainer>

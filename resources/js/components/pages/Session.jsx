@@ -343,7 +343,8 @@ function Session({ theme }) {
                         "O bater de mãos, de pés; o dar estalos; o levar as mãos ao pescoço, à cabeça, aos ombros; o elevar as pernas, os braços, os joelhos, etc., são movimentos que fazem parte desta modalidade.",
                         "Além do divertimento que esta atividade proporciona, também oferece benefícios a nível físico, cognitivo, emocional e social."
                     ],
-                    image: "sentado"
+                    video: "01_introduction",
+                    thumbnail: "sentado"
                 }}
             />
 
@@ -355,7 +356,8 @@ function Session({ theme }) {
                         "Os jogos musicais na mesa podem ser realizados com grupos de qualquer idade. ",
                         "Mais do que proporcionar divertimento, o jogo musical ajuda no treino dos domínios da escuta, da concentração e da expressão. Pode ser, incontestavelmente, uma estratégia eficaz para a manutenção cognitiva, motora, social e emocional do idoso. Ele tem o poder de cativar quem nele participa!",
                     ],
-                    image: "mesa"
+                    video: "02_introduction",
+                    thumbnail: "mesa"
                 }}
             />
 

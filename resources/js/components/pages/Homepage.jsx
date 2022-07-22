@@ -7,20 +7,21 @@ import About from './HomepageComponents/About';
 import Faq from './Faq';
 import Benefits from './HomepageComponents/Benefits';
 import Sessions from './HomepageComponents/Sessions';
+import Typewriter from 'typewriter-effect';
 
 const Container = styled.div`
     position: relative;
-`;
 
-const WhiteBackground = styled.div`
-    position: absolute;
-    top: 100vh;
-    right: 0;
-    width: 100vw;
-    min-height: 100vh;
-    background-color: white;
-    z-index: -1;
-    box-shadow: inset 0px 0px 10px 0px rgba(0,0,0,.2);
+    .Typewriter {
+        min-height: 100vh;
+
+        .Typewriter__wrapper, .Typewriter__cursor {
+            font-size: 110px !important;
+        }
+
+    }
+
+    
 `;
 
 
@@ -28,10 +29,50 @@ function Homepage() {
 
     return (
         <Container >
-            <WhiteBackground />
             <Header />
             <Sections />
             <About />
+            <Typewriter
+                onInit={(typewriter) => {
+                    typewriter.typeString('Atividades com recurso a <br /> movimento')
+                        .pauseFor(500)
+                        .deleteChars(9)
+                        .typeString("memória")
+                        .pauseFor(500)
+                        .deleteChars(7)
+                        .typeString("música")
+                        .pauseFor(500)
+                        .deleteChars(6)
+                        .typeString("movimento")
+                        .pauseFor(500)
+                        .deleteChars(9)
+                        .typeString("memória")
+                        .pauseFor(500)
+                        .deleteChars(7)
+                        .typeString("música")
+                        .pauseFor(500)
+                        .deleteChars(6)
+                        .typeString("movimento")
+                        .pauseFor(500)
+                        .deleteChars(9)
+                        .typeString("memória")
+                        .pauseFor(500)
+                        .deleteChars(7)
+                        .typeString("música")
+                        .pauseFor(500)
+                        .deleteChars(6)
+                        .typeString("movimento")
+                        .pauseFor(500)
+                        .deleteChars(9)
+                        .typeString("memória")
+                        .pauseFor(500)
+                        .deleteChars(7)
+                        .typeString("música")
+                        .pauseFor(1000)
+                        .start();
+                }}
+
+            />
             <Sessions />
             <Benefits />
             <Faq />

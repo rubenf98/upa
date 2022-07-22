@@ -74,18 +74,18 @@ const SectionContainer = styled.div`
     h3 {
         font-weight: bold;
         font-size: 20px;
-        margin-bottom: 20px;
+        margin-bottom: 0px;
         color: black;
         text-transform: uppercase;
     }
 
     ul {
-        font-size: 18px;
+        font-size: 16px;
         list-style-type: none;
-        padding: 10px 0;
+        padding: 5px 0;
 
         li {
-            margin: 10px 0;
+            margin: 5px 0;
         }
 
     } 

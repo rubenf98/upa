@@ -6,6 +6,7 @@ import feedback from './redux/feedback'
 import contact from './redux/contact'
 import activity from './redux/activity'
 import application from './redux/application'
+import course from './redux/course'
 
 const reducer = combineReducers({
     auth,
@@ -13,7 +14,8 @@ const reducer = combineReducers({
     feedback,
     contact,
     activity,
-    application
+    application,
+    course
 })
 
 export default reducer

@@ -87,6 +87,29 @@ export const CustomInput = styled(Input)`
     }
 `;
 
+export const CustomPassword = styled(Input.Password)`
+    ${baseInputStyles}
+
+    border-width: ${props => props.light ? "1px" : "2px"};
+
+    .ant-input {
+        background-color: transparent
+    }
+
+    .ant-input::placeholder {
+        color: black;
+        font-size: 18px;
+    }
+
+    @media (max-width: ${dimensions.md}){
+        font-size: 16px;
+        
+        &::placeholder {
+            font-size: 16px;
+        }
+    }
+`;
+
 export const CustomTextArea = styled(Input.TextArea)`
     ${baseInputStyles}
 
