@@ -8,29 +8,27 @@ import Faq from './Faq';
 import Benefits from './HomepageComponents/Benefits';
 import Sessions from './HomepageComponents/Sessions';
 import Typewriter from 'typewriter-effect';
+import { maxWidth } from '../../helper';
 
 const Container = styled.div`
     position: relative;
 
     .Typewriter {
-        min-height: 100vh;
+        max-width: ${maxWidth};
+        margin: 200px auto;
 
         .Typewriter__wrapper, .Typewriter__cursor {
             font-size: 110px !important;
+            font-family: 'DM Serif Display';
         }
-
     }
-
-    
 `;
 
 
 function Homepage() {
-
     return (
         <Container >
             <Header />
-            <Sections />
             <About />
             <Typewriter
                 onInit={(typewriter) => {
@@ -73,6 +71,7 @@ function Homepage() {
                 }}
 
             />
+            <Sections />
             <Sessions />
             <Benefits />
             <Faq />
