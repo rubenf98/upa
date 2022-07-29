@@ -1,10 +1,10 @@
 import React from 'react'
 import styled, { withTheme } from "styled-components";
-import { dimensions, maxWidth, navbarHeight } from '../../helper';
+import { dimensions, fonts, maxWidth, navbarHeight } from '../../helper';
 import { underlineStyle } from '../../styles';
 import Faq from './Faq';
 
-const Container = styled.section`
+const Container = styled.div`
     width: 100%;
     margin-top: 150px;
 `;
@@ -12,14 +12,19 @@ const Content = styled.div`
     margin: auto;
     width: 100%;
     max-width: ${maxWidth};
+
+    @media (max-width: ${dimensions.md}) {
+        padding: 0px 20px;
+        box-sizing: border-box;
+    }
 `;
 
-const ProfileContainer = styled.div`
+const ProfileContainer = styled.section`
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
     width: 80%;
-    margin: 100px auto;
+    margin: 150px auto 100px auto;
     align-items: flex-start;
 
     @media (max-width: ${dimensions.md}) {
@@ -79,12 +84,11 @@ const TitleContainer = styled.div`
     }
 
     h2 {
-        font-weight: 500;
-        letter-spacing: -.044em;
-        font-size: 5vw;
+        font-size: 5.2vw;
         line-height: 98px;
         font-weight: bold;
         margin-bottom: 0px;
+        font-family: ${fonts.title};
 
         @media (max-width: ${dimensions.md}) {
             position: relative;
@@ -106,7 +110,7 @@ const TitleContainer = styled.div`
     }
 `;
 
-const InfoContainer = styled.div`
+const InfoContainer = styled.section`
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
@@ -128,13 +132,16 @@ const InfoContainer = styled.div`
         }
 
         p {
-            color: black;
             margin-bottom: 30px;
             text-align: justify;
             font-size: 18px;
             line-height: 23px;
             letter-spacing: 0.066em;
             font-weight: 400;
+
+            @media (max-width: ${dimensions.md}) {
+                font-size: 16px;
+            }
         }
     }
 
@@ -151,6 +158,52 @@ const InfoContainer = styled.div`
     
 `;
 
+const ImportanceContainer = styled.section`
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    width: 100%;
+    margin: 100px auto;
+    align-items: center;
+
+    @media (max-width: ${dimensions.md}) {
+        margin: 30px auto;
+    }
+
+    img, .info {
+        width: 50%;
+
+        @media (max-width: ${dimensions.md}) {
+            width: 100%;
+        }
+    }
+
+    .info {
+        padding: 20px;
+        box-sizing: border-box;
+
+        h2 {
+            font-size: 48px;
+            font-family: ${fonts.title};
+            font-weight: 400;
+
+            @media (max-width: ${dimensions.md}) {
+                text-align: center;
+                font-size: 40px;
+                line-height: 49px;
+            }
+        }
+
+        p {
+            font-size: 18px;
+
+            @media (max-width: ${dimensions.md}) {
+                font-size: 16px;
+                text-align: justify;
+            }
+        }
+    }
+`;
 
 function About({ theme }) {
 
@@ -160,7 +213,6 @@ function About({ theme }) {
                 <ProfileContainer>
                     <ImageContainer>
                         <img className='profile' src="/image/about/1.jpg" />
-
                     </ImageContainer>
 
                     <TitleContainer>
@@ -181,6 +233,14 @@ function About({ theme }) {
                         <p>Possuo experiência como formadora na área de animação e fui promotora de vários Workshops no âmbito da estimulação cognitiva e motora, recursos musicais para aplicar com idosos e dança coreográfica sentada. Possuo <b>11 anos de experiência</b> no exercício de funções de Educadora Sénior num Lar de Idosos e Centro de Convívio.</p>
                     </div>
                 </InfoContainer>
+
+                <ImportanceContainer>
+                    <div className='info' >
+                        <h2>A importância de oferecer novas experiências e novas vivências ao idoso</h2>
+                        <p>As propostas de atividades  e recursos que vos apresento têm por objetivo contribuir para a manutenção das capacidades físicas e cognitivas do idoso. Estas atividades não são meras tarefas a executar, mas uma oportunidade do idoso viver o processo de envelhecimento ativamente, de resgatar a sua autoestima, de socializar, de se envolver em novas aprendizagens, levando-o deste modo a alcançar uma melhor qualidade de vida.</p>
+                    </div>
+                    <img alt='Sandra Carvalho' src="/image/about/importance.jpg" />
+                </ImportanceContainer>
                 <Faq />
             </Content>
         </Container>
