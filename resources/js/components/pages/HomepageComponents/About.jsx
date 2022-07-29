@@ -1,11 +1,17 @@
 import { Col, Row } from 'antd'
 import React from 'react'
 import styled, { withTheme } from "styled-components";
-import { dimensions, maxWidth } from '../../../helper';
+import { dimensions, fonts, maxWidth } from '../../../helper';
 import { underlineStyle } from '../../../styles';
 
 const Container = styled.section`
     margin: 200px auto;
+
+    @media (max-width: ${dimensions.md}) {
+        margin: 50px auto;
+        padding: 0px 20px;
+        box-sizing: border-box;
+    }
 `;
 
 const ContentContainer = styled(Row)`
@@ -14,12 +20,16 @@ const ContentContainer = styled(Row)`
     max-width: ${maxWidth};
     padding: 50px 0px;
     box-sizing: border-box;
+
+    @media (max-width: ${dimensions.md}) {
+        padding: 20px 0px;
+    }
     
 
     img {
         width: 40%;
 
-        @media (max-width: ${dimensions.lg}) {
+        @media (max-width: ${dimensions.md}) {
             width: 100%;
         }
     }
@@ -29,24 +39,31 @@ const Info = styled.div`
     width: 50%;
     box-sizing: border-box;
     padding-right: 50px;
-
-    @media (max-width: ${dimensions.lg}) {
-        width: 100%;
-        padding: 0px 20px;
+ 
+    h2 {
+        font-size: 60px;
+        font-weight: bold;
+        font-family: ${fonts.title};
     }
 
-  
-  h2 {
-    font-size: 60px;
-    font-weight: bold;
-    font-family: 'DM Serif Display';
-  }
+    p {
+        font-size: 18px;
+        text-align: justify;
+        opacity: .7;
+    }
 
-  p {
-    font-size: 18px;
-    text-align: justify;
-    opacity: .7;
-  }
+    @media (max-width: ${dimensions.md}) {
+        padding: 0px;
+        width: 100%;
+
+        h2 {
+            font-size: 42px;
+        }
+
+        p {
+            font-size: 18px;
+        }
+    }
 `;
 
 function About({ theme }) {

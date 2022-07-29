@@ -11,11 +11,9 @@ export const dimensions = {
     "xxl": "1600px",
 };
 
-export const colors = {
-    "main": "rgb(52,60,94)",
-    "mainOverlay": "rgba(52,60,94,.7)",
-    "mainHover": "#2b3252",
-    "gray": "#777",
+export const fonts = {
+    "title": "DM Serif Display",
+    "text": "Poppins",
 };
 
 export function getCarouselBreakpoints(aItems, aBreakpoints = [[0, 600], [600, 1024], [1024, 1400], [1400, 1800], [1800, 100000]], aItemsToSlide = [1, 1, 1, 1, 1]) {

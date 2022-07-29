@@ -33,7 +33,7 @@ const Background = styled.div`
     width: 100vw;
     height: 100vh;
     z-index: 799;
-    background-color: black;
+    background-color: ${props => props.background};
     animation: ${props => spin(props.animation)} 1s ease-in-out forwards;
 `;
 
@@ -59,7 +59,7 @@ const Menu = styled.div`
 `;
 
 const LinksContainer = styled.div`
-    color: white;
+    color: black;
     display: flex;
     flex-direction: column;
     margin-top: auto;
@@ -99,9 +99,9 @@ const CustomLink = styled(Link)`
     display: block;
     transition: transform .5s cubic-bezier(.075,.82,.165,1);
     position: relative;
-    font-size: 12.22vmin;
+    font-size: 9vmin;
     line-height: 50px;
-    color: white;
+    color: black;
     margin: 0px;
     font-family: 'Alegreya Sans', sans-serif;
     font-weight: bold;
@@ -109,7 +109,7 @@ const CustomLink = styled(Link)`
 
     &:hover {
         transform: translate3d(20px,0,0);
-        color: white;
+        color: black;
     }
     
 `;
@@ -135,11 +135,11 @@ function NavbarMenu({ theme, handleMenu, menuVisible }) {
     return (
 
         <Container visible={menuVisible}>
-            <Background animation={animation} />
+            <Background background={theme.lightAccent} animation={animation} />
             <Content>
                 <Navbar>
-                    <Logo animation={animation} src="/image/logo_white.svg" alt="be local madeira white logo" />
-                    <Menu background={theme.background} onClick={handleClose} />
+                    <Logo animation={animation} src="/image/logo.svg" alt="logos unidos pela atividade" />
+                    <Menu background="black" onClick={handleClose} />
                 </Navbar>
                 <LinksContainer animation={animation}>
                     <CustomLink onClick={handleClose} to="/">Página inicial</CustomLink>

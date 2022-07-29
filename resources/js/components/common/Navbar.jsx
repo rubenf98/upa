@@ -142,7 +142,7 @@ const Menu = styled.div`
     width: 40px;
     height: 40px;
     border-radius: 40px;
-    background: black;
+    background: ${props => props.background};
     display: none;
     cursor: pointer;
     transition: scale 0.3s ease;
@@ -195,7 +195,7 @@ function Navbar({ theme, menuVisible, handleMenu }) {
                     </Logo>
                 </FlexItem>
                 <FlexItem>
-                    <Menu onClick={() => handleMenu(true)} />
+                    <Menu background={theme.lightAccent} onClick={() => handleMenu(true)} />
                     <MenuContainer >
                         <LinkContainer>
                             <NavbarLink background={theme.blue} to="/sessoes"><span>sessões</span> <div /></NavbarLink>

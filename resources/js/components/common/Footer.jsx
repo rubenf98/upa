@@ -2,60 +2,73 @@ import { Row } from 'antd';
 import React from 'react'
 import styled, { withTheme } from "styled-components";
 import moment from "moment";
-import { dimensions, maxWidth } from '../../helper';
+import { dimensions, fonts, maxWidth } from '../../helper';
+import { Link } from 'react-router-dom';
 
 const Container = styled.section`
     width: 100%;
     position: relative;
     background-color: ${props => props.background};
-    padding: 20px 0px;  
+    padding: 100px 0px 10px 0px;  
     box-sizing: border-box;
 `;
 
 const FooterContainer = styled.div`
     position: relative;
-    color: black;    
-    display: flex;
-    flex-wrap: wrap;
-    padding: 20px;
-    box-sizing: border-box;
+    width: 100%;
+    max-width: ${maxWidth};
+    margin: auto;
 `;
 
 const FooterContent = styled.div`
     width: 100%;
     max-width: ${maxWidth};
-    margin: auto;  
-    padding: 50px 0px;  
+    margin: auto;
     box-sizing: border-box;
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
-    border-top: 1px solid black;
+
+    @media (max-width: ${dimensions.md}) {
+        padding: 0px 20px;
+        box-sizing: border-box;
+    }
 `;
 
 const LogoContainer = styled.div`
-    width: 40%;
+    width: 45%;
 
     @media (max-width: ${dimensions.md}) {
         width: 100%;
     }
 
     h1 {
-        font-weight: 800;
-        line-height: 84px;
-        letter-spacing: 0.029em;
-        font-size: 72px;
+        font-size: 48px;
+        font-family: ${fonts.title};
+        margin: 0px;
 
         @media (max-width: ${dimensions.md}) {
-            font-size: 54px;
-            
+            text-align: center; 
+            font-size: 42px;
+        }
+    }
+
+    p {
+        margin: 0px;
+        font-size: 18px;
+
+        @media (max-width: ${dimensions.md}) {
+            font-size: 16px;
+            text-align: center; 
+            opacity: .7;
+            margin-bottom: 40px;
         }
     }
     
 `;
 
 const InfoContainer = styled.div`
-    width: 60%;
+    width: 50%;
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
@@ -66,16 +79,11 @@ const InfoContainer = styled.div`
 `;
 
 const SectionContainer = styled.div`  
-    @media (max-width: ${dimensions.md}) {
-        width: 50%;
-    }
-
-
     h3 {
         font-weight: bold;
         font-size: 20px;
         margin-bottom: 0px;
-        color: black;
+        font-family: ${fonts.title};
         text-transform: uppercase;
     }
 
@@ -86,6 +94,17 @@ const SectionContainer = styled.div`
 
         li {
             margin: 5px 0;
+
+            a {
+                opacity: .8;
+                color: black;
+                transition: opacity .3s ease;
+
+                &:hover {
+                    opacity: 1;
+                }
+            }
+            
         }
 
     } 
@@ -98,10 +117,12 @@ const DetailsContainer = styled.div`
     max-width: ${maxWidth};
     margin: auto;
     flex-wrap: wrap;
+    
 
     a {
         color: black;
         font-weight: bold;
+        
 
         &:hover {
             color: black;
@@ -111,37 +132,51 @@ const DetailsContainer = styled.div`
 
 const ContactsContainer = styled.div`
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     flex-wrap: wrap;
+    margin: 50px 0px;
+    opacity: .7;
+
+    
 
     @media (max-width: ${dimensions.md}) {
         width: 100%;
-        margin-bottom: 50px;
+        
     }
 
     div {
         box-sizing: border-box;
-        width: 50%;
+        width: 33%;
+        text-decoration: underline;
+
+        @media (max-width: ${dimensions.md}) {
+            width: 100%; 
+            text-align: center !important;
+        }
     }
 `;
 
 const Disclaimer = styled.div`
+    text-align: center;
+    margin: auto;
+    opacity: .5;
 
     @media (max-width: ${dimensions.md}) {
-        position: absolute;
-        bottom: 10px;
-        left: 50%;
-        transform: translate(-50%, 0);
+        padding: 0px 20px;
+        box-sizing: border-box;
     }
 `;
 
 
-const Section = ({ title, items }) => (
+const Section = ({ title, items, links = [] }) => (
     <SectionContainer>
         <h3>{title}</h3>
         <ul>
             {items.map((item, index) => (
-                <li key={index}>{item}</li>
+                <li key={index}>
+                    <Link to={links[index]}>{item}</Link>
+
+                </li>
             ))}
         </ul>
     </SectionContainer>
@@ -149,36 +184,44 @@ const Section = ({ title, items }) => (
 
 function Footer({ theme }) {
     return (
-        <Container background={theme.background}>
+        <Container background={theme.opacityLightAccent}>
 
             <FooterContainer>
                 <FooterContent>
                     <LogoContainer>
-                        <h1>Unidos Pela <br /> Atividade</h1>
-                        <ContactsContainer>
-                            <div>
-                                +351925022532
-                            </div>
-                            <div>
-                                sandra_mfc@msn.com
-                            </div>
-                            <div>
-                                @educadorasenior
-                            </div>
-
-                        </ContactsContainer>
+                        <h1>Unidos Pela Atividade</h1>
+                        <p>Registe-se para ter acesso às atividades gratuitas que incluem 1 jogo musical na mesa e uma dança coreográfica sentada!</p>
                     </LogoContainer>
 
                     <InfoContainer>
-                        <Section title="Menu" items={["Sobre", "Contactos", "Sessões"]} />
+                        <Section
+                            title="Menu"
+                            items={["Página Inicial", "Sessões", "Oferta Formativa", "Produtos", "Contactos", "Acerca de Mim"]}
+                            links={["/", "/sessoes", "/oferta", "/produtos", "/contact", "/sobre"]}
+                        />
 
-                        <Section title="Info" items={["Privacidade", "Cookies"]} />
+                        <Section
+                            title="Legal"
+                            items={["Privacidade", "Cookies"]}
+                            links={["/privacidade", "/cookies"]}
+                        />
                     </InfoContainer>
 
 
                 </FooterContent>
+                <ContactsContainer>
+                    <div style={{ textAlign: "left" }}>
+                        +351925022532
+                    </div>
+                    <div style={{ textAlign: "center" }}>
+                        sandra_mfc@msn.com
+                    </div>
+                    <div style={{ textAlign: "right" }}>
+                        @educadorasenior
+                    </div>
+                </ContactsContainer>
                 <DetailsContainer>
-                    <Disclaimer>© Made by <a href="https://ruben-freitas.pt/" target="_blank">Rúben Freitas</a></Disclaimer>
+                    <Disclaimer>© {moment().year()} <a href="https://ruben-freitas.pt/" target="_blank">Rúben Freitas</a>. All Rights Reserved</Disclaimer>
 
 
 

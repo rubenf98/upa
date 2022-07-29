@@ -53,6 +53,7 @@ class Layout extends Component {
                 text: '#000000',
                 background: '#ffffff',
                 lightAccent: "#A9EAEB",
+                opacityLightAccent: "#A9EAEB4D",
                 darkAccent: "#2B444F",
             }}>
                 <Container background="white">

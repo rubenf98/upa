@@ -1,6 +1,6 @@
 import React from 'react'
 import styled, { withTheme } from "styled-components";
-import { borderRadius, dimensions, maxWidth } from '../../../helper';
+import { borderRadius, dimensions, fonts, maxWidth } from '../../../helper';
 import { Carousel } from 'react-responsive-carousel';
 
 const Container = styled.section`
@@ -8,21 +8,21 @@ const Container = styled.section`
 `;
 
 const TitleContainer = styled.div`
-  display: block;
-  padding: 50px;
-  box-sizing: border-box;
-  text-align: center;
-  width: 50%;
-  max-width: ${maxWidth};
-  margin: 150px auto 80px auto;
+    display: block;
+    padding: 50px;
+    box-sizing: border-box;
+    text-align: center;
+    width: 50%;
+    max-width: ${maxWidth};
+    margin: 150px auto 80px auto;
 
     @media (max-width: ${dimensions.md}) {
-        padding: 20px;
+        padding: 0px 20px;
         width: 100%;
     }
 
     h1 {
-        font-family: 'DM Serif Display';
+        font-family: ${fonts.title};
         font-style: normal;
         font-weight: 400;
         font-size: 48px;
@@ -39,7 +39,8 @@ const TitleContainer = styled.div`
         width: 80%;
 
         @media (max-width: ${dimensions.md}) {
-            font-size: 18px;
+            font-size: 16px;
+            width: 100%;
         }
     }
 `;
@@ -50,7 +51,7 @@ const CarouselContainer = styled.div`
   align-items: center;
   padding: 50px 0px;
   box-sizing: border-box;
-  width: 100vw;
+  width: 100%;
   position: relative;
 `;
 
@@ -63,13 +64,17 @@ const Background = styled.div`
     transform: translate(0, -50%);
     background-color: ${props => props.background};
     opacity: .3;
+
+    @media (max-width: ${dimensions.md}) {
+        display: none;
+    }
 `;
 
 
 const CustomCarousel = styled(Carousel)`
     max-width: ${maxWidth};
     margin: auto;
-    position:relative;
+    position: relative;
 
     .carousel-status {
         display: none;
@@ -93,11 +98,30 @@ const CustomCarousel = styled(Carousel)`
         left: 30px;
     }
 
-    
-
     img {
         padding: 0px 20px;
         background-color: white;
+        box-sizing: border-box;
+
+        @media (max-width: ${dimensions.md}) {
+            padding: 0px;
+        }
+    }
+
+    .hidden-title {
+        display: none;
+        text-align:center;
+        font-family: ${fonts.title};
+        font-size: 56px;
+        line-height: 60px;
+        margin: 0px;
+        position: absolute;
+        top: 0px;
+
+        @media (max-width: ${dimensions.md}) {
+            display: block;
+        }
+
     }
 
     .carousel-information {
@@ -110,8 +134,12 @@ const CustomCarousel = styled(Carousel)`
         padding: 30px;
         box-sizing: border-box;
 
+        @media (max-width: ${dimensions.md}) {
+            display: none;
+        }
+
         h3 {
-            font-family: 'DM Serif Display';
+            font-family: ${fonts.title};
             font-size: 28px;
         }
 
@@ -133,6 +161,7 @@ function Header({ theme }) {
                 <Background background={theme.lightAccent} />
                 <CustomCarousel showThumbs={false}>
                     <div>
+                        <h3 className="hidden-title">Sessões</h3>
                         <img src="/image/homepage/header_session.jpg" />
                         <div className="carousel-information">
                             <h3>Sessões</h3>
@@ -140,6 +169,7 @@ function Header({ theme }) {
                         </div>
                     </div>
                     <div>
+                        <h3 className="hidden-title">Produtos</h3>
                         <img src="/image/homepage/header_session.jpg" />
                         <div className="carousel-information">
                             <h3>Produtos</h3>
@@ -147,6 +177,7 @@ function Header({ theme }) {
                         </div>
                     </div>
                     <div>
+                        <h3 className="hidden-title">Workshops</h3>
                         <img src="/image/homepage/header_session.jpg" />
                         <div className="carousel-information">
                             <h3>Workshops</h3>
