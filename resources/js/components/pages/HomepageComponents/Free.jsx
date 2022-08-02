@@ -57,7 +57,7 @@ const Content = styled.div`
     padding: 100px 0px;
     box-sizing: border-box;
 
-    @media (max-width: ${dimensions.md}) {
+    @media (max-width: ${dimensions.lg}) {
         padding: 20px;
         
     }

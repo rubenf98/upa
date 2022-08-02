@@ -163,7 +163,7 @@ function Contact({ theme }) {
     return (
         <>
             <Container>
-                <Title underlineColor={theme.blue}>
+                <Title underlineColor={theme.textAccent}>
                     <h1><span>Vamos conversar.</span> <br />
                         Responderemos o mais brevemente possível</h1>
 
@@ -214,7 +214,7 @@ function Contact({ theme }) {
                     </ContactForm>
 
                     <ButtonContainer>
-                        <BlackButton shadow={theme.blue}>
+                        <BlackButton background={theme.textAccent} hover={theme.darkAccent} color="white">
                             Submeter
                         </BlackButton>
                     </ButtonContainer>
@@ -222,9 +222,6 @@ function Contact({ theme }) {
 
                 <InfoContainer>
 
-                    <Logo href="https://www.facebook.com/educadorasenior" target="_blank">
-                        <img src='/icon/instagram.svg' alt="instagram" />
-                    </Logo>
                     <Logo href="https://www.facebook.com/educadorasenior" target="_blank">
                         <img src='/icon/facebook.svg' alt="facebook" />
                     </Logo>

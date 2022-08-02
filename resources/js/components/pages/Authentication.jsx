@@ -128,7 +128,7 @@ function Authentication({ register, login }) {
     };
 
     return (
-        <Container background={themeContext.background}>
+        <Container background={themeContext.lightAccent}>
             <WhiteBackground />
             <BackButton to="/">
                 <img src="/icon/back.svg" />

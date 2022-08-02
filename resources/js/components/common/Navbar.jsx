@@ -70,7 +70,7 @@ const LinkContainer = styled.div`
     margin: 0px 20px;
     box-sizing: border-box;
 
-    @media (max-width: ${dimensions.md}) {
+    @media (max-width: ${dimensions.lg}) {
         display: none;
     }
 `;
@@ -125,7 +125,7 @@ const Register = styled(Link)`
     text-transform: capitalize;
     cursor: pointer;
     font-weight: bold;
-    background: black;
+    background: ${props => props.background};
     color: white;
     transition: .3s ease;
     padding: 6px 16px;
@@ -152,7 +152,7 @@ const Menu = styled.div`
         scale: 1.1;
     }
 
-    @media (max-width: ${dimensions.md}) {
+    @media (max-width: ${dimensions.lg}) {
         display: block;
     }
 `;
@@ -198,13 +198,13 @@ function Navbar({ theme, menuVisible, handleMenu }) {
                     <Menu background={theme.lightAccent} onClick={() => handleMenu(true)} />
                     <MenuContainer >
                         <LinkContainer>
-                            <NavbarLink background={theme.blue} to="/sessoes"><span>sessões</span> <div /></NavbarLink>
+                            <NavbarLink background={theme.blue} to="/"><span>página inicial</span> <div /></NavbarLink>
                         </LinkContainer>
                         <LinkContainer>
                             <NavbarLink background={theme.blue} to="/sessoes"><span>oferta formativa</span> <div /></NavbarLink>
                         </LinkContainer>
                         <LinkContainer>
-                            <NavbarLink background={theme.blue} to="/sessoes"><span>produtos</span> <div /></NavbarLink>
+                            <NavbarLink background={theme.blue} to="/produtos"><span>produtos</span> <div /></NavbarLink>
                         </LinkContainer>
                         <LinkContainer>
                             <NavbarLink background={theme.blue} to="/contact"><span>contactos</span> <div /></NavbarLink>
@@ -213,7 +213,7 @@ function Navbar({ theme, menuVisible, handleMenu }) {
                             <NavbarLink background={theme.blue} to="/sobre"><span>acerca de mim</span> <div /></NavbarLink>
                         </LinkContainer>
                         <LinkContainer>
-                            <Register accent={theme.blue} to="/login">a minha conta</Register>
+                            <Register background={theme.textAccent} to="/login">a minha conta</Register>
                         </LinkContainer>
                     </MenuContainer>
                 </FlexItem>

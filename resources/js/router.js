@@ -8,7 +8,7 @@ import About from "./components/pages/About";
 import Contact from "./components/pages/Contact";
 import Authentication from "./components/pages/Authentication";
 import Layout from "./components/Layout";
-import Session from "./components/pages/Session";
+import Products from "./components/pages/Products";
 import ScrollToTop from "./components/common/ScrollToTop";
 import PainelLayout from "./components/dashboard/PainelLayout";
 import Courses from "./components/dashboard/pages/Courses";
@@ -20,7 +20,7 @@ function Router() {
         <BrowserRouter history={history}>
             <ScrollToTop>
                 <Routes>
-                    <Route exact path="/sessoes" element={<Layout><Session /></Layout>} />
+                    <Route exact path="/produtos" element={<Layout><Products /></Layout>} />
                     <Route exact path="/sobre" element={<Layout><About /></Layout>} />
                     <Route exact path="/contact" element={<Layout><Contact /></Layout>} />
                     <Route exact path="/painel" element={<Layout minimalist><PainelLayout><Courses /></PainelLayout></Layout>} />

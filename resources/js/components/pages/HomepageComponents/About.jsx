@@ -7,10 +7,13 @@ import { underlineStyle } from '../../../styles';
 const Container = styled.section`
     margin: 200px auto;
 
-    @media (max-width: ${dimensions.md}) {
-        margin: 50px auto;
+    @media (max-width: ${dimensions.lg}) {
         padding: 0px 20px;
         box-sizing: border-box;
+    }
+
+    @media (max-width: ${dimensions.md}) {
+        margin: 50px auto;
     }
 `;
 
@@ -29,7 +32,7 @@ const ContentContainer = styled(Row)`
     img {
         width: 40%;
 
-        @media (max-width: ${dimensions.md}) {
+        @media (max-width: ${dimensions.lg}) {
             width: 100%;
         }
     }
@@ -52,7 +55,7 @@ const Info = styled.div`
         opacity: .7;
     }
 
-    @media (max-width: ${dimensions.md}) {
+    @media (max-width: ${dimensions.lg}) {
         padding: 0px;
         width: 100%;
 

@@ -37,19 +37,23 @@ export const baseInputStyles = css`
 `;
 
 export const BlackButton = styled.div`
-    padding: 14px 19px;
-    box-sizing: border-box;
+    display: block;
+    font-size: 18px;
+    text-transform: capitalize;
     cursor: pointer;
-    transition: all .4s ease;
-    border-radius: ${borderRadius};
-    font-weight: 900;
-    font-size: 16px;
+    font-weight: bold;
+    border: 2px solid black;
+    border-color:${props => props.background ? props.background : "black"};
     background:${props => props.background ? props.background : "black"};
-    color: ${props => props.background ? "black" : "white"};;
-    border: 0px;
+    color: ${props => props.color ? props.color : "white"};
+    transition: all .3s ease;
+    padding: 6px 16px;
+    box-sizing: border-box;
 
     &:hover {
-        box-shadow: ${props => "6px 6px 0px 0px " + props.shadow};
+        border-color: ${props => props.background ? props.background : "black"};
+        color: ${props => props.background ? props.background : "white"};
+        background: transparent;
     }
   
 `;

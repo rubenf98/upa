@@ -32,6 +32,7 @@ const Container = styled.div`
         .Typewriter__wrapper, .Typewriter__cursor {
             font-size: 6vw !important;
             font-family: 'DM Serif Display';
+            line-height: 80px;
 
             @media (max-width: ${dimensions.md}) {
                 font-size: 8vw !important;

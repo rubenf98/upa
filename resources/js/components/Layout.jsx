@@ -55,6 +55,7 @@ class Layout extends Component {
                 lightAccent: "#A9EAEB",
                 opacityLightAccent: "#A9EAEB4D",
                 darkAccent: "#2B444F",
+                textAccent: "#38CDD0",
             }}>
                 <Container background="white">
                     <NavbarMenu />

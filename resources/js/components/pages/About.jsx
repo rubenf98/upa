@@ -40,9 +40,6 @@ const ImageContainer = styled.div`
     @media (max-width: ${dimensions.lg}) {
         width: 70%;
         margin-bottom: 80px;
-    }
-
-    @media (max-width: ${dimensions.md}) {
         order: 2;
     }
 
@@ -63,12 +60,9 @@ const TitleContainer = styled.div`
     box-sizing: border-box;
     position: relative;
 
-    @media (max-width: ${dimensions.md}) {
-        order: 1;
-    }
-
     @media (max-width: ${dimensions.lg}) {
         width: 100%;
+        order: 1;
     }
 
     div {

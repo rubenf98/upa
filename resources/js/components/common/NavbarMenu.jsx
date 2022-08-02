@@ -53,7 +53,7 @@ const Menu = styled.div`
         scale: 1.1;
     }
 
-    @media (max-width: ${dimensions.md}) {
+    @media (max-width: ${dimensions.lg}) {
         display: block;
     }
 `;
