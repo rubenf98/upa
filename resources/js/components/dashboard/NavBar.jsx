@@ -5,10 +5,12 @@ import Row from "antd/es/row"
 import { StyledButton } from "../../styles";
 import { Link, useNavigate } from "react-router-dom";
 import { connect } from "react-redux";
+import { dimensions, maxWidth } from "../../helper";
 
 
 const Container = styled(Row)`
-    width: 80%;
+    width: 100%;
+    max-width: ${maxWidth};
     height: 100px;
     margin: auto;
     display: flex;
@@ -16,23 +18,45 @@ const Container = styled(Row)`
     align-items: center;
 
     img {
-        height: 70px;
+        height: 60px;
     }
 
     .button-container{
-        min-width: 150px;
+        display: flex;
+        justify-content: flex-start;
         text-align: center;
-        
+        width: 100%;
     }
 `;
 
-const CustomLink = styled.div`
-    color: white;
+
+const MenuContainer = styled.div`
+    display: flex;
+    align-items: center;
+`;
+
+const LinkContainer = styled.div`
+    position: relative;
+    margin: 0px 20px;
+    box-sizing: border-box;
+
+    @media (max-width: ${dimensions.lg}) {
+        display: none;
+    }
+`;
+
+const NavbarLink = styled(Link)`
+    display: block;
+    font-size: 16px;
+    text-transform: capitalize;
+    cursor: pointer;
+    color: black;
+
     &:hover {
-        color: white;
+        color: black;
+        font-weight: bold;
     }
 `;
-
 
 function NavBar({ theme, logout }) {
     var navigate = useNavigate();
@@ -53,11 +77,22 @@ function NavBar({ theme, logout }) {
             <Link to="/painel">
                 <img src="/image/logo.svg" />
             </Link>
-            <StyledButton className="button-container" shadow={theme.blue}>
-                <CustomLink onClick={handleLogout}>Sair</CustomLink>
-
-            </StyledButton>
-
+            <MenuContainer >
+                <LinkContainer>
+                    <NavbarLink background={theme.blue} to="/painel/"><span>página inicial</span> <div /></NavbarLink>
+                </LinkContainer>
+                <LinkContainer>
+                    <NavbarLink background={theme.blue} to="/painel/sessoes"><span>oferta formativa</span> <div /></NavbarLink>
+                </LinkContainer>
+                <LinkContainer style={{ marginRight: "40px" }}>
+                    <NavbarLink background={theme.blue} to="/painel/produtos"><span>produtos</span> <div /></NavbarLink>
+                </LinkContainer>
+                <div onClick={handleLogout}>
+                    <StyledButton className="button-container">
+                        Sair
+                    </StyledButton>
+                </div>
+            </MenuContainer>
         </Container>
     )
 }

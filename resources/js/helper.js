@@ -13,7 +13,7 @@ export const dimensions = {
 
 export const fonts = {
     "title": "DM Serif Display",
-    "text": "Poppins",
+    "text": "Merriweather",
 };
 
 export function getCarouselBreakpoints(aItems, aBreakpoints = [[0, 600], [600, 1024], [1024, 1400], [1400, 1800], [1800, 100000]], aItemsToSlide = [1, 1, 1, 1, 1]) {

@@ -36,7 +36,9 @@ const MobileMessage = styled.div`
 
 
 const Content = styled.div`
-    margin-top: 180px;
+    width: 100%;
+    max-width: ${maxWidth};
+    margin: auto;
     
 `;
 
@@ -46,7 +48,7 @@ function PainelLayout({ children }) {
     return (
         <PageContainer>
             <WhiteBackground />
-            
+
 
             <NavBar />
             <Content>

@@ -205,7 +205,7 @@ function Header({ theme }) {
                         </div>
                     </div>
                     <div>
-                        <img src="/image/homepage/header_session_1920.jpg" loading="lazy" />
+                        <img src="/image/homepage/header_session_3000.jpg" loading="lazy" />
                         <div className="carousel-information">
                             <h3>Produtos</h3>
                             <p>Jogos, e-books e exibições de powerpoint de atividades para estimular as habilidades cognitivas</p>

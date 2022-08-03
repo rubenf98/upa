@@ -3,15 +3,10 @@ import Col from "antd/es/col"
 import React, { Component } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import moment from "moment";
 import { dimensions } from "../../../helper";
 
 const Container = styled.div`
     width: 100%;
-    min-height: 100%;
-    background: rgb(245, 245, 245);
-    flex: 1;
-
 `;
 
 const CardContent = styled.div`
@@ -43,8 +38,8 @@ const CardContent = styled.div`
     p {
         font-weight: bold;
         margin: 15px auto;
-        font-size: 1.2em;
-        color: #222222;
+        font-size:14px;
+        opacity: .7;
     }
 `;
 
@@ -66,21 +61,6 @@ const SubContainer = styled.div`
     }
 `;
 
-const Footer = styled.div`
-    margin-top: 100px;
-    img {
-        width: 120px;
-        margin: auto;
-        display: block;
-    }
-
-    p {
-        text-align: center;
-        margin: 20px auto;
-    }
-
-`;
-
 
 const CardContainer = ({ img, text, to }) => (
     <CardContent>
@@ -98,32 +78,21 @@ class Painel extends Component {
                 <SubContainer>
                     <h1> Bem vindo de volta ao painel de controlo</h1>
                     <Content type="flex" align="middle" justify="space-around">
-                        <Col md={7} sm={24}>
+                        <Col md={8} xs={24}>
                             <CardContainer
                                 img="/icon/dashboard/reservation.svg"
-                                text="Listagem de reservas"
-                                to="/painel/reservas"
+                                text="Oferta formativa"
+                                to="/painel/sessoes"
                             />
                         </Col>
-                        <Col md={7} sm={24}>
+                        <Col md={8} xs={24}>
                             <CardContainer
                                 img="/icon/dashboard/feedback.svg"
-                                text="Avaliações na plataforma"
-                                to="/painel/avaliacao"
-                            />
-                        </Col>
-                        <Col md={7} sm={24}>
-                            <CardContainer
-                                img="/icon/dashboard/contact.svg"
-                                text="Mensagens de clientes"
-                                to="/painel/contacto"
+                                text="Produtos"
+                                to="/painel/produtos"
                             />
                         </Col>
                     </Content>
-                    <Footer>
-                        <img src="/logo.png" alt="logo" />
-                        <p>© {moment().year()} Unidos Pela Atividade. All Rights Reserved.</p>
-                    </Footer>
                 </SubContainer>
             </Container>
         );

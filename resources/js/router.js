@@ -15,6 +15,7 @@ import Courses from "./components/dashboard/pages/Courses";
 import Course from "./components/dashboard/pages/Course";
 import Session from "./components/pages/Session";
 import Sessions from "./components/pages/Sessions";
+import Painel from "./components/dashboard/pages/Painel";
 export const history = createBrowserHistory();
 
 function Router() {
@@ -27,8 +28,9 @@ function Router() {
                     <Route exact path="/sessoes" element={<Layout><Sessions /></Layout>} />
                     <Route exact path="/sobre" element={<Layout><About /></Layout>} />
                     <Route exact path="/contact" element={<Layout><Contact /></Layout>} />
-                    <Route exact path="/painel" element={<Layout minimalist><PainelLayout><Courses /></PainelLayout></Layout>} />
-                    <Route exact path="/painel/sessao/:id" element={<Layout minimalist><PainelLayout><Course /></PainelLayout></Layout>} />
+                    <Route exact path="/painel" element={<Layout minimalist><PainelLayout><Painel /></PainelLayout></Layout>} />
+                    <Route exact path="/painel/sessoes" element={<Layout minimalist><PainelLayout><Courses /></PainelLayout></Layout>} />
+                    <Route exact path="/painel/sessoes/:id" element={<Layout minimalist><PainelLayout><Course /></PainelLayout></Layout>} />
                     <Route exact path="/login" element={<Layout minimalist><Authentication /></Layout>} />
                     <Route exact path="/" element={<Layout><Homepage /></Layout>} />
                 </Routes>

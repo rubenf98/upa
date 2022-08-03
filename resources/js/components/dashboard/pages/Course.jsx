@@ -7,12 +7,12 @@ const Container = styled.div`
 `;
 
 const Title = styled.h1`
-    font-size: 7vw;
+    font-size: 6vw;
     font-weight: 900;
     text-align: center;
     text-transform: uppercase;
     line-height: 100px;
-    margin: 0px 0px 150px 0px;
+    margin: 0px 0px 100px 0px;
 `;
 
 const Content = styled.div`

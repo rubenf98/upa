@@ -17,10 +17,9 @@ const Container = styled(Row)`
     }
 
     p {
-        font-size: 22px;
+        font-size: 14px;
         opacity: .7;
         text-align: center;
-        margin-top: auto;
         margin-top: 50px;
     }
 
