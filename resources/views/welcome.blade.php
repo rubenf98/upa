@@ -21,7 +21,8 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Poppins:wght@100;400;700&display=swap"
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Merriweather:ital,wght@0,300;0,400;1,700&display=swap"
         rel="stylesheet">
 
     <meta name="keywords"
@@ -38,12 +39,16 @@
     body,
     #index {
         height: 100%;
-        font-family: 'Poppins', sans-serif;
+        font-family: 'Merriweather', serif;
         scroll-behavior: smooth;
     }
 
-    h1 {
+    h1, h2, h3 {
         font-family: 'DM Serif Display', serif;
+    }
+
+    p {
+        opacity: .9;
     }
 
     body {

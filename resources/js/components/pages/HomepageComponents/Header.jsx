@@ -48,6 +48,10 @@ const TitleContainer = styled.div`
             font-size: 33px;
             line-height: 36px;
         }
+
+        span {
+            color: ${props => props.accent}
+        }
     }
 
     h2 {
@@ -187,8 +191,8 @@ const CustomCarousel = styled(Carousel)`
 function Header({ theme }) {
     return (
         <Container>
-            <TitleContainer titleColor={theme.darkAccent}>
-                <h1>Recursos para profissionais <br /> que trabalham com idosos</h1>
+            <TitleContainer titleColor={theme.darkAccent} accent={theme.textAccent}>
+                <h1>Recursos para profissionais <br /> que trabalham com <span>idosos</span></h1>
                 <h2>Nesta página encontrará sessões de dança coreográfica, jogos musicais na mesa, e-books de exercícios de estimulação cognitiva e muito mais que o ajudará a enriquecer o dia-a-dia do seu grupo de idosos. </h2>
             </TitleContainer>
             <CarouselContainer>

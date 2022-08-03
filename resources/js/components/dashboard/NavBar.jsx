@@ -2,7 +2,7 @@ import React from "react";
 import styled, { withTheme } from "styled-components";
 import { logout, setAuthorizationToken } from "../../redux/auth/actions";
 import Row from "antd/es/row"
-import { BlackButton } from "../../styles";
+import { StyledButton } from "../../styles";
 import { Link, useNavigate } from "react-router-dom";
 import { connect } from "react-redux";
 
@@ -53,10 +53,10 @@ function NavBar({ theme, logout }) {
             <Link to="/painel">
                 <img src="/image/logo.svg" />
             </Link>
-            <BlackButton className="button-container" shadow={theme.blue}>
+            <StyledButton className="button-container" shadow={theme.blue}>
                 <CustomLink onClick={handleLogout}>Sair</CustomLink>
 
-            </BlackButton>
+            </StyledButton>
 
         </Container>
     )

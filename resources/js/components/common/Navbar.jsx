@@ -7,13 +7,14 @@ import { dimensions, maxWidth, navbarHeight } from '../../helper';
 import { connect } from "react-redux";
 import { handleMenu } from "../../redux/application/actions";
 import AnimationContainer from './AnimationContainer';
+import { StyledButton } from '../../styles';
 
 const Container = styled.div`
     height: ${props => props.visible ? navbarHeight : "0px"}; 
     width: 100%;
     z-index: 100;
     background-color: ${props => props.background};
-    padding: 0px 200px;
+    padding: 0px;
     box-sizing: border-box;
     position: fixed;
     top: 0;
@@ -51,7 +52,7 @@ const Logo = styled(Link)`
     text-decoration: none;
 
     img {
-        height: 60px;
+        height: 50px;
 
         @media (max-width: ${dimensions.md}) {
             height: 50px;
@@ -171,6 +172,8 @@ function Navbar({ theme, menuVisible, handleMenu }) {
             } else if (y < window.scrollY) {
                 setScrollDirection(0);
             }
+        } else {
+            setScrollDirection(1);
         }
         setY(window.scrollY)
     }, [y]);
@@ -213,7 +216,10 @@ function Navbar({ theme, menuVisible, handleMenu }) {
                             <NavbarLink background={theme.blue} to="/sobre"><span>acerca de mim</span> <div /></NavbarLink>
                         </LinkContainer>
                         <LinkContainer>
-                            <Register background={theme.textAccent} to="/login">a minha conta</Register>
+                            <Link to="/login">
+                                <StyledButton>A Minha Conta</StyledButton>
+                            </Link>
+
                         </LinkContainer>
                     </MenuContainer>
                 </FlexItem>

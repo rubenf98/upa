@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import styled, { withTheme } from "styled-components";
 import { borderRadius, dimensions, maxWidth, navbarHeight } from '../../../helper';
-import { BlackButton } from '../../../styles';
+import { StyledButton } from '../../../styles';
 import Video from '../HomepageComponents/Video';
 
 
@@ -174,9 +174,9 @@ function SessionDescription({ theme, content, reversed }) {
                 </RadioContainer>
                 <br />
                 <div className='submit-container'>
-                    <BlackButton shadow={theme.blue}>
+                    <StyledButton shadow={theme.blue}>
                         Adicionar ao Carrinho <img src="/icon/shopping-cart.svg" alt="cesto de compras" />
-                    </BlackButton>
+                    </StyledButton>
                 </div>
                 <br />
 

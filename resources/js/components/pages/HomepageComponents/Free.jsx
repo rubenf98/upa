@@ -40,9 +40,12 @@ const RegistrationContainer = styled.div`
 const Container = styled.section`
     background-color: ${props => props.background};
     margin: 200px 0px;
+    padding: 30px 0px;
+    box-sizing: border-box;
 
     @media (max-width: ${dimensions.md}) {
         margin: 50px 0px;
+        padding: 0px;
     }
 `;
 

@@ -6,7 +6,7 @@ import Input from "antd/es/input"
 import Col from "antd/es/col"
 import { dimensions, maxWidth, navbarHeight } from "../../helper";
 import axios from "axios";
-import { BlackButton, CustomInput, CustomTextArea, underlineStyle } from '../../styles';
+import { StyledButton, CustomInput, CustomTextArea, underlineStyle } from '../../styles';
 
 const Container = styled.div`
     min-height: calc(100vh - ${navbarHeight});
@@ -55,6 +55,7 @@ const Title = styled.div`
 
         span {
             font-weight: 900;
+            color: ${props => props.underlineColor};
         }
     }
 
@@ -214,9 +215,9 @@ function Contact({ theme }) {
                     </ContactForm>
 
                     <ButtonContainer>
-                        <BlackButton background={theme.textAccent} hover={theme.darkAccent} color="white">
+                        <StyledButton background={theme.textAccent} hover={theme.darkAccent} color="white">
                             Submeter
-                        </BlackButton>
+                        </StyledButton>
                     </ButtonContainer>
                 </FormContainer>
 

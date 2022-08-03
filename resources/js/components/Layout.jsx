@@ -52,10 +52,10 @@ class Layout extends Component {
             <ThemeProvider theme={{
                 text: '#000000',
                 background: '#ffffff',
-                lightAccent: "#A9EAEB",
-                opacityLightAccent: "#A9EAEB4D",
-                darkAccent: "#2B444F",
-                textAccent: "#38CDD0",
+                lightAccent: "#93ecee",
+                opacityLightAccent: "#b9ebec4d",
+                darkAccent: "#1a4355",
+                textAccent: "#289294",
             }}>
                 <Container background="white">
                     <NavbarMenu />

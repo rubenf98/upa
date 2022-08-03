@@ -3,7 +3,7 @@ import React from 'react'
 import { Link } from 'react-router-dom';
 import styled, { withTheme } from "styled-components";
 import { dimensions, fonts, maxWidth } from '../../../helper';
-import { BlackButton, underlineStyle } from '../../../styles';
+import { StyledButton, underlineStyle } from '../../../styles';
 
 const Container = styled.section`
     margin: 100px auto;

@@ -129,9 +129,7 @@ const InfoContainer = styled.section`
             margin-bottom: 30px;
             text-align: justify;
             font-size: 18px;
-            line-height: 23px;
-            letter-spacing: 0.066em;
-            font-weight: 400;
+            opacity: .9;
 
             @media (max-width: ${dimensions.md}) {
                 font-size: 16px;
@@ -179,7 +177,7 @@ const ImportanceContainer = styled.section`
         h2 {
             font-size: 48px;
             font-family: ${fonts.title};
-            font-weight: 400;
+            line-height: 55px;
 
             @media (max-width: ${dimensions.md}) {
                 text-align: center;
@@ -190,10 +188,15 @@ const ImportanceContainer = styled.section`
 
         p {
             font-size: 18px;
+            text-align: justify;
+            opacity: .9;
+            padding-right: 20px;
+            box-sizing: border-box;
 
             @media (max-width: ${dimensions.md}) {
                 font-size: 16px;
                 text-align: justify;
+                padding: 0px;
             }
         }
     }

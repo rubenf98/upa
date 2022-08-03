@@ -2,10 +2,7 @@ import React from 'react'
 import styled from "styled-components";
 import Free from './HomepageComponents/Free';
 import Header from './HomepageComponents/Header';
-import Information from './HomepageComponents/Information';
 import About from './HomepageComponents/About';
-import Faq from './Faq';
-import Benefits from './HomepageComponents/Benefits';
 import Resources from './HomepageComponents/Resources';
 import Typewriter from 'typewriter-effect';
 import { dimensions, maxWidth } from '../../helper';
@@ -21,6 +18,8 @@ const Container = styled.div`
         padding: 0px 10px;
         box-sizing: border-box;
 
+       
+
         @media (max-width: ${dimensions.md}) {
             min-height: 120px;
             padding: 0px;
@@ -33,6 +32,10 @@ const Container = styled.div`
             font-size: 6vw !important;
             font-family: 'DM Serif Display';
             line-height: 80px;
+
+            @media (min-width: ${dimensions.xxl}) {
+                font-size: 120px !important;
+            }
 
             @media (max-width: ${dimensions.md}) {
                 font-size: 8vw !important;
@@ -54,44 +57,134 @@ function Homepage() {
             <About />
             <Typewriter
                 onInit={(typewriter) => {
-                    typewriter.typeString('Atividades com recurso a <br /> movimento')
+                    typewriter.pasteString('Atividades de estimulação com recurso a ')
+                        .typeString('movimento')
                         .pauseFor(500)
-                        .deleteChars(9)
-                        .typeString("memória")
-                        .pauseFor(500)
-                        .deleteChars(7)
-                        .typeString("música")
+                        .deleteChars(8)
+                        .typeString("emória")
                         .pauseFor(500)
                         .deleteChars(6)
-                        .typeString("movimento")
+                        .typeString("úsica")
                         .pauseFor(500)
-                        .deleteChars(9)
-                        .typeString("memória")
+                        .deleteChars(5)
+                        .typeString("ovimento")
                         .pauseFor(500)
-                        .deleteChars(7)
-                        .typeString("música")
-                        .pauseFor(500)
-                        .deleteChars(6)
-                        .typeString("movimento")
-                        .pauseFor(500)
-                        .deleteChars(9)
-                        .typeString("memória")
-                        .pauseFor(500)
-                        .deleteChars(7)
-                        .typeString("música")
+                        .deleteChars(8)
+                        .typeString("emória")
                         .pauseFor(500)
                         .deleteChars(6)
-                        .typeString("movimento")
+                        .typeString("úsica")
                         .pauseFor(500)
-                        .deleteChars(9)
-                        .typeString("memória")
+                        .deleteChars(5)
+                        .typeString("ovimento")
                         .pauseFor(500)
-                        .deleteChars(7)
-                        .typeString("música")
+                        .deleteChars(8)
+                        .typeString("emória")
+                        .pauseFor(500)
+                        .deleteChars(6)
+                        .typeString("úsica")
+                        .pauseFor(500)
+                        .deleteChars(5)
+                        .typeString("ovimento")
+                        .pauseFor(500)
+                        .deleteChars(8)
+                        .typeString("emória")
+                        .pauseFor(500)
+                        .deleteChars(6)
+                        .typeString("úsica")
+                        .pauseFor(500)
+                        .deleteChars(5)
+                        .typeString("ovimento")
+                        .pauseFor(500)
+                        .deleteChars(8)
+                        .typeString("emória")
+                        .pauseFor(500)
+                        .deleteChars(6)
+                        .typeString("úsica")
+                        .pauseFor(500)
+                        .deleteChars(5)
+                        .typeString("ovimento")
+                        .pauseFor(500)
+                        .deleteChars(8)
+                        .typeString("emória")
+                        .pauseFor(500)
+                        .deleteChars(6)
+                        .typeString("úsica")
+                        .pauseFor(500)
+                        .deleteChars(5)
+                        .typeString("ovimento")
+                        .pauseFor(500)
+                        .deleteChars(8)
+                        .typeString("emória")
+                        .pauseFor(500)
+                        .deleteChars(6)
+                        .typeString("úsica")
+                        .pauseFor(500)
+                        .deleteChars(5)
+                        .typeString("ovimento")
+                        .pauseFor(500)
+                        .deleteChars(8)
+                        .typeString("emória")
+                        .pauseFor(500)
+                        .deleteChars(6)
+                        .typeString("úsica")
+                        .pauseFor(500)
+                        .deleteChars(5)
+                        .typeString("ovimento")
+                        .pauseFor(500)
+                        .deleteChars(8)
+                        .typeString("emória")
+                        .pauseFor(500)
+                        .deleteChars(6)
+                        .typeString("úsica")
+                        .pauseFor(500)
+                        .deleteChars(5)
+                        .typeString("ovimento")
+                        .pauseFor(500)
+                        .deleteChars(8)
+                        .typeString("emória")
+                        .pauseFor(500)
+                        .deleteChars(6)
+                        .typeString("úsica")
+                        .pauseFor(500)
+                        .deleteChars(5)
+                        .typeString("ovimento")
+                        .pauseFor(500)
+                        .deleteChars(8)
+                        .typeString("emória")
+                        .pauseFor(500)
+                        .deleteChars(6)
+                        .typeString("úsica")
+                        .pauseFor(500)
+                        .deleteChars(5)
+                        .typeString("ovimento")
+                        .pauseFor(500)
+                        .deleteChars(8)
+                        .typeString("emória")
+                        .pauseFor(500)
+                        .deleteChars(6)
+                        .typeString("úsica")
+                        .pauseFor(500)
+                        .deleteChars(5)
+                        .typeString("ovimento")
+                        .pauseFor(500)
+                        .deleteChars(8)
+                        .typeString("emória")
+                        .pauseFor(500)
+                        .deleteChars(6)
+                        .typeString("úsica")
+                        .pauseFor(500)
+                        .deleteChars(5)
+                        .typeString("ovimento")
+                        .pauseFor(500)
+                        .deleteChars(8)
+                        .typeString("emória")
+                        .pauseFor(500)
+                        .deleteChars(6)
+                        .typeString("úsica")
                         .pauseFor(1000)
                         .start();
                 }}
-
             />
             <Free />
             <Resources />

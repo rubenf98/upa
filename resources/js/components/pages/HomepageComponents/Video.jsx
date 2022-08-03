@@ -3,15 +3,11 @@ import React, { useState } from 'react'
 import styled, { withTheme } from "styled-components";
 import { borderRadius, maxWidth } from '../../../helper';
 
-const Container = styled.section`
-    
-`;
+
 const Thumbnail = styled.div`
     width: 100%;
-    max-width: ${maxWidth};
-    margin: 50px auto;
-    border-radius: ${borderRadius};
-    box-shadow: 0 0 20px 0 rgba(0,0,0,.2);
+    height: 100%;
+    margin: auto;
     cursor: pointer;
     position: relative;
 
@@ -34,6 +30,7 @@ const Thumbnail = styled.div`
         padding: 10px;
         box-sizing: border-box;
         transition: all .3s ease;
+        background-color: transparent;
     }
 
     &:hover {
@@ -41,6 +38,7 @@ const Thumbnail = styled.div`
             width: 90px;
             height: 90px;
         }
+        
         .thumbnail {
             filter: brightness(.7);
         }
@@ -58,29 +56,31 @@ const VideoContainer = styled(Modal)`
     }
 
     video {
+        width: 100%;
+        height: 100%;
         cursor: pointer;
         object-fit: cover;
     }
 `;
 
-function Video({ theme, video = "/video/promocional.mp4", thumbnail = "/image/homepage/header.jpg" }) {
+function Video({ video = "/video/promocional.mp4", thumbnail = "/image/homepage/header.jpg" }) {
     const [videoVisibility, setVideoVisibility] = useState(false)
     return (
-        <Container background={theme.yellow}>
+        <>
 
             <Thumbnail onClick={() => setVideoVisibility(true)}>
                 <img className='thumbnail' src={thumbnail} />
                 <img className='play' src="/icon/play.svg" />
             </Thumbnail>
 
-            <VideoContainer maskStyle={{ background: "rgba(0,0,0,.8)" }} centered width={"80%"} footer={null} visible={videoVisibility} onCancel={() => setVideoVisibility(false)}>
+            <VideoContainer maskStyle={{ background: "rgba(0,0,0,.7)" }} centered width={"80%"} footer={null} visible={videoVisibility} onCancel={() => setVideoVisibility(false)}>
                 <video autoPlay muted controls width="100%" poster={thumbnail}>
                     <source src={video} type="video/mp4" />
                     Your browser does not support the video tag.
                 </video>
             </VideoContainer>
 
-        </Container>
+        </>
     )
 }
 

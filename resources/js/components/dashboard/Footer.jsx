@@ -2,7 +2,7 @@ import React from "react";
 import styled, { withTheme } from "styled-components";
 import { dimensions, colors } from "../../helper";
 import Row from "antd/es/row"
-import { BlackButton } from "../../styles";
+import { StyledButton } from "../../styles";
 
 const Container = styled(Row)`
     width: 100%;
@@ -38,9 +38,9 @@ function Footer({ theme }) {
             <div>
                 <h3>Não perca os próximos lançamentos! </h3>
 
-                <BlackButton className="button-container" shadow={theme.blue}>
+                <StyledButton className="button-container" shadow={theme.blue}>
                     RECEBER NOTIFICAÇÃO
-                </BlackButton>
+                </StyledButton>
 
                 <p>© 2022 Unidos Pela Atividade. All Rights Reserved.</p>
             </div>

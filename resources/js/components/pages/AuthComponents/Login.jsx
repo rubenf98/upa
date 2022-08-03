@@ -1,5 +1,5 @@
 import React from 'react'
-import { BlackButton, CustomInput, CustomPassword } from '../../../styles';
+import { StyledButton, CustomInput, CustomPassword } from '../../../styles';
 import Col from "antd/es/col"
 import Row from "antd/es/row"
 import Form from "antd/es/form"
@@ -117,9 +117,9 @@ function Login({ form, onFinish, theme, setMode }) {
                 </ContactForm>
 
                 <ButtonContainer>
-                    <BlackButton shadow={theme.blue} onClick={() => onFinish(form.getFieldsValue())}>
+                    <StyledButton shadow={theme.blue} onClick={() => onFinish(form.getFieldsValue())}>
                         Iniciar sessão
-                    </BlackButton>
+                    </StyledButton>
                 </ButtonContainer>
             </FormContainer>
         </>

@@ -1,5 +1,5 @@
 import React from 'react'
-import { BlackButton, CustomInput, CustomPassword } from '../../../styles';
+import { StyledButton, CustomInput, CustomPassword } from '../../../styles';
 import Col from "antd/es/col"
 import Row from "antd/es/row"
 import Form from "antd/es/form"
@@ -156,9 +156,9 @@ function Register({ form, onFinish, theme, setMode }) {
 
 
                 <ButtonContainer>
-                    <BlackButton shadow={theme.blue} onClick={() => onFinish(form.getFieldsValue())}>
+                    <StyledButton shadow={theme.blue} onClick={() => onFinish(form.getFieldsValue())}>
                         Registar
-                    </BlackButton>
+                    </StyledButton>
                 </ButtonContainer>
             </FormContainer>
         </>

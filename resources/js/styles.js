@@ -36,24 +36,59 @@ export const baseInputStyles = css`
     }
 `;
 
-export const BlackButton = styled.div`
-    display: block;
-    font-size: 18px;
-    text-transform: capitalize;
+export const StyledButton = styled.div`
+    box-shadow: inset 0 0 0 2px #289294;
+    color: #289294;
+    transition: color 0.25s 0.0833333333s;
+    position: relative;
+    background: none;
+    border: none;
     cursor: pointer;
-    font-weight: bold;
-    border: 2px solid black;
-    border-color:${props => props.background ? props.background : "black"};
-    background:${props => props.background ? props.background : "black"};
-    color: ${props => props.color ? props.color : "white"};
-    transition: all .3s ease;
-    padding: 6px 16px;
+    font-size: ${props => props.fontSize ? props.fontSize : "18px"};
+    padding: 8px 18px;
     box-sizing: border-box;
+    font-weight: bold;
+    
+    &::before, &::after {
+        border: 0 solid transparent;
+        box-sizing: border-box;
+        content: '';
+        pointer-events: none;
+        position: absolute;
+        width: 0;
+        height: 0;
+        bottom: 0;
+        right: 0;
+    }
+
+    &::before {
+        border-bottom-width: 4px;
+        border-left-width: 4px;
+    }
+
+    &::after {
+        border-top-width: 4px;
+        border-right-width: 4px;
+    }
 
     &:hover {
-        border-color: ${props => props.background ? props.background : "black"};
-        color: ${props => props.background ? props.background : "white"};
-        background: transparent;
+        color: #1a4355;
+
+        &::before, &::after {
+            border-color: #1a4355;
+            transition: border-color 0s, width 0.25s, height 0.25s;
+            width: 100%;
+            height: 100%;
+        }
+
+        &::before {
+            transition-delay: 0s, 0s, 0.25s;
+        }
+
+        &::after {
+            transition-delay: 0s, 0.25s, 0s;
+        }
+
     }
   
 `;
