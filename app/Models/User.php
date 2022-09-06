@@ -10,6 +10,16 @@ class User extends Authenticatable implements JWTSubject
 {
     use Notifiable;
 
+    public function ebooks()
+    {
+        return $this->morphedByMany(Ebook::class, 'userable', 'user_has_items');
+    }
+
+    public function courses()
+    {
+        return $this->morphedByMany(Course::class, 'userable', 'user_has_items');
+    }
+
     public function roles()
     {
         return $this->belongsToMany(Role::class, 'users_has_roles');
@@ -18,10 +28,7 @@ class User extends Authenticatable implements JWTSubject
     {
         return $this->belongsTo(Transaction::class);
     }
-    public function courses()
-    {
-        return $this->belongsToMany(Course::class, 'user_has_courses');
-    }
+
     protected $fillable = [
         'name',
         'email',

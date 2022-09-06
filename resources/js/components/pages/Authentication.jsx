@@ -1,11 +1,11 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import styled, { ThemeContext } from "styled-components";
 import { login, register, setAuthorizationToken } from "../../redux/auth/actions";
 import { dimensions, maxWidth } from "../../helper";
 import Form from "antd/es/form"
 import { useNavigate } from 'react-router-dom'
 import { connect } from "react-redux";
-
+import { useSearchParams } from "react-router-dom";
 import Login from "./AuthComponents/Login";
 import { Link } from "react-router-dom";
 import Register from "./AuthComponents/Register";
@@ -98,7 +98,17 @@ function Authentication({ register, login }) {
     const themeContext = useContext(ThemeContext);
     const [mode, setMode] = useState(2)
     const [form] = Form.useForm();
+    const [to, setTo] = useState("/painel")
+    const [searchParams, setSearchParams] = useSearchParams();
     var navigate = useNavigate();
+
+    useEffect(() => {
+        var destination = searchParams.get("to")
+        if (destination) {
+            setTo("/" + destination);
+        }
+
+    }, [])
 
     const handleLogin = (values) => {
 
@@ -107,7 +117,7 @@ function Authentication({ register, login }) {
                 const token = response.value.data.access_token;
                 localStorage.setItem("token", token);
                 setAuthorizationToken(token);
-                navigate("/painel");
+                navigate(to);
             }
         });
     };
@@ -118,15 +128,8 @@ function Authentication({ register, login }) {
                 form.resetFields();
             }
         });
-        // axios.post(`${window.location.origin}/api/contact`, values);
-
-        // setTimeout(() => {
-        //     form.resetFields();
-        //     setSubmitted(true);
-        // }, 300);
-
     };
-
+    
     return (
         <Container background={themeContext.lightAccent}>
             <WhiteBackground />

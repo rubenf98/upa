@@ -16,6 +16,7 @@ import Course from "./components/dashboard/pages/Course";
 import Session from "./components/pages/Session";
 import Sessions from "./components/pages/Sessions";
 import Painel from "./components/dashboard/pages/Painel";
+import Checkout from "./components/pages/Checkout";
 export const history = createBrowserHistory();
 
 function Router() {
@@ -23,6 +24,7 @@ function Router() {
         <BrowserRouter history={history}>
             <ScrollToTop>
                 <Routes>
+                    <Route exact path="/checkout" element={<Layout><Checkout /></Layout>} />
                     <Route exact path="/produtos" element={<Layout><Products /></Layout>} />
                     <Route exact path="/sessoes/:sessao" element={<Layout><Session /></Layout>} />
                     <Route exact path="/sessoes" element={<Layout><Sessions /></Layout>} />

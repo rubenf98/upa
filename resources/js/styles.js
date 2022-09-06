@@ -15,7 +15,7 @@ export const baseInputStyles = css`
     border-bottom: 2px solid #122038;
     background: transparent !important;
     color: black;
-    font-size: 18px;
+    font-size: 16px;
 
     .ant-input-status-error{
         background: transparent !important;  
@@ -32,7 +32,7 @@ export const baseInputStyles = css`
 
     &::placeholder {
         color: #122038;
-        font-size: 18px;
+        font-size: 16px;
     }
 `;
 
@@ -136,8 +136,8 @@ export const CustomPassword = styled(Input.Password)`
     }
 
     .ant-input::placeholder {
-        color: black;
-        font-size: 18px;
+        color: #122038;
+        font-size: 16px;
     }
 
     @media (max-width: ${dimensions.md}){

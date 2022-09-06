@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom';
 import styled, { withTheme } from "styled-components";
 import { dimensions, fonts, maxWidth, navbarHeight } from '../../helper';
 import { StyledButton } from "../../styles";
+import { addCartItem, openCart } from "../../redux/cart/actions";
+import { connect } from "react-redux";
 
 const Container = styled.div`
     width: 100%;
@@ -219,9 +221,14 @@ const SessionContent = styled.div`
         
 `;
 
-function Products({ theme }) {
+function Products({ theme, addCartItem, openCart }) {
 
-    const Session = ({ image, title, price, description }) => (
+    const addToCart = (element) => {
+        addCartItem(element);
+        openCart();
+    };
+
+    const Session = ({ image, title, price, description, cartName }) => (
         <SessionContent color={theme.darkAccent} background="#eaeaea">
             <div className='image-container'>
                 <img src={"/image/products/" + image + ".png"} alt="" />
@@ -230,11 +237,21 @@ function Products({ theme }) {
 
             <div className='info-container'>
                 <h4>{title}</h4>
-                <p className="price">{price}</p>
+                <p className="price">{price}.00€</p>
 
                 <p className="description">{description}</p>
                 <div className='button-container'>
-                    <StyledButton>Adicionar ao carrinho</StyledButton>
+                    <StyledButton
+                        onClick={() => addToCart({
+                            title: cartName,
+                            image: "/image/products/" + image + ".png",
+                            price: price,
+                            type: "App\\Models\\Ebook",
+                            id: 1,
+                        })}
+                    >
+                        Adicionar ao carrinho
+                    </StyledButton>
                 </div>
             </div>
         </SessionContent>
@@ -271,13 +288,15 @@ function Products({ theme }) {
                     <Col xs={24} md={12}>
                         <Session
                             title="Volume I"
-                            price="8.00€"
+                            cartName="50 Exercícios. Vol I"
+                            price={8}
                             image="50_volume1"
                             description="Memória, atenção, orientação espacial, cálculo, literatura escrita, criatividade"
                         />
                         <Session
                             title="Volume II"
-                            price="8.00€"
+                            cartName="50 Exercícios. Vol II"
+                            price={8}
                             image="50_volume2"
                             description="Memória, atenção, orientação espacial, cálculo, literatura escrita, criatividade"
                         />
@@ -288,13 +307,15 @@ function Products({ theme }) {
                     <Col xs={24} md={12}>
                         <Session
                             title="Volume III"
-                            price="8.00€"
+                            cartName="50 Exercícios. Vol III"
+                            price={8}
                             image="50_volume3"
                             description="Memória, atenção, orientação espacial, cálculo, literatura escrita, criatividade"
                         />
                         <Session
                             title="Volume IV"
-                            price="8.00€"
+                            cartName="50 Exercícios. Vol IV"
+                            price={8}
                             image="50_volume4"
                             description="Memória, atenção, orientação espacial, cálculo, literatura escrita, criatividade"
                         />
@@ -312,7 +333,8 @@ function Products({ theme }) {
                     <Col xs={24} md={12}>
                         <Session
                             title="Volume I"
-                            price="4.00€"
+                            cartName="24 Exercícios. Vol I"
+                            price={4}
                             image="24_volume1"
                             description="Memória, atenção, orientação espacial, cálculo, literatura escrita, criatividade"
                         />
@@ -326,4 +348,14 @@ function Products({ theme }) {
     )
 }
 
-export default withTheme(Products);
+const mapDispatchToProps = (dispatch) => {
+    return {
+        addCartItem: (element) => dispatch(addCartItem(element)),
+        openCart: () => dispatch(openCart()),
+        
+    };
+};
+
+
+
+export default connect(null, mapDispatchToProps)(withTheme(Products));

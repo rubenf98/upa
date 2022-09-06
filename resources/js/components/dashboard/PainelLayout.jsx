@@ -1,10 +1,10 @@
-import React, { Component } from "react";
+import React, { useEffect } from 'react'
+import { connect } from "react-redux";
+import { useNavigate } from 'react-router-dom'
 import styled, { withTheme } from "styled-components";
 import { dimensions, maxWidth } from "../../helper";
-import Courses from "./pages/Courses";
 import NavBar from "./NavBar";
 import Footer from "./Footer";
-import NavbarMenu from "../common/NavbarMenu";
 
 const PageContainer = styled.div`
     width: 100%;
@@ -44,7 +44,15 @@ const Content = styled.div`
 
 
 
-function PainelLayout({ children }) {
+function PainelLayout({ children, isAuthenticated }) {
+    var navigate = useNavigate();
+
+    useEffect(() => {
+        if (!isAuthenticated) {
+            navigate("/login");
+        }
+    }, [])
+
     return (
         <PageContainer>
             <WhiteBackground />
@@ -58,10 +66,16 @@ function PainelLayout({ children }) {
 
 
             <MobileMessage>
-                O painel de controlo não está disponível na versão mobile, utilize um computador para aceder a todas as funções.
+                O painel de controlo não está disponível na versão mobile, utilize um computador para aceder ao conteúdo.
             </MobileMessage>
         </PageContainer>
     )
 }
 
-export default withTheme(PainelLayout)
+function mapStateToProps(state) {
+    return {
+        isAuthenticated: state.auth.isAuthenticated,
+    };
+}
+
+export default connect(mapStateToProps, null)(withTheme(PainelLayout));

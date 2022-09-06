@@ -1,13 +1,29 @@
 import React, { useState, useEffect, useCallback } from 'react'
-import styled, { withTheme } from "styled-components";
+import styled, { withTheme, keyframes } from "styled-components";
 import {
     Link
 } from "react-router-dom";
 import { dimensions, maxWidth, navbarHeight } from '../../helper';
 import { connect } from "react-redux";
 import { handleMenu } from "../../redux/application/actions";
+import { openCart } from "../../redux/cart/actions";
 import AnimationContainer from './AnimationContainer';
 import { StyledButton } from '../../styles';
+
+const rotate = keyframes`
+  0% {
+    transform: translateY(-2px)
+  }
+
+  50% {
+    transform: translateY(2px)
+  }
+
+  100% {
+    transform: translateY(-2px)
+  }
+`;
+
 
 const Container = styled.div`
     height: ${props => props.visible ? navbarHeight : "0px"}; 
@@ -70,6 +86,7 @@ const LinkContainer = styled.div`
     position: relative;
     margin: 0px 20px;
     box-sizing: border-box;
+    
 
     @media (max-width: ${dimensions.lg}) {
         display: none;
@@ -159,7 +176,28 @@ const Menu = styled.div`
 `;
 
 
-function Navbar({ theme, menuVisible, handleMenu }) {
+const Cart = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    cursor: pointer;
+    animation: ${rotate} 3s ease-in-out infinite;
+
+    img {
+        width: 25px;
+    }
+    p {
+        text-align: center;
+        margin: 0px;
+        font-size: 16px;
+        line-height: 12px;
+        color: ${props => props.color};
+        font-weight: 900;
+    }
+`;
+
+
+function Navbar({ theme, openCart, handleMenu, cartItems }) {
     const [y,
         setY] = useState(document.scrollingElement.scrollHeight);
     const [scrollDirection,
@@ -201,9 +239,6 @@ function Navbar({ theme, menuVisible, handleMenu }) {
                     <Menu background={theme.lightAccent} onClick={() => handleMenu(true)} />
                     <MenuContainer >
                         <LinkContainer>
-                            <NavbarLink background={theme.blue} to="/"><span>página inicial</span> <div /></NavbarLink>
-                        </LinkContainer>
-                        <LinkContainer>
                             <NavbarLink background={theme.blue} to="/sessoes"><span>oferta formativa</span> <div /></NavbarLink>
                         </LinkContainer>
                         <LinkContainer>
@@ -216,9 +251,15 @@ function Navbar({ theme, menuVisible, handleMenu }) {
                             <NavbarLink background={theme.blue} to="/sobre"><span>acerca de mim</span> <div /></NavbarLink>
                         </LinkContainer>
                         <LinkContainer>
-                            <Link to="/login">
-                                <StyledButton>A Minha Conta</StyledButton>
-                            </Link>
+                            <NavbarLink background={theme.blue} to="/painel"><span>conta</span> <div /></NavbarLink>
+
+                        </LinkContainer>
+                        <LinkContainer>
+                            <Cart onClick={openCart} color={theme.textAccent}>
+                                <p>{cartItems.length}</p>
+                                <img src="/icon/cart.svg" alt="carrinho" />
+                            </Cart>
+
 
                         </LinkContainer>
                     </MenuContainer>
@@ -231,12 +272,14 @@ function Navbar({ theme, menuVisible, handleMenu }) {
 const mapDispatchToProps = (dispatch) => {
     return {
         handleMenu: (state) => dispatch(handleMenu(state)),
+        openCart: () => dispatch(openCart()),
     };
 };
 
 const mapStateToProps = (state) => {
     return {
         menuVisible: state.application.menuVisible,
+        cartItems: state.cart.items,
     };
 };
 

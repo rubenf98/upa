@@ -5,6 +5,8 @@ import styled, { withTheme } from "styled-components";
 import { dimensions, fonts, maxWidth, navbarHeight } from '../../helper';
 import { StyledButton } from '../../styles';
 import Video from './HomepageComponents/Video';
+import { addCartItem, openCart } from "../../redux/cart/actions";
+import { connect } from "react-redux";
 
 const Container = styled.div`
     width: 100%;
@@ -203,6 +205,7 @@ const Other = styled.div`
 const content = {
     jogosMusicaisNaMesa: {
         title: "Jogos Musicais na Mesa",
+        id: 2,
         paragraphs: [
             "Os jogos musicais na mesa podem ser realizados com grupos de qualquer idade.",
             "Mais do que proporcionar divertimento, o jogo musical ajuda no treino dos domínios da escuta, da concentração e da expressão. Pode ser, incontestavelmente, uma estratégia eficaz para a manutenção cognitiva, motora, social e emocional do idoso. Ele tem o poder de cativar quem nele participa!",
@@ -210,10 +213,11 @@ const content = {
         ],
         thumbnail: "mesa",
         demo: "02_demo",
-        price: "32.00€"
+        price: 32
     },
     dancaCoreograficaSentada: {
         title: "Dança Coreográfica Sentada",
+        id: 1,
         paragraphs: [
             "A Dança Coreográfica Sentada é uma modalidade de baixo impacto, que tem como propósito a realização de gestos e de movimentos simples e fáceis de executar.",
             "O bater de mãos, de pés; o dar estalos; o levar as mãos ao pescoço, à cabeça, aos ombros; o elevar as pernas, os braços, os joelhos, etc., são movimentos que fazem parte desta modalidade.",
@@ -222,10 +226,11 @@ const content = {
         ],
         thumbnail: "sentado",
         demo: "01_demo",
-        price: "32.00€"
+        price: 32
     },
     jogosMusicaisComBalao: {
         title: "Jogos Musicais com Balão",
+        id: 3,
         paragraphs: [
             "Os jogos musicais na mesa podem ser realizados com grupos de qualquer idade.",
             "Mais do que proporcionar divertimento, o jogo musical ajuda no treino dos domínios da escuta, da concentração e da expressão. Pode ser, incontestavelmente, uma estratégia eficaz para a manutenção cognitiva, motora, social e emocional do idoso. Ele tem o poder de cativar quem nele participa!",
@@ -233,11 +238,11 @@ const content = {
         ],
         thumbnail: "balao",
         demo: "Jogos Musicais na Mesa",
-        price: "32.00€"
+        price: 32
     }
 }
 
-function Session({ theme }) {
+function Session({ theme, addCartItem, openCart }) {
     const [others, setOthers] = useState([])
     const { sessao } = useParams();
 
@@ -253,6 +258,11 @@ function Session({ theme }) {
         setOthers(aOthers);
     }, [])
 
+    const addToCart = (element) => {
+        addCartItem(element);
+        openCart();
+    };
+
     return (
         <Container>
             <HeaderContainer>
@@ -266,7 +276,14 @@ function Session({ theme }) {
                             <p key={index}>{paragraph}</p>
                         ))}
                         <CartButton>
-                            <StyledButton>
+                            <StyledButton onClick={() => addToCart({
+                                title: content[sessao].title,
+                                image: '/image/sessions/' + content[sessao].thumbnail + '.jpg',
+                                price: content[sessao].price,
+                                type: "App\\Models\\Course",
+                                id: content[sessao].id,
+                            })}
+                            >
                                 Adicionar ao Carrinho
                             </StyledButton>
                         </CartButton>
@@ -280,7 +297,7 @@ function Session({ theme }) {
                         <img src={'/image/sessions/' + content[sessao].thumbnail + '.jpg'} />
                         <div className='info'>
                             <h3>{content[other].title}</h3>
-                            <p className='price'>{content[other].price}</p>
+                            <p className='price'>{content[other].price}.00€</p>
                             <p className='description'>{content[other].paragraphs[0]}</p>
 
                             <div className='cart-container'>
@@ -297,4 +314,11 @@ function Session({ theme }) {
     )
 }
 
-export default withTheme(Session);
+const mapDispatchToProps = (dispatch) => {
+    return {
+        addCartItem: (element) => dispatch(addCartItem(element)),
+        openCart: () => dispatch(openCart()),
+    };
+};
+
+export default connect(null, mapDispatchToProps)(withTheme(Session));

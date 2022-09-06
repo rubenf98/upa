@@ -20,11 +20,15 @@ const Title = styled.h1`
 `;
 
 const Course = styled.div`
-    width: 40%;
-    box-sizing: border-box;
-    flex-wrap: wrap;
-    box-shadow: 0px 0px 15px 0px rgba(0,0,0,.3);
-    border-radius: ${borderRadius};
+    width: 50%;
+    box-sizing: border-box;  
+   
+    padding: 30px;
+
+    .course-content {
+        box-shadow: 0px 0px 15px 0px rgba(0,0,0,.3);
+        border-radius: ${borderRadius};
+    }
 
     img {
         width: 100%;
@@ -32,6 +36,7 @@ const Course = styled.div`
         object-fit: cover;
         border-top-left-radius: ${borderRadius};
         border-top-right-radius: ${borderRadius};
+        
     }
 
     .information {
@@ -69,7 +74,7 @@ const ButtonContainer = styled.div`
 const CourseContainer = styled.div`
     margin: 50px auto;
     display: flex;
-    justify-content: space-around;
+    justify-content: flex-start;
     align-items: flex-start;
     width: 100%;
     max-width: ${maxWidth};
@@ -91,26 +96,28 @@ function Courses({ theme, fetchCourses, data, loading }) {
             <CourseContainer>
                 {data.map((course) => (
                     <Course key={course.id}>
-                        <img src={course.thumbnail} alt="imagem da sessão" />
-                        <div className='information'>
+                        <div className='course-content'>
+                            <img src={course.thumbnail} alt="imagem da sessão" />
+                            <div className='information'>
 
-                            <h2>{course.title}</h2>
-                            <h3>{course.subtitle}</h3>
-                            <p>{course.description}</p>
-                            <ButtonContainer>
-                                <Link to={"/painel/sessoes/" + course.id}>
-                                    <StyledButton >
-                                        Saber Mais...
-                                    </StyledButton>
-                                </Link>
-                                {!course.bought &&
+                                <h2>{course.title}</h2>
+                                <h3>{course.subtitle}</h3>
+                                <p>{course.description}</p>
+                                <ButtonContainer>
+                                    <Link to={"/painel/sessoes/" + course.id}>
+                                        <StyledButton >
+                                            Saber Mais...
+                                        </StyledButton>
+                                    </Link>
+                                    {!course.bought &&
 
-                                    <StyledButton className='buy-button' background={theme.background} shadow={theme.blue}>
-                                        Adicionar ao carrinho
-                                    </StyledButton>
-                                }
+                                        <StyledButton className='buy-button' background={theme.background} shadow={theme.blue}>
+                                            Adicionar ao carrinho
+                                        </StyledButton>
+                                    }
 
-                            </ButtonContainer>
+                                </ButtonContainer>
+                            </div>
                         </div>
                     </Course>
 

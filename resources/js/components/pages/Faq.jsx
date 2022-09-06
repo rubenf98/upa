@@ -109,7 +109,7 @@ function Faq({ theme }) {
             <h2>Perguntas frequentes</h2>
             <Accordion ghost>
                 {items.map((item, index) => (
-                    <Panel showArrow={false} header={(<div className='hover-container'><span>{item.question}</span><div className='hover' /></div>)} key={index}>
+                    <Panel showArrow={false} header={(<div className='hover-container'><span>{item.q}</span><div className='hover' /></div>)} key={index}>
                         <p>{item.answer}</p>
                     </Panel>
                 ))}

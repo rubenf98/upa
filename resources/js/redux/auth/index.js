@@ -3,7 +3,10 @@ import { types } from "./types";
 export const initialState = {
     isAuthenticated: false,
     loading: false,
-    currentUser: {}
+    currentUser: {
+        courses: [],
+        ebooks: []
+    }
 }
 
 export default (state = initialState, action = {}) => {
@@ -11,7 +14,7 @@ export default (state = initialState, action = {}) => {
         case `${types.LOGIN}_PENDING`:
         case `${types.REGISTER}_PENDING`:
         case `${types.LOGOUT}_PENDING`:
-        case `${types.ME}_PENDING`:
+        case `${types.FETCH_SELF}_PENDING`:
             return {
                 ...state,
                 loading: true
@@ -25,7 +28,7 @@ export default (state = initialState, action = {}) => {
                 loading: false
             };
 
-        case `${types.ME}_REJECTED`:
+        case `${types.FETCH_SELF}_REJECTED`:
         case `${types.LOGIN}_REJECTED`:
         case `${types.LOGOUT}_FULFILLED`:
             return {
@@ -41,14 +44,19 @@ export default (state = initialState, action = {}) => {
                 isAuthenticated: true,
             };
 
-
-
-        case `${types.ME}_FULFILLED`:
-        case `${types.LOGIN}_FULFILLED`:
+        case `${types.FETCH_SELF}_FULFILLED`:
             return {
                 ...state,
                 loading: false,
                 isAuthenticated: true,
+                currentUser: action.payload.data.data
+            };
+
+        case `${types.LOGIN}_FULFILLED`:
+            return {
+                ...state,
+                loading: false,
+                isAuthenticated: true
             };
         default:
             return state

@@ -7,9 +7,11 @@ import contact from './redux/contact'
 import activity from './redux/activity'
 import application from './redux/application'
 import course from './redux/course'
+import cart from './redux/cart'
 
 const reducer = combineReducers({
     auth,
+    cart,
     reservation,
     feedback,
     contact,

@@ -1,0 +1,7 @@
+export const types = {
+    OPEN_CART: 'OPEN_CART',
+    CLOSE_CART: 'CLOSE_CART',
+    ADD_CART_ITEM: 'ADD_CART_ITEM',
+    REMOVE_CART_ITEM: 'REMOVE_CART_ITEM',
+    SET_CART: 'SET_CART',
+};

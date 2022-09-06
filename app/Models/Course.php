@@ -12,20 +12,24 @@ class Course extends Model
 
     protected $appends = ['bought'];
 
-    public function getBoughtAttribute($user)
+    public function getBoughtAttribute()
     {
-
-        return auth()->user()->courses->contains($this->id);
+        return UserHasItem::where('userable_id', $this->id)
+            ->where('userable_type', 'App\Models\Course')
+            ->where('user_id', auth()->user()->id)
+            ->count() > 0;
     }
 
     public function contents()
     {
         return $this->hasMany(Content::class);
     }
+
     public function users()
     {
-        return $this->belongsToMany(User::class, 'user_has_courses');
+        return $this->morphToMany(User::class, 'userable', 'user_has_items');
     }
+
     protected $fillable = [
         'title',
         'thumbnail'

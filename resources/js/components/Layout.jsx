@@ -1,13 +1,15 @@
-import React, { Component } from "react";
+import React, { useEffect, useState } from "react";
 import Navbar from "./common/Navbar";
 import Footer from "./common/Footer";
 import styled from "styled-components";
-
+import moment from "moment";
 import { ThemeProvider } from "styled-components";
 import { GlobalStyles } from "./globalStyles";
 import { connect } from "react-redux";
 import { navbarHeight } from "../helper";
 import NavbarMenu from "./common/NavbarMenu";
+import Cart from "./pages/Cart";
+import { setCart } from "../redux/cart/actions";
 
 const Container = styled.div`
     width: 100%;
@@ -16,81 +18,95 @@ const Container = styled.div`
     display: block;
     position: relative;
     box-sizing: border-box;
-
-    .home-bg {
-        position: fixed;
-        left: 0%;
-        top: 0%;
-        right: 0%;
-        bottom: 0%;
-        z-index: -1;
-        background-color: ${props => props.background};
-
-        .moving-noise {
-            position: relative;
-            z-index: -2;
-            width: 100%;
-            height: 100%;
-            background-image: url("/image/noise.gif");
-            background-position: 50% 50%;
-            background-size: 200px;
-            opacity: 0;
-            mix-blend-mode: soft-light;
-        }
-    }
 `;
 
 const Content = styled.div`
     margin-top: ${props => props.hasMargin ? navbarHeight : "0px"};
 `;
 
+function Layout({ cart, minimalist, children, setCart }) {
+    const [previousCartLength, setPreviousCartLength] = useState(0)
+
+    useEffect(() => {
+        if (cart.length || previousCartLength > cart.length) {
+            var expire = moment().add(7, 'days').format('ddd, D MMM YYYY H:mm:ss');
+
+            document.cookie = "cart=" + JSON.stringify(cart) + ";expires=" + expire + "; path=/";
+            setPreviousCartLength(cart.length)
+        }
+
+    }, [cart])
+
+    useEffect(() => {
+
+        let name = "cart=";
+        let decodedCookie = decodeURIComponent(document.cookie);
+        let ca = decodedCookie.split(';');
+        for (let i = 0; i < ca.length; i++) {
+            let c = ca[i];
+            while (c.charAt(0) == ' ') {
+                c = c.substring(1);
+            }
+            if (c.indexOf(name) == 0) {
+                var cartString = c.substring(name.length, c.length);
+                setCart(JSON.parse(cartString));
+            }
+        }
+
+    }, [])
 
 
-class Layout extends Component {
-    render() {
-        return (
-            <ThemeProvider theme={{
-                text: '#000000',
-                background: '#ffffff',
-                lightAccent: "#93ecee",
-                opacityLightAccent: "#b9ebec4d",
-                darkAccent: "#1a4355",
-                textAccent: "#289294",
-            }}>
-                <Container background="white">
-                    <NavbarMenu />
+    return (
 
-                    <div className="home-bg">
-                        <div className="moving-noise" />
-                    </div>
+        <ThemeProvider theme={{
+            text: '#000000',
+            background: '#ffffff',
+            lightAccent: "#93ecee",
+            opacityLightAccent: "#b9ebec4d",
+            darkAccent: "#1a4355",
+            textAccent: "#289294",
+        }}>
+            <Container background="white">
+                <NavbarMenu />
+                <Cart />
 
-                    <GlobalStyles />
 
-                    {!this.props.minimalist && <Navbar onOrder={this.openForm} />}
+                <GlobalStyles />
+
+                {!minimalist && <Navbar />}
 
 
 
 
 
-                    <Content hasMargin={!this.props.minimalist}> {this.props.children} </Content>
+                <Content hasMargin={!minimalist}> {children} </Content>
 
 
 
-                    {!this.props.minimalist && <Footer />}
+                {!minimalist && <Footer />}
 
-                </Container>
-            </ThemeProvider>
-        );
-    }
+            </Container>
+        </ThemeProvider>
+    )
 }
+
 
 const mapStateToProps = (state) => {
     return {
         theme: state.application.theme,
+        cart: state.cart.items,
     };
 };
 
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        setCart: (cart) => dispatch(setCart(cart)),
+    };
+};
+
+
 export default connect(
     mapStateToProps,
-    null
+    mapDispatchToProps
 )(Layout);

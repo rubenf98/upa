@@ -14,8 +14,8 @@ export const login = (data) => ({
     payload: axios.post(`${window.location.origin}/api/login`, data)
 });
 
-export const me = () => ({
-    type: types.ME,
+export const fetchSelf = () => ({
+    type: types.FETCH_SELF,
     payload: axios.get(`${window.location.origin}/api/me`)
 });
 

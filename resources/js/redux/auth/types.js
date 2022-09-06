@@ -2,6 +2,6 @@ export const types = {
     LOGIN: 'LOGIN',
     REGISTER: 'REGISTER',
     LOGIN_SUCCESS: 'LOGIN_SUCCESS',
-    ME: 'ME',
+    FETCH_SELF: 'FETCH_SELF',
     LOGOUT: 'LOGOUT',
 };

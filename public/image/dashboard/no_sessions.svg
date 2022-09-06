@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   data-name="Layer 1"
+   width="488.35153"
+   height="408.83951"
+   viewBox="0 0 488.35153 408.83951"
+   version="1.1"
+   id="svg136"
+   sodipodi:docname="undraw_empty_cart_co35.svg"
+   inkscape:version="1.2 (1:1.2.1+202207142221+cd75a1ee6d)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <defs
+     id="defs140" />
+  <sodipodi:namedview
+     id="namedview138"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     showgrid="false"
+     inkscape:zoom="0.63104014"
+     inkscape:cx="243.24919"
+     inkscape:cy="285.24334"
+     inkscape:window-width="1920"
+     inkscape:window-height="1009"
+     inkscape:window-x="0"
+     inkscape:window-y="34"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg136" />
+  <title
+     id="title2">empty_cart</title>
+  <polygon
+     points="125.274,702.184 125.274,700.481 360.356,700.481 360.356,617.861 145.18,617.861 134.727,596.084 136.263,595.347 146.252,616.157 362.06,616.157 362.06,702.184 "
+     fill="#2f2e41"
+     id="polygon50"
+     transform="translate(-63.64844,-335.08026)" />
+  <circle
+     cx="93.14006"
+     cy="390.95276"
+     r="17.88673"
+     fill="#3f3d56"
+     id="circle52" />
+  <circle
+     cx="269.45206"
+     cy="390.95276"
+     r="17.88673"
+     fill="#3f3d56"
+     id="circle54" />
+  <circle
+     cx="477.27878"
+     cy="11.07274"
+     r="11.07274"
+     fill="#3f3d56"
+     id="circle56" />
+  <path
+     d="M 323.73694,254.67292 H 57.58829 L 0,66.436445 h 383.04412 l -0.34852,1.10753 z m -264.8885,-1.7035 H 322.48756 L 380.72173,68.139905 H 2.30238 Z"
+     fill="#2f2e41"
+     id="path58" />
+  <polygon
+     points="132.842,579.958 82.26,413.015 418.701,413.015 418.395,413.998 366.61,579.958 "
+     fill="#f2f2f2"
+     id="polygon60"
+     transform="translate(-63.64844,-335.08026)" />
+  <polygon
+     points="462.37,343.598 451.465,384.7 449.818,384.263 461.059,341.894 526.448,341.894 526.448,343.598 "
+     fill="#2f2e41"
+     id="polygon62"
+     transform="translate(-63.64844,-335.08026)" />
+  <rect
+     x="18.609968"
+     y="123.50362"
+     width="345.29309"
+     height="1.7035"
+     fill="#2f2e41"
+     id="rect64" />
+  <rect
+     x="37.810467"
+     y="186.26347"
+     width="306.31851"
+     height="1.7035"
+     fill="#2f2e41"
+     id="rect66" />
+  <rect
+     x="190.66533"
+     y="67.288162"
+     width="1.7035"
+     height="186.533"
+     fill="#2f2e41"
+     id="rect68" />
+  <rect
+     x="-236.44594"
+     y="272.46033"
+     width="186.92877"
+     height="1.7037899"
+     transform="rotate(-86.24919)"
+     fill="#2f2e41"
+     id="rect70" />
+  <rect
+     x="108.11343"
+     y="74.532799"
+     width="1.7037899"
+     height="186.92877"
+     transform="rotate(-3.729)"
+     fill="#2f2e41"
+     id="rect72" />
+  <metadata
+     id="metadata423">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:title>empty_cart</dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+</svg>
