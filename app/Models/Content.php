@@ -13,15 +13,10 @@ class Content extends Model
     {
         return $this->belongsTo(Course::class);
     }
-    public function contentType()
-    {
-        return $this->belongsTo(ContentType::class);
-    }
     protected $fillable = [
         'title',
         'presentation',
-        'path',
+        'filename',
         'course_id',
-        'content_type_id'
     ];
 }

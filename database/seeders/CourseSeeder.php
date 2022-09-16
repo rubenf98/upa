@@ -18,14 +18,14 @@ class CourseSeeder extends Seeder
             'title' => "danças coreográficas sentadas",
             'subtitle' => "From the New York Times bestselling author",
             'description' => "From the #1 New York Times bestselling author of The Raven Boys, a mesmerizing story of dreams and desires, death and destiny.",
-            'thumbnail' => "/image/session/sentado.jpg",
+            'thumbnail' => "/image/sessions/sentado.jpg",
             'price' => 32
         ]);
         Course::create([
             'title' => "jogos musicais na mesa",
             'subtitle' => "From the New York Times bestselling author",
             'description' => "From the #1 New York Times bestselling author of The Raven Boys, a mesmerizing story of dreams and desires, death and destiny.",
-            'thumbnail' => "/image/session/mesa.jpg",
+            'thumbnail' => "/image/sessions/mesa.jpg",
             'price' => 32
         ]);
     }

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { maxWidth } from '../../helper';
 import styled, { withTheme } from "styled-components";
 import { connect } from "react-redux";
@@ -6,6 +6,9 @@ import Col from "antd/es/col"
 import Row from "antd/es/row"
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom'
+import { createTransaction } from "../../redux/transaction/actions";
+import { setCart } from "../../redux/cart/actions";
+
 
 const Container = styled.div`
     width: 100%;
@@ -69,14 +72,43 @@ const PaymentMethod = styled.div`
 `;
 
 
-function Checkout({ items, total, theme, isAuthenticated }) {
+function Checkout({ items, total, theme, isAuthenticated, createTransaction, setCart }) {
     var navigate = useNavigate();
+    const [hasSubmitted, setHasSubmitted] = useState(false)
+    const [initialCart, setInitialCart] = useState([])
+    const [initialTotal, setInitialTotal] = useState(0)
+
+    function createEntry() {
+        if (items.length && !hasSubmitted) {
+            createTransaction({
+                items: items
+            }).then(() => {
+                setHasSubmitted(true);
+                setCart([]);
+            });
+
+        }
+    }
 
     useEffect(() => {
         if (!isAuthenticated) {
             navigate("login?to=checkout");
         }
+        else {
+
+        }
+
+
     }, [])
+
+    useEffect(() => {
+        createEntry();
+
+        if (total) {
+            setInitialCart(items);
+            setInitialTotal(total);
+        }
+    }, [total])
 
 
     return (
@@ -85,7 +117,7 @@ function Checkout({ items, total, theme, isAuthenticated }) {
                 <Row type="flex" gutter={32}>
                     <Col span={16}>
                         <h2>Artigos no carrinho</h2>
-                        {items.map((item) => (
+                        {initialCart.map((item) => (
                             <Item>
                                 <div>
                                     <img src={item.image} alt="" />
@@ -98,7 +130,7 @@ function Checkout({ items, total, theme, isAuthenticated }) {
                         ))}
                         <PriceContainer>
                             <h2>Total</h2>
-                            <h2>{total}.00€</h2>
+                            <h2>{initialTotal}.00€</h2>
                         </PriceContainer>
                     </Col>
                     <Col span={8}>
@@ -125,6 +157,8 @@ const mapDispatchToProps = (dispatch) => {
     return {
         closeCart: () => dispatch(closeCart()),
         removeCartItem: (index) => dispatch(removeCartItem(index)),
+        createTransaction: (index) => dispatch(createTransaction(index)),
+        setCart: (cart) => dispatch(setCart(cart)),
     };
 };
 

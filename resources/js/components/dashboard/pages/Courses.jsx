@@ -2,40 +2,38 @@ import React, { useEffect } from 'react'
 import styled, { withTheme } from "styled-components";
 import { StyledButton } from '../../../styles';
 import { fetchCourses } from "../../../redux/course/actions";
+import { fetchEbooks } from "../../../redux/ebook/actions";
 import { connect } from "react-redux";
 import { Link } from 'react-router-dom';
-import { Row } from 'antd';
 import { borderRadius, maxWidth } from '../../../helper';
 
 const Container = styled.div`
- //
+    width: 100%;
+    max-width: ${maxWidth};
+    margin: auto;
 `;
 
 const Title = styled.h1`
-    font-size: 6vw;
+    font-size: 60px;
     font-weight: 900;
     text-align: center;
     text-transform: capitalize;
-    margin: 0px 0px 100px 0px;
+    margin: 20px 0px 0px 0px;
 `;
 
 const Course = styled.div`
-    width: 50%;
+    width: 33%;
     box-sizing: border-box;  
-   
-    padding: 30px;
+    padding: 20px;
 
     .course-content {
-        box-shadow: 0px 0px 15px 0px rgba(0,0,0,.3);
+        box-shadow: 0px 0px 15px 0px rgba(0,0,0,.1);
         border-radius: ${borderRadius};
     }
 
     img {
         width: 100%;
-        height: 100%;
-        object-fit: cover;
-        border-top-left-radius: ${borderRadius};
-        border-top-right-radius: ${borderRadius};
+        height: auto;
         
     }
 
@@ -45,11 +43,11 @@ const Course = styled.div`
         box-sizing: border-box;
 
         h3 {
-            font-size: 18px;
+            font-size: 16px;
         }
         h2 {
             font-weight: bold;
-            font-size: 28px;
+            font-size: 22px;
             margin: 0px 0px 20px 0px;
             text-transform: capitalize;
         }
@@ -65,10 +63,6 @@ const ButtonContainer = styled.div`
     display: flex;
     justify-content: flex-start;
     width: 100%;
-
-    .buy-button {
-        margin-left: 15px;
-    }
 `;
 
 const CourseContainer = styled.div`
@@ -77,16 +71,16 @@ const CourseContainer = styled.div`
     justify-content: flex-start;
     align-items: flex-start;
     width: 100%;
-    max-width: ${maxWidth};
     flex-wrap: wrap;
 `;
 
 
 
-function Courses({ theme, fetchCourses, data, loading }) {
+function Courses({ theme, fetchCourses, fetchEbooks, courses, ebooks }) {
 
     useEffect(() => {
         fetchCourses();
+        fetchEbooks();
     }, [])
 
 
@@ -94,7 +88,7 @@ function Courses({ theme, fetchCourses, data, loading }) {
         <Container>
             <Title>oferta formativa</Title>
             <CourseContainer>
-                {data.map((course) => (
+                {courses.map((course) => (
                     <Course key={course.id}>
                         <div className='course-content'>
                             <img src={course.thumbnail} alt="imagem da sessão" />
@@ -104,14 +98,52 @@ function Courses({ theme, fetchCourses, data, loading }) {
                                 <h3>{course.subtitle}</h3>
                                 <p>{course.description}</p>
                                 <ButtonContainer>
-                                    <Link to={"/painel/sessoes/" + course.id}>
-                                        <StyledButton >
-                                            Saber Mais...
-                                        </StyledButton>
-                                    </Link>
+                                    {course.bought &&
+                                        <Link to={"/painel/sessoes/" + course.id}>
+                                            <StyledButton fontSize="16px">
+                                                Saber Mais...
+                                            </StyledButton>
+                                        </Link>
+                                    }
                                     {!course.bought &&
 
-                                        <StyledButton className='buy-button' background={theme.background} shadow={theme.blue}>
+                                        <StyledButton fontSize="16px" className='buy-button' background={theme.background} shadow={theme.blue}>
+                                            Adicionar ao carrinho
+                                        </StyledButton>
+                                    }
+
+                                </ButtonContainer>
+                            </div>
+                        </div>
+                    </Course>
+
+                ))}
+
+            </CourseContainer>
+
+            <Title>Ebooks</Title>
+            <CourseContainer>
+
+                {ebooks.map((course) => (
+                    <Course key={course.id}>
+                        <div className='course-content'>
+                            <img src={course.thumbnail} alt="imagem da sessão" />
+                            <div className='information'>
+
+                                <h2>{course.title}</h2>
+                                <h3>{course.subtitle}</h3>
+                                <p>{course.description}</p>
+                                <ButtonContainer>
+                                    {course.bought &&
+                                        <Link to={"/painel/sessoes/" + course.id}>
+                                            <StyledButton fontSize="16px">
+                                                Saber Mais...
+                                            </StyledButton>
+                                        </Link>
+                                    }
+                                    {!course.bought &&
+
+                                        <StyledButton fontSize="16px" className='buy-button' background={theme.background} shadow={theme.blue}>
                                             Adicionar ao carrinho
                                         </StyledButton>
                                     }
@@ -130,14 +162,16 @@ function Courses({ theme, fetchCourses, data, loading }) {
 const mapDispatchToProps = (dispatch) => {
     return {
         fetchCourses: () => dispatch(fetchCourses()),
-
+        fetchEbooks: () => dispatch(fetchEbooks()),
     };
 };
 
 const mapStateToProps = (state) => {
     return {
-        loading: state.course.loading,
-        data: state.course.data,
+        loadingCourses: state.course.loading,
+        courses: state.course.data,
+        loadingEbooks: state.ebook.loading,
+        ebooks: state.ebook.data,
     };
 };
 

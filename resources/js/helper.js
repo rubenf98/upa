@@ -2,6 +2,16 @@ export const maxWidth = "1440px"
 export const borderRadius = "0px"
 export const navbarHeight = "100px"
 
+export function download(response, filename) {
+    const url = window.URL.createObjectURL(new Blob([response.data]));
+    const link = document.createElement("a");
+    link.href = url;
+    link.setAttribute("download", filename);
+    document.body.appendChild(link);
+    link.click();
+};
+
+
 export const dimensions = {
     "xs": "575px",
     "sm": "576px",

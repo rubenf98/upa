@@ -3,10 +3,8 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Http\Exceptions\HttpResponseException;
-use Illuminate\Contracts\Validation\Validator;
 
-class ContentTypeRequest extends FormRequest
+class UpdateTransactionRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -26,15 +24,8 @@ class ContentTypeRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|string'
+            'status' => 'required_without:file|integer|exists:statuses,id',
+            'file' => 'required:status|mimes:pdf',
         ];
-    }
-    
-    protected function failedValidation(Validator $validator)
-    {
-        throw new HttpResponseException(response()->json([
-            'success' => false,
-            'errors' => $validator->errors()
-        ], 422));
     }
 }

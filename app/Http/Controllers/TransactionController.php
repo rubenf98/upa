@@ -5,7 +5,13 @@ namespace App\Http\Controllers;
 use App\Http\Requests\TransactionRequest;
 use App\Http\Resources\TransactionResource;
 use App\Models\Transaction;
+use App\Models\TransactionHasItem;
+use App\Models\UserHasItem;
+use Carbon\Carbon;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
+use Symfony\Component\Console\Output\ConsoleOutput;
 
 class TransactionController extends Controller
 {
@@ -14,11 +20,10 @@ class TransactionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        
-            return TransactionResource::collection(Transaction::all());
-        
+        if ($request->header('Authorization'))
+            return TransactionResource::collection(Transaction::where('user_id', auth()->user()->id)->latest()->paginate(5));
     }
 
     /**
@@ -29,9 +34,48 @@ class TransactionController extends Controller
      */
     public function store(TransactionRequest $request)
     {
+        return "teste";
         $validator = $request->validated();
-        $record = Transaction::create($validator);
-        return new TransactionResource($record);
+        $output = new ConsoleOutput();
+        $output->writeln("existingItem");
+        DB::beginTransaction();
+        try {
+            $record = Transaction::create($validator);
+
+            $record->statuses()->attach(1);
+
+            foreach ($validator['items'] as $item) {
+               
+                $existingItem = UserHasItem::where('user_id', $validator['user_id'])
+                    ->where('userable_id', $item['id'])->where('userable_type', $item['type'])
+                    ->where('expire', '>', Carbon::now())->get();
+
+
+                $output->writeln($existingItem);
+
+                if (!$existingItem->count()) {
+                    TransactionHasItem::create([
+                        'transaction_id' => $record->id,
+                        'transactionable_id' => $item['id'],
+                        'transactionable_type' => $item['type'],
+                    ]);
+                }
+
+
+                // UserHasItem::create([
+                //     'user_id' => $validator['user_id'],
+                //     'userable_id' => $item['id'],
+                //     'userable_type' => $item['type'],
+                //     'expire' => $item['type'] == "App\Models\Course" ? Carbon::now()->addYear()->toDateString() : null,
+                // ]);
+
+                DB::commit();
+            }
+
+            return new TransactionResource($record);
+        } catch (\Throwable $th) {
+            DB::rollBack();
+        }
     }
 
     /**
@@ -52,10 +96,18 @@ class TransactionController extends Controller
      * @param  \App\Models\Transaction  $transaction
      * @return \Illuminate\Http\Response
      */
-    public function update(TransactionRequest $request, Transaction $transaction)
+    public function update(Request $request, Transaction $transaction)
     {
-        $validator = $request->validated();
-        $transaction->update($validator);
+        if ($request->hasFile('file')) {
+            $file = $request->file('file');
+            $storagePath = Storage::disk('local')->put("proof/", $file);
+            $storageName = basename($storagePath);
+
+            $transaction->proof = $storageName;
+            $transaction->save();
+            $transaction->statuses()->attach(2);
+        }
+
         return new TransactionResource($transaction);
     }
 
@@ -69,6 +121,6 @@ class TransactionController extends Controller
     {
         $transaction->delete();
 
-        return response()->json(null,204);
+        return response()->json(null, 204);
     }
 }

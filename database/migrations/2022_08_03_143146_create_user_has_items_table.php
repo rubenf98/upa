@@ -18,7 +18,7 @@ class CreateUserHasItemsTable extends Migration
             $table->unsignedBigInteger("user_id");
             $table->integer("userable_id");
             $table->string("userable_type");
-            $table->integer("price");
+            $table->date("expire")->nullable();
             $table->timestamps();
 
             $table->foreign("user_id")->references("id")->on("users")->onDelete("cascade");

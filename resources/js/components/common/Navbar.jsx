@@ -137,25 +137,6 @@ const NavbarLink = styled(Link)`
 `;
 
 
-const Register = styled(Link)`
-    display: block;
-    font-size: 18px;
-    text-transform: capitalize;
-    cursor: pointer;
-    font-weight: bold;
-    background: ${props => props.background};
-    color: white;
-    transition: .3s ease;
-    padding: 6px 16px;
-    box-sizing: border-box;
-
-    &:hover {
-        outline: none;
-        color: white;
-        background: ${props => props.accent};
-    }
-`;
-
 const Menu = styled.div`
     width: 40px;
     height: 40px;

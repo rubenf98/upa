@@ -105,7 +105,7 @@ function Cart({ visible, closeCart, removeCartItem, items, total, isAuthenticate
         <Container title="Carrinho" placement="right" onClose={onClose} visible={visible}>
             <ItemContainer>
                 {items.length ? items.map((item, index) => (
-                    <Item>
+                    <Item key={index}>
                         <div>
                             <ProductImage src={item.image} alt="" />
                         </div>

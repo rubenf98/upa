@@ -1,6 +1,7 @@
 import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { createBrowserHistory } from "history";
+import PrivateRoute from "./components/dashboard/PrivateRoute";
 
 //public pages
 import Homepage from "./components/pages/Homepage";
@@ -30,7 +31,15 @@ function Router() {
                     <Route exact path="/sessoes" element={<Layout><Sessions /></Layout>} />
                     <Route exact path="/sobre" element={<Layout><About /></Layout>} />
                     <Route exact path="/contact" element={<Layout><Contact /></Layout>} />
-                    <Route exact path="/painel" element={<Layout minimalist><PainelLayout><Painel /></PainelLayout></Layout>} />
+                    <Route
+                        exact
+                        path="/painel"
+                        element={
+                            <PrivateRoute>
+                                <Layout minimalist><PainelLayout><Painel /></PainelLayout></Layout>
+                            </PrivateRoute>
+                        }
+                    />
                     <Route exact path="/painel/sessoes" element={<Layout minimalist><PainelLayout><Courses /></PainelLayout></Layout>} />
                     <Route exact path="/painel/sessoes/:id" element={<Layout minimalist><PainelLayout><Course /></PainelLayout></Layout>} />
                     <Route exact path="/login" element={<Layout minimalist><Authentication /></Layout>} />

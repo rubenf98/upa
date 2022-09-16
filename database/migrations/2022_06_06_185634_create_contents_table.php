@@ -16,14 +16,13 @@ class CreateContentsTable extends Migration
         Schema::create('contents', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger("course_id");
-            $table->unsignedBigInteger("content_type_id");
             $table->string("title");
             $table->boolean("presentation")->default(false);
-            $table->string("path");
+            $table->string("filename");
+            $table->double("video_duration", 4, 2);
             $table->timestamps();
 
             $table->foreign("course_id")->references("id")->on("courses")->onDelete("cascade");
-            $table->foreign("content_type_id")->references("id")->on("content_types")->onDelete("cascade");
         });
     }
 

@@ -19,6 +19,7 @@ class CreateEbooksTable extends Migration
             $table->string("subtitle");
             $table->text("description");
             $table->string("thumbnail");
+            $table->string("file");
             $table->decimal('price', 5, 2);
             $table->timestamps();
         });

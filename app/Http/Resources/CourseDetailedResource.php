@@ -19,7 +19,7 @@ class CourseDetailedResource extends JsonResource
             'title' => $this->title,
             'thumbnail' => $this->thumbnail,
             'bought' => $this->bought,
-            'content' => $this->contents->groupBy('content_type_id')
+            'content' => $this->contents
         ];
     }
 }

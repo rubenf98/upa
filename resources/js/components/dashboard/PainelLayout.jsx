@@ -11,15 +11,6 @@ const PageContainer = styled.div`
     min-height: 100vh;
 `;
 
-const WhiteBackground = styled.div`
-    width: 90%;
-    height: calc(100% - 350px);
-    position: absolute;
-    background-color: white;
-    top: 350px;
-    right: 0;
-    z-index: -1;
-`;
 
 const MobileMessage = styled.div`
     width: 80%;
@@ -36,9 +27,9 @@ const MobileMessage = styled.div`
 
 
 const Content = styled.div`
-    width: 100%;
+    /* width: 100%;
     max-width: ${maxWidth};
-    margin: auto;
+    margin: auto; */
     
 `;
 
@@ -55,7 +46,6 @@ function PainelLayout({ children, isAuthenticated }) {
 
     return (
         <PageContainer>
-            <WhiteBackground />
 
 
             <NavBar />

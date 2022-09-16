@@ -8,6 +8,9 @@ import activity from './redux/activity'
 import application from './redux/application'
 import course from './redux/course'
 import cart from './redux/cart'
+import transaction from './redux/transaction'
+import ebook from './redux/ebook'
+import media from './redux/media'
 
 const reducer = combineReducers({
     auth,
@@ -17,7 +20,10 @@ const reducer = combineReducers({
     contact,
     activity,
     application,
-    course
+    course,
+    transaction,
+    ebook,
+    media
 })
 
 export default reducer

@@ -14,6 +14,12 @@ class TransactionResource extends JsonResource
      */
     public function toArray($request)
     {
-        return parent::toArray($request);
+        return [
+            'id' => $this->id,
+            'price' => $this->price,
+            'statuses' => $this->statuses()->orderBy('pivot_created_at', 'desc')->get(),
+            'items' => $this->courses->toBase()->merge($this->ebooks),
+            'created_at' => (string) $this->created_at
+        ];
     }
 }

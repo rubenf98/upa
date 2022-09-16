@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources;
 
+use Carbon\Carbon;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class UserResource extends JsonResource
@@ -17,7 +18,7 @@ class UserResource extends JsonResource
         return [
             'id' => $this->id,
             'name' => $this->name,
-            'courses' => $this->courses,
+            'courses' => $this->courses()->wherePivot('expire', '>', Carbon::now())->get(),
             'ebooks' => $this->ebooks,
             'roles' => $this->roles
         ];

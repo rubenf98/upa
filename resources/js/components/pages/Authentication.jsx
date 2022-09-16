@@ -126,10 +126,11 @@ function Authentication({ register, login }) {
         register(values).then((response) => {
             if (response.action.payload.status == 201) {
                 form.resetFields();
+                setMode(1);
             }
         });
     };
-    
+
     return (
         <Container background={themeContext.lightAccent}>
             <WhiteBackground />

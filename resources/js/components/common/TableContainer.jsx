@@ -22,7 +22,7 @@ const Container = styled.div`
 
 
 function TableContainer({ onRow, columns, data, meta, handlePageChange, loading,
-    showQuickJumper = true, handleExpandable, bordered = false }) {
+    showQuickJumper = false, handleExpandable, bordered = false }) {
 
     return (
         <div>

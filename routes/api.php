@@ -2,12 +2,12 @@
 
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ContentController;
-use App\Http\Controllers\ContentTypeController;
 use App\Http\Controllers\CourseController;
+use App\Http\Controllers\EbookController;
+use App\Http\Controllers\MediaController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\UserController;
-use App\Models\Transaction;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -32,11 +32,16 @@ Route::post('logout', 'App\Http\Controllers\AuthController@logout');
 Route::post('refresh', 'App\Http\Controllers\AuthController@refresh');
 Route::get('me', 'App\Http\Controllers\AuthController@me');
 
+Route::get('download/ebook/{ebook}', 'App\Http\Controllers\EbookController@download');
+
 
 Route::apiResource('contact', ContactController::class);
 Route::apiResource('content', ContentController::class);
-Route::apiResource('contenttype', ContentTypeController::class);
 Route::apiResource('course', CourseController::class);
+Route::apiResource('ebook', EbookController::class);
 Route::apiResource('role', RoleController::class);
 Route::apiResource('transaction', TransactionController::class);
 Route::apiResource('user', UserController::class);
+
+Route::get('thumbnail/{filename}', 'App\Http\Controllers\MediaController@thumbnail');
+Route::get('video/{filename}', 'App\Http\Controllers\MediaController@video');

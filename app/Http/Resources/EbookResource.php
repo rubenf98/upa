@@ -4,7 +4,7 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class ContentTypeResource extends JsonResource
+class EbookResource extends JsonResource
 {
     /**
      * Transform the resource into an array.

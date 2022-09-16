@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\EbookResource;
 use App\Models\Ebook;
 use Illuminate\Http\Request;
 
@@ -14,17 +15,22 @@ class EbookController extends Controller
      */
     public function index()
     {
-        //
+        return EbookResource::collection(Ebook::all());
     }
 
+
     /**
-     * Show the form for creating a new resource.
+     * Download a resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function download(Ebook $ebook)
     {
-        //
+        $headers = [
+            'Content-Type' => 'application/pdf',
+        ];
+
+        return response()->download(storage_path("app" . $ebook->file), 'filename.pdf', $headers);
     }
 
     /**

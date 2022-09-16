@@ -43,7 +43,9 @@
         scroll-behavior: smooth;
     }
 
-    h1, h2, h3 {
+    h1,
+    h2,
+    h3 {
         font-family: 'DM Serif Display', serif;
     }
 
@@ -64,7 +66,7 @@
     }
 </script>
 
-<body>
+<body oncontextmenu="return false;">
     <div id="index">
         <script src="{{mix('js/app.js')}}"></script>
     </div>

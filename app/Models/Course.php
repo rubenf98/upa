@@ -10,7 +10,7 @@ class Course extends Model
 {
     use HasFactory;
 
-    protected $appends = ['bought'];
+    protected $appends = ['bought', 'type'];
 
     public function getBoughtAttribute()
     {
@@ -18,6 +18,11 @@ class Course extends Model
             ->where('userable_type', 'App\Models\Course')
             ->where('user_id', auth()->user()->id)
             ->count() > 0;
+    }
+
+    public function getTypeAttribute()
+    {
+        return "course";
     }
 
     public function contents()
@@ -28,6 +33,11 @@ class Course extends Model
     public function users()
     {
         return $this->morphToMany(User::class, 'userable', 'user_has_items');
+    }
+
+    public function transactions()
+    {
+        return $this->morphToMany(Transaction::class, 'transactionable', 'transaction_has_items');
     }
 
     protected $fillable = [

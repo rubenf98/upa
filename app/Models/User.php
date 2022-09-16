@@ -17,7 +17,7 @@ class User extends Authenticatable implements JWTSubject
 
     public function courses()
     {
-        return $this->morphedByMany(Course::class, 'userable', 'user_has_items');
+        return $this->morphedByMany(Course::class, 'userable', 'user_has_items')->withPivot('expire');
     }
 
     public function roles()

@@ -27,7 +27,6 @@ const store = createStore(
     )
 )
 
-
 if (localStorage.token) {
     const token = jwtDecode(localStorage.token);
     const tokenExp = token.exp < Date.now() / 1000;
