@@ -209,7 +209,7 @@ const content = {
         paragraphs: [
             "Os jogos musicais na mesa podem ser realizados com grupos de qualquer idade.",
             "Mais do que proporcionar divertimento, o jogo musical ajuda no treino dos domínios da escuta, da concentração e da expressão. Pode ser, incontestavelmente, uma estratégia eficaz para a manutenção cognitiva, motora, social e emocional do idoso. Ele tem o poder de cativar quem nele participa!",
-            "Clique no ícone DEMO para assistir a um vídeo de demonstração das atividades."
+            "Clique na imagem para assistir a um vídeo de demonstração das atividades."
         ],
         thumbnail: "mesa",
         demo: "02_demo",
@@ -222,7 +222,7 @@ const content = {
             "A Dança Coreográfica Sentada é uma modalidade de baixo impacto, que tem como propósito a realização de gestos e de movimentos simples e fáceis de executar.",
             "O bater de mãos, de pés; o dar estalos; o levar as mãos ao pescoço, à cabeça, aos ombros; o elevar as pernas, os braços, os joelhos, etc., são movimentos que fazem parte desta modalidade.",
             "Além do divertimento que esta atividade proporciona, também oferece benefícios a nível físico, cognitivo, emocional e social.",
-            "Clique no ícone DEMO para assistir a um vídeo de demonstração das atividades."
+            "Clique na imagem para assistir a um vídeo de demonstração das atividades."
         ],
         thumbnail: "sentado",
         demo: "01_demo",

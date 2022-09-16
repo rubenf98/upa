@@ -34,10 +34,9 @@ class TransactionController extends Controller
      */
     public function store(TransactionRequest $request)
     {
-        return "teste";
+
         $validator = $request->validated();
-        $output = new ConsoleOutput();
-        $output->writeln("existingItem");
+
         DB::beginTransaction();
         try {
             $record = Transaction::create($validator);
@@ -45,13 +44,13 @@ class TransactionController extends Controller
             $record->statuses()->attach(1);
 
             foreach ($validator['items'] as $item) {
-               
+
                 $existingItem = UserHasItem::where('user_id', $validator['user_id'])
                     ->where('userable_id', $item['id'])->where('userable_type', $item['type'])
                     ->where('expire', '>', Carbon::now())->get();
 
 
-                $output->writeln($existingItem);
+
 
                 if (!$existingItem->count()) {
                     TransactionHasItem::create([

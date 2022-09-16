@@ -190,7 +190,7 @@ function Footer({ theme }) {
                 <FooterContent>
                     <LogoContainer>
                         <h1>Unidos Pela Atividade</h1>
-                        <p>Registe-se para ter acesso às atividades gratuitas que incluem 1 jogo musical na mesa e uma dança coreográfica sentada!</p>
+                        <p>Registe-se para ter acesso às atividades gratuitas!</p>
                     </LogoContainer>
 
                     <InfoContainer>
