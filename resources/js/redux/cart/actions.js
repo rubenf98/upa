@@ -1,3 +1,4 @@
+import { message } from "antd";
 import { types } from "./types";
 
 export function openCart() {
@@ -29,4 +30,26 @@ export function removeCartItem(index) {
         type: types.REMOVE_CART_ITEM, payload: index
     };
 }
+
+export function verifyAddToCart(item) {
+    return (dispatch, getState) => {
+
+        const { items } = getState().cart;
+        var hasItem = false;
+
+        if (items.some(e =>
+            e.type === item.type && e.id === item.id
+        )) {
+            hasItem = true;
+            message.warning("Produto já está no carrinho");
+        }
+
+        if (!hasItem) {
+            dispatch(addCartItem(item));
+            dispatch(openCart());
+        }
+
+    }
+}
+
 

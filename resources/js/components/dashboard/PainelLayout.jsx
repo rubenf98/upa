@@ -17,20 +17,18 @@ const MobileMessage = styled.div`
     font-size: 1.4em;
     font-weight: bold;
     text-align:center;
-    margin: auto;
+    margin: 200px auto;
 
     @media (min-width: ${dimensions.md}){
         display: none;
     }
-    
 `;
 
 
 const Content = styled.div`
-    /* width: 100%;
-    max-width: ${maxWidth};
-    margin: auto; */
-    
+    @media (max-width: ${dimensions.md}){
+        display: none;
+    }
 `;
 
 
@@ -46,18 +44,15 @@ function PainelLayout({ children, isAuthenticated }) {
 
     return (
         <PageContainer>
-
-
             <NavBar />
+            <MobileMessage>
+                O painel de controlo não está disponível na versão mobile, utilize um computador para aceder ao conteúdo.
+            </MobileMessage>
+
             <Content>
                 {children}
             </Content>
             <Footer />
-
-
-            <MobileMessage>
-                O painel de controlo não está disponível na versão mobile, utilize um computador para aceder ao conteúdo.
-            </MobileMessage>
         </PageContainer>
     )
 }

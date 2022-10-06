@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom';
 import styled, { withTheme, keyframes } from "styled-components";
-import { dimensions, navbarHeight } from '../../helper';
+import { dimensions, fonts, navbarHeight } from '../../helper';
 import { connect } from "react-redux";
 import { handleMenu } from "../../redux/application/actions";
 import AnimationContainer from './AnimationContainer';
@@ -99,11 +99,11 @@ const CustomLink = styled(Link)`
     display: block;
     transition: transform .5s cubic-bezier(.075,.82,.165,1);
     position: relative;
-    font-size: 9vmin;
-    line-height: 50px;
+    font-size: 28px;
+    line-height: 38px;
     color: black;
     margin: 0px;
-    font-family: 'Alegreya Sans', sans-serif;
+    font-family: ${fonts.text};
     font-weight: bold;
     z-index: inherit;
 
@@ -143,10 +143,11 @@ function NavbarMenu({ theme, handleMenu, menuVisible }) {
                 </Navbar>
                 <LinksContainer animation={animation}>
                     <CustomLink onClick={handleClose} to="/">Página inicial</CustomLink>
-                    <CustomLink onClick={handleClose} to="/sessoes">Sessões</CustomLink>
+                    <CustomLink onClick={handleClose} to="/sessoes">Oferta formativa</CustomLink>
+                    <CustomLink onClick={handleClose} to="/produtos">Produtos</CustomLink>
                     <CustomLink onClick={handleClose} to="/sobre">Acerca de mim</CustomLink>
-                    <CustomLink onClick={handleClose} to="/contact">Contactos</CustomLink>
-                    <CustomLink onClick={handleClose} to="/login">Iniciar sessão</CustomLink>
+                    <CustomLink onClick={handleClose} to="/contact">Contatos</CustomLink>
+                    <CustomLink onClick={handleClose} to="/login">A minha conta</CustomLink>
                 </LinksContainer>
             </Content>
 

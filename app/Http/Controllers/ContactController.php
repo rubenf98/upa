@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\ContactRequest;
 use App\Http\Resources\ContactResource;
+use App\Jobs\NotifyContactEmail;
 use App\Models\Contact;
 use Illuminate\Http\Request;
 
@@ -29,6 +30,7 @@ class ContactController extends Controller
     {
         $validator = $request->validated();
         $record = Contact::create($validator);
+        NotifyContactEmail::dispatch($record)->delay(now()->addSecond());
         return new ContactResource($record);
     }
 
@@ -65,8 +67,8 @@ class ContactController extends Controller
      */
     public function destroy(Contact $contact)
     {
-            $contact->delete();
-    
-            return response()->json(null, 204);
+        $contact->delete();
+
+        return response()->json(null, 204);
     }
 }

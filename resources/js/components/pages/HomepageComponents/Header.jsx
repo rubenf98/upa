@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import styled, { withTheme } from "styled-components";
 import { borderRadius, dimensions, fonts, maxWidth } from '../../../helper';
 import { Carousel } from 'react-responsive-carousel';
@@ -12,11 +12,11 @@ const TitleContainer = styled.div`
     box-sizing: border-box;
     width: 100%;
     max-width: ${maxWidth};
-    margin: 350px auto 0px auto;
+    margin: 200px auto 0px auto;
     padding: 0px 10px;
 
     @media (max-width: ${dimensions.lg}) {
-        margin: 250px auto 0px auto;
+        margin: 150px auto 0px auto;
     }
 
     @media (max-width: ${dimensions.nd}) {
@@ -25,10 +25,11 @@ const TitleContainer = styled.div`
 
     h1 {
         font-family: ${fonts.title};
-        font-size: 72px;
-        line-height: 78px;
+        font-size: 60px;
+        line-height: 68px;
         color: ${props => props.color};
         margin: 0px;
+        font-weight: bold;
 
         @media (max-width: ${dimensions.xl}) {
             font-size: 60px;
@@ -55,7 +56,7 @@ const TitleContainer = styled.div`
     }
 
     h2 {
-        font-size: 18px;
+        font-size: 20px;
         opacity: .7;
         margin: 10px 0px 50px 0px;
         width: 70%;
@@ -99,7 +100,7 @@ const CustomCarousel = styled(Carousel)`
     }
 
     .carousel .control-next.control-arrow {
-        right: calc((100vw - ${maxWidth}) / 2);
+        right: 20px;
         opacity: .8;
 
         &:before {
@@ -116,7 +117,7 @@ const CustomCarousel = styled(Carousel)`
     }
 
     .carousel .control-prev.control-arrow {
-        left: calc((100vw - ${maxWidth}) / 2);
+        left: 20px;
         opacity: .8;
 
         &:before {
@@ -134,30 +135,29 @@ const CustomCarousel = styled(Carousel)`
 
     img {
         width: 100%;
-        min-height: 600px;
-        object-fit:cover;
+        max-height: calc(100vh - 100px);
+        min-height: 300px;
+        object-fit: cover;
     }
 
     .carousel-information {
         color: white;
         z-index: 5;
         position: absolute;
-        width: 70%;
-        left: calc((100vw - ${maxWidth}) / 2);
+        width: 100%;
+        max-width: ${maxWidth};
+        left: 50%;
+        transform: translate(-50%, 0);
         bottom: 20px;
         text-align: left;
         box-sizing: border-box;
+        padding: 0px 20px;
+        box-sizing: border-box;
 
-        @media (max-width: ${dimensions.md}) {
-            left: 10px;
-            width: 100%;
-        }
-
-        
 
         h3 {
-            font-family: 'Inter';
-            font-size: 16px;
+            font-family: ${fonts.title};
+            font-size: 18px;
             color: white;
             text-transform: uppercase;
             margin: 0px;
@@ -168,25 +168,24 @@ const CustomCarousel = styled(Carousel)`
         }
 
         p {
-            font-size: 52px;
-            font-family: ${fonts.title};
-            line-height: 60px;
-            width: 90%;
+            font-size: 36px;
+            font-family: ${fonts.text};
             margin-top: 0px;
 
             @media (max-width: ${dimensions.lg}) {
-                font-size: 30px;
-                line-height: 36px;
+                font-size: 28px;
             }
 
             @media (max-width: ${dimensions.md}) {
-                font-size: 24px;
-                line-height: 28px;
+                font-size: 16px;
             }
         }
     }
 
 `;
+
+
+
 
 function Header({ theme }) {
     return (
@@ -198,21 +197,39 @@ function Header({ theme }) {
             <CarouselContainer>
                 <CustomCarousel showThumbs={false}>
                     <div>
-                        <img src="/image/homepage/header_session_1920.jpg" />
+                        <picture>
+                            <source media="(min-width: 1921px)" srcSet="/image/homepage/header_session_3000.jpg" />
+                            <source media="(min-width: 721px) and (max-width: 1920px)" srcSet="/image/homepage/header_session_1920.jpg" />
+                            <source media="(max-width: 720px)" srcSet="/image/homepage/header_session_720.jpg" />
+
+                            <img src="/image/homepage/header_session_1920.jpg" alt="profile" loading="eager" />
+                        </picture>
                         <div className="carousel-information">
                             <h3>Sessões</h3>
-                            <p>Aceda a sessões já programadas, assista a vídeos e descarregue aúdios e descrições das atividades</p>
+                            <p>Aceda a sessões vídeo e descarregue aúdios e instruções de todas as atividades</p>
                         </div>
                     </div>
                     <div>
-                        <img src="/image/homepage/header_session_3000.jpg" loading="lazy" />
+                        <picture>
+                            <source media="(min-width: 1921px)" srcSet="/image/homepage/header_session_3000.jpg" />
+                            <source media="(min-width: 721px) and (max-width: 1920px)" srcSet="/image/homepage/header_session_1920.jpg" />
+                            <source media="(max-width: 720px)" srcSet="/image/homepage/header_session_720.jpg" />
+
+                            <img src="/image/homepage/header_session_1920.jpg" alt="profile" loading="lazy" />
+                        </picture>
                         <div className="carousel-information">
                             <h3>Produtos</h3>
-                            <p>Jogos, e-books e exibições de powerpoint de atividades para estimular as habilidades cognitivas</p>
+                            <p>Jogos, e-books e exibições de atividades para estimular as habilidades cognitivas</p>
                         </div>
                     </div>
                     <div>
-                        <img src="/image/homepage/header_workshops_1920.jpg" loading="lazy" />
+                        <picture>
+                            <source media="(min-width: 1921px)" srcSet="/image/homepage/header_workshops_3000.jpg" />
+                            <source media="(min-width: 721px) and (max-width: 1920px)" srcSet="/image/homepage/header_workshops_1920.jpg" />
+                            <source media="(max-width: 720px)" srcSet="/image/homepage/header_workshops_720.jpg" />
+
+                            <img src="/image/homepage/header_workshops_1920.jpg" alt="profile" loading="lazy" />
+                        </picture>
                         <div className="carousel-information">
                             <h3>Workshops</h3>
                             <p>Cursos, workshops e oficinas no âmbito da estimulação cognitiva e motora</p>

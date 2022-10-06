@@ -1,10 +1,9 @@
 import { Col, Row } from 'antd';
 import React from 'react'
-import { Link } from 'react-router-dom';
 import styled, { withTheme } from "styled-components";
-import { dimensions, fonts, maxWidth, navbarHeight } from '../../helper';
+import { dimensions, fonts, maxWidth } from '../../helper';
 import { StyledButton } from "../../styles";
-import { addCartItem, openCart } from "../../redux/cart/actions";
+import { verifyAddToCart } from "../../redux/cart/actions";
 import { connect } from "react-redux";
 
 const Container = styled.div`
@@ -90,9 +89,6 @@ const Header = styled.section`
             }
         }
     }
-    
-
-    
 `;
 
 const Citation = styled.div`
@@ -139,6 +135,16 @@ const Citation = styled.div`
 
 const ImageContainer = styled.div`
     width: 40%;
+
+    @media (max-width: ${dimensions.lg}) {
+        width: 80%;
+        padding: 0px 20px;
+        box-sizing: border-box;
+    }
+
+    @media (max-width: ${dimensions.md}) {
+        width: 100%;
+    }
 
     img {
         width: 100%;
@@ -221,17 +227,16 @@ const SessionContent = styled.div`
         
 `;
 
-function Products({ theme, addCartItem, openCart }) {
+function Products({ theme, verifyAddToCart }) {
 
     const addToCart = (element) => {
-        addCartItem(element);
-        openCart();
+        verifyAddToCart(element);
     };
 
-    const Session = ({ image, title, price, description, cartName }) => (
+    const Session = ({ image, title, price, description, cartName, id }) => (
         <SessionContent color={theme.darkAccent} background="#eaeaea">
             <div className='image-container'>
-                <img src={"/image/products/" + image + ".png"} alt="" />
+                <img src={"/image/products/" + image + ".jpg"} alt="" />
                 <div className="background" />
             </div>
 
@@ -244,10 +249,10 @@ function Products({ theme, addCartItem, openCart }) {
                     <StyledButton
                         onClick={() => addToCart({
                             title: cartName,
-                            image: "/image/products/" + image + ".png",
+                            image: "/image/products/" + image + ".jpg",
                             price: price,
                             type: "App\\Models\\Ebook",
-                            id: 1,
+                            id: id,
                         })}
                     >
                         Adicionar ao carrinho
@@ -266,7 +271,7 @@ function Products({ theme, addCartItem, openCart }) {
 
                 <div className='info-container'>
                     <h2>A aprendizagem ao longo da vida</h2>
-                    <p className='description'>A UPA apresenta recursos educativos tais como E-Books, Exibições de PowerPoint e Jogos que permitem que o idosos trabalhe as suas habilidades cognitivas ou ainda a dar início a outras que o idoso desconhecia.</p>
+                    <p className='description'>A UPA apresenta recursos educativos tais como E-Books, Exibições de PowerPoint e Jogos que permitem que o idosos trabalhem as suas habilidades cognitivas ou ainda a dar início a outras que o idoso desconhecia.</p>
                     <Citation background={theme.opacityLightAccent}>
                         <div className="background" />
                         <img src='/icon/products/citation.svg' />
@@ -290,37 +295,51 @@ function Products({ theme, addCartItem, openCart }) {
                             title="Volume I"
                             cartName="50 Exercícios. Vol I"
                             price={8}
+                            id={2}
                             image="50_volume1"
                             description="Memória, atenção, orientação espacial, cálculo, literatura escrita, criatividade"
                         />
+                    </Col>
+                    <Col xs={24} md={12}>
                         <Session
                             title="Volume II"
                             cartName="50 Exercícios. Vol II"
                             price={8}
+                            id={3}
                             image="50_volume2"
                             description="Memória, atenção, orientação espacial, cálculo, literatura escrita, criatividade"
                         />
-
                     </Col>
-
-
                     <Col xs={24} md={12}>
                         <Session
                             title="Volume III"
                             cartName="50 Exercícios. Vol III"
                             price={8}
+                            id={4}
                             image="50_volume3"
                             description="Memória, atenção, orientação espacial, cálculo, literatura escrita, criatividade"
                         />
+                    </Col>
+                    <Col xs={24} md={12}>
                         <Session
                             title="Volume IV"
                             cartName="50 Exercícios. Vol IV"
                             price={8}
+                            id={5}
                             image="50_volume4"
                             description="Memória, atenção, orientação espacial, cálculo, literatura escrita, criatividade"
                         />
                     </Col>
-
+                    <Col xs={24} md={12}>
+                        <Session
+                            title="Volume V"
+                            cartName="50 Exercícios. Vol V"
+                            price={8}
+                            id={7}
+                            image="50_volume5"
+                            description="Memória, atenção, orientação espacial, cálculo, literatura escrita, criatividade"
+                        />
+                    </Col>
                 </Row>
 
             </SessionsContainer>
@@ -335,8 +354,30 @@ function Products({ theme, addCartItem, openCart }) {
                             title="Volume I"
                             cartName="24 Exercícios. Vol I"
                             price={4}
+                            id={6}
                             image="24_volume1"
                             description="Memória, atenção, orientação espacial, cálculo, literatura escrita, criatividade"
+                        />
+
+                    </Col>
+                </Row>
+
+            </SessionsContainer>
+
+            <SessionsContainer color={theme.textAccent}>
+
+                <h2>e-books</h2>
+                <h3>Exercícios Estimulação Cognitiva Temáticos</h3>
+                <Row type="flex">
+
+                    <Col xs={24} md={12}>
+                        <Session
+                            title="Outono Volume I"
+                            cartName="Outono. Vol I"
+                            price={8}
+                            id={8}
+                            image="25_outono"
+                            description="Atenção e perceção visual orientação espacial, literatura escrita e motricidade fina"
                         />
 
                     </Col>
@@ -350,9 +391,8 @@ function Products({ theme, addCartItem, openCart }) {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        addCartItem: (element) => dispatch(addCartItem(element)),
-        openCart: () => dispatch(openCart()),
-        
+        verifyAddToCart: (element) => dispatch(verifyAddToCart(element)),
+
     };
 };
 

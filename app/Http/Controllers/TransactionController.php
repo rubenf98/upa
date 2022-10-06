@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\TransactionRequest;
 use App\Http\Resources\TransactionResource;
+use App\Mail\TransactionMail;
 use App\Models\Transaction;
 use App\Models\TransactionHasItem;
 use App\Models\UserHasItem;
@@ -11,6 +12,7 @@ use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 use Symfony\Component\Console\Output\ConsoleOutput;
 
 class TransactionController extends Controller
@@ -22,8 +24,14 @@ class TransactionController extends Controller
      */
     public function index(Request $request)
     {
-        if ($request->header('Authorization'))
-            return TransactionResource::collection(Transaction::where('user_id', auth()->user()->id)->latest()->paginate(5));
+        if ($request->header('Authorization')) {
+            $role = auth()->user()->roles()->first();
+            if ($role->name === 'admin') {
+                return TransactionResource::collection(Transaction::latest()->paginate(10));
+            } else if ($role->name === 'client') {
+                return TransactionResource::collection(Transaction::where('user_id', auth()->user()->id)->latest()->paginate(5));
+            }
+        }
     }
 
     /**
@@ -107,6 +115,7 @@ class TransactionController extends Controller
             $transaction->statuses()->attach(2);
         }
 
+        Mail::to("joseruben98@hotmail.com")->queue(new TransactionMail());
         return new TransactionResource($transaction);
     }
 

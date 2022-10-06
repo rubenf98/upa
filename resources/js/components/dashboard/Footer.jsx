@@ -6,10 +6,14 @@ import { StyledButton } from "../../styles";
 
 const Container = styled(Row)`
     width: 100%;
-    padding: 50px 0px 10px 0px;
+    padding: 10px 0px 10px 0px;
     box-sizing: border-box;
     margin: auto;
     background-color: ${props => props.background};
+
+    @media (max-width: ${dimensions.md}){
+        display: none;
+    }
 
     h3 {
         font-size: 48px;
@@ -35,11 +39,11 @@ function Footer({ theme }) {
     return (
         <Container background={theme.background} type="flex" justify="center" align="middle">
             <div>
-                <h3>Não perca os próximos lançamentos! </h3>
+                {/* <h3>Não perca os próximos lançamentos! </h3>
 
                 <StyledButton className="button-container" shadow={theme.blue}>
                     RECEBER NOTIFICAÇÃO
-                </StyledButton>
+                </StyledButton> */}
 
                 <p>© 2022 Unidos Pela Atividade. All Rights Reserved.</p>
             </div>

@@ -6,7 +6,9 @@ import { connect } from "react-redux";
 import {
     useParams
 } from "react-router-dom";
-import { fetchVideo } from "../../../redux/media/actions";
+import {
+    fetchVideo, downloadInstructions, downloadAudio
+} from "../../../redux/media/actions";
 import { useNavigate } from 'react-router-dom'
 
 const Container = styled.div`
@@ -48,7 +50,7 @@ const Content = styled.div`
     justify-content: space-around;
     width: 100%;
     max-width: ${maxWidth};
-    margin: 0px auto 100px auto;
+    margin: 0px auto 0px auto;
     padding: 50px 0px 0px 0px;
     box-sizing: border-box;
 `;
@@ -74,7 +76,14 @@ const VideoList = styled.div`
     scrollbar-width: none;
 
     &::-webkit-scrollbar {
-    display: none;
+        display: none;
+    }
+
+    h2 {
+        font-size: 40px;
+        font-family: ${fonts.title};
+        text-transform: capitalize;
+        line-height: 33px;
     }
 `;
 
@@ -139,7 +148,44 @@ const Background = styled.div`
 `;
 
 
-function Course({ course, theme, fetchCourse }) {
+const DownloadContainer = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin: 10px 0px 0px 0px;
+
+    .spacer {
+        margin-left: 20px;
+    }
+
+    div {
+        padding: 8px 16px;
+        box-sizing: border-box;
+        border: 1px solid #777;
+        cursor: pointer;
+        font-size: 16px;
+        opacity: .7;
+        transition: all .3s ease;
+        display: flex;
+        align-items: center;
+
+        &:hover {
+            opacity: 1;
+            border: 1px solid #000;
+        }
+
+        img {
+            margin-left: 5px;
+            width: 15px;
+        }
+    }
+
+    
+`;
+
+
+
+function Course({ course, theme, fetchCourse, downloadInstructions, downloadAudio }) {
     const { id } = useParams();
     const [loading, setLoading] = useState(true)
     const [currentVideo, setCurrentVideo] = useState(
@@ -160,7 +206,6 @@ function Course({ course, theme, fetchCourse }) {
     }, [id])
 
 
-
     return (
         <Container>
             {loading ? <h2>loading</h2> :
@@ -178,7 +223,7 @@ function Course({ course, theme, fetchCourse }) {
                                     <img loading="eager" className="thumbnail" src={'/image/thumbnail/' + video.filename + ".jpg"} />
                                     <div className="information">
                                         <h3 >{video.title}</h3>
-                                        <p>Aula {index + 1} de {course.content.length} <span className="separator" /> 0{video.video_duration.toFixed(2)} mins</p>
+                                        <p>Aula {index + 1} de {course.content.length} <span className="separator" /> {video.video_duration >= 10 ? "" : "0"}{video.video_duration.toFixed(2)} mins</p>
                                     </div>
 
                                     <img className="control" src={currentVideo.id == video.id ? "/icon/pause.svg" : "/icon/play_dashboard.svg"} />
@@ -186,16 +231,24 @@ function Course({ course, theme, fetchCourse }) {
                             ))}
                         </VideoList>
                         <VideoContainer key={currentVideo.id}>
-                            <video poster={'/image/thumbnail/' + currentVideo.filename + ".jpg"} controls>
+                            <video preload="auto" poster={'/image/thumbnail/' + currentVideo.filename + ".jpg"} controls>
                                 <source src={'/api/video/' + currentVideo.filename + "?token=" + localStorage.token} type="video/mp4" />
                                 Your browser does not support the video tag.
                             </video>
                             <InfoContainer>
+                                <DownloadContainer>
+                                    {currentVideo.has_instructions ? <div onClick={() => downloadInstructions(currentVideo.filename)}>Instruções<img src="/icon/download2.svg" /></div> : <></>}
+                                    {currentVideo.has_audio ? <div onClick={() => downloadAudio(currentVideo.filename)} className="spacer">Aúdio<img src="/icon/download2.svg" /></div> : <></>}
+                                </DownloadContainer>
+
+
                                 <h1>Dança Coreográfica Sentada</h1>
-                                <h2>0{currentVideo.index ? currentVideo.index : 1}. {currentVideo.title}</h2>
+                                <h2>{currentVideo.index < 10 && "0"}{currentVideo.index ? currentVideo.index : 1}. {currentVideo.title}</h2>
 
                                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis vero, quibusdam doloribus aperiam odio veniam nisi repellendus fuga dicta odit. Vero nobis magni sunt eligendi dicta quae reprehenderit placeat nisi?</p>
+
                             </InfoContainer>
+
                         </VideoContainer>
                     </Content>
                 </>
@@ -208,7 +261,9 @@ function Course({ course, theme, fetchCourse }) {
 const mapDispatchToProps = (dispatch) => {
     return {
         fetchCourse: (id) => dispatch(fetchCourse(id)),
-        fetchVideo: (filename) => dispatch(fetchVideo(filename))
+        fetchVideo: (filename) => dispatch(fetchVideo(filename)),
+        downloadInstructions: (filename) => dispatch(downloadInstructions(filename)),
+        downloadAudio: (filename) => dispatch(downloadAudio(filename))
     };
 };
 

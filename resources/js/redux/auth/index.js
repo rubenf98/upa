@@ -2,6 +2,7 @@ import { types } from "./types";
 
 export const initialState = {
     isAuthenticated: false,
+    isAdmin: false,
     loading: false,
     currentUser: {
         courses: [],
@@ -49,6 +50,7 @@ export default (state = initialState, action = {}) => {
                 ...state,
                 loading: false,
                 isAuthenticated: true,
+                isAdmin: action.payload.data.data.roles[0].name === "admin",
                 currentUser: action.payload.data.data
             };
 

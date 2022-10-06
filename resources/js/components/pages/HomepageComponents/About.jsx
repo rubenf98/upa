@@ -2,7 +2,7 @@ import { Col, Row } from 'antd'
 import React from 'react'
 import styled, { withTheme } from "styled-components";
 import { dimensions, fonts, maxWidth } from '../../../helper';
-import { underlineStyle } from '../../../styles';
+import { textStyle, titleStyle, underlineStyle } from '../../../styles';
 
 const Container = styled.section`
     margin: 200px auto;
@@ -44,13 +44,11 @@ const Info = styled.div`
     padding-right: 50px;
  
     h2 {
-        font-size: 60px;
-        font-weight: bold;
-        font-family: ${fonts.title};
+        ${titleStyle};
     }
 
     p {
-        font-size: 18px;
+        ${textStyle};
         text-align: justify;
         opacity: .7;
     }

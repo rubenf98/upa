@@ -21,4 +21,3 @@ export const updateReservation = (id, data) => ({
     type: types.UPDATE_COURSE,
     payload: axios.put(`${window.location.origin}/api/course/${id}`, data),
 });
-

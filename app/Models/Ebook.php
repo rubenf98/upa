@@ -12,10 +12,12 @@ class Ebook extends Model
 
     public function getBoughtAttribute()
     {
-        return UserHasItem::where('userable_id', $this->id)
-            ->where('userable_type', 'App\Models\Ebook')
-            ->where('user_id', auth()->user()->id)
-            ->count() > 0;
+        if (auth()->user()) {
+            return UserHasItem::where('userable_id', $this->id)
+                ->where('userable_type', 'App\Models\Ebook')
+                ->where('user_id', auth()->user()->id)
+                ->count() > 0;
+        } else return false;
     }
 
     public function getTypeAttribute()

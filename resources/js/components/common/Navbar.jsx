@@ -29,12 +29,12 @@ const Container = styled.div`
     height: ${props => props.visible ? navbarHeight : "0px"}; 
     width: 100%;
     z-index: 100;
-    background-color: ${props => props.background};
+    background-color: ${props => props.visible ? props.background : "#fff"};
     padding: 0px;
     box-sizing: border-box;
     position: fixed;
     top: 0;
-    transition: height .5s ease;
+    transition: height .5s ease, background .5s ease;
     overflow-y: hidden;
 
     @media(max-width: ${dimensions.xl}) {
@@ -61,21 +61,8 @@ const Content = styled.div`
 const FlexItem = styled.div`
     display: flex;
     justify-content: flex-end;
+    align-items: center;
 `;
-
-const Logo = styled(Link)`
-    display: block;
-    text-decoration: none;
-
-    img {
-        height: 50px;
-
-        @media (max-width: ${dimensions.md}) {
-            height: 50px;
-        }
-    }
-`;
-
 
 const MenuContainer = styled.div`
     display: flex;
@@ -84,7 +71,7 @@ const MenuContainer = styled.div`
 
 const LinkContainer = styled.div`
     position: relative;
-    margin: 0px 20px;
+    margin: 0px 15px;
     box-sizing: border-box;
     
 
@@ -95,7 +82,7 @@ const LinkContainer = styled.div`
 
 const NavbarLink = styled(Link)`
     display: block;
-    font-size: 18px;
+    font-size: 16px;
     text-transform: capitalize;
     cursor: pointer;
     color: inherit;   
@@ -177,6 +164,52 @@ const Cart = styled.div`
     }
 `;
 
+const AccountButton = styled.div`
+    font-size: 16px;
+    text-transform: capitalize;
+    cursor: pointer;
+    background-color: white;
+    padding: 8px 18px;
+    box-sizing: border-box;
+    
+    a {
+        font-weight: bold;
+        color: ${props => props.color};
+    }
+
+    @media (max-width: ${dimensions.md}) {
+        display: none;
+    }
+`;
+
+const LogoContainer = styled.div`
+    display: flex;
+    justify-content: center;
+
+    h1 {
+        font-size: 16px;
+        margin-left: 10px;
+        font-weight: bold;
+
+        @media (max-width: ${dimensions.md}) {
+            display: none;
+        }
+    }
+
+    a {
+        display: block;
+        text-decoration: none;
+
+        img {
+            height: 50px;
+
+            @media (max-width: ${dimensions.md}) {
+                height: 50px;
+            }
+        }
+    }
+`;
+
 
 function Navbar({ theme, openCart, handleMenu, cartItems }) {
     const [y,
@@ -184,15 +217,20 @@ function Navbar({ theme, openCart, handleMenu, cartItems }) {
     const [scrollDirection,
         setScrollDirection] = useState(1);
 
+    const [backgroundColor,
+        setBackgroundColor] = useState("#fff");
+
     const handleNavigation = useCallback((e) => {
         if (window.scrollY > 500) {
             if (y > window.scrollY) {
                 setScrollDirection(1);
+                setBackgroundColor(theme.lightAccent)
             } else if (y < window.scrollY) {
                 setScrollDirection(0);
             }
         } else {
             setScrollDirection(1);
+            setBackgroundColor("#fff")
         }
         setY(window.scrollY)
     }, [y]);
@@ -209,41 +247,53 @@ function Navbar({ theme, openCart, handleMenu, cartItems }) {
 
     return (
 
-        <Container visible={scrollDirection} background={theme.background}>
+        <Container visible={scrollDirection} background={backgroundColor}>
             <Content visible={scrollDirection}>
-                <FlexItem>
-                    <Logo to="/">
+                <LogoContainer>
+                    <Link to="/">
                         <img src="/image/logo.png" alt="unidos pela atividade logo" />
-                    </Logo>
-                </FlexItem>
+                    </Link>
+                    <h1>Unidos Pela <br /> Atividade</h1>
+                </LogoContainer>
                 <FlexItem>
-                    <Menu background={theme.lightAccent} onClick={() => handleMenu(true)} />
+
                     <MenuContainer >
                         <LinkContainer>
-                            <NavbarLink background={theme.blue} to="/sessoes"><span>oferta formativa</span> <div /></NavbarLink>
+                            <NavbarLink to="/"><span>início</span> <div /></NavbarLink>
                         </LinkContainer>
                         <LinkContainer>
-                            <NavbarLink background={theme.blue} to="/produtos"><span>produtos</span> <div /></NavbarLink>
+                            <NavbarLink to="/sessoes"><span>oferta formativa</span> <div /></NavbarLink>
                         </LinkContainer>
                         <LinkContainer>
-                            <NavbarLink background={theme.blue} to="/contact"><span>contactos</span> <div /></NavbarLink>
+                            <NavbarLink to="/produtos"><span>produtos</span> <div /></NavbarLink>
                         </LinkContainer>
                         <LinkContainer>
-                            <NavbarLink background={theme.blue} to="/sobre"><span>acerca de mim</span> <div /></NavbarLink>
+                            <NavbarLink to="/contact"><span>contatos</span> <div /></NavbarLink>
                         </LinkContainer>
                         <LinkContainer>
-                            <NavbarLink background={theme.blue} to="/painel"><span>conta</span> <div /></NavbarLink>
-
-                        </LinkContainer>
-                        <LinkContainer>
-                            <Cart onClick={openCart} color={theme.textAccent}>
-                                <p>{cartItems.length}</p>
-                                <img src="/icon/cart.svg" alt="carrinho" />
-                            </Cart>
-
-
+                            <NavbarLink to="/sobre"><span>acerca de mim</span> <div /></NavbarLink>
                         </LinkContainer>
                     </MenuContainer>
+                </FlexItem>
+                <FlexItem>
+                    <Menu background="#000" onClick={() => handleMenu(true)} />
+
+                    <AccountButton color={theme.textAccent} to="/painel">
+                        <Link to="/painel">
+                            a minha conta
+                        </Link>
+
+                    </AccountButton>
+
+                    <LinkContainer>
+
+                        <Cart onClick={openCart} color={theme.textAccent}>
+                            <p>{cartItems.length}</p>
+                            <img src="/icon/cart.svg" alt="carrinho" />
+                        </Cart>
+
+
+                    </LinkContainer>
                 </FlexItem>
             </Content>
         </Container>

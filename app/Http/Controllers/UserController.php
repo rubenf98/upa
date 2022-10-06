@@ -4,8 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\UserRequest;
 use App\Http\Resources\UserResource;
+use App\Mail\RegistrationEmail;
 use App\Models\User;
-use Illuminate\Http\Request;
+use App\Models\UserHasItem;
+use Carbon\Carbon;
+use Illuminate\Support\Facades\Mail;
 
 class UserController extends Controller
 {
@@ -29,7 +32,26 @@ class UserController extends Controller
     public function store(UserRequest $request)
     {
         $validator = $request->validated();
+        $validator["token"] = uniqid();
         $record = User::create($validator);
+        $record->roles()->attach(2);
+
+        UserHasItem::create([
+            'user_id' => $record->id,
+            'userable_id' => 1,
+            'userable_type' => "App\Models\Course",
+            'expire' => Carbon::now()->addYears(100)->toDateString(),
+        ]);
+
+        UserHasItem::create([
+            'user_id' => $record->id,
+            'userable_id' => 1,
+            'userable_type' => "App\Models\Ebook",
+        ]);
+
+        Mail::to($validator["email"])->queue(new RegistrationEmail($validator["token"]));
+
+
         return new UserResource($record);
     }
 

@@ -2,6 +2,7 @@ import { Input } from 'antd';
 import React, { useContext } from 'react'
 import styled, { withTheme } from "styled-components";
 import { maxWidth, dimensions, borderRadius, fonts } from '../../../helper';
+import { textStyle, titleStyle } from '../../../styles';
 
 const RegistrationContainer = styled.div`
     width: 40%;
@@ -71,14 +72,12 @@ const InfoContainer = styled.div`
     width: 50%;
 
     h3 {
-        font-size: 60px;
-        line-height: 64px;
-        font-family: ${fonts.title};
+        ${titleStyle}
         margin: 0px 0px 5px 0px;
     }
 
     p {
-        font-size: 18px;
+        ${textStyle}
         opacity: .7;
         margin: 0px;
     }
@@ -88,7 +87,7 @@ const InfoContainer = styled.div`
         text-align: center;
 
         h3 {
-            font-size: 36px;
+            font-size: 40px;
         }
 
         p {
@@ -107,8 +106,8 @@ function Free({ theme }) {
         <Container background={theme.opacityLightAccent}>
             <Content>
                 <InfoContainer>
-                    <h3>Atividade gratuitas</h3>
-                    <p>Registe-se para ter acesso às atividades gratuitas que incluem 1 jogo musical na mesa e uma dnaça coreográfica sentada!</p>
+                    <h3>Atividades gratuitas</h3>
+                    <p>Registe-se para ter acesso às atividades gratuitas que disponibilizamos!</p>
                 </InfoContainer>
                 <RegistrationContainer>
                     <Input size='large' placeholder='Endereço de email'></Input>

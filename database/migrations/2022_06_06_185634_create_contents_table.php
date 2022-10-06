@@ -18,6 +18,8 @@ class CreateContentsTable extends Migration
             $table->unsignedBigInteger("course_id");
             $table->string("title");
             $table->boolean("presentation")->default(false);
+            $table->boolean("has_audio")->default(true);
+            $table->boolean("has_instructions")->default(true);
             $table->string("filename");
             $table->double("video_duration", 4, 2);
             $table->timestamps();

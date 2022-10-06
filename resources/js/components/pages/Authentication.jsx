@@ -99,20 +99,26 @@ function Authentication({ register, login }) {
     const [mode, setMode] = useState(2)
     const [form] = Form.useForm();
     const [to, setTo] = useState("/painel")
+    const [token, setToken] = useState(undefined)
     const [searchParams, setSearchParams] = useSearchParams();
     var navigate = useNavigate();
 
     useEffect(() => {
         var destination = searchParams.get("to")
+        var aToken = searchParams.get("token")
         if (destination) {
             setTo("/" + destination);
         }
 
+        if (aToken) {
+            setToken(aToken);
+            setMode(1);
+        }
     }, [])
 
     const handleLogin = (values) => {
 
-        login(values).then((response) => {
+        login({ ...values, token: token }).then((response) => {
             if (response.action.payload.status == 200) {
                 const token = response.value.data.access_token;
                 localStorage.setItem("token", token);
@@ -145,7 +151,6 @@ function Authentication({ register, login }) {
                         :
                         <Register setMode={setMode} form={form} onFinish={handleRegistration} theme={themeContext} />
                     }
-
                 </FormContainer>
             </Content>
 

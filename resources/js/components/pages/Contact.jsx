@@ -13,18 +13,18 @@ const Container = styled.div`
     display: flex;
     align-items: center;
     justify-content: space-around;
+    flex-wrap: wrap;
     max-width: ${maxWidth};
     width: 100%;
     margin: auto;
     position: relative;
-`;
 
-const TextArea = styled(Input.TextArea)`
-    margin: auto;
-    textarea {
-        border-radius: 6px;
+    @media (max-width: ${dimensions.maxWidth}){
+        padding: 0px 20px;
+        box-sizing: border-box;
     }
 `;
+
 
 const ContactForm = styled(Form)`
     width: 100%;
@@ -41,21 +41,39 @@ const FormContainer = styled(Row)`
 
     @media (max-width: ${dimensions.md}){
         width: 100%;
+        margin: 50px 0px;
     }
 `;
 
 const Title = styled.div`
     width: 60%;
 
+    
+
+    @media (max-width: ${dimensions.md}){
+        width: 100%;
+        margin-top: 50px;
+    }
+
     h1 {
         font-weight: 500;
         letter-spacing: -.044em;
-        font-size: 4vw;
-        line-height: 98px;
+        font-size: 50px;
+        line-height: 58px;
 
         span {
             font-weight: 900;
             color: ${props => props.underlineColor};
+        }
+
+        @media (max-width: ${dimensions.lg}){
+            font-size: 40px;
+            line-height: 48px;
+        }
+
+        @media (max-width: ${dimensions.md}){
+            font-size: 28px;
+            line-height: 38px;
         }
     }
 
@@ -72,6 +90,10 @@ const Title = styled.div`
             &:hover{
                 ${underlineStyle}
             }
+        }
+
+        @media (max-width: ${dimensions.md}){
+            font-size: 16px;
         }
     }
 `;
@@ -90,7 +112,13 @@ const InfoContainer = styled.div`
         margin: 0px;
     }
 
-   
+    @media (max-width: ${dimensions.maxWidth}){
+        right: 20px;
+    }
+
+    @media (max-width: ${dimensions.md}){
+        display: none;
+    }
 `;
 
 const Logo = styled.a`
@@ -123,22 +151,23 @@ const rules = {
     name: [
         {
             required: true,
-            message: 'Please input your name!',
+            message: 'Por favor introduza o seu nome!',
         },
     ],
     email: [
         {
             required: true,
-            message: 'Please input your email!',
+            message: 'Por favor introduza o seu email!',
         },
         {
             type: "email",
+            message: 'O email não é válido',
         },
     ],
     message: [
         {
             required: true,
-            message: 'Please input your message!',
+            message: 'Por favor introduza a sua mensagem!',
         },
     ]
 }
@@ -151,21 +180,25 @@ function Contact({ theme }) {
     }, [])
 
 
-    const onFinish = (values) => {
-        axios.post(`${window.location.origin}/api/contact`, values);
+    const onFinish = () => {
+        form.validateFields().then((values) => {
+            axios.post(`${window.location.origin}/api/contact`, values);
 
-        setTimeout(() => {
-            form.resetFields();
-            setSubmitted(true);
-        }, 300);
+            setTimeout(() => {
+                form.resetFields();
+            }, 300);
+        }).catch(error => {
+            console.log(error);
+        })
+    }
 
-    };
+
 
     return (
         <>
             <Container>
                 <Title underlineColor={theme.textAccent}>
-                    <h1><span>Vamos conversar.</span> <br />
+                    <h1><span>Coloque as suas questões.</span> <br />
                         Responderemos o mais brevemente possível</h1>
 
                     <div>
@@ -182,7 +215,7 @@ function Contact({ theme }) {
                     <ContactForm
                         requiredMark={false}
                         name="basic"
-                        onFinish={onFinish}
+
                         layout="vertical"
                         form={form}
                     >
@@ -215,7 +248,7 @@ function Contact({ theme }) {
                     </ContactForm>
 
                     <ButtonContainer>
-                        <StyledButton background={theme.textAccent} hover={theme.darkAccent} color="white">
+                        <StyledButton onClick={onFinish} background={theme.textAccent} hover={theme.darkAccent} color="white">
                             Submeter
                         </StyledButton>
                     </ButtonContainer>

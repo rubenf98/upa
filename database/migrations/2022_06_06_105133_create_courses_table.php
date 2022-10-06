@@ -19,7 +19,7 @@ class CreateCoursesTable extends Migration
             $table->string("subtitle");
             $table->text("description");
             $table->string("thumbnail");
-            $table->decimal('price', 5, 2);
+            $table->decimal('price', 5, 2)->nullable();
             $table->timestamps();
         });
     }

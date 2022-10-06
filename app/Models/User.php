@@ -26,13 +26,14 @@ class User extends Authenticatable implements JWTSubject
     }
     public function transactions()
     {
-        return $this->belongsTo(Transaction::class);
+        return $this->hasMany(Transaction::class);
     }
 
     protected $fillable = [
         'name',
         'email',
-        'password'
+        'password',
+        'token'
     ];
 
     protected $hidden = [

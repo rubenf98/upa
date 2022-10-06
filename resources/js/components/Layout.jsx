@@ -61,7 +61,7 @@ function Layout({ cart, minimalist, children, setCart }) {
         <ThemeProvider theme={{
             text: '#000000',
             background: '#ffffff',
-            lightAccent: "#93ecee",
+            lightAccent: "#E1EEFF",
             opacityLightAccent: "#b9ebec4d",
             darkAccent: "#1a4355",
             textAccent: "#289294",
@@ -72,6 +72,7 @@ function Layout({ cart, minimalist, children, setCart }) {
 
 
                 <GlobalStyles />
+
 
                 {!minimalist && <Navbar />}
 

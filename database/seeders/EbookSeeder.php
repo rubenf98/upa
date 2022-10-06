@@ -15,12 +15,20 @@ class EbookSeeder extends Seeder
     public function run()
     {
         Ebook::create([
+            'title' => "10 Exercícios Estimulação Cognitiva",
+            'subtitle' => "Volume I",
+            'description' => "Atenção, orientação espacial, motricidade fina, cálculo, literatura escrita",
+            'thumbnail' => "/image/products/10_volume1.jpg",
+            'file' => '/ebooks/10_1.pdf'
+        ]);
+
+        Ebook::create([
             'title' => "50 Exercícios Estimulação Cognitiva",
             'subtitle' => "Volume I",
             'description' => "Memória, atenção, orientação espacial, cálculo, literatura escrita, criatividade",
             'thumbnail' => "/image/products/50_volume1.jpg",
             'price' => 8,
-            'file'=> '/ebooks/50_1.jpg'
+            'file' => '/ebooks/50_1.pdf'
         ]);
 
         Ebook::create([
@@ -29,7 +37,7 @@ class EbookSeeder extends Seeder
             'description' => "Memória, atenção, orientação espacial, cálculo, literatura escrita, criatividade",
             'thumbnail' => "/image/products/50_volume2.jpg",
             'price' => 8,
-            'file'=> '/ebooks/50_2.jpg'
+            'file' => '/ebooks/50_2.pdf'
         ]);
 
         Ebook::create([
@@ -38,7 +46,7 @@ class EbookSeeder extends Seeder
             'description' => "Memória, atenção, orientação espacial, cálculo, literatura escrita, criatividade",
             'thumbnail' => "/image/products/50_volume3.jpg",
             'price' => 8,
-            'file'=> '/ebooks/50_3.jpg'
+            'file' => '/ebooks/50_3.pdf'
         ]);
 
         Ebook::create([
@@ -47,7 +55,7 @@ class EbookSeeder extends Seeder
             'description' => "Memória, atenção, orientação espacial, cálculo, literatura escrita, criatividade",
             'thumbnail' => "/image/products/50_volume4.jpg",
             'price' => 8,
-            'file'=> '/ebooks/50_4.jpg'
+            'file' => '/ebooks/50_4.pdf'
         ]);
 
         Ebook::create([
@@ -56,7 +64,25 @@ class EbookSeeder extends Seeder
             'description' => "Memória, atenção, orientação espacial, cálculo, literatura escrita, criatividade",
             'thumbnail' => "/image/products/50_volume4.jpg",
             'price' => 4,
-            'file'=> '/ebooks/24_1.jpg'
+            'file' => '/ebooks/24_1.pdf'
+        ]);
+
+        Ebook::create([
+            'title' => "50 Exercícios Estimulação Cognitiva",
+            'subtitle' => "Volume V",
+            'description' => "Memória, atenção, orientação espacial, cálculo, literatura escrita, criatividade",
+            'thumbnail' => "/image/products/50_volume5.jpg",
+            'price' => 8,
+            'file' => '/ebooks/50_5.pdf'
+        ]);
+
+        Ebook::create([
+            'title' => "25 Exercícios Estimulação Cognitiva",
+            'subtitle' => "Outono. Volume I",
+            'description' => "Atenção e perceção visual orientação espacial, literatura escrita e motricidade fina",
+            'thumbnail' => "/image/products/25_outono.jpg",
+            'price' => 8,
+            'file' => '/ebooks/25_outono.pdf'
         ]);
     }
 }

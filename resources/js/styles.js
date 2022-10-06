@@ -1,6 +1,34 @@
 import styled, { css } from "styled-components";
 import { Input } from 'antd';
-import { borderRadius, dimensions } from "./helper";
+import { borderRadius, dimensions, fonts, fontSize } from "./helper";
+
+export const titleStyle = css`
+    font-size: ${fontSize.title};
+    font-weight: bold;
+    font-family: ${fonts.title};
+    line-height: 53px;
+
+    @media (max-width: ${dimensions.lg}) {
+        font-size:  40px;
+        line-height: 48px;
+    }
+
+    @media (max-width: ${dimensions.md}) {
+        font-size:  28px;
+        line-height: 40px;
+    }
+`;
+
+export const textStyle = css`
+    font-size: ${fontSize.text};
+    font-family: ${fonts.text};
+
+    @media (max-width: ${dimensions.md}) {
+        font-size: 16px;
+    }
+`;
+
+
 
 export const underlineStyle = css`
     text-decoration: underline;

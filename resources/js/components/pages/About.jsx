@@ -1,7 +1,7 @@
 import React from 'react'
 import styled, { withTheme } from "styled-components";
 import { dimensions, fonts, maxWidth, navbarHeight } from '../../helper';
-import { underlineStyle } from '../../styles';
+import { titleStyle, underlineStyle } from '../../styles';
 import Faq from './Faq';
 
 const Container = styled.div`
@@ -59,6 +59,7 @@ const TitleContainer = styled.div`
     width: 50%;
     box-sizing: border-box;
     position: relative;
+    margin-top: 100px;
 
     @media (max-width: ${dimensions.lg}) {
         width: 100%;
@@ -71,34 +72,42 @@ const TitleContainer = styled.div`
         left: -100px;
         z-index: 1;
 
-        @media (max-width: ${dimensions.md}) {
+        @media (max-width: ${dimensions.lg}) {
             position: relative;
             left: 0px;
         }
     }
 
     h2 {
-        font-size: 5.2vw;
-        line-height: 98px;
+        font-size: 4vw;
+        line-height: 70px;
         font-weight: bold;
         margin-bottom: 0px;
         font-family: ${fonts.title};
 
+        @media (max-width: ${dimensions.lg}) {
+            line-height: 60px;
+            text-align: center;
+        }
+
         @media (max-width: ${dimensions.md}) {
             position: relative;
             left: 0px;
-            text-align: center;
+            
             font-size: 40px;
             line-height: 49px;
         }
     }
 
     h3 {
-        font-size: 26px;
-        margin-top: 0px;
+        font-size: 24px;
+        margin-top: 10px;
+
+        @media (max-width: ${dimensions.lg}) {
+            text-align: center;
+        }
 
         @media (max-width: ${dimensions.md}) {
-            text-align: center;
             font-size: 18px;
         }
     }
@@ -129,7 +138,7 @@ const InfoContainer = styled.section`
             margin-bottom: 30px;
             text-align: justify;
             font-size: 18px;
-            opacity: .9;
+            opacity: .7;
 
             @media (max-width: ${dimensions.md}) {
                 font-size: 16px;
@@ -144,6 +153,7 @@ const InfoContainer = styled.section`
 
         @media (max-width: ${dimensions.md}) {
             width: 100%;
+            font-size: 20px;
         }
     }
 
@@ -175,21 +185,13 @@ const ImportanceContainer = styled.section`
         box-sizing: border-box;
 
         h2 {
-            font-size: 48px;
-            font-family: ${fonts.title};
-            line-height: 55px;
-
-            @media (max-width: ${dimensions.md}) {
-                text-align: center;
-                font-size: 40px;
-                line-height: 49px;
-            }
+            ${titleStyle}
         }
 
         p {
             font-size: 18px;
             text-align: justify;
-            opacity: .9;
+            opacity: .7;
             padding-right: 20px;
             box-sizing: border-box;
 

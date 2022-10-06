@@ -21,8 +21,7 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Merriweather:ital,wght@0,300;0,400;1,700&display=swap"
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&family=Roboto:wght@400;700&display=swap"
         rel="stylesheet">
 
     <meta name="keywords"
@@ -39,14 +38,14 @@
     body,
     #index {
         height: 100%;
-        font-family: 'Merriweather', serif;
+        font-family: 'Roboto', sans-serif;
         scroll-behavior: smooth;
     }
 
     h1,
     h2,
     h3 {
-        font-family: 'DM Serif Display', serif;
+        font-family: 'Open Sans', sans-serif;
     }
 
     p {
@@ -65,8 +64,9 @@
         window.scrollTo(0, 0);
     }
 </script>
+{{-- oncontextmenu="return false;" --}}
 
-<body oncontextmenu="return false;">
+<body>
     <div id="index">
         <script src="{{mix('js/app.js')}}"></script>
     </div>

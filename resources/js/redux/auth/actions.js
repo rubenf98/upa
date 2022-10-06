@@ -1,7 +1,6 @@
 import { types } from "./types";
 import axios from "axios";
 import jwtDecode from "jwt-decode";
-import { history } from "../../router";
 
 
 export const register = (data) => ({

@@ -2,7 +2,8 @@ import React, { useEffect } from 'react'
 import styled, { withTheme } from "styled-components";
 import { StyledButton } from '../../../styles';
 import { fetchCourses } from "../../../redux/course/actions";
-import { fetchEbooks } from "../../../redux/ebook/actions";
+import { fetchEbooks, downloadEbook } from "../../../redux/ebook/actions";
+import { verifyAddToCart } from "../../../redux/cart/actions";
 import { connect } from "react-redux";
 import { Link } from 'react-router-dom';
 import { borderRadius, maxWidth } from '../../../helper';
@@ -76,13 +77,16 @@ const CourseContainer = styled.div`
 
 
 
-function Courses({ theme, fetchCourses, fetchEbooks, courses, ebooks }) {
+function Courses({ theme, fetchCourses, fetchEbooks, courses, ebooks, verifyAddToCart, downloadEbook }) {
 
     useEffect(() => {
         fetchCourses();
         fetchEbooks();
     }, [])
 
+    const addToCart = (element) => {
+        verifyAddToCart(element);
+    };
 
     return (
         <Container>
@@ -101,13 +105,25 @@ function Courses({ theme, fetchCourses, fetchEbooks, courses, ebooks }) {
                                     {course.bought &&
                                         <Link to={"/painel/sessoes/" + course.id}>
                                             <StyledButton fontSize="16px">
-                                                Saber Mais...
+                                                Visualizar
                                             </StyledButton>
                                         </Link>
                                     }
                                     {!course.bought &&
 
-                                        <StyledButton fontSize="16px" className='buy-button' background={theme.background} shadow={theme.blue}>
+                                        <StyledButton
+                                            onClick={() => addToCart({
+                                                title: course.title,
+                                                image: course.thumbnail,
+                                                price: parseInt(course.price),
+                                                type: "App\\Models\\Course",
+                                                id: course.id,
+                                            })}
+                                            fontSize="16px"
+                                            className='buy-button'
+                                            background={theme.background}
+                                            shadow={theme.blue}
+                                        >
                                             Adicionar ao carrinho
                                         </StyledButton>
                                     }
@@ -135,15 +151,25 @@ function Courses({ theme, fetchCourses, fetchEbooks, courses, ebooks }) {
                                 <p>{course.description}</p>
                                 <ButtonContainer>
                                     {course.bought &&
-                                        <Link to={"/painel/sessoes/" + course.id}>
-                                            <StyledButton fontSize="16px">
-                                                Saber Mais...
-                                            </StyledButton>
-                                        </Link>
+                                        <StyledButton onClick={() => downloadEbook(course.id)} fontSize="16px">
+                                            Descarregar
+                                        </StyledButton>
                                     }
                                     {!course.bought &&
 
-                                        <StyledButton fontSize="16px" className='buy-button' background={theme.background} shadow={theme.blue}>
+                                        <StyledButton
+                                            onClick={() => addToCart({
+                                                title: course.title,
+                                                image: course.thumbnail,
+                                                price: parseInt(course.price),
+                                                type: "App\\Models\\Ebook",
+                                                id: course.id,
+                                            })}
+                                            fontSize="16px"
+                                            className='buy-button'
+                                            background={theme.background}
+                                            shadow={theme.blue}
+                                        >
                                             Adicionar ao carrinho
                                         </StyledButton>
                                     }
@@ -163,6 +189,8 @@ const mapDispatchToProps = (dispatch) => {
     return {
         fetchCourses: () => dispatch(fetchCourses()),
         fetchEbooks: () => dispatch(fetchEbooks()),
+        verifyAddToCart: (element) => dispatch(verifyAddToCart(element)),
+        downloadEbook: (id) => dispatch(downloadEbook(id)),
     };
 };
 

@@ -1,10 +1,12 @@
 import React, { useRef, useState } from 'react'
 import { Link } from 'react-router-dom';
 import styled, { withTheme } from "styled-components";
-import { dimensions, fonts, maxWidth, navbarHeight } from '../../helper';
-import { StyledButton } from '../../styles';
+import { dimensions, fonts, fontSize, maxWidth, navbarHeight } from '../../helper';
+import { StyledButton, titleStyle } from '../../styles';
 import Video from './HomepageComponents/Video';
 import { Carousel } from 'react-responsive-carousel';
+import { verifyAddToCart } from "../../redux/cart/actions";
+import { connect } from "react-redux";
 
 
 const SessionsContainer = styled.div`
@@ -22,23 +24,9 @@ const SessionsContainer = styled.div`
         width: 100%;
         box-sizing: border-box;
     }
-    
-    h2 {
-        text-transform: uppercase;
-        color: ${props => props.color};
-        font-size: 28px;
-        font-family: ${fonts.title};
-        text-align: center;
-        margin: 0px;
-
-        @media (max-width: ${dimensions.md}) {
-            font-size: 22px;
-        }
-    }
 
     h3 {
-        font-size: 60px;
-        font-family: ${fonts.title};
+        ${titleStyle}
         text-align: center;
         margin: 0px;
         margin-bottom: 50px;
@@ -58,6 +46,10 @@ const SessionsContainer = styled.div`
         align-items: flex-start;
         flex-wrap: wrap;
         position: relative;
+
+        @media (max-width: ${dimensions.md}) {
+            width: 60%;
+        }
     }
 `;
 
@@ -84,11 +76,7 @@ const Header = styled.section`
         }
 
         h2 {
-            font-size: 60px;
-            letter-spacing: 0.027em;
-            line-height: 65px;
-            font-weight: bold;
-            font-family: ${fonts.title};
+            ${titleStyle}
 
             @media (max-width: ${dimensions.md}) {
                 font-size: 36px;
@@ -99,7 +87,7 @@ const Header = styled.section`
         }
 
         p {
-            font-size: 18px;
+            font-size: 16px;
             margin: 30px 0px;
 
             @media (max-width: ${dimensions.md}) {
@@ -171,7 +159,8 @@ const CarouselStatusContainer = styled.div`
 
     .arrow-container {
         display: flex;
-        justify-content: center;
+        justify-content: space-between;
+        width: 100%;
 
         img {
             width: 80px;
@@ -191,7 +180,9 @@ const CarouselStatusContainer = styled.div`
         }
 
         .hidden {
-            display: none;
+            opacity: 0;
+            pointer-events: none;
+            cursor: default;
         }
     }
 `;
@@ -257,11 +248,12 @@ const SessionContent = styled.div`
         }
         
         h4 {
-            font-size: 48px;
+            font-size: ${fontSize.subtitle};
             font-family: ${fonts.title};
+            font-weight: bold;
 
             @media (max-width: ${dimensions.md}) {
-                font-size: 32px;
+                font-size: 18px;
             }
         }
 
@@ -277,35 +269,26 @@ const SessionContent = styled.div`
 
         .price {
             opacity: .7;
-            font-size: 20px;
+            font-size: 18px;
 
             @media (max-width: ${dimensions.md}) {
-                font-size: 18px;
+                font-size: 16px;
             }
         }
 
-        a {
+        .flex {
             display: flex;
+            justify-content: flex-start;
             align-items: center;
-            margin-top: 20px;
-            transition: margin .3s ease;
+        }
 
-            @media (max-width: ${dimensions.md}) {
-                margin: 20px 0px;
-            }
-
-            &:hover {
-                margin-left: 5px;
-            }
-
-            img {
-                width: 50px;
-                margin-right: 5px;
-            }
-
+        a {
             span {
                 color: ${props => props.color};
                 font-weight: bold;
+                font-size: 16px;
+                margin-left: 20px;
+                text-transform: capitalize;
 
                 &:hover {
                     color: ${props => props.color};
@@ -355,13 +338,13 @@ const SlideIndicator = styled.div`
     }
 `;
 
-function Sessions({ theme }) {
+function Sessions({ theme, verifyAddToCart }) {
     const carousel = useRef(null);
     const [currentSlide, setCurrentSlide] = useState(1)
 
     function next() {
         carousel.current.increment()
-        setCurrentSlide(currentSlide < 2 ? currentSlide + 1 : 2);
+        setCurrentSlide(currentSlide < 3 ? currentSlide + 1 : 3);
     }
 
     function previous() {
@@ -369,26 +352,44 @@ function Sessions({ theme }) {
         setCurrentSlide(currentSlide > 1 ? currentSlide - 1 : 1);
     }
 
-    const Session = ({ image, title, price, description, to }) => (
-        <SessionContent color={theme.darkAccent} background="#eaeaea">
+    const addToCart = (element) => {
+        verifyAddToCart(element);
+    };
+
+    const Session = ({ image, title, price, description, to, id }) => (
+        <SessionContent color={theme.textAccent} background={theme.lightAccent}>
             <div className='image-container'>
                 <img src={"/image/sessions/" + image + ".jpg"} alt="" />
                 <div className="background" />
             </div>
 
             <div className='info-container'>
-                <SlideIndicator><p>0{currentSlide} <span>/02</span></p></SlideIndicator>
+                <SlideIndicator><p>0{currentSlide} <span>/03</span></p></SlideIndicator>
                 <h4>{title}</h4>
-                <p className="price">{price}</p>
+                <p className="price">{price}.00€</p>
 
                 <p className="description">{description}</p>
 
-                <Link to={to}>
-                    <img src={"/icon/sessions/indicator.svg"} alt="indicador click" />
-                    <span>saber mais</span>
-                </Link>
+                <div className='flex'>
+
+                    <StyledButton
+                        onClick={() => addToCart({
+                            title: title,
+                            image: '/image/sessions/' + image + '.jpg',
+                            price: price,
+                            type: "App\\Models\\Course",
+                            id: id,
+                        })}
+                    >
+                        Adicionar ao carrinho
+                    </StyledButton>
+
+                    <Link to={to}>
+                        <span>saber mais</span>
+                    </Link>
+                </div>
             </div>
-        </SessionContent>
+        </SessionContent >
     );
 
 
@@ -401,7 +402,7 @@ function Sessions({ theme }) {
                     <p>Disponibilizamos Sessões, Workshops, Oficinas e Recursos no âmbito da Estimulação Cognitiva e Motora para aplicar com idosos.</p>
                     <p>Clique no vídeo para assistir a uma descrição das atividades.</p>
                     <ButtonContainer to="/login">
-                        <StyledButton shadow={theme.darkAccent}>
+                        <StyledButton>
                             Registar
                         </StyledButton>
                     </ButtonContainer>
@@ -417,7 +418,6 @@ function Sessions({ theme }) {
 
             <SessionsContainer color={theme.textAccent}>
 
-                <h2>sessões</h2>
                 <h3>Sessões de Estimulação Cognitiva e Motora</h3>
                 <div className='content'>
                     <Carousel
@@ -428,23 +428,44 @@ function Sessions({ theme }) {
                         showThumbs={false}
                         showIndicators={false}
                     >
+                        {/* <Session
+                            id={1}
+                            title="Sessão Gratuita"
+                            price={0}
+                            image="free"
+                            to="sessaoGratuita"
+                            description="Sessão gratuita disponibilizada a qualquer utilizador que se registe na plataforma! Esta é composta por uma dança coreográfica snetada e um jogo musical na mesa."
+                        /> */}
                         <Session
-                            title="Jogos Musicais na Mesa"
-                            price="32.00€"
-                            image="mesa"
-                            to="jogosMusicaisNaMesa"
-                            description="Mais do que proporcionar divertimento, o jogo musical ajuda no treino dos domínios da escuta, da concentração e da expressão."
-                        />
-                        <Session
+                            id={2}
                             title="Dança Coreográfica Sentada"
-                            price="32.00€"
+                            price={32}
                             image="sentado"
                             to="dancaCoreograficaSentada"
                             description="Modalidade de baixo impacto, que tem como propósito a realização de gestos e de movimentos simples e fáceis de executar."
                         />
+                        <Session
+                            id={3}
+                            title="Jogos Musicais na Mesa"
+                            price={32}
+                            image="mesa"
+                            to="jogosMusicaisNaMesa"
+                            description="Mais do que proporcionar divertimento, o jogo musical ajuda no treino dos domínios da escuta, da concentração e da expressão."
+                        />
+
+                        <Session
+                            id={4}
+                            title="Dança Coreográfica de Natal"
+                            price={32}
+                            image="natal"
+                            to="dancaCoreograficaNatal"
+                            description="Mais do que proporcionar divertimento, o jogo musical ajuda no treino dos domínios da escuta, da concentração e da expressão."
+                        />
+
                         {/* <Session
+                            id={4}
                             title="Jogos Musicais com Balão"
-                            price="32.00€"
+                            price={32}
                             image="balao"
                             to="jogosMusicaisComBalao"
                             description="lorem"
@@ -454,7 +475,7 @@ function Sessions({ theme }) {
                     <CarouselStatusContainer color={theme.darkAccent} currentSlide={currentSlide}>
                         <div className='arrow-container'>
                             <img className={currentSlide == 1 ? "previous hidden" : "previous"} onClick={previous} src="/icon/sessions/previous.svg" alt="previous" />
-                            <img className={currentSlide == 2 ? "next hidden" : "next"} onClick={next} src="/icon/sessions/next.svg" alt="next" />
+                            <img className={currentSlide == 4 ? "next hidden" : "next"} onClick={next} src="/icon/sessions/next.svg" alt="next" />
                         </div>
                     </CarouselStatusContainer>
                 </div>
@@ -466,4 +487,10 @@ function Sessions({ theme }) {
     )
 }
 
-export default withTheme(Sessions);
+const mapDispatchToProps = (dispatch) => {
+    return {
+        verifyAddToCart: (element) => dispatch(verifyAddToCart(element)),
+    };
+};
+
+export default connect(null, mapDispatchToProps)(withTheme(Sessions));

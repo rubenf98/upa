@@ -3,7 +3,7 @@ import React from 'react'
 import { Link } from 'react-router-dom';
 import styled, { withTheme } from "styled-components";
 import { dimensions, fonts, maxWidth } from '../../../helper';
-import { StyledButton, underlineStyle } from '../../../styles';
+import { StyledButton, textStyle, titleStyle, underlineStyle } from '../../../styles';
 
 const Container = styled.section`
     margin: 100px auto;
@@ -58,18 +58,17 @@ const Title = styled.div`
 
     @media (max-width: ${dimensions.lg}) {
         width: 70%;
-         min-width: 0px;
+        min-width: 0px;
     }
 
     h2 {
-        font-size: 60px;
-        font-family: ${fonts.title};
+        ${titleStyle}
         margin: 0px;
     }
 
     p {
         opacity: .7;
-        font-size: 18px;
+        ${textStyle}
         margin: 0px 0px 50px 0px;
     }
 
@@ -77,7 +76,7 @@ const Title = styled.div`
         width: 100%;
 
         h2 {
-            font-size: 42px;
+            font-size: 40px;
             text-align: 16px;
         }
 
@@ -153,7 +152,7 @@ function Resources({ theme }) {
         { title: "Jogos", subtitle: "Jogos em pdf e em formato físico.", icon: "jogos" },
         { title: "Workshops", subtitle: "Workshops presenciais e na plataforma Zoom", icon: "workshops" }
     ]
-    
+
     return (
         <Container>
             <Title>

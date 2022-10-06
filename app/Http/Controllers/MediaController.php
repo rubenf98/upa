@@ -9,25 +9,36 @@ use Tymon\JWTAuth\JWTAuth;
 
 class MediaController extends Controller
 {
+    public function proof($proof)
+    {
+        $headers = [
+            'Content-Type' => 'application/pdf',
+        ];
+
+        return response()->download(storage_path("app/proof/" . $proof), 'filename.pdf', $headers);
+    }
+
     public function instructions(Request $request,  $filename)
     {
-        return $request->header('Authorization');
         if ($request->header('Authorization'))
             if (auth()->user()->id) {
-                $path = storage_path('app/courses/pdf/' . $filename . ".pdf");
+                $headers = [
+                    'Content-Type' => 'application/pdf',
+                ];
 
-                return Media::returnMediaFile($path);
+                return response()->download(storage_path("app/courses/pdf/" . $filename . '.pdf'), 'filename.pdf', $headers);
             }
     }
 
     public function audio(Request $request,  $filename)
     {
-        return $request->header('Authorization');
         if ($request->header('Authorization'))
             if (auth()->user()->id) {
-                $path = storage_path('app/courses/mp3/' . $filename . ".mp3");
+                $headers = [
+                    'Content-Type' => 'application/mp3',
+                ];
 
-                return Media::returnMediaFile($path);
+                return response()->download(storage_path("app/courses/mp3/" . $filename . '.mp3'), 'filename.mp3', $headers);
             }
     }
 

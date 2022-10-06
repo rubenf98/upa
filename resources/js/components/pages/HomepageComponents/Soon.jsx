@@ -1,6 +1,7 @@
 import React from 'react'
 import styled, { withTheme } from "styled-components";
 import { dimensions, fonts, maxWidth } from '../../../helper';
+import { textStyle, titleStyle } from '../../../styles';
 
 const Container = styled.section`
     width: 100%;
@@ -45,25 +46,25 @@ const InfoContainer = styled.div`
         }
 
         h3 {
+            ${textStyle}
             text-transform: uppercase;
             color: #38CDD0;
             font-weight: bold;
         }
 
         p {
+            ${textStyle}
             opacity: .7;
         }
     }
 `;
 
 const Title = styled.h2`
-    font-size: 90px;
-    font-family: ${fonts.title};
-    line-height: 111.5%;
+    ${titleStyle}
     z-index: 2;
 
     @media (max-width: ${dimensions.md}) {
-        font-size: 48px;
+        font-size: 40px;
     }
 `;
 
@@ -71,11 +72,9 @@ const ImageContainer = styled.div`
     width: 40%;
     z-index: -1;
 
-    
-
     img {
         width: 110%;
-        margin-left: -20%;
+        margin-left: -30%;
         height: 100%;
         object-fit: cover;
     }

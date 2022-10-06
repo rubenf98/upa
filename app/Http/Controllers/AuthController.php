@@ -6,6 +6,8 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\UserResource;
 use App\Models\User;
+use Carbon\Carbon;
+use Illuminate\Http\Request;
 
 class AuthController extends Controller
 {
@@ -21,12 +23,23 @@ class AuthController extends Controller
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    public function login()
+    public function login(Request $request)
     {
         $credentials = request(['email', 'password']);
 
         if (!$token = auth()->attempt($credentials)) {
-            return response()->json(['error' => 'Unauthorized'], 401);
+            return response()->json(['error' => 'Credenciais erradas'], 401);
+        }
+
+        $user = User::find(auth()->user()->id);
+
+        if (!$user->email_verified_at) {
+            if ($request->token && $request->token == $user->token) {
+                $user->email_verified_at = Carbon::now();
+                $user->save();
+            } else {
+                return response()->json(['error' => 'Conta não validada'], 401);
+            }
         }
 
         return $this->respondWithToken($token);

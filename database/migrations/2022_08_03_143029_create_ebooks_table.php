@@ -20,7 +20,7 @@ class CreateEbooksTable extends Migration
             $table->text("description");
             $table->string("thumbnail");
             $table->string("file");
-            $table->decimal('price', 5, 2);
+            $table->decimal('price', 5, 2)->nullable();
             $table->timestamps();
         });
     }

@@ -18,5 +18,7 @@ class Content extends Model
         'presentation',
         'filename',
         'course_id',
+        'has_audio',
+        'has_instructions'
     ];
 }

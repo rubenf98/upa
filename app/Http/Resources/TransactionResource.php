@@ -17,6 +17,8 @@ class TransactionResource extends JsonResource
         return [
             'id' => $this->id,
             'price' => $this->price,
+            'proof' => $this->proof,
+            'user' => $this->user,
             'statuses' => $this->statuses()->orderBy('pivot_created_at', 'desc')->get(),
             'items' => $this->courses->toBase()->merge($this->ebooks),
             'created_at' => (string) $this->created_at

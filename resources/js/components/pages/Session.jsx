@@ -5,7 +5,7 @@ import styled, { withTheme } from "styled-components";
 import { dimensions, fonts, maxWidth, navbarHeight } from '../../helper';
 import { StyledButton } from '../../styles';
 import Video from './HomepageComponents/Video';
-import { addCartItem, openCart } from "../../redux/cart/actions";
+import { verifyAddToCart } from "../../redux/cart/actions";
 import { connect } from "react-redux";
 
 const Container = styled.div`
@@ -203,21 +203,9 @@ const Other = styled.div`
 `;
 
 const content = {
-    jogosMusicaisNaMesa: {
-        title: "Jogos Musicais na Mesa",
-        id: 2,
-        paragraphs: [
-            "Os jogos musicais na mesa podem ser realizados com grupos de qualquer idade.",
-            "Mais do que proporcionar divertimento, o jogo musical ajuda no treino dos domínios da escuta, da concentração e da expressão. Pode ser, incontestavelmente, uma estratégia eficaz para a manutenção cognitiva, motora, social e emocional do idoso. Ele tem o poder de cativar quem nele participa!",
-            "Clique na imagem para assistir a um vídeo de demonstração das atividades."
-        ],
-        thumbnail: "mesa",
-        demo: "02_demo",
-        price: 32
-    },
     dancaCoreograficaSentada: {
         title: "Dança Coreográfica Sentada",
-        id: 1,
+        id: 2,
         paragraphs: [
             "A Dança Coreográfica Sentada é uma modalidade de baixo impacto, que tem como propósito a realização de gestos e de movimentos simples e fáceis de executar.",
             "O bater de mãos, de pés; o dar estalos; o levar as mãos ao pescoço, à cabeça, aos ombros; o elevar as pernas, os braços, os joelhos, etc., são movimentos que fazem parte desta modalidade.",
@@ -228,21 +216,45 @@ const content = {
         demo: "01_demo",
         price: 32
     },
-    jogosMusicaisComBalao: {
-        title: "Jogos Musicais com Balão",
+    jogosMusicaisNaMesa: {
+        title: "Jogos Musicais na Mesa",
         id: 3,
         paragraphs: [
             "Os jogos musicais na mesa podem ser realizados com grupos de qualquer idade.",
             "Mais do que proporcionar divertimento, o jogo musical ajuda no treino dos domínios da escuta, da concentração e da expressão. Pode ser, incontestavelmente, uma estratégia eficaz para a manutenção cognitiva, motora, social e emocional do idoso. Ele tem o poder de cativar quem nele participa!",
-            "Clique no ícone DEMO para assistir a um vídeo de demonstração das atividades."
+            "Clique na imagem para assistir a um vídeo de demonstração das atividades."
         ],
-        thumbnail: "balao",
-        demo: "Jogos Musicais na Mesa",
+        thumbnail: "mesa",
+        demo: "02_demo",
         price: 32
-    }
+    },
+    dancaCoreograficaNatal: {
+        title: "Dança Coreográfica de Natal",
+        id: 4,
+        paragraphs: [
+            "Os jogos musicais na mesa podem ser realizados com grupos de qualquer idade.",
+            "Mais do que proporcionar divertimento, o jogo musical ajuda no treino dos domínios da escuta, da concentração e da expressão. Pode ser, incontestavelmente, uma estratégia eficaz para a manutenção cognitiva, motora, social e emocional do idoso. Ele tem o poder de cativar quem nele participa!",
+            "Clique na imagem para assistir a um vídeo de demonstração das atividades."
+        ],
+        thumbnail: "natal",
+        demo: "03_demo",
+        price: 32
+    },
+    // jogosMusicaisComBalao: {
+    //     title: "Jogos Musicais com Balão",
+    //     id: 3,
+    //     paragraphs: [
+    //         "Os jogos musicais na mesa podem ser realizados com grupos de qualquer idade.",
+    //         "Mais do que proporcionar divertimento, o jogo musical ajuda no treino dos domínios da escuta, da concentração e da expressão. Pode ser, incontestavelmente, uma estratégia eficaz para a manutenção cognitiva, motora, social e emocional do idoso. Ele tem o poder de cativar quem nele participa!",
+    //         "Clique no ícone DEMO para assistir a um vídeo de demonstração das atividades."
+    //     ],
+    //     thumbnail: "balao",
+    //     demo: "Jogos Musicais na Mesa",
+    //     price: 32
+    // }
 }
 
-function Session({ theme, addCartItem, openCart }) {
+function Session({ verifyAddToCart }) {
     const [others, setOthers] = useState([])
     const { sessao } = useParams();
 
@@ -259,8 +271,7 @@ function Session({ theme, addCartItem, openCart }) {
     }, [])
 
     const addToCart = (element) => {
-        addCartItem(element);
-        openCart();
+        verifyAddToCart(element);
     };
 
     return (
@@ -294,14 +305,20 @@ function Session({ theme, addCartItem, openCart }) {
             <OtherContainer>
                 {others.map((other) => (
                     <Other key={other}>
-                        <img src={'/image/sessions/' + content[sessao].thumbnail + '.jpg'} />
+                        <img src={'/image/sessions/' + content[other].thumbnail + '.jpg'} />
                         <div className='info'>
                             <h3>{content[other].title}</h3>
                             <p className='price'>{content[other].price}.00€</p>
                             <p className='description'>{content[other].paragraphs[0]}</p>
 
                             <div className='cart-container'>
-                                <StyledButton fontSize="16px">
+                                <StyledButton onClick={() => addToCart({
+                                    title: content[other].title,
+                                    image: '/image/sessions/' + content[other].thumbnail + '.jpg',
+                                    price: content[other].price,
+                                    type: "App\\Models\\Course",
+                                    id: content[other].id,
+                                })} fontSize="16px">
                                     Adicionar ao Carrinho
                                 </StyledButton>
                             </div>
@@ -316,8 +333,7 @@ function Session({ theme, addCartItem, openCart }) {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        addCartItem: (element) => dispatch(addCartItem(element)),
-        openCart: () => dispatch(openCart()),
+        verifyAddToCart: (element) => dispatch(verifyAddToCart(element)),
     };
 };
 

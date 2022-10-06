@@ -8,6 +8,7 @@ use App\Http\Controllers\MediaController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\ValidateTransaction;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -32,8 +33,12 @@ Route::post('logout', 'App\Http\Controllers\AuthController@logout');
 Route::post('refresh', 'App\Http\Controllers\AuthController@refresh');
 Route::get('me', 'App\Http\Controllers\AuthController@me');
 
+Route::get('download/proof/{proof}', 'App\Http\Controllers\MediaController@proof');
 Route::get('download/ebook/{ebook}', 'App\Http\Controllers\EbookController@download');
+Route::get('download/instructions/{filename}', 'App\Http\Controllers\MediaController@instructions');
+Route::get('download/audio/{filename}', 'App\Http\Controllers\MediaController@audio');
 
+Route::put('transaction/validate/{transaction}', ValidateTransaction::class);
 
 Route::apiResource('contact', ContactController::class);
 Route::apiResource('content', ContentController::class);

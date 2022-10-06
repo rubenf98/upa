@@ -19,12 +19,20 @@ export const dimensions = {
     "lg": "992px",
     "xl": "1200px",
     "xxl": "1600px",
+    "maxWidth": maxWidth,
 };
 
 export const fonts = {
-    "title": "DM Serif Display",
-    "text": "Merriweather",
+    "title": "Roboto",
+    "text": "Open Sans",
 };
+
+export const fontSize = {
+    "title": "50px",
+    "subtitle": "24px",
+    "text": "18px",
+};
+
 
 export function getCarouselBreakpoints(aItems, aBreakpoints = [[0, 600], [600, 1024], [1024, 1400], [1400, 1800], [1800, 100000]], aItemsToSlide = [1, 1, 1, 1, 1]) {
     return {
