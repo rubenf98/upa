@@ -106,9 +106,14 @@ function Authentication({ register, login }) {
 
     useEffect(() => {
         var destination = searchParams.get("to")
+        var aEmail = searchParams.get("email")
         var aToken = searchParams.get("token")
         if (destination) {
             setTo("/" + destination);
+        }
+
+        if (aEmail) {
+            form.setFieldsValue({ email: aEmail });
         }
 
         if (aToken) {

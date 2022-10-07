@@ -41,6 +41,16 @@ const InfoContainer = styled.div`
     p {
         opacity: .7;    
         font-size: 16px;
+        margin-top: 0px ;
+    }
+
+    .separator {
+        width: 3px;
+        height: 3px;
+        background-color: black;
+        border-radius: 3px;
+        display: inline-block;
+        margin: 0px 3px 3px 3px;
     }
 `;
 
@@ -243,9 +253,10 @@ function Course({ course, theme, fetchCourse, downloadInstructions, downloadAudi
 
 
                                 <h1>Dança Coreográfica Sentada</h1>
+                                <p>Aula {currentVideo.index ? currentVideo.index : 1} de {course.content.length} <span className="separator" /> {currentVideo.video_duration >= 10 ? "" : "0"}{Number(currentVideo.video_duration).toFixed(2)} mins</p>
                                 <h2>{currentVideo.index < 10 && "0"}{currentVideo.index ? currentVideo.index : 1}. {currentVideo.title}</h2>
+                               
 
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis vero, quibusdam doloribus aperiam odio veniam nisi repellendus fuga dicta odit. Vero nobis magni sunt eligendi dicta quae reprehenderit placeat nisi?</p>
 
                             </InfoContainer>
 

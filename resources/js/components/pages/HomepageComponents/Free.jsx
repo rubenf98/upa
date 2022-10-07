@@ -1,5 +1,6 @@
 import { Input } from 'antd';
-import React, { useContext } from 'react'
+import React, { useState } from 'react'
+import { Link } from 'react-router-dom';
 import styled, { withTheme } from "styled-components";
 import { maxWidth, dimensions, borderRadius, fonts } from '../../../helper';
 import { textStyle, titleStyle } from '../../../styles';
@@ -25,6 +26,7 @@ const RegistrationContainer = styled.div`
         color: white;
         font-weight: bold;
         border: 0px;
+        cursor: pointer;
     }
 
 
@@ -101,6 +103,7 @@ const InfoContainer = styled.div`
 
 
 function Free({ theme }) {
+    const [email, setEmail] = useState(undefined)
 
     return (
         <Container background={theme.opacityLightAccent}>
@@ -110,8 +113,10 @@ function Free({ theme }) {
                     <p>Registe-se para ter acesso às atividades gratuitas que disponibilizamos!</p>
                 </InfoContainer>
                 <RegistrationContainer>
-                    <Input size='large' placeholder='Endereço de email'></Input>
-                    <button type='primary'>Registar</button>
+                    <Input value={email} onChange={(e) => setEmail(e.target.value)} size='large' placeholder='Endereço de email'></Input>
+                    <Link to={"/login?email=" + email}>
+                        <button type='primary'>Registar</button>
+                    </Link>
                 </RegistrationContainer>
             </Content>
         </Container>
