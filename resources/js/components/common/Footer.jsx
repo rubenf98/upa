@@ -132,11 +132,10 @@ const DetailsContainer = styled.div`
 
 const ContactsContainer = styled.div`
     display: flex;
-    justify-content: space-around;
     flex-wrap: wrap;
     margin: 50px 0px;
     opacity: .7;
-
+    justify-content: space-around;
     
 
     @media (max-width: ${dimensions.md}) {
@@ -146,7 +145,7 @@ const ContactsContainer = styled.div`
 
     div {
         box-sizing: border-box;
-        width: 33%;
+        width: 20%;
         text-decoration: underline;
 
         @media (max-width: ${dimensions.md}) {
@@ -210,13 +209,10 @@ function Footer({ theme }) {
 
                 </FooterContent>
                 <ContactsContainer>
-                    <div style={{ textAlign: "left" }}>
-                        +351925022532
+                    <div>
+                        geral@unidospelaatividade.pt
                     </div>
-                    <div style={{ textAlign: "center" }}>
-                        sandra_mfc@msn.com
-                    </div>
-                    <div style={{ textAlign: "right" }}>
+                    <div>
                         @educadorasenior
                     </div>
                 </ContactsContainer>

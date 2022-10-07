@@ -348,7 +348,7 @@ function Terms() {
                         <p>If you have any questions about this Privacy Policy, You can contact us:</p>
                         <ul>
                             <li>
-                                <p>By email: unidospelaatividade@gmail.com</p>
+                                <p>By email: geral@unidospelaatividade.pt</p>
                             </li>
                             <li>
                                 <p>By visiting this page on our website: <a href="https://unidospelaatividade.pt/contact" rel="external nofollow noopener" target="_blank">https://unidospelaatividade.pt/contact</a></p>

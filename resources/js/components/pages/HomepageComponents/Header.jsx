@@ -211,11 +211,11 @@ function Header({ theme }) {
                     </div>
                     <div>
                         <picture>
-                            <source media="(min-width: 1921px)" srcSet="/image/homepage/header_session_3000.jpg" />
-                            <source media="(min-width: 721px) and (max-width: 1920px)" srcSet="/image/homepage/header_session_1920.jpg" />
-                            <source media="(max-width: 720px)" srcSet="/image/homepage/header_session_720.jpg" />
+                            <source media="(min-width: 1921px)" srcSet="/image/homepage/header_product_3000.jpg" />
+                            <source media="(min-width: 721px) and (max-width: 1920px)" srcSet="/image/homepage/header_product_1920.jpg" />
+                            <source media="(max-width: 720px)" srcSet="/image/homepage/header_product_720.jpg" />
 
-                            <img src="/image/homepage/header_session_1920.jpg" alt="profile" loading="lazy" />
+                            <img src="/image/homepage/header_product_1920.jpg" alt="profile" loading="lazy" />
                         </picture>
                         <div className="carousel-information">
                             <h3>Produtos</h3>

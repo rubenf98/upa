@@ -41,7 +41,7 @@ function PrivacyPolicy() {
             <p>A utilização de informações cedidas, será sempre regido pela Política de Privacidade em vigor no momento em que recolhemos as informações. De modo a se inteirar de possíveis alterações nesta Política de Privacidade recomendamos que consulte a mesma regularmente</p>
 
             <h3>Como entrar em contato connosco</h3>
-            <p>Pode sempre exercer os seus direitos de acesso, retificação ou exclusão enviando um email para  <a href="mailto:unidospelaatividade@gmail.com">unidospelaatividade@gmail.com</a>, com “Política de Privacidade “ na linha de assunto.</p>
+            <p>Pode sempre exercer os seus direitos de acesso, retificação ou exclusão enviando um email para  <a href="mailto:geral@unidospelaatividade.pt">geral@unidospelaatividade.pt</a>, com “Política de Privacidade “ na linha de assunto.</p>
             <p>Obrigada!</p>
         </Container>
     )

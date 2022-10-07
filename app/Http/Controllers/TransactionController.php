@@ -58,8 +58,6 @@ class TransactionController extends Controller
                     ->where('expire', '>', Carbon::now())->get();
 
 
-
-
                 if (!$existingItem->count()) {
                     TransactionHasItem::create([
                         'transaction_id' => $record->id,
@@ -115,7 +113,7 @@ class TransactionController extends Controller
             $transaction->statuses()->attach(2);
         }
 
-        Mail::to("joseruben98@hotmail.com")->queue(new TransactionMail());
+        Mail::to("geral@unidospelaatividade.pt")->queue(new TransactionMail());
         return new TransactionResource($transaction);
     }
 

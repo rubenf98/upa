@@ -77,11 +77,11 @@ class EbookSeeder extends Seeder
         ]);
 
         Ebook::create([
-            'title' => "25 Exercícios Estimulação Cognitiva",
-            'subtitle' => "Outono. Volume I",
-            'description' => "Atenção e perceção visual orientação espacial, literatura escrita e motricidade fina",
+            'title' => "Exercícios Estimulação Cognitiva Temáticos",
+            'subtitle' => "Outono. Volume II",
+            'description' => "Exercícios de atenção e perceção visual orientação espacial, literatura escrita e motricidade fina",
             'thumbnail' => "/image/products/25_outono.jpg",
-            'price' => 8,
+            'price' => 4,
             'file' => '/ebooks/25_outono.pdf'
         ]);
     }

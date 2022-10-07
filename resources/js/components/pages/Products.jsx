@@ -374,10 +374,10 @@ function Products({ theme, verifyAddToCart }) {
                         <Session
                             title="Outono Volume I"
                             cartName="Outono. Vol I"
-                            price={8}
+                            price={4}
                             id={8}
                             image="25_outono"
-                            description="Atenção e perceção visual orientação espacial, literatura escrita e motricidade fina"
+                            description="25 Exercícios Estimulação Cognitiva"
                         />
 
                     </Col>

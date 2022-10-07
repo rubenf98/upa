@@ -205,7 +205,7 @@ function Course({ course, theme, fetchCourse, downloadInstructions, downloadAudi
         }
     }, [id])
 
-
+    console.log(course.content);
     return (
         <Container>
             {loading ? <h2>loading</h2> :
