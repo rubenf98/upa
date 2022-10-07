@@ -41,7 +41,7 @@ class CourseSeeder extends Seeder
             'title' => "dança coreográfica de natal",
             'subtitle' => "Mais do que proporcionar divertimento, o jogo musical ajuda no treino dos domínios da escuta, da concentração e da expressão.",
             'description' => "Mais do que proporcionar divertimento, o jogo musical ajuda no treino dos domínios da escuta, da concentração e da expressão. Pode ser, incontestavelmente, uma estratégia eficaz para a manutenção cognitiva, motora, social e emocional do idoso. Ele tem o poder de cativar quem nele participa!",
-            'thumbnail' => "/image/sessions/mesa.jpg",
+            'thumbnail' => "/image/sessions/natal.jpg",
             'price' => 32
         ]);
     }

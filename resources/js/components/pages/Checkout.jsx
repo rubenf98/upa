@@ -145,6 +145,10 @@ function Checkout({ items, total, theme, isAuthenticated, createTransaction, set
                             <p>MBWAY</p>
                             +351 964 180 092
                         </PaymentMethod>
+                        <PaymentMethod>
+                            <p>Paypal</p>
+                            sementilha@gmail.com
+                        </PaymentMethod>
                     </Col>
                 </Row>
             </Content>

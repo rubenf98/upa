@@ -3,11 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Http\Resources\TransactionResource;
+use App\Mail\ValidationEmail;
 use App\Models\Transaction;
 use App\Models\TransactionHasItem;
+use App\Models\User;
 use App\Models\UserHasItem;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class ValidateTransaction extends Controller
 {
@@ -31,6 +34,9 @@ class ValidateTransaction extends Controller
                 'expire' => $item->transactionable_type == "App\Models\Course" ? Carbon::now()->addYear()->toDateString() : null,
             ]);
         }
+        
+        $user = User::find($transaction->user_id);
+        Mail::to($user->email)->queue(new ValidationEmail());
 
         return new TransactionResource($transaction);
     }

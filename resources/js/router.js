@@ -18,6 +18,8 @@ import Session from "./components/pages/Session";
 import Sessions from "./components/pages/Sessions";
 import Painel from "./components/dashboard/pages/Painel";
 import Checkout from "./components/pages/Checkout";
+import PrivacyPolicy from "./components/pages/PrivacyPolicy";
+import Terms from "./components/pages/Terms";
 export const history = createBrowserHistory();
 
 function Router() {
@@ -25,6 +27,8 @@ function Router() {
         <BrowserRouter history={history}>
             <ScrollToTop>
                 <Routes>
+                    <Route exact path="/termos" element={<Layout><Terms /></Layout>} />
+                    <Route exact path="/privacidade" element={<Layout><PrivacyPolicy /></Layout>} />
                     <Route exact path="/checkout" element={<Layout><Checkout /></Layout>} />
                     <Route exact path="/produtos" element={<Layout><Products /></Layout>} />
                     <Route exact path="/sessoes/:sessao" element={<Layout><Session /></Layout>} />

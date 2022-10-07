@@ -18,7 +18,7 @@ class UserRequest extends FormRequest
         return true;
     }
 
-    protected function prepareForValidation() 
+    protected function prepareForValidation()
     {
         $this->merge([
             'password' => bcrypt($this->password)
@@ -33,9 +33,21 @@ class UserRequest extends FormRequest
     public function rules()
     {
         return [
-                'name' => 'required|string|max:150',
-                'email' => 'required|email|unique:users,email',
-                'password' => 'required',
+            'name' => 'required|string|max:150',
+            'email' => 'required|email|unique:users,email',
+            'password' => 'required',
+        ];
+    }
+
+    /**
+     * Custom message for validation
+     *
+     * @return array
+     */
+    public function messages()
+    {
+        return [
+            'email.unique' => 'O email já está a ser utilizado na plataforma.',
         ];
     }
 

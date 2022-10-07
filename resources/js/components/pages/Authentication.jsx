@@ -9,6 +9,7 @@ import { useSearchParams } from "react-router-dom";
 import Login from "./AuthComponents/Login";
 import { Link } from "react-router-dom";
 import Register from "./AuthComponents/Register";
+import { message } from "antd";
 
 const Container = styled.div`
     width: 100vw;
@@ -125,15 +126,28 @@ function Authentication({ register, login }) {
                 setAuthorizationToken(token);
                 navigate(to);
             }
+        }).catch(error => {
+            message.error(error.response.data.error);
         });
     };
 
     const handleRegistration = (values) => {
         register(values).then((response) => {
             if (response.action.payload.status == 201) {
+                message.success('Obrigado por se registar, verifique o seu email para completar o processo.');
                 form.resetFields();
                 setMode(1);
             }
+        }).catch(error => {
+            let messages = [];
+
+            Object.values(error.response.data.errors).map(function (message) {
+                messages.push(message[0])
+            })
+            message.error(messages.map((message) => (
+                <span>{message}</span>
+            )));
+            console.log(err.response.data);
         });
     };
 

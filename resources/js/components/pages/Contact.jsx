@@ -204,8 +204,8 @@ function Contact({ theme }) {
                     <div>
                         <p>Tel. +351 925 022 532</p>
                         <p>
-                            <a href="mailto:contactos@unidospelaatividade.pt">
-                                contactos@unidospelaatividade.pt
+                            <a href="mailto:unidospelaatividade@gmail.com">
+                                unidospelaatividade@gmail.com
                             </a>
                         </p>
                     </div>

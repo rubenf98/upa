@@ -202,8 +202,8 @@ function Footer({ theme }) {
 
                         <Section
                             title="Legal"
-                            items={["Privacidade", "Cookies"]}
-                            links={["/privacidade", "/cookies"]}
+                            items={["Privacidade", "Responsabilidade"]}
+                            links={["/privacidade", "/termos"]}
                         />
                     </InfoContainer>
 
