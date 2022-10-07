@@ -205,7 +205,7 @@ function Course({ course, theme, fetchCourse, downloadInstructions, downloadAudi
         }
     }, [id])
 
-    console.log(course.content);
+
     return (
         <Container>
             {loading ? <h2>loading</h2> :
@@ -223,7 +223,7 @@ function Course({ course, theme, fetchCourse, downloadInstructions, downloadAudi
                                     <img loading="eager" className="thumbnail" src={'/image/thumbnail/' + video.filename + ".jpg"} />
                                     <div className="information">
                                         <h3 >{video.title}</h3>
-                                        <p>Aula {index + 1} de {course.content.length} <span className="separator" /> {video.video_duration >= 10 ? "" : "0"}{video.video_duration.toFixed(2)} mins</p>
+                                        <p>Aula {index + 1} de {course.content.length} <span className="separator" /> {video.video_duration >= 10 ? "" : "0"}{Number(video.video_duration).toFixed(2)} mins</p>
                                     </div>
 
                                     <img className="control" src={currentVideo.id == video.id ? "/icon/pause.svg" : "/icon/play_dashboard.svg"} />
