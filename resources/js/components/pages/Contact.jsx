@@ -255,8 +255,10 @@ function Contact({ theme }) {
                 </FormContainer>
 
                 <InfoContainer>
-
-                    <Logo href="https://www.facebook.com/educadorasenior" target="_blank">
+                <Logo href="https://www.facebook.com/educasenior" target="_blank">
+                        <img src='/icon/facebook.svg' alt="facebook" />
+                    </Logo>
+                    <Logo href="https://www.facebook.com/recursoscognitivosparaidosos" target="_blank">
                         <img src='/icon/facebook.svg' alt="facebook" />
                     </Logo>
 

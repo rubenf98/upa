@@ -268,10 +268,7 @@ function Navbar({ theme, openCart, handleMenu, cartItems }) {
                             <NavbarLink to="/produtos"><span>produtos</span> <div /></NavbarLink>
                         </LinkContainer>
                         <LinkContainer>
-                            <NavbarLink to="/contact"><span>contatos</span> <div /></NavbarLink>
-                        </LinkContainer>
-                        <LinkContainer>
-                            <NavbarLink to="/sobre"><span>acerca de mim</span> <div /></NavbarLink>
+                            <NavbarLink to="/contact"><span>contactos</span> <div /></NavbarLink>
                         </LinkContainer>
                     </MenuContainer>
                 </FlexItem>

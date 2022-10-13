@@ -213,8 +213,12 @@ function Footer({ theme }) {
                         geral@unidospelaatividade.pt
                     </div>
                     <div>
+                        @recursoscognitivosparaidosos
+                    </div>
+                    <div>
                         @educadorasenior
                     </div>
+                    
                 </ContactsContainer>
                 <DetailsContainer>
                     <Disclaimer>© {moment().year()} <a href="https://ruben-freitas.pt/" target="_blank">Rúben Freitas</a>. All Rights Reserved</Disclaimer>

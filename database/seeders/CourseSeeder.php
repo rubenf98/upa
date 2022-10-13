@@ -23,7 +23,7 @@ class CourseSeeder extends Seeder
 
         Course::create([
             'title' => "danças coreográficas sentadas",
-            'subtitle' => "Modalidade de baixo impacto, que tem como propósito a realização de gestos e de movimentos simples e fáceis de executar.",
+            'subtitle' => "Modalidade de baixo impacto físico, que tem como propósito a realização de um conjunto de gestos e movimentos simples e fáceis de executar. O objetivo é estimular as capacidades físicas e cognitivas, tais como: a memória, a atenção, a coordenação, entre outras.",
             'description' => "O bater de mãos, de pés; o dar estalos; o levar as mãos ao pescoço, à cabeça, aos ombros; o elevar as pernas, os braços, os joelhos, etc., são movimentos que fazem parte desta modalidade. Além do divertimento que esta atividade proporciona, também oferece benefícios a nível físico, cognitivo, emocional e social.",
             'thumbnail' => "/image/sessions/sentado.jpg",
             'price' => 32

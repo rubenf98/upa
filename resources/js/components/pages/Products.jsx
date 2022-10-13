@@ -25,7 +25,7 @@ const SessionsContainer = styled.div`
     h2 {
         text-transform: uppercase;
         color: ${props => props.color};
-        font-size: 28px;
+        font-size: 26px;
         font-family: ${fonts.title};
         text-align: center;
         margin: 0px;
@@ -36,7 +36,7 @@ const SessionsContainer = styled.div`
     }
 
     h3 {
-        font-size: 60px;
+        font-size: 40px;
         font-family: ${fonts.title};
         text-align: center;
         margin: 0px;
@@ -270,8 +270,8 @@ function Products({ theme, verifyAddToCart }) {
                 </ImageContainer>
 
                 <div className='info-container'>
-                    <h2>A aprendizagem ao longo da vida</h2>
-                    <p className='description'>A UPA apresenta recursos educativos tais como E-Books, Exibições de PowerPoint e Jogos que permitem que o idosos trabalhem as suas habilidades cognitivas ou ainda a dar início a outras que o idoso desconhecia.</p>
+                    <h2>Recursos de Estimulação Cognitiva</h2>
+                    <p className='description'>A UPA apresenta recursos de estimulação cognitiva tais como E-Books, Exibições de PowerPoint e Jogos que permitem aos idosos trabalhar as suas habilidades cognitivas ou ainda dar início a outras que desconheciam.</p>
                     <Citation background={theme.opacityLightAccent}>
                         <div className="background" />
                         <img src='/icon/products/citation.svg' />
@@ -287,7 +287,7 @@ function Products({ theme, verifyAddToCart }) {
             <SessionsContainer color={theme.textAccent}>
 
                 <h2>e-books</h2>
-                <h3>50 Exercícios Estimulação Cognitiva</h3>
+                <h3>50 Exercícios de Estimulação Cognitiva</h3>
                 <Row type="flex">
 
                     <Col xs={24} md={12}>
@@ -297,7 +297,7 @@ function Products({ theme, verifyAddToCart }) {
                             price={8}
                             id={2}
                             image="50_volume1"
-                            description="Memória, atenção, orientação espacial, cálculo, literatura escrita, criatividade"
+                            description="Memória, atenção, orientação espacial, cálculo, literatura escrita, criatividade."
                         />
                     </Col>
                     <Col xs={24} md={12}>
@@ -307,7 +307,7 @@ function Products({ theme, verifyAddToCart }) {
                             price={8}
                             id={3}
                             image="50_volume2"
-                            description="Memória, atenção, orientação espacial, cálculo, literatura escrita, criatividade"
+                            description="Memória, atenção, orientação espacial e literatura escrita."
                         />
                     </Col>
                     <Col xs={24} md={12}>
@@ -317,7 +317,7 @@ function Products({ theme, verifyAddToCart }) {
                             price={8}
                             id={4}
                             image="50_volume3"
-                            description="Memória, atenção, orientação espacial, cálculo, literatura escrita, criatividade"
+                            description="Atenção e perceção visual, orientação espacial e raciocínio lógico."
                         />
                     </Col>
                     <Col xs={24} md={12}>
@@ -327,7 +327,7 @@ function Products({ theme, verifyAddToCart }) {
                             price={8}
                             id={5}
                             image="50_volume4"
-                            description="Memória, atenção, orientação espacial, cálculo, literatura escrita, criatividade"
+                            description="Atenção e perceção visual, orientação espacial, raciocínio lógico e motricidade fina."
                         />
                     </Col>
                     <Col xs={24} md={12}>
@@ -337,7 +337,7 @@ function Products({ theme, verifyAddToCart }) {
                             price={8}
                             id={7}
                             image="50_volume5"
-                            description="Memória, atenção, orientação espacial, cálculo, literatura escrita, criatividade"
+                            description="Atenção e perceção visual, orientação espacial, literatura escrita e motricidade fina."
                         />
                     </Col>
                 </Row>
@@ -346,7 +346,7 @@ function Products({ theme, verifyAddToCart }) {
             <SessionsContainer color={theme.textAccent}>
 
                 <h2>e-books</h2>
-                <h3>24 Exercícios Estimulação Cognitiva</h3>
+                <h3>24 Exercícios de Estimulação Cognitiva</h3>
                 <Row type="flex">
 
                     <Col xs={24} md={12}>
@@ -356,7 +356,7 @@ function Products({ theme, verifyAddToCart }) {
                             price={4}
                             id={6}
                             image="24_volume1"
-                            description="Memória, atenção, orientação espacial, cálculo, literatura escrita, criatividade"
+                            description="Memória, atenção e perceção visual e motricidade fina."
                         />
 
                     </Col>
@@ -367,17 +367,17 @@ function Products({ theme, verifyAddToCart }) {
             <SessionsContainer color={theme.textAccent}>
 
                 <h2>e-books</h2>
-                <h3>Exercícios Estimulação Cognitiva Temáticos</h3>
+                <h3>Exercícios Temáticos de Estimulação Cognitiva</h3>
                 <Row type="flex">
 
                     <Col xs={24} md={12}>
                         <Session
-                            title="Outono Volume I"
-                            cartName="Outono. Vol I"
+                            title="Volume I: Outono"
+                            cartName="Volume I: Outono"
                             price={4}
                             id={8}
                             image="25_outono"
-                            description="25 Exercícios Estimulação Cognitiva"
+                            description="25 exercícios de atenção e perceção visual, literatura escrita, cálculo e motricidade fina."
                         />
 
                     </Col>

@@ -94,10 +94,21 @@ const Accordion = styled(Collapse)`
 `;
 
 const items = [
-    { question: "Quais os componentes de cada sessão?", answer: "Uma sessão é composta por 10 atividades. Cada atividade reúne 1 vídeo, que estará disponível durante 1 ano após a compra, a descrição da atividade em pdf e o áudio que estarão disponíveis para descarregar." },
-    { question: "Quais as sessões disponíveis?", answer: "As sessões disponíveis são: a Sessão de Jogos Musicais na Mesa e a Sessão de Dança Coreográfica sentada." },
+    { question: "Quais os componentes de cada sessão?", answer: "Uma sessão é composta por 10 atividades. Cada atividade reúne 1 vídeo, que estará disponível durante 1 ano após a compra, a descrição da atividade em pdf e o áudio que poderão ser descarregados." },
+    { question: "Quais as sessões disponíveis?", answer: "As sessões disponíveis são: a Sessão de Jogos Musicais na Mesa, Sessão de Dança Coreográfica sentada e Sessão de Dança Coreográfica de Natal." },
     { question: "Quais as próximas sessões?", answer: "Brevemente estará disponível a Sessão de Jogos Musicais com o/a Balão/Bola e paus." },
-    { question: "Quais os produtos UPA que têm disponíveis?", answer: "Temos disponíveis os 4 Volumes do E-Book – 50 Exercícios de Estimulação Cognitiva. O Jogo das Cruzes Coloridas e o Jogo da Figuras Coloridas, ambos em formato de pdf. " },
+    {
+        question: "Quais os produtos UPA que têm disponíveis?", answer: (
+            <div>
+                <p>Temos disponíveis:</p>
+                <ul>
+                    <li>E-Book – 50 Exercícios de Estimulação Cognitiva – 5 Volumes</li>
+                    <li>E-Book - 24 Exercícios de Estimulação Cognitiva</li>
+                    <li>E-Book – 25 Exercícios de Estimulação Cognitiva: Outono</li>
+                </ul>
+            </div>
+        )
+    },
 ]
 
 function Faq({ theme }) {

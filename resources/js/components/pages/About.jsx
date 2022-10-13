@@ -79,8 +79,8 @@ const TitleContainer = styled.div`
     }
 
     h2 {
-        font-size: 4vw;
-        line-height: 70px;
+        font-size: 60px;
+        line-height: 60px;
         font-weight: bold;
         margin-bottom: 0px;
         font-family: ${fonts.title};
@@ -127,35 +127,20 @@ const InfoContainer = styled.section`
         box-sizing: border-box;
     }
 
-    .column {
-        width: 70%;
+
+
+    p {
+        margin-bottom: 30px;
+        text-align: justify;
+        font-size: 18px;
+        opacity: .7;
 
         @media (max-width: ${dimensions.md}) {
-            width: 100%;
-        }
-
-        p {
-            margin-bottom: 30px;
-            text-align: justify;
-            font-size: 18px;
-            opacity: .7;
-
-            @media (max-width: ${dimensions.md}) {
-                font-size: 16px;
-            }
+            font-size: 16px;
         }
     }
+    
 
-    .title {
-        width: 30%;
-        font-size: 28px;
-        font-weight: bold;
-
-        @media (max-width: ${dimensions.md}) {
-            width: 100%;
-            font-size: 20px;
-        }
-    }
 
     
 `;
@@ -223,14 +208,11 @@ function About({ theme }) {
                 </ProfileContainer>
 
                 <InfoContainer>
-                    <div className='column title'>
-                        <span>SOBRE</span>
-                    </div>
-                    <div className='column' >
-                        <p>Olá sou a <b>Sandra Carvalho, Educadora Sénior</b>. Sou Mestre e licenciada em Ciências da Educação - Educação Sénior pela Universidade da Madeira. Possuo o Curso de Informática de Gestão e o Curso de Formador de Formadores.</p>
-                        <p>Colaborei com a Universidade da Madeira em algumas ações educativas: "A Animação Sociocultural em contexto sénior" e “Educação Permanente”.</p>
-                        <p>Possuo experiência como formadora na área de animação e fui promotora de vários Workshops no âmbito da estimulação cognitiva e motora, recursos musicais para aplicar com idosos e dança coreográfica sentada. Possuo <b>11 anos de experiência</b> no exercício de funções de Educadora Sénior num Lar de Idosos e Centro de Convívio.</p>
-                    </div>
+
+                    <p>Olá sou a <b>Sandra Carvalho, Educadora Sénior</b>. Sou Mestre e licenciada em Ciências da Educação - Educação Sénior pela Universidade da Madeira. Possuo o Curso de Informática de Gestão e o Curso de Formador de Formadores.</p>
+                    <p>Colaborei com a Universidade da Madeira em algumas ações educativas: "A Animação Sociocultural em contexto sénior" e “Educação Permanente”.</p>
+                    <p>Possuo experiência como formadora na área de animação e fui promotora de vários Workshops no âmbito da estimulação cognitiva e motora, recursos musicais para aplicar com idosos e dança coreográfica sentada. Possuo <b>11 anos de experiência</b> no exercício de funções de Educadora Sénior num Lar de Idosos e Centro de Convívio.</p>
+
                 </InfoContainer>
 
                 <ImportanceContainer>

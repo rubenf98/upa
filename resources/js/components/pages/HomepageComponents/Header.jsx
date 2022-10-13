@@ -192,7 +192,7 @@ function Header({ theme }) {
         <Container>
             <TitleContainer titleColor={theme.darkAccent} accent={theme.textAccent}>
                 <h1>Recursos para profissionais <br /> que trabalham com <span>idosos</span></h1>
-                <h2>Nesta página encontrará sessões de dança coreográfica, jogos musicais na mesa, e-books de exercícios de estimulação cognitiva e muito mais que o ajudará a enriquecer o dia-a-dia do seu grupo de idosos. </h2>
+                <h2>Nesta página encontrará sessões de dança coreográfica, jogos musicais na mesa, e-books com exercícios de estimulação cognitiva e muito mais recursos que o ajudarão a enriquecer o dia-a-dia do seu grupo de idosos.</h2>
             </TitleContainer>
             <CarouselContainer>
                 <CustomCarousel showThumbs={false}>
@@ -205,8 +205,8 @@ function Header({ theme }) {
                             <img src="/image/homepage/header_session_1920.jpg" alt="profile" loading="eager" />
                         </picture>
                         <div className="carousel-information">
-                            <h3>Sessões</h3>
-                            <p>Aceda a sessões vídeo e descarregue aúdios e instruções de todas as atividades</p>
+                            <h3>Sessões de atividades</h3>
+                            <p>Visualize o vídeo, descarregue o aúdio e a descrição das atividades de cada sessão</p>
                         </div>
                     </div>
                     <div>
@@ -219,7 +219,7 @@ function Header({ theme }) {
                         </picture>
                         <div className="carousel-information">
                             <h3>Produtos</h3>
-                            <p>Jogos, e-books e exibições de atividades para estimular as habilidades cognitivas</p>
+                            <p>JOGOS, E-BOOKS E EXIBIÇÕES EM POWERPOINT atividades para estimular as capacidades cognitivas.</p>
                         </div>
                     </div>
                     <div>
@@ -231,8 +231,8 @@ function Header({ theme }) {
                             <img src="/image/homepage/header_workshops_1920.jpg" alt="profile" loading="lazy" />
                         </picture>
                         <div className="carousel-information">
-                            <h3>Workshops</h3>
-                            <p>Cursos, workshops e oficinas no âmbito da estimulação cognitiva e motora</p>
+                            <h3>Cursos, Workshops e oficinas</h3>
+                            <p>Conteúdos e atividades no âmbito da estimulação cognitiva e motora.</p>
                         </div>
                     </div>
                 </CustomCarousel>

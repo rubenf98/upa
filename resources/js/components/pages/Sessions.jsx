@@ -122,6 +122,26 @@ const Header = styled.section`
                 display: none;
             }
         }
+
+        .flex {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            a {
+                span {
+                    color: ${props => props.color};
+                    font-weight: bold;
+                    font-size: 16px;
+                    margin-left: 20px;
+                    text-transform: capitalize;
+
+                    &:hover {
+                        color: ${props => props.color};
+                    }
+                }
+            }
+        } 
+        
     }
     
 
@@ -129,14 +149,7 @@ const Header = styled.section`
 `;
 
 const ButtonContainer = styled(Link)`
-    margin: 20px 0px;
-    display: flex;
-    justify-content: flex-start;
-    width: 100%;
-
-    @media (max-width: ${dimensions.md}) {
-        display: none;
-    }
+     //
 `;
 
 const CarouselStatusContainer = styled.div`
@@ -399,13 +412,30 @@ function Sessions({ theme, verifyAddToCart }) {
             <Header>
                 <div className='column'>
                     <h2>Sessões de estimulação cognitiva e motora</h2>
-                    <p>Disponibilizamos Sessões, Workshops, Oficinas e Recursos no âmbito da Estimulação Cognitiva e Motora para aplicar com idosos.</p>
+                    <ul>
+                        <li> Jogos Musicais na mesa com vários elementos; </li>
+                        <li> Jogos Musicais com Balão; </li>
+                        <li> Jogos Musicais com copos, colheres, paus, arcos e instrumentos musicais; </li>
+                        <li> Dança Coreográfica sentada e de pé; </li>
+                        <li> Outras atividades. </li>
+
+                    </ul>
+
                     <p>Clique no vídeo para assistir a uma descrição das atividades.</p>
-                    <ButtonContainer to="/login">
-                        <StyledButton>
-                            Registar
-                        </StyledButton>
-                    </ButtonContainer>
+                    <div className='flex'>
+
+                        <ButtonContainer to="/login">
+                            <StyledButton>
+                                Registar
+                            </StyledButton>
+                        </ButtonContainer>
+
+                        <Link to="/sobre">
+                            <span>Acerca de mim</span>
+                        </Link>
+                    </div>
+
+
                 </div>
                 <div className='column'>
                     <div className='offset' />
@@ -438,28 +468,28 @@ function Sessions({ theme, verifyAddToCart }) {
                         /> */}
                         <Session
                             id={2}
-                            title="Dança Coreográfica Sentada"
+                            title="Dança Coreográfica Sentada (Sessão de 10 danças)"
                             price={32}
                             image="sentado"
                             to="dancaCoreograficaSentada"
-                            description="Modalidade de baixo impacto, que tem como propósito a realização de gestos e de movimentos simples e fáceis de executar."
+                            description="Modalidade de baixo impacto físico, que tem como propósito a realização de um conjunto de gestos e movimentos simples e fáceis de executar. O objetivo é estimular as capacidades físicas e cognitivas, tais como: a memória, a atenção, a coordenação, entre outras."
                         />
                         <Session
                             id={3}
-                            title="Jogos Musicais na Mesa"
+                            title="Jogos Musicais na Mesa (Sessão de 10 jogos)"
                             price={32}
                             image="mesa"
                             to="jogosMusicaisNaMesa"
-                            description="Mais do que proporcionar divertimento, o jogo musical ajuda no treino dos domínios da escuta, da concentração e da expressão."
+                            description="Estas atividades, além de proporcionarem divertimento, estimulam domínios como: a escuta, a atenção, a concentração, a memória e a expressão. São necessários 2 copos e 2 bolas para a realização destes jogos."
                         />
 
                         <Session
                             id={4}
-                            title="Dança Coreográfica de Natal"
+                            title="Dança Coreográfica de Natal (Sessão de 10 danças)"
                             price={32}
                             image="natal"
                             to="dancaCoreograficaNatal"
-                            description="Mais do que proporcionar divertimento, o jogo musical ajuda no treino dos domínios da escuta, da concentração e da expressão."
+                            description="Esta Sessão reúne danças coreográficas de Natal sentadas e de pé. Também reúne vídeos com a elaboração dos diferentes acessórios que são utilizados nas respetivas danças."
                         />
 
                         {/* <Session

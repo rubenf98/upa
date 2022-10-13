@@ -113,7 +113,7 @@ function Soon({ theme }) {
                     <div className='description'>
                         <h3>brevemente</h3>
                         <p>Acompanhamento a idosos que precisam de apoio no âmbito da manutenção das suas funções cognitivas e motoras no seu domicílio. Este acompanhamento é feito online. </p>
-                        <p>É elaborado um plano de atividades adequado às necessidades de cada idoso, pode ser realizado individual ou em grupo.</p>
+                        <p>É elaborado um plano de atividades adequado às necessidades de cada idoso e pode ser realizado individualmente ou em grupo.</p>
                     </div>
                 </InfoContainer>
 

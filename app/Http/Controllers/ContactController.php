@@ -30,7 +30,7 @@ class ContactController extends Controller
     {
         $validator = $request->validated();
         $record = Contact::create($validator);
-        NotifyContactEmail::dispatch($record)->delay(now()->addSecond());
+        NotifyContactEmail::dispatch($record);
         return new ContactResource($record);
     }
 

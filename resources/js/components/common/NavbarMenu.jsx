@@ -145,7 +145,6 @@ function NavbarMenu({ theme, handleMenu, menuVisible }) {
                     <CustomLink onClick={handleClose} to="/">Página inicial</CustomLink>
                     <CustomLink onClick={handleClose} to="/sessoes">Oferta formativa</CustomLink>
                     <CustomLink onClick={handleClose} to="/produtos">Produtos</CustomLink>
-                    <CustomLink onClick={handleClose} to="/sobre">Acerca de mim</CustomLink>
                     <CustomLink onClick={handleClose} to="/contact">Contatos</CustomLink>
                     <CustomLink onClick={handleClose} to="/login">A minha conta</CustomLink>
                 </LinksContainer>

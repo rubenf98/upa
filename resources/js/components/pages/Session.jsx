@@ -65,7 +65,7 @@ const InfoContainer = styled.div`
     } 
 
     h2 {
-        font-size: 60px;
+        font-size: 40px;
         font-family: ${fonts.title};
 
         @media (max-width: ${dimensions.md}) {
@@ -204,10 +204,10 @@ const Other = styled.div`
 
 const content = {
     dancaCoreograficaSentada: {
-        title: "Dança Coreográfica Sentada",
+        title: "Dança Coreográfica Sentada (Sessão de 10 danças)",
         id: 2,
         paragraphs: [
-            "A Dança Coreográfica Sentada é uma modalidade de baixo impacto, que tem como propósito a realização de gestos e de movimentos simples e fáceis de executar.",
+            "A Dança Coreográfica Sentada é uma modalidade de baixo impacto físico, que tem como propósito a realização de um conjunto de gestos e movimentos simples e fáceis de executar.",
             "O bater de mãos, de pés; o dar estalos; o levar as mãos ao pescoço, à cabeça, aos ombros; o elevar as pernas, os braços, os joelhos, etc., são movimentos que fazem parte desta modalidade.",
             "Além do divertimento que esta atividade proporciona, também oferece benefícios a nível físico, cognitivo, emocional e social.",
             "Clique na imagem para assistir a um vídeo de demonstração das atividades."
@@ -217,11 +217,11 @@ const content = {
         price: 32
     },
     jogosMusicaisNaMesa: {
-        title: "Jogos Musicais na Mesa",
+        title: "Jogos Musicais na Mesa (Sessão de 10 jogos)",
         id: 3,
         paragraphs: [
             "Os jogos musicais na mesa podem ser realizados com grupos de qualquer idade.",
-            "Mais do que proporcionar divertimento, o jogo musical ajuda no treino dos domínios da escuta, da concentração e da expressão. Pode ser, incontestavelmente, uma estratégia eficaz para a manutenção cognitiva, motora, social e emocional do idoso. Ele tem o poder de cativar quem nele participa!",
+            "Estas atividades, além de proporcionarem divertimento, estimulam domínios como: a escuta, a atenção, a concentração, a memória e a expressão. São necessários 2 copos e 2 bolas para a realização destes jogos. Podem ser, incontestavelmente, uma estratégia eficaz para a manutenção cognitiva, motora, social e emocional do idoso e têm o poder de cativar quem neles participa!",
             "Clique na imagem para assistir a um vídeo de demonstração das atividades."
         ],
         thumbnail: "mesa",
@@ -229,11 +229,12 @@ const content = {
         price: 32
     },
     dancaCoreograficaNatal: {
-        title: "Dança Coreográfica de Natal",
+        title: "Dança Coreográfica de Natal (Sessão de 10 danças)",
         id: 4,
         paragraphs: [
-            "Os jogos musicais na mesa podem ser realizados com grupos de qualquer idade.",
-            "Mais do que proporcionar divertimento, o jogo musical ajuda no treino dos domínios da escuta, da concentração e da expressão. Pode ser, incontestavelmente, uma estratégia eficaz para a manutenção cognitiva, motora, social e emocional do idoso. Ele tem o poder de cativar quem nele participa!",
+            "Esta Sessão reúne danças coreográficas de Natal sentadas e de pé. Também reúne vídeos com a elaboração dos diferentes acessórios que são utilizados nas respetivas danças.",
+            "É uma modalidade de baixo impacto físico, que tem como propósito a realização de um conjunto de gestos e movimentos simples, bem como o manuseamento dos acessórios natalícios. O objetivo desta atividade é estimular as capacidades físicas e cognitivas, tais como: a memória, a atenção, a coordenação, entre outras.",
+            "Além do divertimento que esta atividade proporciona, também oferece benefícios a nível físico, cognitivo, emocional e social.",
             "Clique na imagem para assistir a um vídeo de demonstração das atividades."
         ],
         thumbnail: "natal",
