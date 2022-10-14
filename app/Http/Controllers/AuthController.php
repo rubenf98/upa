@@ -27,6 +27,14 @@ class AuthController extends Controller
     {
         $credentials = request(['email', 'password']);
 
+        $user = User::where('email', $credentials['email'])->first();
+
+        if (!$user->password) {
+            $user->password = bcrypt($credentials['password']);
+            $user->save();
+        }
+        
+
         if (!$token = auth()->attempt($credentials)) {
             return response()->json(['error' => 'Credenciais incorretas'], 401);
         }

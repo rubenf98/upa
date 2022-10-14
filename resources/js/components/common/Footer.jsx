@@ -195,8 +195,8 @@ function Footer({ theme }) {
                     <InfoContainer>
                         <Section
                             title="Menu"
-                            items={["Página Inicial", "Oferta Formativa", "Produtos", "Contactos", "Acerca de Mim"]}
-                            links={["/", "/sessoes", "/produtos", "/contact", "/sobre"]}
+                            items={["Página Inicial", "Oferta Formativa", "Produtos", "Contactos"]}
+                            links={["/", "/sessoes", "/produtos", "/contact"]}
                         />
 
                         <Section
