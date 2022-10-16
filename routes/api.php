@@ -31,6 +31,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::post('login', 'App\Http\Controllers\AuthController@login');
 Route::post('logout', 'App\Http\Controllers\AuthController@logout');
 Route::post('refresh', 'App\Http\Controllers\AuthController@refresh');
+Route::post('forgotPassword', 'App\Http\Controllers\AuthController@forgotPassword');
+Route::put('recoverPassword', 'App\Http\Controllers\AuthController@recoverPassword');
 Route::get('me', 'App\Http\Controllers\AuthController@me');
 
 Route::get('download/proof/{proof}', 'App\Http\Controllers\MediaController@proof');

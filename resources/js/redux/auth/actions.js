@@ -2,6 +2,15 @@ import { types } from "./types";
 import axios from "axios";
 import jwtDecode from "jwt-decode";
 
+export const forgot = (data) => ({
+    type: types.FORGOT,
+    payload: axios.post(`${window.location.origin}/api/forgotPassword`, data)
+});
+
+export const recover = (data) => ({
+    type: types.RECOVER,
+    payload: axios.put(`${window.location.origin}/api/recoverPassword`, data)
+});
 
 export const register = (data) => ({
     type: types.REGISTER,

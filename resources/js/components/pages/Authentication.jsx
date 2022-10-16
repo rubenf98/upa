@@ -1,6 +1,8 @@
 import React, { useContext, useState, useEffect } from "react";
 import styled, { ThemeContext } from "styled-components";
-import { login, register, setAuthorizationToken } from "../../redux/auth/actions";
+import {
+    login, register, setAuthorizationToken, forgot, recover
+} from "../../redux/auth/actions";
 import { dimensions, maxWidth } from "../../helper";
 import Form from "antd/es/form"
 import { useNavigate } from 'react-router-dom'
@@ -10,6 +12,8 @@ import Login from "./AuthComponents/Login";
 import { Link } from "react-router-dom";
 import Register from "./AuthComponents/Register";
 import { message } from "antd";
+import Forgot from "./AuthComponents/Forgot";
+import Recover from "./AuthComponents/Recover";
 
 const Container = styled.div`
     width: 100vw;
@@ -87,15 +91,18 @@ const BackButton = styled(Link)`
 
 const FormContainer = styled.div`
     width: 40%;
+    padding-left: 20px;
+    box-sizing: border-box;
 
     @media (max-width: ${dimensions.md}){
         width: 100%;
+        padding-left: 0px;
         margin-bottom: 50px;
     }
 `;
 
 
-function Authentication({ register, login }) {
+function Authentication({ register, login, forgot, recover }) {
     const themeContext = useContext(ThemeContext);
     const [mode, setMode] = useState(2)
     const [form] = Form.useForm();
@@ -107,6 +114,7 @@ function Authentication({ register, login }) {
     useEffect(() => {
         var destination = searchParams.get("to")
         var aEmail = searchParams.get("email")
+        var aMode = searchParams.get("mode")
         var aToken = searchParams.get("token")
         if (destination) {
             setTo("/" + destination);
@@ -120,7 +128,49 @@ function Authentication({ register, login }) {
             setToken(aToken);
             setMode(1);
         }
+
+        if (aMode) {
+            setToken(aToken);
+            setMode(aMode);
+        }
     }, [])
+
+    const handleForgot = (values) => {
+
+        form.validateFields().then(() => {
+            forgot(values).then((response) => {
+                if (response.action.payload.status == 200) {
+                    message.success('Foi enviado um email de recuperação, por favor verifique o seu email.');
+                    form.resetFields();
+                }
+            }).catch(error => {
+                let messages = [];
+
+                Object.values(error.response.data.errors).map(function (message) {
+                    messages.push(message)
+                })
+                message.error(messages.map((message) => (
+                    <span>{message}</span>
+                )));
+                console.log(err.response.data);
+            });
+        })
+    };
+
+    const handleRecover = (values) => {
+        form.validateFields().then(() => {
+            recover({ ...values, token: token }).then((response) => {
+                if (response.action.payload.status == 200) {
+                    message.success('Password alterada com sucesso');
+                    form.resetFields();
+                    setMode(1);
+                }
+            }).catch(error => {
+                message.error(error.response.data.error);
+            });
+        })
+
+    };
 
     const handleLogin = (values) => {
 
@@ -137,23 +187,26 @@ function Authentication({ register, login }) {
     };
 
     const handleRegistration = (values) => {
-        register(values).then((response) => {
-            if (response.action.payload.status == 201) {
-                message.success('Obrigado por se registar, verifique o seu email para completar o processo.');
-                form.resetFields();
-                setMode(1);
-            }
-        }).catch(error => {
-            let messages = [];
+        form.validateFields().then(() => {
+            register(values).then((response) => {
+                if (response.action.payload.status == 201) {
+                    message.success('Obrigado por se registar, verifique o seu email para completar o processo.');
+                    form.resetFields();
+                    setMode(1);
+                }
+            }).catch(error => {
+                let messages = [];
 
-            Object.values(error.response.data.errors).map(function (message) {
-                messages.push(message[0])
-            })
-            message.error(messages.map((message) => (
-                <span>{message}</span>
-            )));
-            console.log(err.response.data);
-        });
+                Object.values(error.response.data.errors).map(function (message) {
+                    messages.push(message[0])
+                })
+                message.error(messages.map((message) => (
+                    <span>{message}</span>
+                )));
+                console.log(err.response.data);
+            });
+        })
+
     };
 
     return (
@@ -166,9 +219,13 @@ function Authentication({ register, login }) {
                 <Title>Bem vindo à comunidade Unidos Pela Atividade</Title>
                 <FormContainer>
                     {mode == 1 ?
-                        <Login setMode={setMode} form={form} onFinish={handleLogin} theme={themeContext} />
-                        :
-                        <Register setMode={setMode} form={form} onFinish={handleRegistration} theme={themeContext} />
+                        <Login setMode={setMode} form={form} onFinish={handleLogin} theme={themeContext} /> :
+                        mode == 2 ?
+                            <Register setMode={setMode} form={form} onFinish={handleRegistration} theme={themeContext} />
+                            : mode == 3 ?
+                                <Forgot setMode={setMode} form={form} onFinish={handleForgot} theme={themeContext} />
+                                :
+                                <Recover setMode={setMode} form={form} onFinish={handleRecover} theme={themeContext} />
                     }
                 </FormContainer>
             </Content>
@@ -181,6 +238,8 @@ const mapDispatchToProps = (dispatch) => {
     return {
         login: (data) => dispatch(login(data)),
         register: (data) => dispatch(register(data)),
+        forgot: (data) => dispatch(forgot(data)),
+        recover: (data) => dispatch(recover(data)),
     };
 };
 

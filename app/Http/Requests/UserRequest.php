@@ -36,6 +36,7 @@ class UserRequest extends FormRequest
             'name' => 'required|string|max:150',
             'email' => 'required|email|unique:users,email',
             'password' => 'required',
+            'privacy' => 'required|boolean|accepted',
         ];
     }
 
@@ -48,6 +49,7 @@ class UserRequest extends FormRequest
     {
         return [
             'email.unique' => 'O email já está a ser utilizado na plataforma.',
+            'privacy.accepted' => 'Os termos da política de privacidade e cookies terão que ser aceites.',
         ];
     }
 

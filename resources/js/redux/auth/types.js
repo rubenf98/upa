@@ -4,4 +4,6 @@ export const types = {
     LOGIN_SUCCESS: 'LOGIN_SUCCESS',
     FETCH_SELF: 'FETCH_SELF',
     LOGOUT: 'LOGOUT',
+    FORGOT: 'FORGOT',
+    RECOVER: 'RECOVER'
 };

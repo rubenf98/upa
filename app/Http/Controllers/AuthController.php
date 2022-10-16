@@ -5,9 +5,11 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Http\Resources\UserResource;
+use App\Mail\ForgotEmail;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class AuthController extends Controller
 {
@@ -33,7 +35,7 @@ class AuthController extends Controller
             $user->password = bcrypt($credentials['password']);
             $user->save();
         }
-        
+
 
         if (!$token = auth()->attempt($credentials)) {
             return response()->json(['error' => 'Credenciais incorretas'], 401);
@@ -52,6 +54,43 @@ class AuthController extends Controller
 
         return $this->respondWithToken($token);
     }
+
+    public function forgotPassword(Request $request)
+    {
+        $user = User::where('email', $request->only('email'))->first();
+
+        if (!$user) {
+            $error_message = "Não existe nenhuma conta associada a esse email";
+            return response()->json(['errors' => ['email' => $error_message]], 404);
+        }
+
+        Mail::to($user->email)->queue(new ForgotEmail($user->token));
+
+        return response()->json([
+            'success' => true, 'data' => ['message' => 'Foi enviado um email de recuperação, por favor verifique o seu email']
+        ], 200);
+    }
+
+    public function recoverPassword(Request $request)
+    {
+        $user = User::where('token', $request->token)->first();
+        $newPassword = $request->password;
+
+
+        if (!$user) {
+            $error_message = "Ocorreu um erro, por favor entre em contacto connosco";
+            return response()->json(['error' => ['email' => $error_message]], 401);
+        }
+
+        $user->password = bcrypt($newPassword);
+        $user->save();
+
+
+        return response()->json([
+            'success' => true, 'data' => ['message' => 'Password alterada com sucesso']
+        ], 200);
+    }
+
 
     /**
      * Get the authenticated User.
