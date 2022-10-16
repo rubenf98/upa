@@ -64,9 +64,9 @@
         window.scrollTo(0, 0);
     }
 </script>
-{{-- oncontextmenu="return false;" --}}
 
-<body>
+
+<body oncontextmenu="return false;">
     <div id="index">
         <script src="{{mix('js/app.js')}}"></script>
     </div>
