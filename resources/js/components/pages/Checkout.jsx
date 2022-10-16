@@ -139,11 +139,11 @@ function Checkout({ items, total, theme, isAuthenticated, createTransaction, set
 
                         <PaymentMethod>
                             <p>Transferência bancária (IBAN)</p>
-                            PT50 0193 0000 1050 7241056 17
+                            PT50 0035 0711 0000 9440 5301 9
                         </PaymentMethod>
                         <PaymentMethod>
                             <p>MBWAY</p>
-                            +351 964 180 092
+                            +351 925 022 532
                         </PaymentMethod>
                         <PaymentMethod>
                             <p>Paypal</p>
