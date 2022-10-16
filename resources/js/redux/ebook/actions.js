@@ -15,7 +15,7 @@ export const downloadEbook = (id) => ({
         responseType: "blob",
     }).then(
         response => {
-            download(response, ' ebook.xlsx')
+            download(response, ' ebook.pdf')
         },
         error => {
             return error.data;

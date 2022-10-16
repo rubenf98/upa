@@ -34,7 +34,7 @@ export const downloadProof = (id) => ({
         responseType: "blob",
     }).then(
         response => {
-            download(response, ' comprovativo.xlsx')
+            download(response, ' comprovativo.pdf')
         },
         error => {
             return error.data;
