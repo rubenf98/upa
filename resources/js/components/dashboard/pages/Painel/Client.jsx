@@ -10,7 +10,7 @@ import { downloadEbook } from "../../../../redux/ebook/actions";
 
 import { fetchTransactions, updateTransaction } from "../../../../redux/transaction/actions";
 import { connect } from "react-redux";
-import { Button } from "antd";
+import { Button, Spin } from "antd";
 import TableContainer from "../../../common/TableContainer";
 
 const Container = styled.div`
@@ -109,10 +109,12 @@ const CardItem = styled.div`
             width: 70%;
         }
 
-        img {
+        img, .ant-spin {
             width: 35px;
             height: 35px;
+            margin: 0px;
             margin-top: 15px;
+            
             cursor: pointer;
         }
     }
@@ -137,7 +139,7 @@ const CardItem = styled.div`
 `;
 
 
-function Client({ fetchSelf, loading, currentUser, fetchTransactions, transactions, meta, updateTransaction, downloadEbook }) {
+function Client({ fetchSelf, loading, currentUser, fetchTransactions, transactions, meta, updateTransaction, downloadEbook,loadingDownload }) {
     var navigate = useNavigate();
 
     useEffect(() => {
@@ -228,7 +230,8 @@ function Client({ fetchSelf, loading, currentUser, fetchTransactions, transactio
                                                     <h3>{element.title} </h3>
                                                     <p className="subtitle">{element.subtitle} </p>
                                                 </div>
-                                                <img onClick={() => handleActionClick(element)} src={"/icon/" + (element.type == "course" ? "link" : "download") + ".svg"} alt={element.title} />
+                                                {loadingDownload ? <Spin /> : <img onClick={() => handleActionClick(element)} src={"/icon/" + (element.type == "course" ? "link" : "download") + ".svg"} alt={element.title} />}
+                                                
                                             </div>
                                         </CardItem>}
                                     </>
@@ -275,6 +278,7 @@ const mapStateToProps = (state) => {
         currentUser: state.auth.currentUser,
         transactions: state.transaction.data,
         meta: state.transaction.meta,
+        loadingDownload: state.ebook.loadingDownload
     };
 };
 

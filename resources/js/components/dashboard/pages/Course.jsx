@@ -10,6 +10,7 @@ import {
     fetchVideo, downloadInstructions, downloadAudio
 } from "../../../redux/media/actions";
 import { useNavigate } from 'react-router-dom'
+import { Spin } from "antd";
 
 const Container = styled.div`
     margin: auto;
@@ -171,7 +172,7 @@ const DownloadContainer = styled.div`
         margin-left: 20px;
     }
 
-    div {
+    .border-container {
         padding: 8px 16px;
         box-sizing: border-box;
         border: 1px solid #777;
@@ -198,7 +199,7 @@ const DownloadContainer = styled.div`
 
 
 
-function Course({ course, theme, fetchCourse, downloadInstructions, downloadAudio }) {
+function Course({ course, theme, fetchCourse, downloadInstructions, downloadAudio, loadingDownload }) {
     const { id } = useParams();
     const [loading, setLoading] = useState(true)
     const [currentVideo, setCurrentVideo] = useState(
@@ -253,8 +254,8 @@ function Course({ course, theme, fetchCourse, downloadInstructions, downloadAudi
                                 </video>
                                 <InfoContainer>
                                     <DownloadContainer>
-                                        {currentVideo.has_instructions ? <div onClick={() => downloadInstructions(currentVideo.filename)}>Instruções<img src="/icon/download2.svg" /></div> : <></>}
-                                        {currentVideo.has_audio ? <div onClick={() => downloadAudio(currentVideo.filename)} className="spacer">Aúdio<img src="/icon/download2.svg" /></div> : <></>}
+                                        {currentVideo.has_instructions ? <div className="border-container" onClick={() => downloadInstructions(currentVideo.filename)}>Instruções{loadingDownload ? <Spin style={{marginLeft: "5px"}} /> : <img src="/icon/download2.svg" />}</div> : <></>}
+                                        {currentVideo.has_audio ? <div className="border-container spacer" onClick={() => downloadAudio(currentVideo.filename)}>Aúdio{loadingDownload ? <Spin style={{marginLeft: "5px"}} /> : <img src="/icon/download2.svg" />}</div> : <></>}
                                     </DownloadContainer>
 
 
@@ -288,7 +289,8 @@ const mapStateToProps = (state) => {
     return {
         loading: state.course.loading,
         course: state.course.current,
-        reduxVideo: state.media.video
+        reduxVideo: state.media.video,
+        loadingDownload: state.media.loadingDownload
     };
 };
 

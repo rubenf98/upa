@@ -7,6 +7,7 @@ import { verifyAddToCart } from "../../../redux/cart/actions";
 import { connect } from "react-redux";
 import { Link } from 'react-router-dom';
 import { borderRadius, maxWidth } from '../../../helper';
+import { Spin } from 'antd';
 
 const Container = styled.div`
     width: 100%;
@@ -77,7 +78,7 @@ const CourseContainer = styled.div`
 
 
 
-function Courses({ theme, fetchCourses, fetchEbooks, courses, ebooks, verifyAddToCart, downloadEbook }) {
+function Courses({ theme, fetchCourses, fetchEbooks, courses, ebooks, verifyAddToCart, downloadEbook, loadingDownload }) {
 
     useEffect(() => {
         fetchCourses();
@@ -152,7 +153,7 @@ function Courses({ theme, fetchCourses, fetchEbooks, courses, ebooks, verifyAddT
                                 <ButtonContainer>
                                     {course.bought &&
                                         <StyledButton onClick={() => downloadEbook(course.id)} fontSize="16px">
-                                            Descarregar
+                                            Descarregar {loadingDownload && <Spin />}
                                         </StyledButton>
                                     }
                                     {!course.bought &&
@@ -200,6 +201,7 @@ const mapStateToProps = (state) => {
         courses: state.course.data,
         loadingEbooks: state.ebook.loading,
         ebooks: state.ebook.data,
+        loadingDownload: state.ebook.loadingDownload
     };
 };
 
