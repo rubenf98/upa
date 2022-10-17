@@ -17,7 +17,7 @@ class CourseSeeder extends Seeder
         Course::create([
             'title' => "oferta gratuita",
             'subtitle' => "Sessão gratuita disponibilizada a qualquer utilizador que se registe na plataforma",
-            'description' => "Sessão gratuita disponibilizada a qualquer utilizador que se registe na plataforma! Esta é composta por uma dança coreográfica snetada e um jogo musical na mesa.",
+            'description' => "Esta sessão é composta por uma dança coreográfica snetada e um jogo musical na mesa.",
             'thumbnail' => "/image/sessions/free.jpg",
         ]);
 
@@ -32,15 +32,15 @@ class CourseSeeder extends Seeder
         Course::create([
             'title' => "jogos musicais na mesa",
             'subtitle' => "Mais do que proporcionar divertimento, o jogo musical ajuda no treino dos domínios da escuta, da concentração e da expressão.",
-            'description' => "Mais do que proporcionar divertimento, o jogo musical ajuda no treino dos domínios da escuta, da concentração e da expressão. Pode ser, incontestavelmente, uma estratégia eficaz para a manutenção cognitiva, motora, social e emocional do idoso. Ele tem o poder de cativar quem nele participa!",
+            'description' => "Pode ser, incontestavelmente, uma estratégia eficaz para a manutenção cognitiva, motora, social e emocional do idoso. Ele tem o poder de cativar quem nele participa!",
             'thumbnail' => "/image/sessions/mesa.jpg",
             'price' => 32
         ]);
 
         Course::create([
             'title' => "dança coreográfica de natal",
-            'subtitle' => "Mais do que proporcionar divertimento, o jogo musical ajuda no treino dos domínios da escuta, da concentração e da expressão.",
-            'description' => "Mais do que proporcionar divertimento, o jogo musical ajuda no treino dos domínios da escuta, da concentração e da expressão. Pode ser, incontestavelmente, uma estratégia eficaz para a manutenção cognitiva, motora, social e emocional do idoso. Ele tem o poder de cativar quem nele participa!",
+            'subtitle' => "Esta Sessão reúne danças coreográficas de Natal sentadas e de pé. Também reúne vídeos com a elaboração dos diferentes acessórios que são utilizados nas respetivas danças.",
+            'description' => "É uma modalidade de baixo impacto físico, que tem como propósito a realização de um conjunto de gestos e movimentos simples, bem como o manuseamento dos acessórios natalícios. O objetivo desta atividade é estimular as capacidades físicas e cognitivas, tais como: a memória, a atenção, a coordenação, entre outras. Além do divertimento que esta atividade proporciona, também oferece benefícios a nível físico, cognitivo, emocional e social.",
             'thumbnail' => "/image/sessions/natal.jpg",
             'price' => 32
         ]);

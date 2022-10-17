@@ -14,7 +14,6 @@ import { useNavigate } from 'react-router-dom'
 const Container = styled.div`
     margin: auto;
     position: relative;
-    max-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -67,6 +66,13 @@ const Content = styled.div`
 
 const VideoContainer = styled.div`
     width: 60%;
+    height: calc(100vh - 140px);
+    position: relative;
+
+    .absolute-div {
+        position: sticky;
+        top: 100px;
+    }
 
     video {
         width: 100%;
@@ -81,9 +87,6 @@ const VideoList = styled.div`
     width: 40%;
     padding: 0px 30px 30px 0px;
     box-sizing: border-box;
-    max-height: calc(100vh - 140px);
-    overflow-y: auto;
-    scrollbar-width: none;
 
     &::-webkit-scrollbar {
         display: none;
@@ -149,7 +152,7 @@ const TotalVideos = styled.div`
 
 const Background = styled.div`
     width: 50vw;
-    height: calc(100vh - 100px);
+    height: 100%;
     background: ${props => props.background};
     top: 0;
     left: 0;
@@ -241,25 +244,28 @@ function Course({ course, theme, fetchCourse, downloadInstructions, downloadAudi
                             ))}
                         </VideoList>
                         <VideoContainer key={currentVideo.id}>
-                            <video preload="auto" poster={'/image/thumbnail/' + currentVideo.filename + ".jpg"} controls>
-                                <source src={'/video/courses/' + currentVideo.filename + ".mp4"} type="video/mp4" />
-                                Your browser does not support the video tag.
-                            </video>
-                            <InfoContainer>
-                                <DownloadContainer>
-                                    {currentVideo.has_instructions ? <div onClick={() => downloadInstructions(currentVideo.filename)}>Instruções<img src="/icon/download2.svg" /></div> : <></>}
-                                    {currentVideo.has_audio ? <div onClick={() => downloadAudio(currentVideo.filename)} className="spacer">Aúdio<img src="/icon/download2.svg" /></div> : <></>}
-                                </DownloadContainer>
+                            <div className="absolute-div">
 
 
-                                <h1>Dança Coreográfica Sentada</h1>
-                                <p>Aula {currentVideo.index ? currentVideo.index : 1} de {course.content.length} <span className="separator" /> {currentVideo.video_duration >= 10 ? "" : "0"}{Number(currentVideo.video_duration).toFixed(2)} mins</p>
-                                <h2>{currentVideo.index < 10 && "0"}{currentVideo.index ? currentVideo.index : 1}. {currentVideo.title}</h2>
+                                <video preload="auto" poster={'/image/thumbnail/' + currentVideo.filename + ".jpg"} controls>
+                                    <source src={'/video/courses/' + currentVideo.filename + ".mp4"} type="video/mp4" />
+                                    Your browser does not support the video tag.
+                                </video>
+                                <InfoContainer>
+                                    <DownloadContainer>
+                                        {currentVideo.has_instructions ? <div onClick={() => downloadInstructions(currentVideo.filename)}>Instruções<img src="/icon/download2.svg" /></div> : <></>}
+                                        {currentVideo.has_audio ? <div onClick={() => downloadAudio(currentVideo.filename)} className="spacer">Aúdio<img src="/icon/download2.svg" /></div> : <></>}
+                                    </DownloadContainer>
+
+
+                                    <h1>Dança Coreográfica Sentada</h1>
+                                    <p>Aula {currentVideo.index ? currentVideo.index : 1} de {course.content.length} <span className="separator" /> {currentVideo.video_duration >= 10 ? "" : "0"}{Number(currentVideo.video_duration).toFixed(2)} mins</p>
+                                    <h2>{currentVideo.index < 10 && "0"}{currentVideo.index ? currentVideo.index : 1}. {currentVideo.title}</h2>
 
 
 
-                            </InfoContainer>
-
+                                </InfoContainer>
+                            </div>
                         </VideoContainer>
                     </Content>
                 </>

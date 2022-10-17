@@ -102,7 +102,7 @@ const FormContainer = styled.div`
 `;
 
 
-function Authentication({ register, login, forgot, recover }) {
+function Authentication({ register, login, forgot, recover, loading }) {
     const themeContext = useContext(ThemeContext);
     const [mode, setMode] = useState(2)
     const [form] = Form.useForm();
@@ -219,13 +219,13 @@ function Authentication({ register, login, forgot, recover }) {
                 <Title>Bem vindo à comunidade Unidos Pela Atividade</Title>
                 <FormContainer>
                     {mode == 1 ?
-                        <Login setMode={setMode} form={form} onFinish={handleLogin} theme={themeContext} /> :
+                        <Login setMode={setMode} form={form} onFinish={handleLogin} theme={themeContext} loading={loading} /> :
                         mode == 2 ?
-                            <Register setMode={setMode} form={form} onFinish={handleRegistration} theme={themeContext} />
+                            <Register setMode={setMode} form={form} onFinish={handleRegistration} theme={themeContext} loading={loading} />
                             : mode == 3 ?
-                                <Forgot setMode={setMode} form={form} onFinish={handleForgot} theme={themeContext} />
+                                <Forgot setMode={setMode} form={form} onFinish={handleForgot} theme={themeContext} loading={loading} />
                                 :
-                                <Recover setMode={setMode} form={form} onFinish={handleRecover} theme={themeContext} />
+                                <Recover setMode={setMode} form={form} onFinish={handleRecover} theme={themeContext} loading={loading} />
                     }
                 </FormContainer>
             </Content>
@@ -243,6 +243,12 @@ const mapDispatchToProps = (dispatch) => {
     };
 };
 
+function mapStateToProps(state) {
+    return {
+        loading: state.auth.loading,
+    };
+}
 
-export default connect(null, mapDispatchToProps)(Authentication)
+
+export default connect(mapStateToProps, mapDispatchToProps)(Authentication)
 

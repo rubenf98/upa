@@ -62,7 +62,7 @@ class EbookSeeder extends Seeder
             'title' => "24 Exercícios Estimulação Cognitiva",
             'subtitle' => "Volume I",
             'description' => "Memória, atenção, orientação espacial, cálculo, literatura escrita, criatividade",
-            'thumbnail' => "/image/products/50_volume4.jpg",
+            'thumbnail' => "/image/products/24_volume1.jpg",
             'price' => 4,
             'file' => '/ebooks/24_1.pdf'
         ]);

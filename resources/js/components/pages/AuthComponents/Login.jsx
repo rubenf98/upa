@@ -7,6 +7,7 @@ import Checkbox from "antd/es/checkbox"
 import { dimensions, maxWidth } from "../../../helper";
 import styled, { ThemeContext } from "styled-components";
 import { Link } from 'react-router-dom';
+import { Spin } from 'antd';
 
 const ButtonContainer = styled.div`
     margin: 20px 0px;
@@ -82,7 +83,7 @@ const rules = {
     ]
 }
 
-function Login({ form, onFinish, theme, setMode }) {
+function Login({ form, onFinish, theme, setMode, loading }) {
     return (
         <>
             <ModeSwitch onClick={() => setMode(2)}>Ainda não possui conta? Faça registo <span>aqui</span></ModeSwitch>
@@ -118,7 +119,7 @@ function Login({ form, onFinish, theme, setMode }) {
 
                 <ButtonContainer>
                     <StyledButton shadow={theme.blue} onClick={() => onFinish(form.getFieldsValue())}>
-                        Iniciar sessão
+                        Iniciar sessão {loading && <Spin />}
                     </StyledButton>
                 </ButtonContainer>
             </FormContainer>

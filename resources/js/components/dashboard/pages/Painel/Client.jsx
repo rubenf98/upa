@@ -198,6 +198,7 @@ function Client({ fetchSelf, loading, currentUser, fetchTransactions, transactio
                 row.statuses[0].id == 1 && <Upload
                     onChange={(file) => handleFileUpload(file, row.id)}
                     showUploadList={false}
+                    accept=".pdf"
                     beforeUpload={file => {
                         return false;
                     }}

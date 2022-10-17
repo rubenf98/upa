@@ -18,7 +18,7 @@ const Container = styled.div`
 `;
 
 
-function Admin({ fetchSelf, loading, currentUser, fetchTransactions, transactions, meta, validateTransaction, downloadProof }) {
+function Admin({ fetchSelf, loading, fetchTransactions, transactions, meta, validateTransaction, downloadProof }) {
 
     useEffect(() => {
         fetchSelf();
