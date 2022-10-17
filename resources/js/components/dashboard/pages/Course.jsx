@@ -202,6 +202,7 @@ const DownloadContainer = styled.div`
 function Course({ course, theme, fetchCourse, downloadInstructions, downloadAudio, loadingDownload }) {
     const { id } = useParams();
     const [loading, setLoading] = useState(true)
+    const [videoDuration, setVideoDuration] = useState(0)
     const [currentVideo, setCurrentVideo] = useState(
         { index: 1, id: 1, title: "Introdução", filename: "0" + id + "_introduction", video_duration: 1.53, presentation: true }
     )
@@ -214,6 +215,11 @@ function Course({ course, theme, fetchCourse, downloadInstructions, downloadAudi
                     navigate("/painel/sessoes")
                 }
                 setCurrentVideo(response.action.payload.data.data.content[0]);
+                var totalDuration = 0;
+                response.action.payload.data.data.content.map((video) => {
+                    totalDuration += Number(video.video_duration);
+                })
+                setVideoDuration(totalDuration.toFixed(2))
                 setLoading(false);
             });
         }
@@ -230,7 +236,7 @@ function Course({ course, theme, fetchCourse, downloadInstructions, downloadAudi
 
                         <VideoList>
                             <h2>Conteúdo da sessão</h2>
-                            <TotalVideos>{course.content.length} vídeos (00:57 mins)</TotalVideos>
+                            <TotalVideos>{course.content.length} vídeos ({videoDuration} mins)</TotalVideos>
 
                             {course.content.map((video, index) => (
                                 <ListItem onClick={() => setCurrentVideo({ ...video, index: index + 1 })} key={video.id} active={currentVideo.id == video.id}>
@@ -254,8 +260,8 @@ function Course({ course, theme, fetchCourse, downloadInstructions, downloadAudi
                                 </video>
                                 <InfoContainer>
                                     <DownloadContainer>
-                                        {currentVideo.has_instructions ? <div className="border-container" onClick={() => downloadInstructions(currentVideo.filename)}>Instruções{loadingDownload ? <Spin style={{marginLeft: "5px"}} /> : <img src="/icon/download2.svg" />}</div> : <></>}
-                                        {currentVideo.has_audio ? <div className="border-container spacer" onClick={() => downloadAudio(currentVideo.filename)}>Aúdio{loadingDownload ? <Spin style={{marginLeft: "5px"}} /> : <img src="/icon/download2.svg" />}</div> : <></>}
+                                        {Number(currentVideo.has_instructions) ? <div className="border-container" onClick={() => downloadInstructions(currentVideo.filename)}>Instruções{loadingDownload ? <Spin style={{ marginLeft: "5px" }} /> : <img src="/icon/download2.svg" />}</div> : <></>}
+                                        {Number(currentVideo.has_audio) ? <div className="border-container spacer" onClick={() => downloadAudio(currentVideo.filename)}>Aúdio{loadingDownload ? <Spin style={{ marginLeft: "5px" }} /> : <img src="/icon/download2.svg" />}</div> : <></>}
                                     </DownloadContainer>
 
 
