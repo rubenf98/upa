@@ -68,12 +68,12 @@ class User extends Component {
     }
 
     render() {
-        var { data, loading, meta } = this.props;
+        var { data, loading, meta, isAdmin } = this.props;
 
         return (
             <Container>
                 <ContentContainer>
-                    {this.props.isAdmin &&
+                    {isAdmin &&
                         <Table>
                             <TableContainer
                                 handlePageChange={this.handlePageChange}

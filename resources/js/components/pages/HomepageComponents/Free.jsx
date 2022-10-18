@@ -103,7 +103,7 @@ const InfoContainer = styled.div`
 
 
 function Free({ theme }) {
-    const [email, setEmail] = useState(undefined)
+    const [email, setEmail] = useState("")
 
     return (
         <Container background={theme.opacityLightAccent}>
@@ -114,7 +114,7 @@ function Free({ theme }) {
                 </InfoContainer>
                 <RegistrationContainer>
                     <Input value={email} onChange={(e) => setEmail(e.target.value)} size='large' placeholder='Endereço de email'></Input>
-                    <Link to={"/login?email=" + email}>
+                    <Link to={"/login?mode=2&email=" + email}>
                         <button type='primary'>Registar</button>
                     </Link>
                 </RegistrationContainer>

@@ -42,6 +42,11 @@ function TableContainer({ loading, data, meta, handlePageChange }) {
             title: 'Membro desde',
             dataIndex: 'created_at',
         },
+        {
+            title: 'Conta validada',
+            dataIndex: 'email_verified_at',
+            render: (validation) => (<div>{validation ? validation : "Esta conta ainda não se encontra validada"}</div>),
+        },
     ];
 
 

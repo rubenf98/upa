@@ -424,7 +424,7 @@ function Sessions({ theme, verifyAddToCart }) {
                     <p>Clique no vídeo para assistir a uma descrição das atividades.</p>
                     <div className='flex'>
 
-                        <ButtonContainer to="/login">
+                        <ButtonContainer to="/login?mode=2">
                             <StyledButton>
                                 Registar
                             </StyledButton>

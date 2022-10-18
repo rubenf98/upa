@@ -104,7 +104,7 @@ const FormContainer = styled.div`
 
 function Authentication({ register, login, forgot, recover, loading }) {
     const themeContext = useContext(ThemeContext);
-    const [mode, setMode] = useState(2)
+    const [mode, setMode] = useState(1)
     const [form] = Form.useForm();
     const [to, setTo] = useState("/painel")
     const [token, setToken] = useState(undefined)

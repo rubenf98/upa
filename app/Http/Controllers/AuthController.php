@@ -31,6 +31,10 @@ class AuthController extends Controller
 
         $user = User::where('email', $credentials['email'])->first();
 
+        if (!$user) {
+            return response()->json(['error' => 'Não existe a uma conta associada a este email.'], 401);
+        }
+
         if (!$user->password) {
             $user->password = bcrypt($credentials['password']);
             $user->save();
@@ -48,7 +52,7 @@ class AuthController extends Controller
                 $user->email_verified_at = Carbon::now();
                 $user->save();
             } else {
-                return response()->json(['error' => 'Conta não validada'], 401);
+                return response()->json(['error' => 'Esta conta ainda não se encontra validada. Por favor verifique o seu email.'], 401);
             }
         }
 

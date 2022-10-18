@@ -22,7 +22,8 @@ class UserResource extends JsonResource
             'courses' => $this->courses()->wherePivot('expire', '>', Carbon::now())->get(),
             'ebooks' => $this->ebooks,
             'roles' => $this->roles,
-            'created_at' => (string) $this->created_at
+            'created_at' => (string) $this->created_at,
+            'email_verified_at' => (string) $this->email_verified_at
         ];
     }
 }
