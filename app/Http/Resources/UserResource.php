@@ -17,10 +17,12 @@ class UserResource extends JsonResource
     {
         return [
             'id' => $this->id,
+            'email' => $this->email,
             'name' => $this->name,
             'courses' => $this->courses()->wherePivot('expire', '>', Carbon::now())->get(),
             'ebooks' => $this->ebooks,
-            'roles' => $this->roles
+            'roles' => $this->roles,
+            'created_at' => (string) $this->created_at
         ];
     }
 }

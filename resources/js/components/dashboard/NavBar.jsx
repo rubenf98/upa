@@ -120,7 +120,7 @@ const LogoContainer = styled.div`
     }
 `;
 
-function NavBar({ theme, logout, openCart, cartItems }) {
+function NavBar({ theme, logout, openCart, cartItems, isAdmin }) {
     var navigate = useNavigate();
 
     const handleLogout = () => {
@@ -146,6 +146,12 @@ function NavBar({ theme, logout, openCart, cartItems }) {
                 <LinkContainer>
                     <NavbarLink background={theme.blue} to="/painel/"><span>página inicial</span> <div /></NavbarLink>
                 </LinkContainer>
+
+                {isAdmin &&
+                    <LinkContainer>
+                        <NavbarLink background={theme.blue} to="/painel/users"><span>Utilizadores</span> <div /></NavbarLink>
+                    </LinkContainer>
+                }
                 <LinkContainer>
                     <NavbarLink background={theme.blue} to="/painel/sessoes"><span>oferta formativa</span> <div /></NavbarLink>
                 </LinkContainer>
@@ -175,6 +181,7 @@ const mapDispatchToProps = (dispatch) => {
 const mapStateToProps = (state) => {
     return {
         cartItems: state.cart.items,
+        isAdmin: state.auth.isAdmin
     };
 };
 

@@ -11,6 +11,7 @@ import cart from './redux/cart'
 import transaction from './redux/transaction'
 import ebook from './redux/ebook'
 import media from './redux/media'
+import user from './redux/user'
 
 const reducer = combineReducers({
     auth,
@@ -23,7 +24,8 @@ const reducer = combineReducers({
     course,
     transaction,
     ebook,
-    media
+    media,
+    user
 })
 
 export default reducer
