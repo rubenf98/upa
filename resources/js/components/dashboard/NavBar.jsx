@@ -7,6 +7,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { connect } from "react-redux";
 import { dimensions, maxWidth } from "../../helper";
 import { openCart } from "../../redux/cart/actions";
+import { handleDashboardMenu } from "../../redux/application/actions";
 
 const rotate = keyframes`
   0% {
@@ -22,7 +23,7 @@ const rotate = keyframes`
   }
 `;
 
-const Container = styled(Row)`
+const Container = styled.section`
     width: 100%;
     max-width: ${maxWidth};
     height: 100px;
@@ -31,15 +32,22 @@ const Container = styled(Row)`
     justify-content: space-between;
     align-items: center;
 
-    img {
-        height: 60px;
-    }
 
-    .button-container{
+    .button-container {
         display: flex;
         justify-content: flex-start;
         text-align: center;
         width: 100%;
+
+        @media (max-width: ${dimensions.lg}) {
+            display: none;
+        }
+    }
+
+    .desktop-link {
+        @media (max-width: ${dimensions.lg}) {
+            display: none !important;
+        }
     }
 `;
 
@@ -71,12 +79,8 @@ const MenuContainer = styled.div`
 
 const LinkContainer = styled.div`
     position: relative;
-    margin: 0px 20px;
+    padding: 0px 20px;
     box-sizing: border-box;
-
-    @media (max-width: ${dimensions.lg}) {
-        display: none;
-    }
 `;
 
 const NavbarLink = styled(Link)`
@@ -86,11 +90,35 @@ const NavbarLink = styled(Link)`
     cursor: pointer;
     color: black;
 
+    @media (max-width: ${dimensions.lg}) {
+        display: none;
+    }
+
     &:hover {
         color: black;
         font-weight: bold;
     }
 `;
+
+const Menu = styled.div`
+    width: 40px;
+    height: 40px;
+    border-radius: 40px;
+    background: ${props => props.background};
+    display: none;
+    cursor: pointer;
+    transition: scale 0.3s ease;
+    z-index: 999;
+
+    &:hover {
+        scale: 1.1;
+    }
+
+    @media (max-width: ${dimensions.lg}) {
+        display: block;
+    }
+`;
+
 
 const LogoContainer = styled.div`
     display: flex;
@@ -115,12 +143,14 @@ const LogoContainer = styled.div`
 
             @media (max-width: ${dimensions.md}) {
                 height: 50px;
+                padding-left: 20px;
+                box-sizing: border-box;
             }
         }
     }
 `;
 
-function NavBar({ theme, logout, openCart, cartItems, isAdmin }) {
+function NavBar({ theme, logout, openCart, cartItems, isAdmin, handleDashboardMenu }) {
     var navigate = useNavigate();
 
     const handleLogout = () => {
@@ -135,7 +165,7 @@ function NavBar({ theme, logout, openCart, cartItems, isAdmin }) {
     };
 
     return (
-        <Container type="flex" justify="center" align="middle">
+        <Container>
             <LogoContainer>
                 <Link to="/painel">
                     <img src="/image/logo.png" alt="unidos pela atividade logo" />
@@ -143,28 +173,34 @@ function NavBar({ theme, logout, openCart, cartItems, isAdmin }) {
                 <h1>Unidos Pela <br /> Atividade</h1>
             </LogoContainer>
             <MenuContainer >
-                <LinkContainer>
+                <LinkContainer className="desktop-link">
                     <NavbarLink background={theme.blue} to="/painel/"><span>página inicial</span> <div /></NavbarLink>
                 </LinkContainer>
 
                 {isAdmin &&
-                    <LinkContainer>
+                    <LinkContainer className="desktop-link">
                         <NavbarLink background={theme.blue} to="/painel/users"><span>Utilizadores</span> <div /></NavbarLink>
                     </LinkContainer>
                 }
-                <LinkContainer>
+                <LinkContainer className="desktop-link">
                     <NavbarLink background={theme.blue} to="/painel/sessoes"><span>oferta formativa</span> <div /></NavbarLink>
                 </LinkContainer>
-                <LinkContainer onClick={handleLogout}>
+                <LinkContainer className="desktop-link" onClick={handleLogout}>
                     <StyledButton className="button-container">
                         Sair
                     </StyledButton>
                 </LinkContainer>
+
+
                 <LinkContainer>
                     <Cart onClick={openCart} color={theme.textAccent}>
                         <p>{cartItems.length}</p>
                         <img src="/icon/cart.svg" alt="carrinho" />
                     </Cart>
+                </LinkContainer>
+
+                <LinkContainer onClick={() => handleDashboardMenu(true)}>
+                    <Menu background="#000" />
                 </LinkContainer>
             </MenuContainer>
         </Container>
@@ -173,6 +209,7 @@ function NavBar({ theme, logout, openCart, cartItems, isAdmin }) {
 
 const mapDispatchToProps = (dispatch) => {
     return {
+        handleDashboardMenu: (state) => dispatch(handleDashboardMenu(state)),
         logout: () => dispatch(logout()),
         openCart: () => dispatch(openCart()),
     };
@@ -180,6 +217,7 @@ const mapDispatchToProps = (dispatch) => {
 
 const mapStateToProps = (state) => {
     return {
+        menuDashboardVisible: state.application.menuDashboardVisible,
         cartItems: state.cart.items,
         isAdmin: state.auth.isAdmin
     };

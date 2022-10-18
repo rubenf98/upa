@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import styled from "styled-components";
 import { connect } from "react-redux";
 import { fetchUsers } from "../../../../redux/user/actions";
-import { dimensions } from "../../../../helper";
+import { dimensions, maxWidth } from "../../../../helper";
 import TableContainer from "./TableContainer";
 
 const ContentContainer = styled.div`
@@ -15,6 +15,11 @@ const ContentContainer = styled.div`
 
     @media (max-width: ${dimensions.lg}){
         width: 100%;
+    }
+
+    @media (max-width: ${maxWidth}) {
+        padding: 0 20px;
+        box-sizing: border-box;
     }
 `;
 
@@ -37,8 +42,14 @@ class User extends Component {
         page: 1,
     }
 
+    componentDidUpdate(prevProps) {
+        if (prevProps.isAdmin != this.props.isAdmin && this.props.isAdmin) {
+            this.props.fetchUsers();
+        }
+    }
+
     componentDidMount() {
-        this.props.isAdmin && this.props.fetchUsers();
+        this.props.fetchUsers();
     }
 
     setFilters = (aFilters) => {

@@ -6,6 +6,7 @@ import { closeCart, removeCartItem } from "../../redux/cart/actions";
 import { StyledButton } from '../../styles';
 import { Link } from 'react-router-dom';
 import ConditionalLink from '../common/ConditionalLink';
+import { dimensions } from '../../helper';
 
 const Item = styled(Row)`
     display: flex;
@@ -48,6 +49,14 @@ const ItemContainer = styled.div`
 
 const Container = styled(Drawer)`
 
+    .ant-drawer-content-wrapper {
+        width: 500px !important;
+
+        @media (max-width: ${dimensions.md}) {
+            width: 90% !important;
+        }
+    }
+    
     .ant-drawer-body {
         display: flex;
         flex-direction: column;
@@ -102,7 +111,7 @@ function Cart({ visible, closeCart, removeCartItem, items, total, isAuthenticate
     };
 
     return (
-        <Container width={500} title="Carrinho" placement="right" onClose={onClose} visible={visible}>
+        <Container title="Carrinho" placement="right" onClose={onClose} visible={visible}>
             <ItemContainer>
                 {items.length ? items.map((item, index) => (
                     <Item key={index}>

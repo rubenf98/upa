@@ -21,6 +21,11 @@ const Container = styled.div`
     h1 {
         font-size: 28px;
     }
+
+    @media (max-width: ${maxWidth}) {
+        padding: 0 20px;
+        box-sizing: border-box;
+    }
 `;
 
 const CardContainer = styled.div`
@@ -71,6 +76,22 @@ const CardItem = styled.div`
     text-align: left;
     padding: 0px 30px 30px 0px;
     width: 25%;
+
+    @media (max-width: ${dimensions.lg}) {
+        width: 33%;
+    }
+
+    @media (max-width: ${dimensions.md}) {
+        width: 50%;
+        margin: 20px 0px;
+        padding: 0px;
+    }
+
+    @media (max-width: ${dimensions.sm}) {
+        width: 100%;
+    }
+
+    
 
     .image-container {
         height: 0;

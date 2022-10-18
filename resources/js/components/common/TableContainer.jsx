@@ -28,6 +28,7 @@ function TableContainer({ onRow, columns, data, meta, handlePageChange, loading,
         <div>
             <Container>
                 <Table
+                    scroll={{ x: 1270 }}
                     rowClassName="table-row"
                     bordered={bordered}
                     onRow={onRow}

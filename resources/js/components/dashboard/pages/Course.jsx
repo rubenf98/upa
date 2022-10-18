@@ -18,10 +18,19 @@ const Container = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
+
+    @media (max-width: ${maxWidth}) {
+        padding: 0 20px;
+        box-sizing: border-box;
+    }
 `;
 
 const InfoContainer = styled.div`
     margin-left: 20%;
+
+    @media (max-width: ${dimensions.md}) {
+        margin-left: 0;
+    }
 
     h1 {
         font-size: 16px;
@@ -36,12 +45,22 @@ const InfoContainer = styled.div`
         text-transform: capitalize;
         margin: 0px 0px 30px 0px;
         line-height: 33px;
+
+
+        @media (max-width: ${dimensions.md}) {
+            font-size: 32px;
+            line-height: 26px;
+        }
     }
     
     p {
         opacity: .7;    
         font-size: 16px;
         margin-top: 0px ;
+
+        @media (max-width: ${dimensions.md}) {
+            display: none;
+        }
     }
 
     .separator {
@@ -51,6 +70,10 @@ const InfoContainer = styled.div`
         border-radius: 3px;
         display: inline-block;
         margin: 0px 3px 3px 3px;
+
+        @media (max-width: ${dimensions.md}) {
+            display: none;
+        }
     }
 `;
 
@@ -58,6 +81,7 @@ const Content = styled.div`
     display: flex;
     align-items: flex-start;
     justify-content: space-around;
+    flex-wrap: wrap;
     width: 100%;
     max-width: ${maxWidth};
     margin: 0px auto 0px auto;
@@ -70,9 +94,19 @@ const VideoContainer = styled.div`
     height: calc(100vh - 140px);
     position: relative;
 
+    @media (max-width: ${dimensions.md}) {
+        width: 100%;
+        order: 1;
+        height: auto;
+    }
+
     .absolute-div {
         position: sticky;
         top: 100px;
+
+        @media (max-width: ${dimensions.md}) {
+            position: static;
+        }
     }
 
     video {
@@ -80,6 +114,10 @@ const VideoContainer = styled.div`
         height: auto;
         padding: 0px 0px 0px 40px;
         box-sizing: border-box;
+
+        @media (max-width: ${dimensions.md}) {
+            padding: 0px;
+        }
     }
 `;
 
@@ -88,6 +126,11 @@ const VideoList = styled.div`
     width: 40%;
     padding: 0px 30px 30px 0px;
     box-sizing: border-box;
+
+    @media (max-width: ${dimensions.md}) {
+        width: 100%;
+        order: 2;
+    }
 
     &::-webkit-scrollbar {
         display: none;
@@ -98,6 +141,10 @@ const VideoList = styled.div`
         font-family: ${fonts.title};
         text-transform: capitalize;
         line-height: 33px;
+
+        @media (max-width: ${dimensions.md}) {
+            display: none;
+        }
     }
 `;
 
@@ -149,13 +196,17 @@ const ListItem = styled.div`
 
 const TotalVideos = styled.div`
     margin-bottom: 50px;
+
+    @media (max-width: ${dimensions.md}) {
+        display: none;
+    }
 `;
 
 const Background = styled.div`
     width: 50vw;
-    height: 100%;
+    height: calc(100% + 140px);
     background: ${props => props.background};
-    top: 0;
+    top: -140px;
     left: 0;
     position: absolute;
     z-index: -1;

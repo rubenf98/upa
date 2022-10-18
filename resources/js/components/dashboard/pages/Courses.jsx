@@ -6,13 +6,18 @@ import { fetchEbooks, downloadEbook } from "../../../redux/ebook/actions";
 import { verifyAddToCart } from "../../../redux/cart/actions";
 import { connect } from "react-redux";
 import { Link } from 'react-router-dom';
-import { borderRadius, maxWidth } from '../../../helper';
+import { borderRadius, dimensions, maxWidth } from '../../../helper';
 import { Spin } from 'antd';
 
 const Container = styled.div`
     width: 100%;
     max-width: ${maxWidth};
     margin: auto;
+
+    @media (max-width: ${maxWidth}) {
+        padding: 0 20px;
+        box-sizing: border-box;
+    }
 `;
 
 const Title = styled.h1`
@@ -28,6 +33,13 @@ const Course = styled.div`
     box-sizing: border-box;  
     padding: 20px;
 
+    @media (max-width: ${dimensions.md}) {
+        width: 50%;
+    }
+    
+    @media (max-width: ${dimensions.sm}) {
+        width: 100%;
+    }
     .course-content {
         box-shadow: 0px 0px 15px 0px rgba(0,0,0,.1);
         border-radius: ${borderRadius};

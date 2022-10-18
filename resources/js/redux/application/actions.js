@@ -18,3 +18,9 @@ export function handleMenu(state) {
     };
 }
 
+export function handleDashboardMenu(state) {
+    return {
+        type: types.HANDLE_DASHBOARD_MENU, payload: state
+    };
+}
+

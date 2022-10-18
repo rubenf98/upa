@@ -15,6 +15,11 @@ const Container = styled.div`
     h1 {
         font-size: 28px;
     }
+
+    @media (max-width: ${maxWidth}) {
+        padding: 0 20px;
+        box-sizing: border-box;
+    }
 `;
 
 
@@ -35,6 +40,8 @@ function Admin({ fetchSelf, loading, fetchTransactions, transactions, meta, vali
         {
             title: '#',
             dataIndex: 'id',
+            fixed: "left",
+            width: 80,
         },
         {
             title: 'Cliente',

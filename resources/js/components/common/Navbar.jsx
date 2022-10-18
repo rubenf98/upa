@@ -7,8 +7,6 @@ import { dimensions, maxWidth, navbarHeight } from '../../helper';
 import { connect } from "react-redux";
 import { handleMenu } from "../../redux/application/actions";
 import { openCart } from "../../redux/cart/actions";
-import AnimationContainer from './AnimationContainer';
-import { StyledButton } from '../../styles';
 
 const rotate = keyframes`
   0% {
@@ -75,9 +73,7 @@ const LinkContainer = styled.div`
     box-sizing: border-box;
     
 
-    @media (max-width: ${dimensions.lg}) {
-        display: none;
-    }
+    
 `;
 
 const NavbarLink = styled(Link)`
@@ -85,7 +81,11 @@ const NavbarLink = styled(Link)`
     font-size: 16px;
     text-transform: capitalize;
     cursor: pointer;
-    color: inherit;   
+    color: inherit; 
+    
+    @media (max-width: ${dimensions.lg}) {
+        display: none;
+    }
 
     span {
         z-index: 3;
@@ -273,7 +273,7 @@ function Navbar({ theme, openCart, handleMenu, cartItems }) {
                     </MenuContainer>
                 </FlexItem>
                 <FlexItem>
-                    <Menu background="#000" onClick={() => handleMenu(true)} />
+                    
 
                     <AccountButton color={theme.textAccent} to="/painel">
                         <Link to="/painel">
@@ -291,6 +291,8 @@ function Navbar({ theme, openCart, handleMenu, cartItems }) {
 
 
                     </LinkContainer>
+
+                    <Menu background="#000" onClick={() => handleMenu(true)} />
                 </FlexItem>
             </Content>
         </Container>

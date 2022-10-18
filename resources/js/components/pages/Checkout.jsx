@@ -115,7 +115,7 @@ function Checkout({ items, total, theme, isAuthenticated, createTransaction, set
         <Container>
             <Content>
                 <Row type="flex" gutter={32}>
-                    <Col span={16}>
+                    <Col  xs={24} md={16}>
                         <h2>Artigos no carrinho</h2>
                         {initialCart.map((item) => (
                             <Item>
@@ -133,7 +133,7 @@ function Checkout({ items, total, theme, isAuthenticated, createTransaction, set
                             <h2>{initialTotal}.00€</h2>
                         </PriceContainer>
                     </Col>
-                    <Col span={8}>
+                    <Col xs={24} md={8}>
                         <h2>Métodos de pagamento</h2>
                         <p>Está quase a terminar a sua compra. Escolha o método de pagamento que prefere, visite a sua <Link to="/painel">conta</Link> e submeta o comprovativo de pagamento.</p>
 

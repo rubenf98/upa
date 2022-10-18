@@ -10,6 +10,7 @@ import { navbarHeight } from "../helper";
 import NavbarMenu from "./common/NavbarMenu";
 import Cart from "./pages/Cart";
 import { setCart } from "../redux/cart/actions";
+import NavbarDashboardMenu from "./dashboard/NavbarDashboardMenu";
 
 const Container = styled.div`
     width: 100%;
@@ -68,6 +69,7 @@ function Layout({ cart, minimalist, children, setCart }) {
         }}>
             <Container background="white">
                 <NavbarMenu />
+                <NavbarDashboardMenu />
                 <Cart />
 
 
