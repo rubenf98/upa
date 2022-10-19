@@ -148,6 +148,12 @@ const Menu = styled.div`
     @media (max-width: ${dimensions.lg}) {
         display: block;
     }
+
+    @media (max-width: ${dimensions.md}) {
+        width: 30px;
+        height: 30px;
+        border-radius: 30px;
+    }
 `;
 
 

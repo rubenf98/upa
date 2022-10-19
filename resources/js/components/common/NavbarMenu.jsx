@@ -56,6 +56,12 @@ const Menu = styled.div`
     @media (max-width: ${dimensions.lg}) {
         display: block;
     }
+
+    @media (max-width: ${dimensions.md}) {
+        width: 30px;
+        height: 30px;
+        border-radius: 30px;
+    }
 `;
 
 const LinksContainer = styled.div`
@@ -85,6 +91,10 @@ const Logo = styled.img`
     z-index: inherit;
     opacity: ${props => props.animation == 0 ? 1 : 0};
     transition: opacity 1s ease-in-out;
+
+    @media (max-width: ${dimensions.md}) {
+        height: 40px;
+    }
 `;
 
 const Navbar = styled.div`

@@ -1,30 +1,34 @@
 import React, { useEffect, useState } from 'react'
-import { maxWidth } from '../../helper';
+import { dimensions, maxWidth } from '../../helper';
 import styled, { withTheme } from "styled-components";
 import { connect } from "react-redux";
 import Col from "antd/es/col"
 import Row from "antd/es/row"
-import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom'
 import { createTransaction } from "../../redux/transaction/actions";
 import { setCart } from "../../redux/cart/actions";
+import { StyledButton } from '../../styles';
 
 
 const Container = styled.div`
     width: 100%;
 
     h2 {
-        font-size: 28px;
+        font-size: 24px;
         margin-bottom: 30px;
     }
 `;
 
 const Content = styled.div`
-    width: 100%;
+    width: 70%;
     max-width: ${maxWidth};
     margin: auto;
     padding: 100px 20px;
     box-sizing: border-box;
+
+    @media (max-width: ${maxWidth}) {
+        width: 100%;
+    }
 `;
 
 const Item = styled(Row)`
@@ -38,6 +42,12 @@ const Item = styled(Row)`
         object-fit: cover;
         border-radius: 70px;
         margin-right: 10px;
+
+        @media (max-width: ${dimensions.md}) {
+            width: 60px;
+            height: 60px;
+            border-radius: 60px;
+        }    
     }
 `;
 
@@ -49,15 +59,31 @@ const PriceContainer = styled.div`
     padding-top: 30px;
     border-top: 1px solid #707070;
 
-    h2 {
-        font-size: 22px;
-    }
-
-    &:last-child() {
-        font-weight: bold;
-    }
+    
 
     
+`;
+
+const TitleContainer = styled.div`
+    margin-bottom: 50px;
+
+    h2 {
+        font-size: 40px;
+    }
+
+    p {
+        font-size: 20px;
+    }
+
+    @media (max-width: ${dimensions.md}) {
+        h2 {
+            font-size: 30px;
+        }
+
+        p {
+            font-size: 16px;
+        }
+    }
 `;
 
 
@@ -85,6 +111,7 @@ function Checkout({ items, total, theme, isAuthenticated, createTransaction, set
             }).then(() => {
                 setHasSubmitted(true);
                 setCart([]);
+                navigate("/painel");
             });
 
         }
@@ -92,18 +119,13 @@ function Checkout({ items, total, theme, isAuthenticated, createTransaction, set
 
     useEffect(() => {
         if (!isAuthenticated) {
-            navigate("login?to=checkout");
-        }
-        else {
-
+            navigate("/login?to=checkout");
         }
 
 
     }, [])
 
     useEffect(() => {
-        createEntry();
-
         if (total) {
             setInitialCart(items);
             setInitialTotal(total);
@@ -114,8 +136,13 @@ function Checkout({ items, total, theme, isAuthenticated, createTransaction, set
     return (
         <Container>
             <Content>
-                <Row type="flex" gutter={32}>
-                    <Col  xs={24} md={16}>
+                <TitleContainer>
+                    <h2>Está quase a terminar a sua compra</h2>
+                    <p>Os seus artigos e os métodos de pagamento disponíveis estão na listas que seguem abaixo. Faça o pagamento e submeta o comprovativo de pagamento ao fazer login na sua conta.</p>
+                </TitleContainer>
+
+                <Row type="flex" gutter={64}>
+                    <Col xs={24} md={16}>
                         <h2>Artigos no carrinho</h2>
                         {initialCart.map((item) => (
                             <Item>
@@ -134,9 +161,8 @@ function Checkout({ items, total, theme, isAuthenticated, createTransaction, set
                         </PriceContainer>
                     </Col>
                     <Col xs={24} md={8}>
-                        <h2>Métodos de pagamento</h2>
-                        <p>Está quase a terminar a sua compra. Escolha o método de pagamento que prefere, visite a sua <Link to="/painel">conta</Link> e submeta o comprovativo de pagamento.</p>
 
+                        <h2>Métodos de pagamento</h2>
                         <PaymentMethod>
                             <p>Transferência bancária (IBAN)</p>
                             PT50 0035 0711 0000 9440 5301 9
@@ -150,6 +176,11 @@ function Checkout({ items, total, theme, isAuthenticated, createTransaction, set
                             sementilha@gmail.com
                         </PaymentMethod>
                     </Col>
+                </Row>
+                <Row type="flex">
+                    <StyledButton onClick={createEntry}>
+                        Continuar
+                    </StyledButton>
                 </Row>
             </Content>
 
