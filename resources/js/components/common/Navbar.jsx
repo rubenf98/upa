@@ -26,7 +26,7 @@ const rotate = keyframes`
 
 const Container = styled.div`
     height: ${props => props.visible ? navbarHeight : "0px"}; 
-    width: 100%;
+    width: 100vw;
     z-index: 100;
     background-color: ${props => props.visible ? props.background : "#fff"};
     padding: 0px;
@@ -38,6 +38,12 @@ const Container = styled.div`
 
     @media(max-width: ${dimensions.xl}) {
         padding: 0px 10px;
+    }
+
+    .hide {
+        @media (max-width: ${dimensions.lg}) {
+        display: none;
+    }
     }
 `;
 
@@ -205,7 +211,7 @@ const LogoContainer = styled.div`
             height: 50px;
 
             @media (max-width: ${dimensions.md}) {
-                height: 50px;
+                height: 40px;
             }
         }
     }
@@ -257,7 +263,7 @@ function Navbar({ theme, openCart, handleMenu, cartItems }) {
                         </Link>
                         <h1>Unidos Pela <br /> Atividade</h1>
                     </LogoContainer>
-                    <FlexItem>
+                    <FlexItem className='hide'>
 
                         <MenuContainer >
                             <LinkContainer>
