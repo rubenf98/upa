@@ -17,6 +17,14 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
+if ("caches" in window) {
+    caches.keys().then((names) => {
+        names.forEach((name) => {
+            caches.delete(name);
+        });
+    });
+}
+
 const store = createStore(
     reducer,
     composeEnhancers(

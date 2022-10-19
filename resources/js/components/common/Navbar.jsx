@@ -7,6 +7,7 @@ import { dimensions, maxWidth, navbarHeight } from '../../helper';
 import { connect } from "react-redux";
 import { handleMenu } from "../../redux/application/actions";
 import { openCart } from "../../redux/cart/actions";
+import AnimationContainer from './AnimationContainer';
 
 const rotate = keyframes`
   0% {
@@ -248,54 +249,57 @@ function Navbar({ theme, openCart, handleMenu, cartItems }) {
     return (
 
         <Container visible={scrollDirection} background={backgroundColor}>
-            <Content visible={scrollDirection}>
-                <LogoContainer>
-                    <Link to="/">
-                        <img src="/image/logo.png" alt="unidos pela atividade logo" />
-                    </Link>
-                    <h1>Unidos Pela <br /> Atividade</h1>
-                </LogoContainer>
-                <FlexItem>
-
-                    <MenuContainer >
-                        <LinkContainer>
-                            <NavbarLink to="/"><span>início</span> <div /></NavbarLink>
-                        </LinkContainer>
-                        <LinkContainer>
-                            <NavbarLink to="/sessoes"><span>oferta formativa</span> <div /></NavbarLink>
-                        </LinkContainer>
-                        <LinkContainer>
-                            <NavbarLink to="/produtos"><span>produtos</span> <div /></NavbarLink>
-                        </LinkContainer>
-                        <LinkContainer>
-                            <NavbarLink to="/contact"><span>contactos</span> <div /></NavbarLink>
-                        </LinkContainer>
-                    </MenuContainer>
-                </FlexItem>
-                <FlexItem>
-                    
-
-                    <AccountButton color={theme.textAccent} to="/painel">
-                        <Link to="/painel">
-                            a minha conta
+            <AnimationContainer animation="fadeInDown">
+                <Content visible={scrollDirection}>
+                    <LogoContainer>
+                        <Link to="/">
+                            <img src="/image/logo.png" alt="unidos pela atividade logo" />
                         </Link>
+                        <h1>Unidos Pela <br /> Atividade</h1>
+                    </LogoContainer>
+                    <FlexItem>
 
-                    </AccountButton>
+                        <MenuContainer >
+                            <LinkContainer>
+                                <NavbarLink to="/"><span>início</span> <div /></NavbarLink>
+                            </LinkContainer>
+                            <LinkContainer>
+                                <NavbarLink to="/sessoes"><span>oferta formativa</span> <div /></NavbarLink>
+                            </LinkContainer>
+                            <LinkContainer>
+                                <NavbarLink to="/produtos"><span>produtos</span> <div /></NavbarLink>
+                            </LinkContainer>
+                            <LinkContainer>
+                                <NavbarLink to="/contact"><span>contactos</span> <div /></NavbarLink>
+                            </LinkContainer>
+                        </MenuContainer>
+                    </FlexItem>
+                    <FlexItem>
 
-                    <LinkContainer>
 
-                        <Cart onClick={openCart} color={theme.textAccent}>
-                            <p>{cartItems.length}</p>
-                            <img src="/icon/cart.svg" alt="carrinho" />
-                        </Cart>
+                        <AccountButton color={theme.textAccent} to="/painel">
+                            <Link to="/painel">
+                                a minha conta
+                            </Link>
+
+                        </AccountButton>
+
+                        <LinkContainer>
+
+                            <Cart onClick={openCart} color={theme.textAccent}>
+                                <p>{cartItems.length}</p>
+                                <img src="/icon/cart.svg" alt="carrinho" />
+                            </Cart>
 
 
-                    </LinkContainer>
+                        </LinkContainer>
 
-                    <Menu background="#000" onClick={() => handleMenu(true)} />
-                </FlexItem>
-            </Content>
+                        <Menu background="#000" onClick={() => handleMenu(true)} />
+                    </FlexItem>
+                </Content>
+            </AnimationContainer>
         </Container>
+
     )
 }
 

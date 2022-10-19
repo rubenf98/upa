@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import styled, { withTheme } from "styled-components";
 import { borderRadius, dimensions, fonts, maxWidth } from '../../../helper';
 import { Carousel } from 'react-responsive-carousel';
+import AnimationContainer from '../../common/AnimationContainer';
 
 const Container = styled.section`
   width: 100%;
@@ -191,52 +192,56 @@ function Header({ theme }) {
     return (
         <Container>
             <TitleContainer titleColor={theme.darkAccent} accent={theme.textAccent}>
-                <h1>Recursos para profissionais <br /> que trabalham com <span>idosos</span></h1>
-                <h2>Nesta página encontrará sessões de dança coreográfica, jogos musicais na mesa, e-books com exercícios de estimulação cognitiva e muito mais recursos que o ajudarão a enriquecer o dia-a-dia do seu grupo de idosos.</h2>
+                <AnimationContainer animation="fadeIn">
+                    <h1>Recursos para profissionais <br /> que trabalham com <span>idosos</span></h1>
+                    <h2>Nesta página encontrará sessões de dança coreográfica, jogos musicais na mesa, e-books com exercícios de estimulação cognitiva e muito mais recursos que o ajudarão a enriquecer o dia-a-dia do seu grupo de idosos.</h2>
+                </AnimationContainer>
             </TitleContainer>
-            <CarouselContainer>
-                <CustomCarousel showThumbs={false}>
-                    <div>
-                        <picture>
-                            <source media="(min-width: 1921px)" srcSet="/image/homepage/header_session_3000.jpg" />
-                            <source media="(min-width: 721px) and (max-width: 1920px)" srcSet="/image/homepage/header_session_1920.jpg" />
-                            <source media="(max-width: 720px)" srcSet="/image/homepage/header_session_720.jpg" />
+            <AnimationContainer animation="fadeIn">
+                <CarouselContainer>
+                    <CustomCarousel showThumbs={false}>
+                        <div>
+                            <picture>
+                                <source media="(min-width: 1921px)" srcSet="/image/homepage/header_session_3000.jpg" />
+                                <source media="(min-width: 721px) and (max-width: 1920px)" srcSet="/image/homepage/header_session_1920.jpg" />
+                                <source media="(max-width: 720px)" srcSet="/image/homepage/header_session_720.jpg" />
 
-                            <img src="/image/homepage/header_session_1920.jpg" alt="profile" loading="eager" />
-                        </picture>
-                        <div className="carousel-information">
-                            <h3>Sessões de atividades</h3>
-                            <p>Visualize o vídeo, descarregue o aúdio e a descrição das atividades de cada sessão</p>
+                                <img src="/image/homepage/header_session_1920.jpg" alt="profile" loading="eager" />
+                            </picture>
+                            <div className="carousel-information">
+                                <h3>Sessões de atividades</h3>
+                                <p>Visualize o vídeo, descarregue o aúdio e a descrição das atividades de cada sessão</p>
+                            </div>
                         </div>
-                    </div>
-                    <div>
-                        <picture>
-                            <source media="(min-width: 1921px)" srcSet="/image/homepage/header_product_3000.jpg" />
-                            <source media="(min-width: 721px) and (max-width: 1920px)" srcSet="/image/homepage/header_product_1920.jpg" />
-                            <source media="(max-width: 720px)" srcSet="/image/homepage/header_product_720.jpg" />
+                        <div>
+                            <picture>
+                                <source media="(min-width: 1921px)" srcSet="/image/homepage/header_product_3000.jpg" />
+                                <source media="(min-width: 721px) and (max-width: 1920px)" srcSet="/image/homepage/header_product_1920.jpg" />
+                                <source media="(max-width: 720px)" srcSet="/image/homepage/header_product_720.jpg" />
 
-                            <img src="/image/homepage/header_product_1920.jpg" alt="profile" loading="lazy" />
-                        </picture>
-                        <div className="carousel-information">
-                            <h3>Produtos</h3>
-                            <p>JOGOS, E-BOOKS E EXIBIÇÕES EM POWERPOINT atividades para estimular as capacidades cognitivas.</p>
+                                <img src="/image/homepage/header_product_1920.jpg" alt="profile" loading="lazy" />
+                            </picture>
+                            <div className="carousel-information">
+                                <h3>Produtos</h3>
+                                <p>JOGOS, E-BOOKS E EXIBIÇÕES EM POWERPOINT atividades para estimular as capacidades cognitivas.</p>
+                            </div>
                         </div>
-                    </div>
-                    <div>
-                        <picture>
-                            <source media="(min-width: 1921px)" srcSet="/image/homepage/header_workshops_3000.jpg" />
-                            <source media="(min-width: 721px) and (max-width: 1920px)" srcSet="/image/homepage/header_workshops_1920.jpg" />
-                            <source media="(max-width: 720px)" srcSet="/image/homepage/header_workshops_720.jpg" />
+                        <div>
+                            <picture>
+                                <source media="(min-width: 1921px)" srcSet="/image/homepage/header_workshops_3000.jpg" />
+                                <source media="(min-width: 721px) and (max-width: 1920px)" srcSet="/image/homepage/header_workshops_1920.jpg" />
+                                <source media="(max-width: 720px)" srcSet="/image/homepage/header_workshops_720.jpg" />
 
-                            <img src="/image/homepage/header_workshops_1920.jpg" alt="profile" loading="lazy" />
-                        </picture>
-                        <div className="carousel-information">
-                            <h3>Cursos, Workshops e oficinas</h3>
-                            <p>Conteúdos e atividades no âmbito da estimulação cognitiva e motora.</p>
+                                <img src="/image/homepage/header_workshops_1920.jpg" alt="profile" loading="lazy" />
+                            </picture>
+                            <div className="carousel-information">
+                                <h3>Cursos, Workshops e oficinas</h3>
+                                <p>Conteúdos e atividades no âmbito da estimulação cognitiva e motora.</p>
+                            </div>
                         </div>
-                    </div>
-                </CustomCarousel>
-            </CarouselContainer>
+                    </CustomCarousel>
+                </CarouselContainer>
+            </AnimationContainer>
         </Container>
     )
 }
