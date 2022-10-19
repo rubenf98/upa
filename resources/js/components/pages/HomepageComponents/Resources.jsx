@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import styled, { withTheme } from "styled-components";
 import { dimensions, fonts, maxWidth } from '../../../helper';
 import { StyledButton, textStyle, titleStyle, underlineStyle } from '../../../styles';
+import AnimationContainer from '../../common/AnimationContainer';
 
 const Container = styled.section`
     margin: 100px auto;
@@ -169,10 +170,12 @@ function Resources({ theme }) {
                         <Resource key={index} background={theme.opacityLightAccent}>
                             <div className='icon-container'><img src={"/icon/homepage/" + item.icon + ".svg"} /></div>
 
-                            <div className='resources-container'>
-                                <h3>{item.title}</h3>
-                                <p>{item.subtitle}</p>
-                            </div>
+                            <AnimationContainer animation="fadeInLeft">
+                                <div className='resources-container'>
+                                    <h3>{item.title}</h3>
+                                    <p>{item.subtitle}</p>
+                                </div>
+                            </AnimationContainer>
                         </Resource>
                     ))}
                 </Info>
