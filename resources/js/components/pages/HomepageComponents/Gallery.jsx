@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { dimensions, fonts, maxWidth } from '../../../helper';
 import Typewriter from 'typewriter-effect';
 import { titleStyle } from '../../../styles';
+import AnimationContainer from '../../common/AnimationContainer';
 
 const Container = styled.section`
     max-width: ${maxWidth};
@@ -214,13 +215,15 @@ function Gallery() {
                     }}
                 />
             </TypewriterContainer>
-            <GalleryContainer>
-                <div className="div1"><img src="/image/homepage/gallery/v.jpg" /> </div>
-                <div className="div2"><img src="/image/homepage/gallery/vii.jpg" /></div>
-                <div className="div3"><img src="/image/homepage/gallery/vi.jpg" /></div>
-                <div className="div4"><img src="/image/homepage/gallery/ix.jpg" /></div>
-                <div className="div5"><img src="/image/homepage/gallery/x.jpg" /></div>
-            </GalleryContainer>
+            <AnimationContainer animation="fadeIn">
+                <GalleryContainer>
+                    <div className="div1"><img src="/image/homepage/gallery/v.jpg" /> </div>
+                    <div className="div2"><img src="/image/homepage/gallery/vii.jpg" /></div>
+                    <div className="div3"><img src="/image/homepage/gallery/vi.jpg" /></div>
+                    <div className="div4"><img src="/image/homepage/gallery/ix.jpg" /></div>
+                    <div className="div5"><img src="/image/homepage/gallery/x.jpg" /></div>
+                </GalleryContainer>
+            </AnimationContainer>
         </Container>
     )
 }
