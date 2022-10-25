@@ -174,7 +174,7 @@ function NavBar({ theme, logout, openCart, cartItems, isAdmin, handleDashboardMe
             </LogoContainer>
             <MenuContainer >
                 <LinkContainer className="desktop-link">
-                    <NavbarLink background={theme.blue} to="/painel/"><span>página inicial</span> <div /></NavbarLink>
+                    <NavbarLink background={theme.blue} to="/painel/"><span>as minhas compras</span> <div /></NavbarLink>
                 </LinkContainer>
 
                 {isAdmin &&

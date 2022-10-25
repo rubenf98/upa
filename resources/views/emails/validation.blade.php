@@ -253,14 +253,13 @@
                                                                 </p>
                                                                 <p style="font-size: 14px; line-height: 140%;"> </p>
                                                                 <p style="font-size: 14px; line-height: 140%;"><span
-                                                                        style="font-size: 18px; line-height: 25.2px; color: #666666;">O
-                                                                        seu pagamento na plataforma Unidos
-                                                                        Pela Atividade foi aprovado.<br /></span></p>
+                                                                        style="font-size: 18px; line-height: 25.2px; color: #666666;">
+                                                                        O seu pedido foi validado!<br /></span></p>
                                                                 <p style="font-size: 14px; line-height: 140%;"> </p>
                                                                 <p style="font-size: 14px; line-height: 140%;"><span
-                                                                        style="font-size: 18px; line-height: 25.2px; color: #666666;">Verifique
-                                                                        o seu painel de controlo de modo a usufruir do
-                                                                        produto.<br /></span></p>
+                                                                        style="font-size: 18px; line-height: 25.2px; color: #666666;">Aceda
+                                                                        à sua conta de modo a usufruir dos produtos que
+                                                                        adquiriu.<br /></span></p>
                                                             </div>
 
                                                         </td>

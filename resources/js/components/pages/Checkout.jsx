@@ -8,6 +8,7 @@ import { useNavigate } from 'react-router-dom'
 import { createTransaction } from "../../redux/transaction/actions";
 import { setCart } from "../../redux/cart/actions";
 import { StyledButton } from '../../styles';
+import { Spin } from 'antd';
 
 
 const Container = styled.div`
@@ -103,13 +104,16 @@ function Checkout({ items, total, theme, isAuthenticated, createTransaction, set
     const [hasSubmitted, setHasSubmitted] = useState(false)
     const [initialCart, setInitialCart] = useState([])
     const [initialTotal, setInitialTotal] = useState(0)
+    const [loading, setLoading] = useState(false)
 
     function createEntry() {
+        setLoading(true);
         if (items.length && !hasSubmitted) {
             createTransaction({
                 items: items
             }).then(() => {
                 setHasSubmitted(true);
+                setLoading(false);
                 setCart([]);
                 navigate("/painel");
             });
@@ -138,7 +142,7 @@ function Checkout({ items, total, theme, isAuthenticated, createTransaction, set
             <Content>
                 <TitleContainer>
                     <h2>Está quase a terminar a sua compra</h2>
-                    <p>Os seus artigos e os métodos de pagamento disponíveis estão na listas que seguem abaixo. Faça o pagamento e submeta o comprovativo de pagamento ao fazer login na sua conta.</p>
+                    <p>Para finalizar a sua compra realize o pagamento e submeta o comprovativo no menu "As minhas compras", após login.</p>
                 </TitleContainer>
 
                 <Row type="flex" gutter={64}>
@@ -178,8 +182,8 @@ function Checkout({ items, total, theme, isAuthenticated, createTransaction, set
                     </Col>
                 </Row>
                 <Row type="flex">
-                    <StyledButton onClick={createEntry}>
-                        Continuar
+                    <StyledButton loading={loading} onClick={createEntry}>
+                        {loading ? <Spin /> : "Continuar"}
                     </StyledButton>
                 </Row>
             </Content>
