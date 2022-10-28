@@ -5,20 +5,21 @@ import { dimensions } from "../../../../helper";
 import moment from "moment";
 
 const Container = styled(Drawer)`
-.ant-drawer-content{
-    background: rgb(255,255,255);
-    background: -moz-linear-gradient(159deg, rgba(255,255,255,1) 0%, rgba(213,213,213,1) 100%);
-    background: -webkit-linear-gradient(159deg, rgba(255,255,255,1) 0%, rgba(213,213,213,1) 100%);
-    background: linear-gradient(159deg, rgba(255,255,255,1) 0%, rgba(213,213,213,1) 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ffffff",endColorstr="#d5d5d5",GradientType=1);
-    
+    .ant-drawer-content{
+        background: rgb(255,255,255);
+        background: -moz-linear-gradient(159deg, rgba(255,255,255,1) 0%, rgba(213,213,213,1) 100%);
+        background: -webkit-linear-gradient(159deg, rgba(255,255,255,1) 0%, rgba(213,213,213,1) 100%);
+        background: linear-gradient(159deg, rgba(255,255,255,1) 0%, rgba(213,213,213,1) 100%);
+        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ffffff",endColorstr="#d5d5d5",GradientType=1);
+    }
+
     ul{
         list-style: none;
         display: flex;
         flex-wrap: wrap;
 
         li  {
-            color #535353;
+            color: #535353;
 
             span {
                 font-weight: bold;
@@ -38,9 +39,10 @@ const Container = styled(Drawer)`
 
         
     }
-}`;
+    
+`;
 
-const Participant = styled.div`{
+const Participant = styled.div`
     position: relative;
     width: 48%;
     margin: 10px 0px;
@@ -86,7 +88,7 @@ const Participant = styled.div`{
     }
 
     
-}`;
+`;
 
 function DrawerContainer({ visible, onClose, record }) {
     return (

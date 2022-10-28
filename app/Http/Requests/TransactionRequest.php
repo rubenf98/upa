@@ -49,7 +49,7 @@ class TransactionRequest extends FormRequest
     {
         return [
             'user_id' => 'required|integer|exists:users,id',
-            'price' => 'required|integer|min:4',
+            'price' => 'required|integer|min:2',
             'items' => 'required|array|min:1',
             'items.*.type' => 'required|string',
             'items.*.id' => 'required|integer',

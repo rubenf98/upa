@@ -148,7 +148,7 @@ function NavbarMenu({ theme, handleMenu, menuVisible }) {
             <Background background={theme.lightAccent} animation={animation} />
             <Content>
                 <Navbar>
-                    <Logo animation={animation} src="/image/logo.svg" alt="logos unidos pela atividade" />
+                    <Logo animation={animation} src="/image/logo.png" alt="logos unidos pela atividade" />
                     <Menu background="black" onClick={handleClose} />
                 </Navbar>
                 <LinksContainer animation={animation}>

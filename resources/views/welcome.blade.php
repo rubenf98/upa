@@ -188,7 +188,7 @@
                 <div></div>
             </div>
         </div>
-        <script src="{{mix('js/app25102022v1.js')}}"></script>
+        <script src="{{mix('js/app28102022.js')}}"></script>
     </div>
 </body>
 

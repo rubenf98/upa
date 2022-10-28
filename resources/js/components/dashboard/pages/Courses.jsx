@@ -59,11 +59,11 @@ const Course = styled.div`
         h3 {
             font-size: 16px;
         }
+        
         h2 {
             font-weight: bold;
             font-size: 22px;
             margin: 0px 0px 20px 0px;
-            text-transform: capitalize;
         }
         p {
             font-size: 16px;

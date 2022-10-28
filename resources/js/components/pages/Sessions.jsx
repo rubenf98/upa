@@ -48,9 +48,15 @@ const SessionsContainer = styled.div`
         position: relative;
 
         @media (max-width: ${dimensions.md}) {
-            width: 60%;
+            .carousel-root {
+                width: 100%;
+            }
         }
+    
     }
+
+    
+    
 `;
 
 
@@ -207,10 +213,12 @@ const SessionContent = styled.div`
     flex-wrap: wrap;
     width: 100%;
 
+    
+
     @media (max-width: ${dimensions.md}) {
-        width: 100%;
         margin-bottom: 30px;
         padding: 0 20px;
+        box-sizing: border-box;
     }
 
     .image-container {
@@ -219,14 +227,11 @@ const SessionContent = styled.div`
         box-sizing: border-box;
         position: relative;
 
-        @media (max-width: ${dimensions.md}) {
-            width: 100%;
-            padding: 20px 20px 20px 0px;
-            margin: auto auto 30px auto;
-        }
+        
 
         img {
             width: 100%;
+            
         }
 
         .background {
@@ -239,7 +244,8 @@ const SessionContent = styled.div`
             z-index: -1;
 
             @media (max-width: ${dimensions.md}) {
-                width: calc(100% - 40px);
+                width: calc(100vw - 40px);
+                right: -20px;
             }
         }
     }
@@ -250,11 +256,6 @@ const SessionContent = styled.div`
         padding: 0px 50px; 
         box-sizing: border-box;
         position: relative;
-
-        @media (max-width: ${dimensions.md}) {
-            width: 100%;
-            padding: 0px; 
-        }
 
         h4, .price {
             margin: 0px;
@@ -293,6 +294,7 @@ const SessionContent = styled.div`
             display: flex;
             justify-content: flex-start;
             align-items: center;
+            flex-wrap: wrap;
         }
 
         a {
@@ -307,6 +309,21 @@ const SessionContent = styled.div`
                     color: ${props => props.color};
                 }
             }
+        }
+    }
+
+    @media (max-width: ${dimensions.md}) {
+
+        .image-container {
+            width: 100%;
+            padding: 20px 20px 20px 0px;
+            box-sizing: border-box;
+            margin: 0px 0px 30px 0px;
+        }
+
+        .info-container {
+            width: 100%;
+            padding: 0px; 
         }
     }
         
@@ -457,6 +474,7 @@ function Sessions({ theme, verifyAddToCart }) {
                         renderThumbs={false}
                         showThumbs={false}
                         showIndicators={false}
+                        swipeable={false}
                     >
                         {/* <Session
                             id={1}

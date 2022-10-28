@@ -29,6 +29,14 @@ const ContentContainer = styled(Row)`
         padding: 20px 0px;
     }
 
+    .animated {
+        width: 50%;
+
+        img {
+            width: 100%;
+        }
+    }
+
     .fadeInLeft {
         width: 50%;
 
@@ -44,9 +52,7 @@ const ContentContainer = styled(Row)`
             width: 100%;
         }
 
-        img {
-            width: 100%;
-        }
+        
     }
     
 `;
@@ -84,7 +90,7 @@ function About({ theme }) {
     return (
         <Container>
             <ContentContainer type='flex' align='middle' justify='space-around'>
-                <AnimationContainer animation="fadeInLeft">
+                <AnimationContainer className="left-container" animation="fadeInLeft">
                     <Info underlineColor={theme.blue}>
                         <h2>Unidos Pela Atividade</h2>
                         <p>O projeto UPA nasceu em 2020, fruto da consciência da falta de recursos  destinados à população sénior.  Este visa proporcionar aos profissionais que trabalham com os idosos um leque diversificado de atividades ocupacionais, que não só mantêm esta população ativa, como contribuem para o seu desenvolvimento cognitivo.</p>
@@ -92,7 +98,7 @@ function About({ theme }) {
 
                     </Info>
                 </AnimationContainer>
-                <AnimationContainer animation="fadeInRight">
+                <AnimationContainer className="right-container" animation="fadeInRight">
                     <img src="/image/homepage/about_upa.jpg" alt="Sandra Carvalho" />
                 </AnimationContainer>
 

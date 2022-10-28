@@ -227,6 +227,48 @@ const SessionContent = styled.div`
         
 `;
 
+const AdditionalInfo = styled.div`
+    width: 70%;
+    margin: auto;
+
+    @media (max-width: ${dimensions.md}) {
+        width: 100%;
+    }
+
+    div {
+        margin: 30px 0px;
+    }
+    h4 {
+        font-size: 28px;
+        line-height: 94%;
+
+        @media (max-width: ${dimensions.md}) {
+            font-size: 22px;
+        }
+    }
+`;
+
+const jogosAE = [
+    { id: 9, name: "Jogo A", image: "jogo_ae_a", price: 2, description: "" },
+    { id: 10, name: "Jogo B", image: "jogo_ae_b", price: 2, description: "" },
+    { id: 11, name: "Jogo C", image: "jogo_ae_c", price: 2, description: "" },
+    { id: 12, name: "Jogo D", image: "jogo_ae_d", price: 2, description: "" },
+    { id: 13, name: "Jogo E", image: "jogo_ae_e", price: 2, description: "" },
+]
+
+const jogosIX = [
+    { id: 14, name: "Jogo I", image: "jogo_ix_1", price: 2, description: "" },
+    { id: 15, name: "Jogo II", image: "jogo_ix_2", price: 2, description: "" },
+    { id: 16, name: "Jogo III", image: "jogo_ix_3", price: 2, description: "" },
+    { id: 17, name: "Jogo IV", image: "jogo_ix_4", price: 2, description: "" },
+    { id: 18, name: "Jogo V", image: "jogo_ix_5", price: 2, description: "" },
+    { id: 19, name: "Jogo VI", image: "jogo_ix_6", price: 2, description: "" },
+    { id: 20, name: "Jogo VII", image: "jogo_ix_7", price: 2, description: "" },
+    { id: 21, name: "Jogo VIII", image: "jogo_ix_8", price: 2, description: "" },
+    { id: 22, name: "Jogo IX", image: "jogo_ix_9", price: 2, description: "" },
+    { id: 23, name: "Jogo X", image: "jogo_ix_10", price: 2, description: "" },
+]
+
 function Products({ theme, verifyAddToCart }) {
 
     const addToCart = (element) => {
@@ -381,6 +423,98 @@ function Products({ theme, verifyAddToCart }) {
                         />
 
                     </Col>
+                </Row>
+
+            </SessionsContainer>
+
+            <SessionsContainer color={theme.textAccent}>
+
+                <h2>jogos</h2>
+                <h3>Jogos de A a E</h3>
+                <AdditionalInfo>
+                    <p>O objetivo é colocar as peças na posição correta. Os quebra-cabeças são um ótimo recurso para a estimulação da capacidade cognitiva e psicomotora, capacidade de concentração, noção espacial e perceção visual.</p>
+                    <Row>
+                        <Col xs={24} md={8}>
+                            <h4>Áreas de estimulação cognitiva e motora</h4>
+                        </Col>
+                        <Col xs={12} md={8}>
+                            <ul>
+                                <li>Atenção e raciocínio lógico</li>
+                                <li>Coordenação motora</li>
+                            </ul>
+                        </Col>
+                        <Col xs={12} md={8}>
+                            <ul>
+                                <li>Motricidade Fina</li>
+                                <li>Habilidades do pensamento, como: observar, comparar, analisar e sintetizar</li>
+                            </ul>
+                        </Col>
+                    </Row>
+                </AdditionalInfo>
+
+
+
+
+                <Row type="flex">
+
+                    {jogosAE.map((jogo) => (
+                        <Col key={jogo.id} xs={24} md={12}>
+                            <Session
+                                title={jogo.name}
+                                cartName={jogo.name}
+                                price={jogo.price}
+                                id={jogo.id}
+                                image={jogo.image}
+                                description={jogo.description}
+                            />
+
+                        </Col>
+                    ))}
+                </Row>
+
+            </SessionsContainer>
+
+            <SessionsContainer color={theme.textAccent}>
+
+                <h2>jogos</h2>
+                <h3>Jogos de I a X</h3>
+
+                <AdditionalInfo>
+                    <p>O objetivo é colocar as peças na posição correta de acordo com os diferentes símbolos e orientação. Os quebra-cabeças são um ótimo recurso para a estimulação da capacidade cognitiva e psicomotora, capacidade de concentração, noção espacial e perceção visual.</p>
+                    <Row>
+                        <Col xs={24} md={8}>
+                            <h4>Áreas de estimulação cognitiva e motora</h4>
+                        </Col>
+                        <Col xs={12} md={8}>
+                            <ul>
+                                <li>Atenção e raciocínio lógico</li>
+                                <li>Coordenação motora</li>
+                                <li>Orientação Espacial</li>
+                            </ul>
+                        </Col>
+                        <Col xs={12} md={8}>
+                            <ul>
+                                <li>Motricidade Fina</li>
+                                <li>Habilidades do pensamento, como: observar, comparar, analisar e sintetizar</li>
+                            </ul>
+                        </Col>
+                    </Row>
+                </AdditionalInfo>
+                <Row type="flex">
+
+                    {jogosIX.map((jogo) => (
+                        <Col key={jogo.id} xs={24} md={12}>
+                            <Session
+                                title={jogo.name}
+                                cartName={jogo.name}
+                                price={jogo.price}
+                                id={jogo.id}
+                                image={jogo.image}
+                                description={jogo.description}
+                            />
+
+                        </Col>
+                    ))}
                 </Row>
 
             </SessionsContainer>

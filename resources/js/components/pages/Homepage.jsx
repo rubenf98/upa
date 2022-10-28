@@ -8,7 +8,7 @@ import Soon from './HomepageComponents/Soon';
 import Gallery from './HomepageComponents/Gallery';
 
 const Container = styled.div`
-    //
+    overflow-x: none;
 `;
 
 
@@ -17,7 +17,7 @@ function Homepage() {
         <Container >
             <Header />
             <About />
-            
+
             <Gallery />
             <Free />
             <Resources />
