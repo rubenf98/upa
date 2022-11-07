@@ -97,6 +97,18 @@ function Courses({ theme, fetchCourses, fetchEbooks, courses, ebooks, verifyAddT
         fetchEbooks();
     }, [])
 
+    function handleEbookClick(element) {
+
+        var extension = "pdf";
+
+        if (element.file.includes(".ppsx")) {
+            extension = "ppsx";
+        }
+        downloadEbook(element.id, extension);
+
+    }
+
+
     const addToCart = (element) => {
         verifyAddToCart(element);
     };
@@ -164,7 +176,7 @@ function Courses({ theme, fetchCourses, fetchEbooks, courses, ebooks, verifyAddT
                                 <p>{course.description}</p>
                                 <ButtonContainer>
                                     {course.bought &&
-                                        <StyledButton onClick={() => downloadEbook(course.id)} fontSize="16px">
+                                        <StyledButton onClick={() => handleEbookClick(course)} fontSize="16px">
                                             Descarregar {loadingDownload && <Spin />}
                                         </StyledButton>
                                     }
@@ -203,7 +215,7 @@ const mapDispatchToProps = (dispatch) => {
         fetchCourses: () => dispatch(fetchCourses()),
         fetchEbooks: () => dispatch(fetchEbooks()),
         verifyAddToCart: (element) => dispatch(verifyAddToCart(element)),
-        downloadEbook: (id) => dispatch(downloadEbook(id)),
+        downloadEbook: (id, extension) => dispatch(downloadEbook(id, extension)),
     };
 };
 
