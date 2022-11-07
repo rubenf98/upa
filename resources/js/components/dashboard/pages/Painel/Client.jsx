@@ -159,7 +159,7 @@ const CardItem = styled.div`
 `;
 
 
-function Client({ fetchSelf, loading, currentUser, fetchTransactions, transactions, meta, updateTransaction, downloadEbook,loadingDownload }) {
+function Client({ fetchSelf, loading, currentUser, fetchTransactions, transactions, meta, updateTransaction, downloadEbook, loadingDownload }) {
     var navigate = useNavigate();
 
     useEffect(() => {
@@ -184,7 +184,13 @@ function Client({ fetchSelf, loading, currentUser, fetchTransactions, transactio
         if (element.type == "course") {
             navigate("/painel/sessoes/" + element.id);
         } else {
-            downloadEbook(element.id);
+            var extension = "pdf";
+
+            if (element.file.includes(".ppsx")) {
+                extension = "ppsx";
+            }
+
+            downloadEbook(element.id, extension);
         }
     }
 
@@ -251,7 +257,7 @@ function Client({ fetchSelf, loading, currentUser, fetchTransactions, transactio
                                                     <p className="subtitle">{element.subtitle} </p>
                                                 </div>
                                                 {loadingDownload ? <Spin /> : <img onClick={() => handleActionClick(element)} src={"/icon/" + (element.type == "course" ? "link" : "download") + ".svg"} alt={element.title} />}
-                                                
+
                                             </div>
                                         </CardItem>}
                                     </>
@@ -288,7 +294,7 @@ const mapDispatchToProps = (dispatch) => {
         fetchSelf: () => dispatch(fetchSelf()),
         fetchTransactions: (page) => dispatch(fetchTransactions(page)),
         updateTransaction: (id, data) => dispatch(updateTransaction(id, data)),
-        downloadEbook: (id) => dispatch(downloadEbook(id)),
+        downloadEbook: (id, extension) => dispatch(downloadEbook(id, extension)),
     };
 };
 

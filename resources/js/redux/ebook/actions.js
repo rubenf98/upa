@@ -7,7 +7,7 @@ export const fetchEbooks = () => ({
     payload: axios.get(`${window.location.origin}/api/ebook`)
 })
 
-export const downloadEbook = (id) => ({
+export const downloadEbook = (id, ext = "pdf") => ({
     type: types.DOWNLOAD_EBOOK,
     payload: axios({
         url: `${window.location.origin}/api/download/ebook/${id}`,
@@ -15,7 +15,7 @@ export const downloadEbook = (id) => ({
         responseType: "blob",
     }).then(
         response => {
-            download(response, ' ebook.pdf')
+            download(response, ' ebook.' + ext)
         },
         error => {
             return error.data;

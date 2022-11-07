@@ -423,6 +423,18 @@ function Products({ theme, verifyAddToCart }) {
                         />
 
                     </Col>
+
+                    <Col xs={24} md={12}>
+                        <Session
+                            title="Volume I: Natal"
+                            cartName="Volume I: Natal"
+                            price={4}
+                            id={24}
+                            image="25_natal"
+                            description="25 exercícios de atenção, perceção visual e motricidade fina."
+                        />
+
+                    </Col>
                 </Row>
 
             </SessionsContainer>
@@ -515,6 +527,58 @@ function Products({ theme, verifyAddToCart }) {
 
                         </Col>
                     ))}
+                </Row>
+
+            </SessionsContainer>
+
+            <SessionsContainer color={theme.textAccent}>
+
+                <h2>exibições</h2>
+                <h3>Exibições de powerpoint</h3>
+                <AdditionalInfo>
+                    <Row>
+                        <Col xs={24} md={8}>
+                            <h4>Atividades que compõem as exibições de PowerPoint</h4>
+                        </Col>
+                        <Col xs={12} md={8}>
+                            <ul>
+                                <li>Descubra a parte que falta</li>
+                                <li>Descubra o elemento que não tem par</li>
+                            </ul>
+                        </Col>
+                        <Col xs={12} md={8}>
+                            <ul>
+                                <li>Descubra o elemento que tem par</li>
+                                <li>Descubra a imagem que falta em cada fila</li>
+                            </ul>
+                        </Col>
+                    </Row>
+                </AdditionalInfo>
+                <Row type="flex">
+
+                    <Col xs={24} md={12}>
+                        <Session
+                            title="Volume I: Natal"
+                            cartName="Volume I: Natal"
+                            price={2}
+                            id={25}
+                            image="pp_natal_1"
+                            description=""
+                        />
+
+                    </Col>
+
+                    <Col xs={24} md={12}>
+                        <Session
+                            title="Volume II: Natal"
+                            cartName="Volume II: Natal"
+                            price={2}
+                            id={26}
+                            image="pp_natal_1"
+                            description=""
+                        />
+
+                    </Col>
                 </Row>
 
             </SessionsContainer>
