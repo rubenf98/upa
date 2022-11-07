@@ -189,7 +189,7 @@ function Client({ fetchSelf, loading, currentUser, fetchTransactions, transactio
             if (element.file.includes(".ppsx")) {
                 extension = "ppsx";
             }
-
+            console.log(extension);
             downloadEbook(element.id, extension);
         }
     }
