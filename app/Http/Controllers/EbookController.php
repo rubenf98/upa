@@ -26,11 +26,19 @@ class EbookController extends Controller
      */
     public function download(Ebook $ebook)
     {
+        $content_type = 'application/pdf';
+        $extension = '.pdf';
+
+        if (str_contains('.ppsx', $ebook->file)) {
+            $content_type = 'application/vnd.openxmlformats-officedocument.presentationml.slideshow';
+            $extension = '.ppsx';
+        }
+
         $headers = [
-            'Content-Type' => 'application/pdf',
+            'Content-Type' => $content_type,
         ];
 
-        return response()->download(storage_path("app" . $ebook->file), 'filename.pdf', $headers);
+        return response()->download(storage_path("app" . $ebook->file), 'filename' .  $extension, $headers);
     }
 
     /**
