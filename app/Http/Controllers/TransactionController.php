@@ -8,6 +8,7 @@ use App\Mail\TransactionMail;
 use App\Models\Transaction;
 use App\Models\TransactionHasItem;
 use App\Models\UserHasItem;
+use App\QueryFilters\TransactionFilters;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
@@ -27,7 +28,8 @@ class TransactionController extends Controller
         if ($request->header('Authorization')) {
             $role = auth()->user()->roles()->first();
             if ($role->name === 'admin') {
-                return TransactionResource::collection(Transaction::latest()->paginate(10));
+                $filters = TransactionFilters::hydrate($request->query());
+                return TransactionResource::collection(Transaction::filterBy($filters)->latest()->paginate(10));
             } else if ($role->name === 'client') {
                 return TransactionResource::collection(Transaction::where('user_id', auth()->user()->id)->latest()->paginate(5));
             }

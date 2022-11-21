@@ -7,6 +7,7 @@ use App\Http\Resources\UserResource;
 use App\Mail\RegistrationEmail;
 use App\Models\User;
 use App\Models\UserHasItem;
+use App\QueryFilters\UserFilters;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Mail;
 
@@ -17,10 +18,10 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(UserFilters $filters)
     {
 
-        return UserResource::collection(User::paginate(10));
+        return UserResource::collection(User::filterBy($filters)->paginate(10));
     }
 
     /**

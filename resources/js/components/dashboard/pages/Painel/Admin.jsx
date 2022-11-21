@@ -1,10 +1,10 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import styled, { withTheme } from "styled-components";
 import { maxWidth } from "../../../../helper";
 import { fetchSelf } from "../../../../redux/auth/actions";
 import { fetchTransactions, validateTransaction, downloadProof } from "../../../../redux/transaction/actions";
 import { connect } from "react-redux";
-import { Button, Popconfirm, Row } from "antd";
+import { Button, Input, Popconfirm, Row } from "antd";
 import TableContainer from "../../../common/TableContainer";
 
 const Container = styled.div`
@@ -24,6 +24,7 @@ const Container = styled.div`
 
 
 function Admin({ fetchSelf, loading, fetchTransactions, transactions, meta, validateTransaction, downloadProof }) {
+    const [filters, setFilters] = useState({})
 
     useEffect(() => {
         fetchSelf();
@@ -32,8 +33,15 @@ function Admin({ fetchSelf, loading, fetchTransactions, transactions, meta, vali
 
 
     function handlePageChange(pagination) {
-        fetchTransactions(pagination.current);
+        fetchTransactions(pagination.current, filters);
     }
+
+    const handleFilters = (aFilters) => {
+        setFilters({ ...filters, ...aFilters });
+
+        fetchTransactions(1, { ...filters, ...aFilters });
+    }
+
 
 
     const columns = [
@@ -97,6 +105,9 @@ function Admin({ fetchSelf, loading, fetchTransactions, transactions, meta, vali
     return (
         <Container>
             <h1>Transações</h1>
+            <Row style={{ marginBottom: "20px" }}>
+                <Input.Search onSearch={(e) => handleFilters({ search: e })} placeholder="Pesquisar por utilizador" type="search" size="large" />
+            </Row>
             <TableContainer
                 handlePageChange={handlePageChange}
                 data={transactions}
@@ -111,7 +122,7 @@ function Admin({ fetchSelf, loading, fetchTransactions, transactions, meta, vali
 const mapDispatchToProps = (dispatch) => {
     return {
         fetchSelf: () => dispatch(fetchSelf()),
-        fetchTransactions: (page) => dispatch(fetchTransactions(page)),
+        fetchTransactions: (page, filters) => dispatch(fetchTransactions(page, filters)),
         validateTransaction: (id, data) => dispatch(validateTransaction(id, data)),
         downloadProof: (filename) => dispatch(downloadProof(filename)),
     };

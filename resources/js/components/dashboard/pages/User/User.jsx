@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import { fetchUsers } from "../../../../redux/user/actions";
 import { dimensions, maxWidth } from "../../../../helper";
 import TableContainer from "./TableContainer";
+import { Input, Row } from "antd";
 
 const ContentContainer = styled.div`
     width: 80%;
@@ -73,6 +74,9 @@ class User extends Component {
         return (
             <Container>
                 <ContentContainer>
+                    <Row style={{ marginBottom: "20px" }}>
+                        <Input.Search onSearch={(e) => this.setFilters({ search: e })} placeholder="Pesquisar por utilizador" type="search" size="large" />
+                    </Row>
                     {isAdmin &&
                         <Table>
                             <TableContainer
@@ -85,7 +89,7 @@ class User extends Component {
                     }
 
                 </ContentContainer>
-            </Container>
+            </Container >
         );
     }
 }

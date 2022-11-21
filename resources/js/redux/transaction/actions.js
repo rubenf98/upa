@@ -1,10 +1,14 @@
 import { types } from "./types";
 import axios from "axios";
 import { download } from "../../helper";
+import { stringify } from "query-string";
 
-export const fetchTransactions = (page = 1) => ({
+
+export const fetchTransactions = (page = 1, filters = {}) => ({
     type: types.FETCH_TRANSACTIONS,
-    payload: axios.get(`${window.location.origin}/api/transaction?page=${page}`)
+    payload: axios.get(`${window.location.origin}/api/transaction?${stringify(filters, {
+        arrayFormat: "index"
+    })}&page=${page}`)
 })
 
 export const createTransaction = (data) => ({

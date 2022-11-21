@@ -4,11 +4,13 @@ namespace App\Models;
 
 use Tymon\JWTAuth\Contracts\JWTSubject;
 use Illuminate\Notifications\Notifiable;
+use Cerbero\QueryFilters\FiltersRecords;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable implements JWTSubject
 {
     use Notifiable;
+    use FiltersRecords;
 
     public function ebooks()
     {
