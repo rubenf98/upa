@@ -280,7 +280,7 @@ function Session({ verifyAddToCart }) {
             <HeaderContainer>
                 <Header>
                     <VideoContainer className='column'>
-                        <Video video={"/video/" + content[sessao].demo + ".mp4"} thumbnail={'/image/sessions/' + content[sessao].thumbnail + '.jpg'} />
+                        <Video controlsList="nodownload" video={"/video/" + content[sessao].demo + ".mp4"} thumbnail={'/image/sessions/' + content[sessao].thumbnail + '.jpg'} />
                     </VideoContainer>
                     <InfoContainer className='column'>
                         <h2>{content[sessao].title}</h2>

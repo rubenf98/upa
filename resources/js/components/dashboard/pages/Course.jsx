@@ -305,7 +305,7 @@ function Course({ course, theme, fetchCourse, downloadInstructions, downloadAudi
                             <div className="absolute-div">
 
 
-                                <video preload="auto" poster={'/image/thumbnail/' + currentVideo.filename + ".jpg"} controls>
+                                <video controlsList="nodownload" preload="auto" poster={'/image/thumbnail/' + currentVideo.filename + ".jpg"} controls>
                                     <source src={'/video/courses/' + currentVideo.filename + ".mp4"} type="video/mp4" />
                                     Your browser does not support the video tag.
                                 </video>

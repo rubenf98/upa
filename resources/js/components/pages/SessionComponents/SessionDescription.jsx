@@ -184,7 +184,7 @@ function SessionDescription({ theme, content, reversed }) {
             <ImageContainer reversed={reversed} className="image-column column">
 
                 <div className="container">
-                    <Video video={"/video/" + content.video + ".mp4"} thumbnail={"/image/session/" + content.thumbnail + ".jpg"} />
+                    <Video video={"/video/" + content.video + ".mp4"} controlsList="nodownload" thumbnail={"/image/session/" + content.thumbnail + ".jpg"} />
                 </div>
             </ImageContainer>
 

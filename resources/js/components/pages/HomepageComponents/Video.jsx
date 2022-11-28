@@ -74,7 +74,7 @@ function Video({ video = "/video/promocional.mp4", thumbnail = "/image/homepage/
             </Thumbnail>
 
             <VideoContainer maskStyle={{ background: "rgba(0,0,0,.7)" }} centered width={"80%"} footer={null} visible={videoVisibility} onCancel={() => setVideoVisibility(false)}>
-                <video autoPlay muted controls width="100%" poster={thumbnail}>
+                <video controlsList="nodownload" autoPlay muted controls width="100%" poster={thumbnail}>
                     <source src={video} type="video/mp4" />
                     Your browser does not support the video tag.
                 </video>

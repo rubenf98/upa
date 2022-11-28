@@ -457,7 +457,7 @@ function Sessions({ theme, verifyAddToCart }) {
                 <div className='column'>
                     <div className='offset' />
                     <div className='video-container'>
-                        <Video video="/video/apresentacao.mp4" thumbnail='/image/sessions/header.jpg' />
+                        <Video controlsList="nodownload" video="/video/apresentacao.mp4" thumbnail='/image/sessions/header.jpg' />
                     </div>
 
                 </div>
