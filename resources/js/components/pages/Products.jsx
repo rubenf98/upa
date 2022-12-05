@@ -435,6 +435,18 @@ function Products({ theme, verifyAddToCart }) {
                         />
 
                     </Col>
+
+                    <Col xs={24} md={12}>
+                        <Session
+                            title="Volume I: Inverno"
+                            cartName="Volume I: Inverno"
+                            price={4}
+                            id={27}
+                            image="25_inverno"
+                            description="25 exercícios de atenção, perceção visual, orientação espacial, literatura escrita e motricidade fina."
+                        />
+
+                    </Col>
                 </Row>
 
             </SessionsContainer>
@@ -583,6 +595,23 @@ function Products({ theme, verifyAddToCart }) {
 
             </SessionsContainer>
 
+            <SessionsContainer color={theme.textAccent}>
+
+                <h2>e-books</h2>
+                <h3>Jogos Temáticos de Estimulação Cognitiva</h3>
+                <Row type="flex">
+                    <Col xs={24} md={12}>
+                        <Session
+                            title="Volume I: Inverno"
+                            cartName="Volume I: Inverno"
+                            price={2}
+                            id={28}
+                            image="jogo_inverno"
+                        />
+                    </Col>
+                </Row>
+
+            </SessionsContainer>
         </Container>
     )
 }

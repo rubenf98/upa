@@ -11,5 +11,5 @@ const mix = require('laravel-mix');
  |
  */
 
-mix.js('resources/js/app28112022.js', 'public/js')
+mix.js('resources/js/app05122022.js', 'public/js')
     .react();
