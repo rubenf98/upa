@@ -447,6 +447,18 @@ function Products({ theme, verifyAddToCart }) {
                         />
 
                     </Col>
+
+                    <Col xs={24} md={12}>
+                        <Session
+                            title="Dia de Reis"
+                            cartName="Dia de Reis"
+                            price={4}
+                            id={29}
+                            image="25_reis"
+                            description="25 exercícios de atenção, perceção visual, orientação espacial, literatura escrita e motricidade fina."
+                        />
+
+                    </Col>
                 </Row>
 
             </SessionsContainer>
