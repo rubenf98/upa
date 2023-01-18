@@ -459,6 +459,18 @@ function Products({ theme, verifyAddToCart }) {
                         />
 
                     </Col>
+
+                    <Col xs={24} md={12}>
+                        <Session
+                            title="Carnaval"
+                            cartName="Carnaval"
+                            price={7}
+                            id={30}
+                            image="40_carnaval"
+                            description="40 exercícios de atenção, perceção visual, orientação espacial, cálculo,  literatura escrita e motricidade fina."
+                        />
+
+                    </Col>
                 </Row>
 
             </SessionsContainer>

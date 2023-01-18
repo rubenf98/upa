@@ -131,7 +131,7 @@ function Cart({ visible, closeCart, removeCartItem, items, total, isAuthenticate
                         <img src="/icon/empty_cart.svg" />
                         <h3>O seu carrinho está vazio!</h3>
                         <p>
-                            Ainda não adicionou nada ao sue carrinho. Explore os nossos produtos e oferta formativa para encontrar o que melhor se adequa as suas necessidades.
+                            Ainda não adicionou nada ao seu carrinho. Explore os nossos produtos e oferta formativa para encontrar o que melhor se adequa as suas necessidades.
                         </p>
                     </EmptyCart>
                 }

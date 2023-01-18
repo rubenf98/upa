@@ -40,6 +40,7 @@ const Course = styled.div`
     @media (max-width: ${dimensions.sm}) {
         width: 100%;
     }
+    
     .course-content {
         box-shadow: 0px 0px 15px 0px rgba(0,0,0,.1);
         border-radius: ${borderRadius};
@@ -124,6 +125,7 @@ function Courses({ theme, fetchCourses, fetchEbooks, courses, ebooks, verifyAddT
                             <div className='information'>
 
                                 <h2>{course.title}</h2>
+                                <h4>{course.price ? course.price : "0.00"}€</h4>
                                 <h3>{course.subtitle}</h3>
                                 <p>{course.description}</p>
                                 <ButtonContainer>
@@ -172,6 +174,7 @@ function Courses({ theme, fetchCourses, fetchEbooks, courses, ebooks, verifyAddT
                             <div className='information'>
 
                                 <h2>{course.title}</h2>
+                                <h4>{course.price ? course.price : "0.00"}€</h4>
                                 <h3>{course.subtitle}</h3>
                                 <p>{course.description}</p>
                                 <ButtonContainer>
