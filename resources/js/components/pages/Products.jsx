@@ -471,6 +471,18 @@ function Products({ theme, verifyAddToCart }) {
                         />
 
                     </Col>
+
+                    <Col xs={24} md={12}>
+                        <Session
+                            title="Dia dos afetos / São Valentim"
+                            cartName="Dia dos afetos / São Valentim"
+                            price={6}
+                            id={31}
+                            image="30_saovalentim"
+                            description="30 exercícios de atenção, memória, literatura escrita e orientação espacial."
+                        />
+
+                    </Col>
                 </Row>
 
             </SessionsContainer>
