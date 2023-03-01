@@ -483,6 +483,30 @@ function Products({ theme, verifyAddToCart }) {
                         />
 
                     </Col>
+
+                    <Col xs={24} md={12}>
+                        <Session
+                            title="Dia do Pai"
+                            cartName="Dia do Pai"
+                            price={4}
+                            id={32}
+                            image="25_pai"
+                            description="25 exercícios de memória, atenção, literatura escrita e orientação espacial"
+                        />
+
+                    </Col>
+
+                    <Col xs={24} md={12}>
+                        <Session
+                            title="Dia Internacional da Mulher"
+                            cartName="Dia Internacional da Mulher"
+                            price={4}
+                            id={33}
+                            image="25_mulher"
+                            description="25 exercícios de memória, atenção, literatura escrita e orientação espacial"
+                        />
+
+                    </Col>
                 </Row>
 
             </SessionsContainer>
