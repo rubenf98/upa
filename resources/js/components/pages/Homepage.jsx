@@ -6,6 +6,7 @@ import About from './HomepageComponents/About';
 import Resources from './HomepageComponents/Resources';
 import Soon from './HomepageComponents/Soon';
 import Gallery from './HomepageComponents/Gallery';
+import Steps from './HomepageComponents/Steps';
 
 const Container = styled.div`
     overflow-x: none;
@@ -17,7 +18,7 @@ function Homepage() {
         <Container >
             <Header />
             <About />
-
+            <Steps />
             <Gallery />
             <Free />
             <Resources />
