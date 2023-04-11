@@ -181,6 +181,7 @@ function NavbarDashboardMenu({ logout, isAdmin, setAuthorizationToken, theme, ha
                     <CustomLink onClick={handleClose} to="/painel">Página inicial</CustomLink>
                     {isAdmin && <CustomLink onClick={handleClose} to="/painel/users">Utilizadores</CustomLink>}
                     <CustomLink onClick={handleClose} to="/painel/sessoes">Oferta formativa</CustomLink>
+                    <CustomLink onClick={handleClose} to="/painel/guia">Como comprar</CustomLink>
                     <Leave onClick={handleLogout}>Sair</Leave>
                 </LinksContainer>
             </Content>

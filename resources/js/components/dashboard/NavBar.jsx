@@ -177,13 +177,20 @@ function NavBar({ theme, logout, openCart, cartItems, isAdmin, handleDashboardMe
                     <NavbarLink background={theme.blue} to="/painel/"><span>as minhas compras</span> <div /></NavbarLink>
                 </LinkContainer>
 
+
+
+
                 {isAdmin &&
                     <LinkContainer className="desktop-link">
                         <NavbarLink background={theme.blue} to="/painel/users"><span>Utilizadores</span> <div /></NavbarLink>
                     </LinkContainer>
                 }
+                
                 <LinkContainer className="desktop-link">
                     <NavbarLink background={theme.blue} to="/painel/sessoes"><span>oferta formativa</span> <div /></NavbarLink>
+                </LinkContainer>
+                <LinkContainer className="desktop-link">
+                    <NavbarLink background={theme.blue} to="/painel/guia"><span>como comprar</span> <div /></NavbarLink>
                 </LinkContainer>
                 <LinkContainer className="desktop-link" onClick={handleLogout}>
                     <StyledButton className="button-container">
