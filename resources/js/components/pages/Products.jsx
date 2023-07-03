@@ -382,6 +382,16 @@ function Products({ theme, verifyAddToCart }) {
                             description="Atenção e perceção visual, orientação espacial, literatura escrita e motricidade fina."
                         />
                     </Col>
+                    <Col xs={24} md={12}>
+                        <Session
+                            title="Volume VI"
+                            cartName="50 Exercícios. Vol VI"
+                            price={8}
+                            id={34}
+                            image="50_volume6"
+                            description="Atenção e perceção visual, literatura, motricidade fina e orientação espacial."
+                        />
+                    </Col>
                 </Row>
 
             </SessionsContainer>
